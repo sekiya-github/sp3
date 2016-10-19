@@ -1,0 +1,201 @@
+        /**
+         *  History regist　※ipkFocusを履歴登録時にborderだけにするため、ipkFocus初期化前に履歴登録すること。
+         *
+         * [履歴登録タイミング]
+         * No    履歴名    履歴    maxVer    nowVer    履歴削除    備考
+         * 1    初期表示後    ●            ●    ●
+         * 2    テンプレート選択後    ●            ●    ●
+         * 3    アイテムドロップ後    ●
+         * 4    アイテム編集開始時    ●
+         * 5    アイテム編集終了時
+         * ※履歴保存時はipkMenuは削除し、ボーダーを表示にしておく。
+         *
+         */
+        function f_historyRegist(type, spEdit) {
+            //console.log(type,spEdit);
+            maxVersion++;
+            nowVersion++;
+            maxVersion = nowVersion;
+            var target      = '';
+            var dataId      = maxVersion;
+            var historyHtml = '';
+            var scrollTop   = contentDocument.body.scrollTop;
+            //cc(spEdit.clone(true).html());
+            
+            //-----------------------------------------------
+            // 履歴HTML 取得
+            //-----------------------------------------------
+            switch(type){
+				
+				//===============================================
+				// フォーマット編集
+				//===============================================
+				case  'edit-format':
+
+					// spEditの１個上の親要素 取得
+					var palentObj = '';
+					if(spEdit.hasClass('sp-item')){
+						target = '.sp-item';
+					}else if(spEdit.hasClass('sp-row')){
+						target = '.sp-col';
+					}else if(spEdit.hasClass('sp-section')){
+						target = '.sp-section';
+					}
+
+					// spEdit に data-idなければ付与
+					if(!spEdit.data('data-id')){
+						spEdit.data('data-id',dataId);
+					}
+					
+					// spEditのHTML 取得
+					historyHtml = spEdit.clone(true).html();
+            		break;
+				
+				//===============================================
+				// ipkMenu : delete / copy
+				//===============================================
+            	case  'ipkMenu-delete':
+
+					// spEditの１個上の親要素 取得
+					var palentObj = '';
+					if(spEdit.hasClass('sp-item')){
+						target = '.sp-col';
+						palentObj = spEdit.closest('.sp-col');
+					}else if(spEdit.hasClass('sp-row')){
+						target = '.sp-section';
+						palentObj = spEdit.closest('.sp-section');;
+					}else if(spEdit.hasClass('sp-section')){
+						target = 'body';
+						palentObj = fdoc.find('body');
+					}
+					
+					// 親要素 に data-idなければ付与
+					if(!palentObj.data('data-id')){
+						palentObj.data('data-id',dataId);
+					}
+						
+					// 親要素のHTML 取得
+					historyHtml = palentObj.clone(true).html();
+            		break;
+            }
+			
+			//-----------------------------------------------
+			// 履歴データ保存
+			//-----------------------------------------------
+			//historyHtml = jQuery.trim(replaceAll(historyHtml,"\t",''));
+			historyData[maxVersion] = {dataId, target, scrollTop, historyHtml};
+            //console.debug('【履歴登録】【maxVersion='+maxVersion+' nowVersion='+nowVersion+' scrollTop='+scrollTop+'】'+msg);
+
+            // 超過分履歴削除
+            if( maxVersion > maxHistoryCount){
+                var deleteVersion = maxVersion - maxHistoryCount;
+                delete historyData[deleteVersion];
+                //console.debug('【履歴削除】deleteVersion='+deleteVersion);
+            }
+            
+            console.log(historyData);
+            
+        }
+
+        /**
+         * History [Ctrl+Z] [Ctrll+Y]
+         */
+        function f_keyEvent(e) {
+            cc(f_isEditting());
+            cc(e.shiftKey);
+            cc(e.ctrlKey);
+            cc(e.metaKey);
+            cc(e.keyCode);
+            var ctrlKeyFlag = os == 'mac' ? e.metaKey : e.ctrlKey;
+            if(ctrlKeyFlag){
+                // [Ctrll+Z]
+                if(e.keyCode == keyCodeZ){
+                    // 編集中
+                    if(f_isEditting()){
+                    //if(fdoc.find('.spEdit').length > 0){
+                        //cc('[Ctrll+Z]press:編集中:undo/redo を contenteditに任せる');
+                        // contenteditに任せる。
+                    // 編集中以外
+                    }else{
+                        var nowId     = historyData[nowVersion][0];
+                        var nowTarget = historyData[nowVersion][1];
+                        var nowScroll = historyData[nowVersion][2];
+                        var nowHtml   = historyData[nowVersion][3];
+                        cc(historyData[nowVersion]);
+                        if(nowHtml){
+                            fdoc.find(nowTarget).find('data-id-'+nowId).html(nowHtml);
+                            contentDocument.body.scrollTop = nowScroll;
+                            console.debug('【ctrl+Z】履歴セット。maxHistoryCount='+maxHistoryCount+' maxVersion='+maxVersion+' nowVersion='+nowVersion);
+                            nowVersion--;
+                        }else{
+                            console.debug('【ctrl+Z】履歴なし。maxHistoryCount='+maxHistoryCount+' maxVersion='+maxVersion+' nowVersion='+nowVersion);
+                            nowVersion++;
+                        }
+                        var minVersion = maxVersion - maxHistoryCount;
+                        // 最低バージョンを下回った場合は、最低バージョンの履歴を表示（移動も含めるためキーイベントキャンセルにしない）
+                        if(nowVersion < minVersion){
+                            nowVersion = minVersion;
+                            console.debug('【ctrl+Z】最低バージョンを下回ったので、最低バージョンの履歴を表示。maxHistoryCount='+maxHistoryCount+' maxVersion='+maxVersion+' nowVersion='+nowVersion);
+                        }
+                    }
+                    
+                    // mac/win共にCtrl+Zはchromeショートカット競合なしなので、キーイベントキャンセルしない
+                    //return false;
+                // [Ctrll+Y]
+                }else if(e.keyCode == keyCodeY){
+                    // 編集中
+                    if(f_isEditting()){
+                    //if(fdoc.find('.spEdit').length > 0){
+                        //cc('[Ctrll+Y]press:編集中:undo/redo を contenteditに任せる');
+                        contentDocument.execCommand('redo',false,null);
+                    // 編集中以外
+                    }else{
+                        var nowId     = historyData[nowVersion][0];
+                        var nowTarget = historyData[nowVersion][1];
+                        var nowScroll = historyData[nowVersion][2];
+                        var nowHtml   = historyData[nowVersion][3];
+                        if(nowHtml){
+                            fdoc.find(nowTarget).find('data-id-'+nowId).html(nowHtml);
+                            contentDocument.body.scrollTop = nowScroll;
+                            //fdoc.find('.comItemPackage').click(ipkSetting);
+                            console.debug('【ctrl+Y】履歴セット。maxHistoryCount='+maxHistoryCount+' maxVersion='+maxVersion+' nowVersion='+nowVersion);
+                            nowVersion++;
+                        }else{
+                            console.debug('【ctrl+Y】履歴なし。maxHistoryCount='+maxHistoryCount+' maxVersion='+maxVersion+' nowVersion='+nowVersion);
+                                nowVersion++;
+                        }
+                        // maxバージョンを超えた場合は、maxバージョンの履歴を表示（移動も含めるためキーイベントキャンセルにしない）
+                        if(nowVersion > maxVersion){
+                            nowVersion = maxVersion;
+                            console.debug('【ctrl+Y】maxバージョンを超えたので、maxバージョンの履歴を表示。maxHistoryCount='+maxHistoryCount+' maxVersion='+maxVersion+' nowVersion='+nowVersion);
+                        }
+                    }
+                    //mac-chromeショートカットと競合するので、キーイベントキャンセル。
+                    return false;
+                }
+            }
+            // Disable the [delete/backspace] key is not in edit
+            if(f_isEditting() == false && e.keyCode == 8){
+            //if(fdoc.find('.spEdit').length == 0 && e.keyCode == 8){
+                return false;
+            }
+        }
+
+        /**
+         * is Editing
+         */
+        function f_isEditting() {
+            //cc(contentDocument.activeElement);
+            if(contentDocument.activeElement.getAttribute('contenteditable')){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        /**
+         * str_replace
+         */
+        function replaceAll(expression, org, dest){
+            return expression.split(org).join(dest);
+        }

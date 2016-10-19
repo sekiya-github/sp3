@@ -1,0 +1,1827 @@
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>{$thisPageTitlle}</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue-pink.min.css" />-->
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<!--     <link href="css/edit-page.css" rel="stylesheet">
+ -->
+<style>
+*{
+	padding: 0;
+	margin: 0;
+	font-size:11px;
+	box-sizing: border-box;
+    border-collapse: collapse;
+    font-family: 'Roboto', 'Helvetica', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+}
+html,body{
+	 overflow-y: hidden;
+	 width:100%;
+	 height:100%;
+}
+.layout-table{
+	width:100%;
+	height:100%;
+	border-collapse: collapse;
+}
+.layout-table td{
+}
+
+
+.card-table{
+	width:calc(100% - 30px);
+	margin:15px;
+
+
+}
+.card-table td{
+	border:none;
+	padding-bottom:15px;
+}
+.card-table > tbody > tr:last-child {
+	border-bottom:1px solid #aaa;
+}
+.card-table .header{
+	font-size:14px;
+	color:#555;
+    font-weight: bold;
+}
+.card-table .label{
+	font-size:14px;
+	padding-right: 15px;
+	font-size:11px;
+	white-space:nowrap;
+}
+.card-table .icon{
+    width: 1%;
+    padding-right: 15px;
+}
+.card-table .icon-btn{
+    width: 1%;
+    padding-right: 15px;
+    padding-left: 15px;
+    white-space:nowrap;
+}
+.active{
+	color:white !important;
+	background-color:#00c0ff !important;
+}
+
+
+
+
+
+div.scroll-box{
+	width:100%;
+	height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+
+
+/* form */
+input, select, textarea{
+	border:1px solid #aaa;
+	border-radius:2px;
+    width: 100%;
+    height: 24px;
+    padding: 0 5px;
+    background-color: #fff;
+	color:#000;
+
+}
+
+input[type="number"]{
+	width: 65px;
+}
+input[type="range"]{
+	border:none;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	-webkit-animation: 1s;
+	width: 27px;
+	height: 24px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	vertical-align: bottom;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+	margin: 0;
+}
+
+
+/* compornent */
+
+.btn-group{
+	display:table;
+	width:100%;
+
+}
+.btn-group>.btn{
+	display:table-cell;
+	width:auto;
+	min-width:auto;
+	border:1px solid #aaa;
+	padding: 2px;
+	height:auto;
+}
+
+.btn-drag-item{
+	width: 65px;
+    height: 22px;
+    min-width: 1px;
+    padding: 0;
+    font-size: 11px;
+    line-height: 1.3em;
+    text-transform:capitalize;
+}
+.btn-table-edit{
+	height:25px;
+}
+
+.material-icons{
+	vertical-align: sub;
+}
+
+
+.iframe-mobile-preview{
+	width:320px !important;
+	height:95% !important;
+	margin:0 auto !important;
+	border:1px solid #000 !important;
+}
+
+
+
+
+/* Material design lite Overwrite */
+.mdl-tabs__tab-bar {
+    height: 39px;
+    display: table;
+    width:100%;
+}
+.mdl-tabs__tab {
+	display: table-cell;
+	float: none;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 39px;
+    font-size: 11px;
+}
+.mdl-checkbox__label{
+	font-size:11px;
+}
+.mdl-button {
+}
+.material-icons {
+    font-size: 14px;
+    font-family: 'Material Icons';
+}
+.btn-group .mdl-button:hover {
+    background-color: inherit;
+}
+
+</style>
+
+
+</head>
+<body>
+<form name="editForm" id="editForm" action="edit_html_2.php" method="post" onsubmit="return false;">
+    <input type="hidden" name="tokenId" id="tokenId" value="{$form.tokenId|htmlspecialchars:$smarty.const.ENT_QUOTES}">
+    <input type="hidden" name="pageId"   id="pageId"   value="{$form.pageId}">
+    <input type="hidden" name="accessUrl"  id="accessUrl"  value="{$form.accessUrl}">
+
+	<table class="layout-table">
+		<tr style="height:52px;border-bottom:1px solid #000">
+			<td style="padding-left:15px;">
+				<table>
+					<tr>
+						<td>
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+							  <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input sp-js-click-showTagGuide" data-guide-tag="all">
+							  <span class="mdl-checkbox__label">ガイド表示</span>
+							</label>
+						</td>
+						<td style="padding-left:20px;">
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+							  <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input sp-js-click-showMobileView" data-guide-tag="all">
+							  <span class="mdl-checkbox__label">モバイルビュー</span>
+							</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td align="right" style="padding-right:30px;">
+				<!-- Flat button with ripple -->
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect sp-js-click-saveHtml">保存</button>
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect sp-js-click-restoreHtml">リストア</button>
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect">アップロード</button>
+			</td>
+			<td style="width:250px">
+			  <div class="mdl-tabs__tab-bar">
+				<!-- タブメニュー -->
+				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" style="postion:fixed;">
+					<div class="mdl-tabs__tab-bar">
+						<a href="#starks-panel"     id="sp-id-tab-format"    class="mdl-tabs__tab is-active"   onclick="$('#sp-id-drag-item-box').hide();$('#sp-id-format-box').show();">フォーマット</a>
+						<a href="#lannisters-panel" id="sp-id-tab-drag-item" class="mdl-tabs__tab"             onclick="$('#sp-id-format-box').hide();$('#sp-id-drag-item-box').show();">ドラッグアイテム</a>
+					</div>
+				</div>
+			  </div>
+			</td>
+			<td style="width:50px;text-align:center;">
+				<button class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons" style="font-weight:bold;font-size:22px;">close</i></button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-top: 1px solid #000;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<textarea  name="htmlBody" id="htmlBody">
+  <!DOCTYPE html>
+<html><head>
+		
+		<title>
+			BS研修
+		</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Latest compiled and minified CSS -->
+		
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+		<style>
+			
+			::selection {
+/*
+			background: #000;
+			color: #fff;
+			*/
+			}
+			body{
+			color: #333;
+			font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+			color: #444;
+			font-size:16px;
+			line-height: 1.6em;
+			padding:0;
+			/*
+			position: relative;
+			background-color: #000;
+			background: url(http://freedom-income.jp/pr/lies/sp/images/lies-bg.jpg) no-repeat;
+			background-size: cover;
+			background-position: center;
+			background-attachment: fixed;
+			*/
+			}
+			.asterisk{
+			color: #D9534F;
+			font-weight: 400;
+			}
+			.sp-section{
+			padding-top:40px;
+			padding-bottom:40px;
+			}
+			.sp-subhead-border-b{
+			border-bottom: dotted 1px #CCC;
+			padding: 12px 0 9px;
+			font-weight:bold;
+			}
+			.sp-subhead-border-tb{
+			border-top: dotted 1px #CCC;
+			border-bottom: dotted 1px #CCC;
+			padding: 12px 0 9px;
+			font-weight:bold;
+			}
+			.container {
+			max-width: 880px;
+			}
+			p{
+			margin:0 0 30px 0;
+			}
+			h3{
+			margin:0 0 30px 0;
+			}
+			h3:last-child, p:last-child{
+			/*margin-bottom:0;*/
+			}
+			hr{
+			border-top: none;
+			height: 1px;
+			background-color: #ccc;
+			}
+			ul.list-green li{
+			padding: 5px 0 5px 40px;
+			margin: 15px 0;
+			line-height: 130%;
+			background: url('http://www.directsales.jp/sp/img/template/check_green.jpg') no-repeat;
+			}
+			ul.list-red li{
+			padding: 5px 0 5px 40px;
+			margin: 15px 0;
+			line-height: 130%;
+			background: url('http://www.directsales.jp/sp/img/template/check_red.jpg') no-repeat;
+			}
+			ol.list-decimal li{
+			padding: 5px 0 5px 1em;
+			margin: 15px 2em;
+			line-height: 130%;
+			list-style-type: decimal;
+			}
+			/*------------ CSS BUTTON -----------------------------------------------*/
+			.diet_purchsaeButton1 {
+			cursor: pointer;
+			display: inline-block;
+			white-space: nowrap;
+			text-decoration: none;
+			padding: 30px 40px 30px 95px;
+			font-size: 30px;
+			font-weight: bold;
+			color: #1A2B55;
+			-webkit-border-radius: 56px 18px 18px 56px;
+			-moz-border-radius: 56px 18px 18px 56px;
+			-o-border-radius: 56px 18px 18px 56px;
+			border-radius: 56px 18px 18px 56px;
+			border: 3px solid navy;
+			-webkit-box-shadow: 0px 5px 0px 0px #fff6af;
+			-moz-box-shadow: 0px 5px 0px 0px #fff6af;
+			box-shadow: 0px 5px 0px 0px #fff6af;
+			background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%, -webkit-gradient( linear, left top, left bottom, color-stop(39%, #ffec64), color-stop(66%, #ffab23) );
+			background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%, -moz-linear-gradient( center top, #ffec64 39%, #ffab23 66% );
+			background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%, -ms-linear-gradient( top, #ffec64 39%, #ffab23 66% );
+			/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64');*//*IE8だと背景画像とグラデを両立不可。背景画像を優先。11から通常のグラデが適用になる。*/
+			background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50% #ffec64\9;
+			/*IE9用*/
+			}
+			.diet_purchsaeButton1:hover {
+			background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%,-webkit-gradient( linear, left top, left bottom, color-stop(39%, #ffab23), color-stop(66%, #ffec64) );
+			background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%,-moz-linear-gradient( center top, #ffab23 39%, #ffec64 66% );
+			background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%,-ms-linear-gradient( top, #ffab23 39%, #ffec64 66% );
+			/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64');*//*IE8だと背景画像とグラデを両立不可。背景画像を優先。11から通常のグラデが適用になる。*/
+			background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50% #ffec64\9;
+			/*IE9用*/
+			}
+			.diet_purchsaeButton1:active {
+			position: relative;
+			top: 1px;
+			}
+			.sction-1{
+			display: block;
+			color:white;
+			background: rgba(53,66,73,1);
+			-pie-background: rgba(53,66,73,1);
+			border-style: none;
+			width: 100%;
+			height: 600px;
+			border-radius: 0px;
+			padding:15px 0;
+			}
+			.sp-item-style-sekiya{
+			border-left:3px solid #ff3311;
+			
+			}
+			
+		</style>
+		
+		
+		<style>
+			
+			
+			/* bootstrap overwrite */
+			a, a:focus, a:hover {
+			color: white;
+			text-decoration: none;
+			}
+			ol, ul {
+			margin-bottom: 30px;
+			}
+			
+			
+			/* mysite style */
+			[data-item-type="button"]{
+			font-size: 24px;
+			line-height: 1.6em;
+			border-radius: 0px;
+			padding: 14px;
+			background-color: rgba(255, 153, 0, 0.870588);
+			text-align:center;
+			margin-bottom: 5px;
+			display: block;
+			color: white;
+			text-decoration: none;
+			}
+			.sp-item-style-button-red{
+			background-color:red;
+			opacity:0.9;
+			}
+			.sp-item-style-button-blue{
+			background-color:blue;
+			opacity:0.9;
+			}
+			.sp-item-style-button-green{
+			background-color:green;
+			opacity:0.9;
+			}
+			[data-item-type="button"]:hover{
+			opacity:0.8;
+			}
+			.sp-item-style-button-red:hover{
+			opacity:0.8;
+			}
+			.sp-item-style-button-blue:hover{
+			opacity:0.8;
+			}
+			.sp-item-style-button-green:hover{
+			opacity:0.8;
+			}
+			
+			
+			[data-item-type="list"]{
+			list-style-type: disc;
+			list-style-image: none;
+			padding-left:40px;
+			}
+			[data-item-type="list"] li{
+			margin: 5px 0;
+			}
+			
+			/* ol */
+			
+			.sp-item-style-list-order-black{
+			list-style: none;
+			counter-reset: num;
+			}
+			.sp-item-style-list-order-black li:before{
+			counter-increment: num;
+			content: counter(num);
+			position: absolute;
+			left: 0;
+			background: rgb(0, 0, 0);
+			min-width: 1.5em;
+			text-align: center;
+			height: 1.5em;
+			line-height: 1.6;
+			border-radius: 15px;
+			color: white;
+			font-weight: bold;
+			font-size: 17px;
+			font-family: Arial;
+			}
+			
+			.sp-item-style-list-order-blue{
+			list-style: none;
+			counter-reset: num;
+			}
+			.sp-item-style-list-order-blue li:before{
+			counter-increment: num;
+			content: counter(num);
+			position: absolute;
+			left: 0;
+			background: rgba(62,156,227,1);
+			min-width: 1.5em;
+			text-align: center;
+			height: 1.5em;
+			line-height: 1.6;
+			border-radius: 15px;
+			color: white;
+			font-weight: bold;
+			font-size: 17px;
+			font-family: Arial;
+			}
+			
+			.sp-item-style-list-order-red{
+			list-style: none;
+			counter-reset: num;
+			}
+			.sp-item-style-list-order-red li:before{
+			counter-increment: num;
+			content: counter(num);
+			position: absolute;
+			left: 0;
+			background: rgb(255, 90, 90);
+			min-width: 1.5em;
+			text-align: center;
+			height: 1.5em;
+			line-height: 1.6;
+			border-radius: 15px;
+			color: white;
+			font-weight: bold;
+			font-size: 17px;
+			font-family: Arial;
+			}
+			
+			/* ul */
+			.sp-item-style-list-black li{
+			list-style: none;
+			padding: 5px 0 5px 35px;
+			margin: 15px 0;
+			line-height: 130%;
+			background: url('http://www.getaltitude.jp/sp/img/template/check_black.jpg') no-repeat;
+			}
+			.sp-item-style-list-red li{
+			list-style: none;
+			padding: 5px 0 5px 35px;
+			margin: 15px 0;
+			line-height: 130%;
+			background: url('http://www.getaltitude.jp/sp/img/template/check_red.jpg') no-repeat;
+			}
+			.sp-item-style-list-green li{
+			list-style: none;
+			padding: 5px 0 5px 35px;
+			margin: 15px 0;
+			line-height: 130%;
+			background: url('http://www.getaltitude.jp/sp/img/template/check_green.jpg') no-repeat;
+			}
+			
+			.sp-item-style-image-rounded{
+			border-radius: 6px;
+			}
+			.sp-item-style-image-circle{
+			border-radius: 50%;
+			}
+			.sp-item-style-image-thumbnail{
+			display: inline-block;
+			max-width: 100%;
+			height: auto;
+			padding: 4px;
+			line-height: 1.42857143;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			-webkit-transition: all .2s ease-in-out;
+			-o-transition: all .2s ease-in-out;
+			transition: all .2s ease-in-out;
+			}
+			
+			.sp-item-style-text-subead-red{
+			border-left:4px solid #fd4a41;
+			font-size:21px;
+			padding:15px;
+			}
+			.sp-item-style-text-subead-blue{
+			border-left:4px solid #00c0ff;
+			font-size:21px;
+			padding:15px;
+			}
+			.sp-item-style-text-subead-green{
+			border-left:4px solid #00AD2A;
+			font-size:21px;
+			padding:15px;
+			}
+			
+			
+			.sp-box-algin-left{
+			display:block !important;
+			margin-left:0 !important;
+			margin-right:auto !important;
+			}
+			.sp-box-algin-center{
+			display:block !important;
+			margin-left:auto !important;
+			margin-right:auto !important;
+			}
+			.sp-box-algin-right{
+			display:block !important;
+			margin-left:auto !important;
+			margin-right:0 !important;
+			}
+			.col-sm-12{
+				padding:30px;
+			}
+			
+		</style>
+		
+		<style>
+			
+			body{
+			color: rgb(0, 0, 0);
+			font-family: 'helvetica', 'arial', sans-serif;
+			font-size:18px;
+			}
+		</style>
+		<style>
+			
+			.blet-table{
+			width:100%;
+			
+			}
+			.blet-table tr{
+			border-top:1px solid #ccc
+			}
+			
+			.blet-table td{
+			padding:10px;
+			vertical-align:top;
+			font-size:18px;
+			
+			}
+			
+			.blet-table td:last-child {
+			vertical-align: middle;
+			font-size:18px;
+			text-align: center;
+			}
+			
+		</style>
+
+		<style>
+			
+			@media screen and (max-width: 420px) {
+
+				body{
+					font-size:15px;
+					line-height: 1.5em;
+				}
+				
+				.headline-font-30{
+				font-size:30px !important;;
+				}
+				.headline-font-40{
+				font-size:40px !important;
+				}
+				.headline-font-20{
+				font-size:17px !important;
+				}
+				
+				.subhead-font-18{
+				font-size: 18px !important;
+				line-height: 37px;
+				}
+
+				.subhead-font-23{
+				font-size: 23px !important;
+				line-height: 40px;
+				}
+
+				.mb-font-20{
+					font-size:20px !important;
+				}
+				.mb-font-21{
+					font-size:21px !important;
+				}
+				.mb-font-22{
+					font-size:22px !important;
+				}
+				.mb-font-23{
+					font-size:23px !important;
+				}
+
+				.mb-center-block{
+					margin-left:auto !important;
+					margin-right:auto !important;
+					display:block !important;
+				}
+			
+			}  
+		</style>
+		
+	</head>
+	
+	<body class="sp-iframe-body">
+	</body>
+</html>
+</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</td>
+			<td colspan="2" rowspan="2" valign="top" style="border-left:1px solid #000">
+
+				<!-- ドラッグアイテムBOX -->
+				<div id="sp-id-drag-item-box" class="scroll-box" style="display:none">
+
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">レイアウト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="section" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>section</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="container" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>container</td>
+						</tr>
+					</table>
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">グリッドシステム</td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-1" data-no="1" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value="12"  placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-1" data-no="1"></td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-2" data-no="2" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value="6 6" placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-2" data-no="2"></td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-3" data-no="3" draggable="false" disabled><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value=""    placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-3" data-no="3"></td>
+						</tr>
+					</table>
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">ベースアイテム</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="text" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>テキスト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="list" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>リスト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="button" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>ボタン</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="image" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>イメージ</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="video" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>ビデオ</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="table" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>表</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="replace-item" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>置換コード</td>
+						</tr>
+					</table>
+
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">ギミックアイテム</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="countdown-timer" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>カウントダウンタイマー</td>
+						</tr>
+					</table>
+
+				</div>
+				<!--/ ドラッグアイテムBOX -->
+
+
+
+
+				
+
+
+				
+
+				<!-- フォーマットBOX -->
+				<table id="sp-id-format-box" style="height:100%;width:100%;">
+					<tr id="sp-id-format-noselect-msg" style="height:40px;">
+						<td valign="top">
+							<!-- アイテム選択なし -->
+							<table class="card-table">
+								<tr>
+									<td class="header" style="border:none;">何も選択されていません</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr id="sp-id-format-tab-menu" style="height:40px;display:none;">
+						<td valign="top">
+
+							<!-- タブメニュー -->
+							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+								<div class="mdl-tabs__tab-bar">
+									<a href="#starks-panel"     class="sp-js-tab mdl-tabs__tab is-active" id="tab-name-style"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-style').show();">スタイル</a>
+									<a href="#lannisters-panel" class="sp-js-tab mdl-tabs__tab"           id="tab-name-text"          onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-text').show()"  >テキスト</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"           id="tab-name-image"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-image').show()" >イメージ</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"           id="tab-name-table"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-table').show()" >表</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"           id="tab-name-replace-item"  onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-replace-item').show()" >置換アイテム</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"           id="tab-name-gimmick"       onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-gimmick').show()" >ギミック</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"           id="tab-name-box-align"     onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-box-align').show()" >配置</a>
+								</div>
+							</div>
+					
+						</td>
+					</tr>
+					<tr id="sp-id-format-tab-contents" style="display:none;">
+						<td valign="top">
+
+							<!-- タブコンテンツ-->
+							<div  class="scroll-box">
+
+								<!--タブ内容：スタイル-->
+								<div id="sp-id-tab-content-style" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td class="header">スタイル</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-spEdit-style-button" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-button-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-button-red">ボタン（赤）</option>
+													<option value="sp-item-style-button-blue">ボタン （青）</option>
+													<option value="sp-item-style-button-green">ボタン （緑）</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-list" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-list-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-list-order-black">連番（黒）</option>
+													<option value="sp-item-style-list-order-blue">連番（青）</option>
+													<option value="sp-item-style-list-order-red">連番（赤）</option>
+													<option value="sp-item-style-list-black">チェック（黒）</option>
+													<option value="sp-item-style-list-red"  >チェック（赤）</option>
+													<option value="sp-item-style-list-green">チェック（緑）</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-image" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-image-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-image-circle"   >円形</option>
+													<option value="sp-item-style-image-thumbnail">サムネイル</option>
+													<option value="sp-item-style-image-rounded"  >角丸</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-text" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-text-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-text-subead-red">サブヘッド（赤）</option>
+													<option value="sp-item-style-text-subead-blue">サブヘッド（青）</option>
+													<option value="sp-item-style-text-subead-green">サブヘッド（緑）</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="3">背景</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-bg-image-url-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td colspan="2">
+												<textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-bg-image-url-label" placeholder="背景画像 設定なし"></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">背景色</td>
+											<td colspan="2"><input id="sp-id-background-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="background-color"></td>
+										</tr>
+										<tr>
+											<td class="label">透過</td>
+											<td><input type="range" min="0.00" max="1.00" step="0.01" value="1" tabindex="0" id="sp-id-opacity" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="opacity" oninput="$('#sp-id-opacity-label').text(this.value)"></td>
+											<td><label id="sp-id-opacity-label">1</label></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="3">枠線</td>
+										</tr>
+										<tr>
+											<td colspan="3">
+											    <select id="sp-id-border-style" class="sp-js-input-setSpEditCss" data-css="border-style" style="width:80px">
+											        <!-- 2014/05/30 sekiya fix : -->
+											        <!-- <option value="none">None</option> -->
+											        <option value="none"></option>
+											        <option value="solid">Solid</option>
+											        <option value="dotted">Dotted</option>
+											        <option value="dashed">Dashed</option>
+											        <option value="double">Double</option>
+											        <option value="groove">Groove</option>
+											        <option value="ridge">Ridge</option>
+											        <option value="inset">Inset</option>
+											        <option value="outset">Outset</option>
+											    </select>
+											    <select id="sp-id-border-width" class="sp-js-input-setSpEditCss" data-css="border-width" style="width:60px">
+											        <option value=""></option>
+											        <option value="1">1px</option>
+											        <option value="2">2px</option>
+											        <option value="3">3px</option>
+											        <option value="4">4px</option>
+											        <option value="5">5px</option>
+											        <option value="6">6px</option>
+											        <option value="7">7px</option>
+												        <option value="8">8px</option>
+											        <option value="9">9px</option>
+											        <option value="10">10px</option>
+											    </select>
+												<input id="sp-id-border-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="border-color">
+											</td>
+										</tr>
+										<tr>
+											<td class="label">角丸</td>
+											<td><input id="sp-id-border-radius" type="range" min="0" max="150" step="1" value="0" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="border-radius"  oninput="$('#sp-id-border-radius-label').text(this.value)"></td>
+											<td style="width:45px;"><label id="sp-id-border-radius-label">0</label> px</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">属性</td>
+										</tr>
+										<tr>
+											<td>id</td>
+											<td><input id="sp-id-attr-id" type="text" value="" class="sp-js-input-setSpEditAttr" data-attr="id"></td>
+										</tr>
+										<tr>
+											<td>class</td>
+											<td><input id="sp-id-attr-class" type="text" value="" class="sp-js-input-setSpEditAttr" data-attr="class"></td>
+										</tr>
+										<tr>
+											<td valign="top">style</td>
+											<td><textarea id="sp-id-attr-style" style="height:200px;padding:5px;" class="sp-js-input-setSpEditAttr" data-attr="style"></textarea></td>
+										</tr>
+									</table>
+
+								</div>
+								<!--/タブ内容：スタイル-->
+
+
+								<!--タブ内容：配置-->
+								<div id="sp-id-tab-content-box-align" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td>
+												<select id="sp-id-spEdit-box-align" class="sp-js-change-setSpEditClass" data-class-prefix="sp-box-algin-">
+													<option value="">配置</option>
+													<option value="sp-box-algin-left">左揃え</option>
+													<option value="sp-box-algin-center">中央揃え</option>
+													<option value="sp-box-algin-right">右揃え</option>
+												</select>
+												<!-- 現在は縦配置（box・text共に）設定なし。margin上下でコントロール
+												<select id="sp-id-spEdit-box-valign" class="sp-js-change-setSpEditClass" data-class-prefix="sp-box-valgin-">
+													<option value="">縦配置</option>
+													<option value="sp-box-valgin-top">上揃え</option>
+													<option value="sp-box-valgin-middle">中央揃え</option>
+													<option value="sp-box-valgin-bottom">下揃え</option>
+												</select>
+												-->
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">幅</td>
+										</tr>
+										<tr>
+											<td><input type="range" min="0" max="1500" value="0" tabindex="0" id="sp-id-max-width" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="max-width" oninput="$('#sp-id-max-width-label').text(this.value)"></td>
+											<td style="width:45px;"><label id="sp-id-max-width-label">0</label> px</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">回転</td>
+										</tr>
+										<tr>
+											<td><input type="range" min="0" max="360" step="1" value="0" tabindex="0" id="sp-id-transform-rotate" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="transform-rotate" oninput="$('#sp-id-transform-rotate-label').text(this.value)"></td>
+											<td style="width:35px"><label id="sp-id-transform-rotate-label">0</label> °</td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">余白</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+
+												<style>
+												.padding-table{
+													border:none;
+													margin:0 auto;
+												}
+												.padding-table td{
+												    vertical-align: middle;
+												    padding: 5px;
+												    text-align: center;
+												    border:none;
+												}
+												.padding-table input{
+													width:40px;
+												}
+												.padding-table td.bt{border-top:1px dotted #666; }
+												.padding-table td.bb{border-bottom:1px dotted #666; }
+												.padding-table td.bl{border-left:1px dotted #666; }
+												.padding-table td.br{border-right:1px dotted #666; }
+												
+												</style>
+												<table class="padding-table">
+													<tbody>
+														<tr>
+															<td></td>
+															<td></td>
+															<td><input id="sp-id-margin-top" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-top"></td>
+															<td></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td class="bt bl"></td>
+															<td class="bt"><input id="sp-id-padding-top" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-top"></td>
+															<td class="bt br"></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td><input id="sp-id-margin-left" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-left"></td>
+															<td class="bl"><input id="sp-id-padding-left" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-left"></td>
+															<td style="text-align: center;white-space:nowrap">コンテンツ</td>
+															<td class="br"><input id="sp-id-padding-right" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-right"></td>
+															<td><input id="sp-id-margin-right" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-right"></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td class="bb bl"></td>
+															<td class="bb"><input id="sp-id-padding-bottom" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-bottom"></td>
+															<td class="bb br"></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td></td>
+															<td><input id="sp-id-margin-bottom" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-bottom"></td>
+															<td></td>
+															<td></td>
+														</tr>
+													</tbody>
+												</table>
+
+											</td>
+										</tr>
+									</table>
+
+								</div>
+								<!--/タブ内容：配置-->
+
+
+								<!--タブ内容：テキスト-->
+								<div id="sp-id-tab-content-text" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header">フォント</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-font-name" class="sp-js-input-execcommand" data-cmd="fontName">
+													<option value="Hiragino Kaku Gothic ProN">Hiragino Kaku Gothic ProN</option>
+													<option value="Meirio">Meirio</option>
+													<option value="Droid Sans Japanese">Droid Sans Japanese</option>
+													<option value="Hiragino Kaku Gothic Pro">Hiragino Kaku Gothic Pro</option>
+													<option value="Hiragino Kaku Gothic ProN">Hiragino Kaku Gothic ProN</option>
+													<option value="Hiragino Kaku Gothic StdN">Hiragino Kaku Gothic StdN</option>
+													<option value="Hiragino Maru Gothic ProN">Hiragino Maru Gothic ProN</option>
+													<option value="Hiragino Mincho ProN">Hiragino Mincho ProN</option>
+													<option value="Hiragino Sans">Hiragino Sans</option>
+													<option value="HiraginoSans-W0">HiraginoSans-W0</option>
+													<option value="KanjiStrokeOrders">KanjiStrokeOrders</option>
+													<option value="Klee">Klee</option>
+													<option value="MS Gothic">MS Gothic</option>
+													<option value="MS Mincho">MS Mincho</option>
+													<option value="MS PGothic">MS PGothic</option>
+													<option value="MS PMincho">MS PMincho</option>
+													<option value="MS UI Gothic">MS UI Gothic</option>
+													<option value="Meiryo UI">Meiryo UI</option>
+													<option value="Meiryo">Meiryo</option>
+													<option value="Osaka">Osaka</option>
+													<option value="Osaka-Mono">Osaka-Mono</option>
+													<option value="Osaka−等幅">Osaka−等幅</option>
+													<option value="Tsukushi A Round Gothic">Tsukushi A Round Gothic</option>
+													<option value="Tsukushi B Round Gothic">Tsukushi B Round Gothic</option>
+													<option value="VL Gothic">VL Gothic</option>
+													<option value="VL PGothic">VL PGothic</option>
+													<option value="Yu Gothic UI Bold">Yu Gothic UI Bold</option>
+													<option value="Yu Gothic UI Light">Yu Gothic UI Light</option>
+													<option value="Yu Gothic UI">Yu Gothic UI</option>
+													<option value="Yu Gothic">Yu Gothic</option>
+													<option value="Yu Mincho">Yu Mincho</option>
+													<option value="YuGothic">YuGothic</option>
+													<option value="YuMincho +36p Kana">YuMincho +36p Kana</option>
+													<option value="YuMincho">YuMincho</option>
+													<option value="クレー">クレー</option>
+													<option value="ヒラギノ丸ゴ ProN">ヒラギノ丸ゴ ProN</option>
+													<option value="ヒラギノ明朝 ProN">ヒラギノ明朝 ProN</option>
+													<option value="ヒラギノ角ゴ Pro">ヒラギノ角ゴ Pro</option>
+													<option value="ヒラギノ角ゴ ProN">ヒラギノ角ゴ ProN</option>
+													<option value="ヒラギノ角ゴ StdN">ヒラギノ角ゴ StdN</option>
+													<option value="ヒラギノ角ゴシック W0">ヒラギノ角ゴシック W0</option>
+													<option value="ヒラギノ角ゴシック">ヒラギノ角ゴシック</option>
+													<option value="メイリオ">メイリオ</option>
+													<option value="游ゴシック Light">游ゴシック Light</option>
+													<option value="游ゴシック">游ゴシック</option>
+													<option value="游ゴシック体">游ゴシック体</option>
+													<option value="游明朝">游明朝</option>
+													<option value="游明朝体">游明朝体</option>
+													<option value="游明朝体+36ポかな">游明朝体+36ポかな</option>
+													<option value="筑紫A丸ゴシック">筑紫A丸ゴシック</option>
+													<option value="筑紫B丸ゴシック">筑紫B丸ゴシック</option>
+													<option value="ＭＳ ゴシック">ＭＳ ゴシック</option>
+													<option value="ＭＳ 明朝">ＭＳ 明朝</option>
+													<option value="ＭＳ Ｐゴシック">ＭＳ Ｐゴシック</option>
+													<option value="ＭＳ Ｐ明朝">ＭＳ Ｐ明朝</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+											    <input id="sp-id-font-size" type="number" value="" step="1" min="0" max="100" class="sp-js-input-execcommand" data-cmd="fontSize" style="width:auto">
+												<select id="sp-id-font-size-unit" class="sp-js-input-execcommand" data-cmd="fontSize" style="width:auto">
+													<option value="px">px</option>
+													<option value="em">em</option>
+												</select>
+												<input id="sp-id-fore-color" type="color" value="#000000" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="foreColor">
+												<input id="sp-id-back-color" type="color" value="#000000" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="backColor">
+											</td>
+										</tr>
+										<tr>
+											<td>
+											    <div class="btn-group">
+													<a href="#" id="sp-id-bold"          class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="bold"          title="太字"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_bold</i></a>
+													<a href="#" id="sp-id-underline"     class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="underline"     title="下線"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_underlined</i></a>
+													<a href="#" id="sp-id-strikethrough" class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="strikethrough" title="取り消し線" onclick="$(this).toggleClass('active')"><i class="material-icons">strikethrough_s</i></a>
+													<a href="#" id="sp-id-italic"        class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="italic"        title="斜体"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_italic</i></a>
+											    </div>
+											</td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header">配置</td>
+										</tr>
+										<tr>
+											<td>
+											    <div class="btn-group">
+													<a href="#" id="sp-id-text-align-left"   class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="left"   title="左"   onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_left</i></a>
+													<a href="#" id="sp-id-text-align-center" class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="center" title="中央" onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_center</i></a>
+													<a href="#" id="sp-id-text-align-right"  class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="right"  title="右"   onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_right</i></a>
+											    </div>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">間隔</td>
+										</tr>
+										<tr>
+											<td class="label">行間</td>
+											<td align="right"><input id="sp-id-line-height" type="number" value="" class="sp-js-input-execcommand" data-cmd="lineHeight"></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：テキスト-->
+
+
+								<!--タブ内容：イメージ-->
+								<div id="sp-id-tab-content-image" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">イメージ</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-img-src-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td><textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-image-url-label" placeholder="設定なし"></textarea></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">リンク</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-link-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored sp-js-click-openDialogLink" title="リンクの設定・編集">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td><textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-link-url-label" placeholder="設定なし"></textarea></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：イメージ-->
+
+								<!--タブ内容：置換アイテム-->
+								<div id="sp-id-tab-content-replace-item" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">置換コード</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-replace-item-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td><textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-replace-item-label" placeholder="設定なし"></textarea></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：置換アイテム-->
+
+								<!--タブ内容：ギミック-->
+								<div id="sp-id-tab-content-gimmick" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">タイマー表示設定</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-gimmick-timer" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored sp-js-click-openDialogLink">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td id="sp-id-link-url">設定なし</td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：ギミック-->
+
+								<!--タブ内容：表-->
+								<div id="sp-id-tab-content-table" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">行</td>
+										</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit"gable="true"><i class="material-icons">add</i></button>
+										</td>
+										<td>現在セルの上に行追加</td>
+									</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit"gable="true"><i class="material-icons">add</i></button>
+										</td>
+										<td>現在セルの下に行追加</td>
+									</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit"gable="true"><i class="material-icons">remove</i></button>
+										</td>
+										<td>現在セルの行削除</td>
+									</tr>
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">列</td>
+										</tr>
+										<tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit"gable="true"><i class="material-icons">add</i></button>
+											</td>
+											<td>現在セルの左に列追加</td>
+										</tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit"gable="true"><i class="material-icons">add</i></button>
+											</td>
+											<td>現在セルの右に行追加</td>
+										</tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit"gable="true"><i class="material-icons">remove</i></button>
+											</td>
+											<td>現在セルの列を削除</td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：表-->
+							</div>
+							<!--/ .scroll-box-->
+
+					
+						</td>
+					</tr>
+						
+					
+				</table>
+				<!--/ フォーマットBOX-->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="height:30px;border-top:1px solid #000">
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">code</i></button>
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect">CSS</button>
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect">JS</button>
+			</td>
+		</tr>
+	<table>
+
+
+	<!-- tooltip -->
+	<div class="mdl-tooltip" for="sp-id-gimmick-timer">
+		現在選択中のアイテムを<br>
+		ページが表示されてから<br>
+		指定秒数後に表示するギミックです。<br>
+		<br>
+		主に「VSLで動画再生してから●秒後に購入ボタンを出す」に使用されています。
+	</div>
+	<div class="mdl-tooltip" for="sp-id-img-src-edit-btn">
+		イメージの挿入・編集
+	</div>
+
+	<div class="mdl-tooltip" for="sp-id-bg-image-url-edit-btn">
+		背景画像の設定・編集
+	</div>
+	<div class="mdl-tooltip" for="sp-id-link-edit-btn">
+		リンクの設定・編集
+	</div>
+	<div class="mdl-tooltip" for="sp-id-replace-item-edit-btn">
+		置換コードの設定・編集
+	</div>
+
+
+	<!-- dialog : image -->
+<!--
+	<dialog id="sp-id-dialog-name-image" class="mdl-dialog" style="margin:auto;width: 500px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">イメージの挿入・編集</h4>
+		<div class="mdl-dialog__content">
+			画像URL：<input type="text" id="sp-id-dialog-input-image-url" value="">
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+-->
+<style>
+.image-thumbnail {
+    display: inline-block;
+    border: 1px solid #aeb5e3;
+    padding: 15px;
+    height: 150px;
+    width: 150px;
+    border-radius: 4px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 10px;
+}
+.image-thumbnail img{
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+
+<script>
+function imageLibrarySearch(){
+	
+	
+	var imgType = $('#sp-id-image-type').val();
+	var myImageOnly = $('#sp-id-my-image-only').find('input[type=checkbox]').first().prop('checked');
+	console.log(myImageOnly);
+	var dataUploader = myImageOnly == true ? '[data-uploader="mine"]' : '';
+
+	$('.image-thumbnail').hide();
+
+	if(imgType == 'all'){
+		$('.image-thumbnail'+dataUploader).show();
+	}else{
+		$('.sp-js-image-type-'+imgType+dataUploader).show();
+	}
+}
+
+</script>
+
+<dialog id="sp-id-dialog-name-image" class="mdl-dialog" style="margin:auto;width: 70%;height: 85%;">
+	<h4 class="mdl-dialog__title" style="white-space:nowrap;padding: 15px;">イメージの挿入・編集
+
+		<select id="sp-id-image-type" onchange="imageLibrarySearch()" style="width: 170px;float: right;vertical-align: middle;">
+			<option value="all">すべて</option>
+			<option value="guarantee">お試し保証・返金保証</option>
+			<option value="bg">背景画像</option>
+			<option value="card-info">カード情報</option>
+			<option value="company-logo">会社ロゴ</option>
+		</select>
+
+		<label id="sp-id-my-image-only" style="float: right;margin-right: 15px;vertical-align: -webkit-baseline-middle;" onclick="imageLibrarySearch()">
+			<input type="checkbox" style="vertical-align: middle;width:auto;" checked> 自分のアップした画像のみ表示
+		</label>
+
+	</h4>
+
+	
+	<div class="mdl-dialog__content" style="background-color: #f8f8f8;background-image: linear-gradient(45deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025) 100%),linear-gradient(45deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025) 100%);background-size: 20px 20px;background-position: 0 0, 50px 50px;border-color: #F3F3F3;vertical-align: middle;height: calc(100% - 115px);overflow-y: auto;">
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="http://nichibou.main.jp/img/member_hp/toukou/images/img1.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/0ae6609c-logop-h_06o00y06o00y000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/1s27nw5-quote1.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/217aff9d-macbook_0hm09b0hk09a000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img src="img_ph/7989ac57-toshio-nishi_05d04v04v04v009000.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/a5bcf928-hoover.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/e8d7ad1d-nirk8-1-mp4_0bn06k0bf06k000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/images/credit.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc "><img  src="http://directbook.s3.amazonaws.com/site/images/mail_image.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img  src="http://directbook.s3.amazonaws.com/site/images/support_mail_L.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img src="http://directbook.s3.amazonaws.com/site/img/1year_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/30days_trial_60days_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/30days_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/30days_return.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/30days_warranty.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/cancel_ok.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/divide_ok.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/firstfree.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/hyakuen.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/keiyaku_cancel.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/present.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/refund.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/90days_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/bttm_buynow.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/bttm_cpend.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/App_Store.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy2_small.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy2_small_ov.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_BOM_choice.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_reBOM_choice.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_trial.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/cupn_button.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/dl_button.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/dl_pdf.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/download.gif"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img src="http://directbook.s3.amazonaws.com/site/img/card_img/card1.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card2.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card3.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card4.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/card_img/track.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/card_img/track_sp.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/dp_logo.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/head/dp_tell.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/logo.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/logo_big.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/commuter.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_1.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_2.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_3.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/logo/sq_logo.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/mobile/img/logo.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/0.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/1.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/5.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star30.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star35.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star40.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star45.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star50.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Free_Trial_IMG2970.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_BOM_2950.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDA.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDA_tax.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDAexp.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice5_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice_bre_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/flow_BOM_BKF.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/flow_BOM_SHIN_BRE_2970.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/month_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_SHIN_BRE_2970.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_annual.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_annual29800.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_choice.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_FDV_continuity.gif"></div>
+
+	</div>
+	<div class="mdl-dialog__actions" style="flex-direction: row;">
+		<button type="button" class="mdl-button sp-js-image-upload">IMAGE UPLOAD</button>
+		<button type="button" id="sp-id-change-target-image-url-btn" class="mdl-button">画像URLを変更する</button>
+		<input type="text" id="sp-id-change-target-image-url" value="" style="width:50%;">
+		<button type="button" class="mdl-button close" style="margin-left:auto;">CANCEL</button>
+	</div>
+</dialog>
+
+
+
+
+
+	<!-- dialog : link -->
+	<dialog id="sp-id-dialog-name-link" class="mdl-dialog" style="margin:auto;width: 500px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">リンクの設定・編集</h4>
+		<div class="mdl-dialog__content">
+			リンクURL：<input type="text" id="sp-id-dialog-input-link-url" value="">
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+
+	<!-- dialog : replace-item -->
+	<dialog id="sp-id-dialog-name-replace-item" class="mdl-dialog" style="margin:auto;width: 600px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">置換コードの挿入・編集</h4>
+		<div class="mdl-dialog__content">
+			置換コード：<textarea id="sp-id-dialog-input-replace-code" style="width:100%;height:200px;"></textarea>
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+
+	<!--drag item Tempate-->
+	<template id="sp-js-template">
+
+		<!-- section -->
+		<div id="section" data-drag-type="section">
+			<div class="sp-section sp-drop-here">
+				<div class="container sp-container">
+					<div class="row sp-row">
+						<div class="col-sm-12">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- container -->
+		<div id="container" data-drag-type="container">
+			<div class="container sp-container sp-drop-here">
+			</div>
+		</div>
+
+		<!-- text -->
+		<div id="text" data-drag-type="item">
+			<p class="sp-item sp-drop-here" data-item-type="text" contenteditable="true">テキスト</p>
+		</div>
+
+		<!-- list -->
+		<div id="list" data-drag-type="item">
+			<ul class="sp-item sp-drop-here" data-item-type="list">
+			   <li>なぜ20代が人生の分岐点なのか？30代40代とは全く違う20代で人生に一度しかないこと</li>
+			   <li>必死になって就職活動しても半分が失敗するワケー仕事や会社選びを間違える典型的なパターン</li>
+			   <li>自分の市場価値を高める方法〜自分の才能を知り、それを伸ばすには？</li>
+			   <li>心理学で見る、あなたにとって最悪な仕事と最高の仕事は？</li>
+			   <li>他、ダイレクト出版の会社のぶっちゃけを知ることができる従業員の生の声ー</li>
+			</ul>
+		</div>
+
+		<!-- button -->
+		<div id="button" data-drag-type="item">
+			<a href="test.php" class="sp-item sp-drop-here" data-item-type="button" contenteditable="true">今すぐ講演録をもらう</a>
+		</div>
+		
+		<!-- image -->
+		<div id="image" data-drag-type="item">
+			<img src="http://nichibou.main.jp/img/member_hp/toukou/images/img1.jpg" class="sp-item sp-drop-here img-responsive center-block"  data-item-type="image" style="margin-bottom:30px">
+		</div>
+
+		<!-- video -->
+		<div id="video" data-drag-type="item">
+			<div class="sp-item sp-drop-here embed-responsive embed-responsive-16by9" data-item-type="replace-item" data-contents="video" style="margin-bottom:30px">
+				<template><iframe class="embed-responsive-item" src="http://www.youtube.com/embed/gqryJRAlS0c"></iframe></template>
+			</div>
+		</div>
+
+		<!-- table -->
+		<div id="table" data-drag-type="item">
+			<table class="sp-item table table-hover sp-drop-here" data-item-type="table"  style="margin-bottom:30px">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Username</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>1</th>
+						<td>Mark</td>
+						<td>Otto</td>
+						<td>@mdo</td>
+					</tr>
+					<tr>
+						<th>2</th>
+						<td>Jacob</td>
+						<td>Thornton</td>
+						<td>@fat</td>
+					</tr>
+					<tr>
+						<th>3</th>
+						<td>Larry</td>
+						<td>the Bird</td>
+						<td>@twitter</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- replace-item -->
+		<div id="replace-item" data-drag-type="item">
+			<div class="sp-item sp-drop-here" data-item-type="replace-item" data-contents="" data-title="-- ここがアップロード後に設定した内容に置き換えられます --" style="margin-bottom:30px">
+				<template><script>alert('alert');</script></template>
+			</div>
+		</div>
+
+		<!-- countdown-timer -->
+		<div id="countdown-timer" data-drag-type="item">
+			<div class="sp-item sp-drop-here" data-item-type="replace-item" data-contents="" data-title="-- カウントダウンタイマー --" style="margin-bottom:30px">
+				<template>
+					<!--sp:countdonw:start-->
+					<div class="sp-js-load-countdown" style="margin-bottom:30px;"></div>
+					<!--sp:countdonw:end-->
+				</template>
+			</div>
+		</div>
+
+	</template>
+
+
+
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="js/spEditor/sp2Editor-miko3_sp.js"></script>
+	<script type="text/javascript">
+	$(function(){
+	  $('#htmlBody').sp2Editor({
+	        staffId : '220',
+	        cssFile : '',
+	        scrollTop : '0'
+	    });
+	});
+	</script>
+
+
+</body>
+</html>

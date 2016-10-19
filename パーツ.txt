@@ -1,0 +1,78 @@
+<!-- section -->
+<div class="section sp-section" style="display: block; border-style: none; padding-bottom: 0px; padding-top: 0px; background-image: url(img_ph/a5bcf928-hoover.jpg);background-attachment: fixed;background-repeat: no-repeat;background-position: center center;background-size: cover;">
+	<div class="container sp-container">
+		<div class="row">
+			<div class="col-sm-4 sp-col">
+			</div>
+			<div class="col-sm-8 sp-col">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- text:subhead -->
+<p class="sp-item" data-item-type="text" >サブヘッド</p>
+
+
+<!-- text -->
+<p class="sp-item" data-item-type="text">テキスト</p>
+
+
+<!-- list -->
+<ul class="sp-item" data-item-type="list">
+   <li>なぜ20代が人生の分岐点なのか？30代40代とは全く違う20代で人生に一度しかないこと</li>
+   <li>必死になって就職活動しても半分が失敗するワケー仕事や会社選びを間違える典型的なパターン</li>
+   <li>自分の市場価値を高める方法?自分の才能を知り、それを伸ばすには？</li>
+   <li>心理学で見る、あなたにとって最悪な仕事と最高の仕事は？</li>
+   <li>他、ダイレクト出版の会社のぶっちゃけを知ることができる従業員の生の声ー</li>
+</ul>
+
+<!-- button -->
+<a href="test.php" class="sp-item" data-item-type="button" contenteditable="true">今すぐ講演録をもらう</a>
+
+<!-- image -->
+<img src="http://nichibou.main.jp/img/member_hp/toukou/images/img1.jpg" class="sp-item img-responsive center-block"  data-item-type="image" style="margin-bottom:30px">
+
+<!-- video -->
+<div class="sp-item embed-responsive embed-responsive-16by9" data-item-type="replace-item" data-contents="video" style="margin-bottom:30px">
+	<template><iframe class="embed-responsive-item" src="http://www.youtube.com/embed/gqryJRAlS0c"></iframe></template>
+</div>
+
+<!-- table -->
+<table class="sp-item table table-hover" data-item-type="table"  style="margin-bottom:30px">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Username</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>1</th>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td>@mdo</td>
+		</tr>
+		<tr>
+			<th>2</th>
+			<td>Jacob</td>
+			<td>Thornton</td>
+			<td>@fat</td>
+		</tr>
+		<tr>
+			<th>3</th>
+			<td>Larry</td>
+			<td>the Bird</td>
+			<td>@twitter</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- replace-item -->
+<div class="sp-item" data-item-type="replace-item" data-contents="" data-title="-- ここがアップロード後に設定した内容に置き換えられます --" style="margin-bottom:30px">
+	<template><script>alert('alert');</script></template>
+</div>
+

@@ -1,0 +1,90 @@
+/*--------------------------------------------------------------*/
+/* Element
+/*--------------------------------------------------------------*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    color: $baseFontColor;
+    font-size: $baseFontSize;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    // outline:none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-style: normal;
+}
+
+:-webkit-full-screen #full {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /*border: 2px dotted red;*/
+}
+
+/* user agent stylesheet overwrite*/
+table {
+}
+
+td {
+    white-space: nowrap;
+}
+
+img {
+    vertical-align: middle;
+    border: none;
+}
+
+input {
+    vertical-align: middle;
+/*
+    background-color: #fff;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border linear .2s, box-shadow linear .2s;
+    padding: 0 4px 0 4px;
+    white-space: pre-wrap;
+    color: #333;
+*/
+    color:$baseInputColor;
+}
+
+textarea{
+    color:$baseInputColor;
+}
+
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+/*     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #666;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #000;
+}

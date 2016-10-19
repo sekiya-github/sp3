@@ -1,0 +1,2505 @@
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>{$thisPageTitlle}</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="css/material.css" rel="stylesheet">
+	<!--<link rel="stylesheet" href="http://code.getmdl.io/1.1.3/material.indigo-pink.min.css">-->
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue-pink.min.css" />-->
+    <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    
+<!--     <link href="css/edit-page.css" rel="stylesheet">
+ -->
+ 
+<style>
+*{
+	padding: 0;
+	margin: 0;
+	font-size:11px;
+	box-sizing: border-box;
+    border-collapse: collapse;
+    font-family: 'Roboto', 'Helvetica', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+}
+html,body{
+	 overflow-y: hidden;
+	 width:100%;
+	 height:100%;
+}
+.layout-table{
+	width:100%;
+	height:100%;
+	border-collapse: collapse;
+}
+.layout-table td{
+}
+
+
+.card-table{
+	width:calc(100% - 30px);
+	margin:15px;
+
+
+}
+.card-table td{
+	border:none;
+	padding-bottom:15px;
+}
+.card-table > tbody > tr:last-child {
+	border-bottom:1px solid #aaa;
+}
+.card-table .header{
+	font-size:14px;
+	color:#555;
+    font-weight: bold;
+}
+.card-table .label{
+	font-size:14px;
+	padding-right: 15px;
+	font-size:11px;
+	white-space:nowrap;
+}
+.card-table .icon{
+    width: 1%;
+    padding-right: 15px;
+}
+.card-table .icon-btn{
+    width: 1%;
+    padding-right: 15px;
+    padding-left: 15px;
+    white-space:nowrap;
+}
+.card-table .switch-btn{
+	padding-right:10px;
+}
+.card-table .switch-btn .mdl-switch{
+	display: inline;
+}
+
+.active{
+	color:white !important;
+	background-color:#00c0ff !important;
+}
+
+
+
+
+
+div.scroll-box{
+	width:100%;
+	height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+
+
+/* form */
+input, select, textarea{
+	border:1px solid #aaa;
+	border-radius:2px;
+    width: 100%;
+    height: 24px;
+    padding: 0 5px;
+    background-color: #fff;
+	color:#000;
+
+}
+
+input[type="number"]{
+	width: 65px;
+}
+input[type="range"]{
+	border:none;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	-webkit-animation: 1s;
+	width: 27px;
+	height: 24px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	vertical-align: bottom;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+	margin: 0;
+}
+
+
+/* compornent */
+
+.btn-group{
+	display:table;
+	width:100%;
+
+}
+.btn-group>.btn{
+	display:table-cell;
+	width:auto;
+	min-width:auto;
+	border:1px solid #aaa;
+	padding: 2px;
+	height:auto;
+}
+
+.btn-drag-item{
+	width: 65px;
+    height: 22px;
+    min-width: 1px;
+    padding: 0;
+    font-size: 11px;
+    line-height: 1.3em;
+    text-transform:capitalize;
+}
+.btn-table-edit{
+	height:25px;
+}
+
+.material-icons{
+	vertical-align: sub;
+}
+
+
+.iframe-mobile-preview{
+	width:375px !important; /* iphone6 width */
+	height:95% !important;
+	margin:0 auto !important;
+	border:1px solid #000 !important;
+}
+
+
+
+
+/* Material design lite Overwrite */
+.mdl-tabs__tab-bar {
+    height: 39px;
+    display: table;
+    width:100%;
+}
+.mdl-tabs__tab {
+	display: table-cell;
+	float: none;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 39px;
+    font-size: 11px;
+}
+.mdl-checkbox__label{
+	font-size:11px;
+}
+.mdl-button {
+}
+.material-icons {
+    font-size: 14px;
+    font-family: 'Material Icons';
+}
+.btn-group .mdl-button:hover {
+    background-color: inherit;
+}
+
+</style>
+
+<style>
+.image-thumbnail {
+    display: inline-block;
+    border: 1px solid #aeb5e3;
+    padding: 15px;
+    height: 150px;
+    width: 150px;
+    border-radius: 4px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 10px;
+}
+.image-thumbnail img{
+    max-width: 100%;
+    max-height: 118px;
+}
+
+</style>
+
+</head>
+<body>
+<form name="editForm" id="editForm" action="edit_html_2.php" method="post" onsubmit="return false;">
+    <input type="hidden" name="tokenId" id="tokenId" value="{$form.tokenId|htmlspecialchars:$smarty.const.ENT_QUOTES}">
+    <input type="hidden" name="pageId"   id="pageId"   value="{$form.pageId}">
+    <input type="hidden" name="accessUrl"  id="accessUrl"  value="{$form.accessUrl}">
+
+	<table class="layout-table">
+		<tr style="height:52px;border-bottom:1px solid #000">
+			<td style="padding-left:15px;">
+				<table>
+					<tr>
+						<td>
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+								<input type="checkbox" id="checkbox-1" class="mdl-checkbox__input sp-js-click-showTagGuide" data-guide-tag="all">
+								<span class="mdl-checkbox__label">ガイド表示</span>
+							</label>
+						</td>
+						<td style="padding-left:20px;">
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+								<input type="checkbox" id="checkbox-2" class="mdl-checkbox__input sp-js-click-showMobileView" data-guide-tag="all">
+								<span class="mdl-checkbox__label">モバイルビュー</span>
+							</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td align="right" style="padding-right:30px;">
+				<!-- Flat button with ripple -->
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect sp-js-click-saveHtml">保存</button>
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect sp-js-click-restoreHtml">リストア</button>
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect">アップロード</button>
+			</td>
+			<td style="width:250px">
+			  <div class="mdl-tabs__tab-bar">
+				<!-- タブメニュー -->
+				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" style="postion:fixed;">
+					<div class="mdl-tabs__tab-bar">
+						<a href="#starks-panel"     id="sp-id-tab-format"    class="mdl-tabs__tab"           onclick="$('#sp-id-drag-item-box').hide();$('#sp-id-format-box').show();">フォーマット</a>
+						<a href="#lannisters-panel" id="sp-id-tab-drag-item" class="mdl-tabs__tab is-active" onclick="$('#sp-id-format-box').hide();$('#sp-id-drag-item-box').show();">ドラッグアイテム</a>
+					</div>
+				</div>
+			  </div>
+			</td>
+			<td style="width:50px;text-align:center;">
+				<button class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons" style="font-weight:bold;font-size:22px;">close</i></button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-top: 1px solid #000;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<textarea  name="htmlBody" id="htmlBody">
+
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サイトタイトル</title>
+<meta name="description" content="ダイレクト出版は、通常は日本で出版されないような骨太のビジネス書をネット経由で販売してるサイトです。洋書、ビジネス書、オーディオブックなど海外にたくさんある良質な書籍を選んでリリースしております。他では見つからない情報がたくさん見つかりますよ。">
+<meta name="keywords" content="洋書, オーディオブック,ダイレクト出版,ビジネス本,小川忠洋">
+
+<!-- facebook用metaタグ -->
+<meta property="og:description" content="ダイレクト出版は、通常は日本で出版されないような骨太のビジネス書をネット経由で販売してるサイトです。洋書、ビジネス書、オーディオブックなど海外にたくさんある良質な書籍を選んでリリースしております。他では見つからない情報がたくさん見つかりますよ。"/>
+<meta property="og:image" content="http://www.directbook.jp/files/img/common/header_logo.png"/>
+<meta property="og:title" content="ダイレクト出版" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.directbook.jp/" />
+<meta property="og:site_name" content="ダイレクト出版" />
+<meta property="fb:app_id" content="228165003896113" />
+
+<!--追加css-->
+<link rel="stylesheet" href="http://first.testing-web.com/direct_speditor/css/reset.css" media="all">
+<link rel="stylesheet" href="http://first.testing-web.com/direct_speditor/css/style.css" media="all">
+
+<!--追加js-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://first.testing-web.com/direct_speditor/js/jquery.tile.js"></script>
+<script src="http://first.testing-web.com/direct_speditor/js/script.js"></script>
+
+
+<style>
+/*------------------------------------------------------
+ .sp-item-style-***  ( text / list / button / table )
+--------------------------------------------------------*/
+/*button*/
+.sp-btn{
+	display: block;
+	width: 193px;
+	text-align: center;
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: bold;
+	font-family: arial;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	display:block;
+	box-shadow: rgb(255, 100, 100) 0px 1px 0px inset, rgb(153, 2, 2) 0px -1px 2px inset;
+	border: 1px solid rgb(51, 51, 51);
+	border-radius: 5px;
+	text-shadow: rgb(82, 1, 1) 1px 1px;
+	color: rgb(255, 255, 255);
+	background: linear-gradient(rgb(235, 22, 22), rgb(204, 4, 4));
+}.sp-btn-blue:hover {
+	background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+	background:-ms-linear-gradient( top, #1e62d0 5%, #3d94f6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #1e62d0), color-stop(100%, #3d94f6) );
+	background-color:#1e62d0;
+}.sp-btn:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-green {
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius: 5px;
+	border:1px solid #74b807;
+	text-decoration:none;
+	background:-moz-linear-gradient( center top, #89c403 5%, #77a809 100% );
+	background:-ms-linear-gradient( top, #89c403 5%, #77a809 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#89c403', endColorstr='#77a809');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #89c403), color-stop(100%, #77a809) );
+	background-color:#89c403;
+	color:#ffffff;
+	text-shadow:1px 1px 0px #528009;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #a4e271;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #a4e271;
+ 	box-shadow:inset 1px 1px 0px 0px #a4e271;
+}.sp-btn-green:hover {
+	background:-moz-linear-gradient( center top, #77a809 5%, #89c403 100% );
+	background:-ms-linear-gradient( top, #77a809 5%, #89c403 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77a809', endColorstr='#89c403');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #77a809), color-stop(100%, #89c403) );
+	background-color:#77a809;
+}.sp-btn-green:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-blue {
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius: 5px;
+	border:1px solid #337fed;
+	text-decoration:none;
+	background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+	background:-ms-linear-gradient( top, #3d94f6 5%, #1e62d0 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #3d94f6), color-stop(100%, #1e62d0) );
+	background-color:#3d94f6;
+	color:#ffffff;
+	text-shadow:1px 1px 0px #1570cd;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #97c4fe;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #97c4fe;
+ 	box-shadow:inset 1px 1px 0px 0px #97c4fe;
+}.sp-btn-blue:hover {
+	background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+	background:-ms-linear-gradient( top, #1e62d0 5%, #3d94f6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #1e62d0), color-stop(100%, #3d94f6) );
+	background-color:#1e62d0;
+}.sp-btn-blue:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-orange {
+	border-radius:5px;
+	border:1px solid #eda933;
+	background:-moz-linear-gradient( center top, #f6b33d 5%, #d29105 100% );
+	background:-ms-linear-gradient( top, #f6b33d 5%, #d29105 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6b33d', endColorstr='#d29105');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #f6b33d), color-stop(100%, #d29105) );
+	background-color:#f6b33d;
+	color:#ffffff;
+	text-shadow:1px 1px 0px #cd8a15;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #fed897;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #fed897;
+ 	box-shadow:inset 1px 1px 0px 0px #fed897;
+}.sp-btn-orange:hover {
+	background:-moz-linear-gradient( center top, #d29105 5%, #f6b33d 100% );
+	background:-ms-linear-gradient( top, #d29105 5%, #f6b33d 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d29105', endColorstr='#f6b33d');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #d29105), color-stop(100%, #f6b33d) );
+	background-color:#d29105;
+}.sp-btn-orange:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-pink {
+	border-radius:5px;
+	border:1px solid #d83526;
+	text-decoration:none;
+	background:-moz-linear-gradient( center top, #fa665a 5%, #d34639 100% );
+	background:-ms-linear-gradient( top, #fa665a 5%, #d34639 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa665a', endColorstr='#d34639');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #fa665a), color-stop(100%, #d34639) );
+	background-color:#fa665a;
+	color:#ffffff;
+	text-shadow:1px 1px 0px #98231a;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #fab3ad;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #fab3ad;
+ 	box-shadow:inset 1px 1px 0px 0px #fab3ad;
+}.sp-btn-pink:hover {
+	background:-moz-linear-gradient( center top, #d34639 5%, #fa665a 100% );
+	background:-ms-linear-gradient( top, #d34639 5%, #fa665a 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d34639', endColorstr='#fa665a');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #d34639), color-stop(100%, #fa665a) );
+	background-color:#d34639;
+}.sp-btn-pink:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-push{
+	width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    background: none;
+    background-color: #ff2b2f;
+    box-shadow: 0 20px 0 #DA2E31;
+    transition: 0.3s ease-in-out;
+    margin: 0 auto 50px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 44px;
+    padding: 40px 0;
+    border: none;
+}
+.sp-btn-push:hover{
+	box-shadow:0 5px 0 #DA2E31;
+	transform:translate(0, 15px);
+}
+@media screen and (max-width: 480px){
+	.sp-btn-push{
+		box-shadow:0 10px 0 #6d0202;
+	}
+	.sp-btn-push:hover{
+		box-shadow:0 5px 0 #6d0202;
+		transform:translate(0, 5px);
+	}	
+}
+@-webkit-keyframes sheen {
+  0% {
+    -webkit-transform: skewY(-45deg) translateX(0);
+            transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    -webkit-transform: skewY(-45deg) translateX(12.5em);
+            transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+@keyframes sheen {
+  0% {
+    -webkit-transform: skewY(-45deg) translateX(0);
+            transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    -webkit-transform: skewY(-45deg) translateX(12.5em);
+            transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+
+.sp-btn-shiny {
+	display:block;
+	width:100%;
+	box-sizing:border-box;	
+	padding: 0.75em 2em;
+	text-align: center;
+	text-decoration: none;
+	color: #2194E0;
+	border: 2px solid #2194E0;
+	font-size: 24px;
+	display: inline-block;
+	border-radius: 0.3em;
+	-webkit-transition: all 0.2s ease-in-out;
+		  transition: all 0.2s ease-in-out;
+	position: relative;
+	overflow: hidden;
+	background-image:none;
+	background:inherit;
+	box-shadow: none;
+    text-shadow: none;
+	
+}
+.sp-btn-shiny:before {
+	content: "";
+	background-color: rgba(255, 255, 255, 0.5);
+	height: 100%;
+	width: 3em;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -4.5em;
+	-webkit-transform: skewX(-45deg) translateX(0);
+	  -ms-transform: skewX(-45deg) translateX(0);
+		  transform: skewX(-45deg) translateX(0);
+	-webkit-transition: none;
+		  transition: none;
+}
+.sp-btn-shiny:hover {
+	background-color: #2194E0;
+	color: #fff;
+	border-bottom: 4px solid #1977b5;
+}
+.sp-btn-shiny:hover:before {
+	-webkit-transform: skewX(-45deg) translateX(13.5em);
+	  -ms-transform: skewX(-45deg) translateX(13.5em);
+		  transform: skewX(-45deg) translateX(13.5em);
+	-webkit-transition: all 0.5s ease-in-out;
+		  transition: all 0.5s ease-in-out;
+}
+
+
+
+
+
+/* list ol */
+.sp-item-style-list-order-black{
+	list-style: none;
+	counter-reset: num;
+}
+.sp-item-style-list-order-black li:before{
+	counter-increment: num;
+	content: counter(num);
+	position: absolute;
+	left: 0;
+	background: rgb(0, 0, 0);
+	min-width: 1.5em;
+	text-align: center;
+	height: 1.5em;
+	line-height: 1.6;
+	border-radius: 15px;
+	color: white;
+	font-weight: bold;
+	font-size: 17px;
+	font-family: Arial;
+}
+.sp-item-style-list-order-blue{
+	list-style: none;
+	counter-reset: num;
+}
+.sp-item-style-list-order-blue li:before{
+	counter-increment: num;
+	content: counter(num);
+	position: absolute;
+	left: 0;
+	background: rgba(62,156,227,1);
+	min-width: 1.5em;
+	text-align: center;
+	height: 1.5em;
+	line-height: 1.6;
+	border-radius: 15px;
+	color: white;
+	font-weight: bold;
+	font-size: 17px;
+	font-family: Arial;
+}
+.sp-item-style-list-order-red{
+	list-style: none;
+	counter-reset: num;
+}
+.sp-item-style-list-order-red li:before{
+	counter-increment: num;
+	content: counter(num);
+	position: absolute;
+	left: 0;
+	background: rgb(255, 90, 90);
+	min-width: 1.5em;
+	text-align: center;
+	height: 1.5em;
+	line-height: 1.6;
+	border-radius: 15px;
+	color: white;
+	font-weight: bold;
+	font-size: 17px;
+	font-family: Arial;
+}
+
+/* list ul */
+.sp-item-style-list-black li{
+	list-style: none;
+	padding: 5px 0 5px 35px;
+	margin: 15px 0;
+	line-height: 130%;
+	background: url('http://www.getaltitude.jp/sp/img/template/check_black.jpg') no-repeat;
+}
+.sp-item-style-list-red li{
+	list-style: none;
+	padding: 5px 0 5px 35px;
+	margin: 15px 0;
+	line-height: 130%;
+	background: url('http://www.getaltitude.jp/sp/img/template/check_red.jpg') no-repeat;
+}
+.sp-item-style-list-green li{
+	list-style: none;
+	padding: 5px 0 5px 35px;
+	margin: 15px 0;
+	line-height: 130%;
+	background: url('http://www.getaltitude.jp/sp/img/template/check_green.jpg') no-repeat;
+}
+
+/* text */
+.sp-item-style-text-subead-red{
+	border-left:4px solid #fd4a41;
+	font-size:21px;
+	padding:15px;
+}
+.sp-item-style-text-subead-blue{
+	border-left:4px solid #00c0ff;
+	font-size:21px;
+	padding:15px;
+}
+.sp-item-style-text-subead-green{
+	border-left:4px solid #00AD2A;
+	font-size:21px;
+	padding:15px;
+}
+</style>
+
+
+</head>
+<body class="base-color1">
+	
+	<header>
+		<div class="inner">
+			<p class="logo"><a href="http://www.directbook.jp/"><img src="http://first.testing-web.com/direct_speditor/img/logo_header.png" alt="Direct Publishing ダイレクト出版"></a></p>
+			<p class="tel"><a href="tel:0662680850"><img src="http://first.testing-web.com/direct_speditor/img/txt_tel.png" alt="お問い合わせ・ご相談はお気軽に"><img src="http://first.testing-web.com/direct_speditor/img/tel.png" alt="06-6268-0850"></a></p>
+		</div>
+	</header>
+	
+	
+	
+	<div class="section mv bg-pattern1 sp-section">
+		<div class="contaner sp-contaier">
+			<div class="row sp-row">
+				<div class="col-sm-12">
+					<figure>
+						<img src="http://first.testing-web.com/direct_speditor/img/mv.png" alt="" class="sp-item" data-item-type="image">
+					</figure>
+					<h1 class="pagetitle sp-item" data-item-type="text">
+						<b>12ddklfsdfsdafsjdl5,443人が購入!</b>
+						<span>定価6万9800円の通信講座を<br>
+						タダ同然で欲しい人は他にいませんか？</span>
+					</h1>
+					<ul class="review sp-item" data-item-type="list">
+						<li>「もし、この講座に参加していなかったら、未だに飲食店で店長をやっていたと思います･･･」<span>成澤さん（セールスライター）</span></li>
+						<li>「経費は１/３に集客は３倍に･･･」<span>佐藤さん（美容室2店舗経営）</span></li>
+						<li>「仕事は独立後3ヵ月で6件とれて、月収100万円も達成しました。12月のプロジェクトの売上が3,500万円に･･･」<span>向井さん（セミナー集客）</span></li>
+					</ul>
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<div class="section conversion sp-section">
+		<div class="contaner sp-contaier">
+			<div class="row sp-row">
+				<div class="col-sm-6">
+					<figure><img src="http://first.testing-web.com/direct_speditor/img/image14.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+				</div><!-- /col-sm-6 -->
+				<div class="col-sm-6">
+					<p class="article-01 sp-item" data-item-type="text">5,443人が購入した<br>12週間セールスライティング通信講座（特典付き）</p>
+					<p class="article-01 red sp-item" data-item-type="text"><span>価格：</span>5,980円（税抜）×10回払い</p>
+					<a href="#" class="btn-01 sp-item" data-item-type="button">いますぐ受講する </a>
+				</div><!-- /col-sm-6 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<div class="section lead sp-section">
+		<div class="contaner sp-contaier">
+			<div class="row sp-row">
+				<div class="col-sm-12">
+					<h2 class="subhead-02 sp-item" data-item-type="text">やってはいけない３つの間違い</h2>
+					<p class="article-01 sp-item" data-item-type="text">この通信講座は、あなたが買ってくれた本をベースとした、通信講座で、12週間でセールスライターになるための「土台」基礎をあなたの頭にインストールする講座です。この講座に参加した人は</p>
+					<ul class="list-01 sp-item" data-item-type="list">
+						<li>実際この12週間の通信講座で、月収が20万円から100万円と５倍になったフリーランスの人</li>
+						<li>14倍もの価格で商品を売って利益を十倍以上にした人</li>
+						<li>既存事業で昨年対比135%売上アップして創業以来最高記録になりクライアント獲得も簡単になった会社役員</li>
+						<li>この技術をFAXDMに使って25%の成約率で、営業成績をアップさせた営業マン</li>
+						<li>ネットショップの成約率が246%upさせた人</li>
+						<li>3ヶ月で副業の4万3600円ほどしかなかった売上が52万9600円までアップしたサラリーマンの人</li>
+					</ul>
+					<p class="article-01 sp-item" data-item-type="text">などなど、たくさんの成功事例を出しています。これは、オンラインの通信講座で、基本的には音声ベースになります。なので、通勤時間で2倍速にして聞き流して学ぶこともできるし、何度も繰り返し聞いて理解を深めることもできます。つまり、特段、時間を取らなくて、忙しい日々の中でも、短期間にセールスライティングの基礎的なスキルをインストールできるように設計したプログラムです。</p>
+					<p class="article-01 sp-item" data-item-type="text">具体的には「セールスライターとしてのマインドセット」「売るための行動心理」「売れるセールスコピーのテクニック」「読者の信用を一瞬で得る証拠の見せ方」「セールスコピーを編集する方法」など、12週間のカリキュラムになっています。さらに、、、</p>
+					<p class="article-01 sp-item" data-item-type="text">すでに受講している方からの質疑応答をダウンロードすることもできます。「ヘッドラインとメルマガの件名はどう違うか？」「無料オファーの場合のヘッドラインは？」「インパクトを強く、怪しくなくするためには？」「ツールは何を使ってるか？」「ＰＰＣの広告文はどう書けば良いか？」「初心者はどうすればいい？」「差別化はどうすればいい？」「使える事例と使えない事例の見分けは？」「情報の取り方の注意点は」などなど、あなたがこれから疑問に思う事、つまづくだろうこと、既に答えが用意されています。合計24時間以上にもわたる音声をベースにしたプログラムです。</p>
+					<p class="article-01 sp-item" data-item-type="text">この講座、<b>定価6万9,800円で5443人もの人が受講された、</b>とても評価の高い講座です。ですが、先日、本を買ってくれたあなたに、無料で提供したいと思います。</p>
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+			<div class="row sp-row">
+				<div class="col-sm-12">
+					<h2 class="subhead-02 sp-item" data-item-type="text">でも、他の人が購入したものを<br>なんで無料で？裏はなに？</h2>
+					<p class="article-01 sp-item" data-item-type="text">理由は簡単です。これはワイロです。あなたに、新しくなった「AWAIセールスライティング通信講座：入門編」を試してもらうための、道義的なワイロです。</p>
+					<p class="article-01 sp-item" data-item-type="text">つまり、こういう事です。あなたが、「AWAIセールスライティング通信講座：入門編」を試してくれれば、6万9800円で販売していた、僕のセールスライティングの「土台」を12週間であなたの頭にインストールするための講座を無料でプレゼントします。</p>
+					<p class="article-01 sp-item" data-item-type="text">さらに、この講座には品質保証がついていますので、万が一、あなたがこの通信講座の内容に満足ができなかった場合は、いただいた料金は100％返金されます。電話一本です。しかも、もしそうなった時でも、あなたが無料で受け取った、定価6万9800円の通信講座は、返す必要はありません。あなたの手間を取らせたためプレゼントとさせてもらいます。</p>
+					<p class="article-01 sp-item" data-item-type="text"><b>とても良い条件だと思いませんか？</b></p>
+					<p class="article-01 sp-item" data-item-type="text">なぜ、こんな大胆な事ができるか？簡単です。自信があるからです。この「AWAIセールスライティング通信講座：入門編」は、世界で最も信頼されているセールスライター養成機関のものです。セールスライティングに関して、これ以上に詳しく、丁寧に教えてる講座は、この世にないと、自信を持って言えます。なので、この通信講座が終わる頃には、あなたはきっと、セールスライティングの基礎的なところは、バッチリ身についていて、この講座をとっても気に入ってくれてる自信があるからです。恐らく、何度も、何度も見返すようなものになることでしょう。では、AWAIセールスライティング通信講座：入門編とは、どんなものなのか？内容を説明させてください・・・</p>
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<div class="section sp-section">
+		<div class="contaner box-layout sp-contaier">
+			<h2 class="subhead-01 sp-item" data-item-type="text"><span>10のセッションで<br>セールスライティングの秘訣・構造・心理など<br>基礎からしっかりと入る講座内容･･･</span></h2>
+			
+			<div class="row sp-row">
+				<div class="border-box-01 clr box sp-box">
+					<div class="col-sm-2">
+						<figure>
+							<img src="http://first.testing-web.com/direct_speditor/img/image1.jpg" alt="" class="sp-item" data-item-type="image">
+						</figure>
+					</div><!-- /col-sm-2 -->
+					<div class="col-sm-10">
+						<h5 class="subhead-05 sp-item" data-item-type="text"><b>セッション1</b>セールスライティング入門</h5>
+						<p class="article-01 sp-item" data-item-type="text">セッション１では、セールスライターとしての基本を学びます。誤解してほしくはないのですが、基本といっても、退屈だったり、実際に使えないものという意味ではありません。その真逆です。基本というのは、これまでの大ヒットしたセールスレター、ほぼすべてに使われている原理・原則です。この基本を無視してしまうと、他の部分がどれだけうまくできたとしても、大失敗してしまう。そんなセールスライティングの基本です。たとえば、、、</p>
+						<p class="article-01 sp-item" data-item-type="text">販売のための３つのルール、成功するセールスライターに必要な５つの資質（といらない５つの資質）読者の感情を刺激する２種類の販売スタイルなど、を学ぶことができます。ほとんどの人が知らない、このセールスライティングの大原則を、きちんと身につけることができるでしょう。</p>
+					</div><!-- /col-sm-10 -->
+				</div><!-- /borderbox-01 -->
+			</div><!-- /row -->
+			
+			<div class="row sp-row">		
+				<div class="border-box-01 clr box sp-box">
+					<div class="col-sm-2">
+						<figure>
+							<img src="http://first.testing-web.com/direct_speditor/img/image2.jpg" alt="" class="sp-item" data-item-type="image">
+						</figure>
+					</div><!-- /col-sm-2 -->
+					<div class="col-sm-10">
+						<h5 class="subhead-05 sp-item" data-item-type="text"><b>セッション2</b>売れるセールスコピーを作るためのリサーチ術</h5>
+						<p class="article-01 sp-item" data-item-type="text">このセッションでは、セールスレターを書くためのリサーチについて学びます。あなたももしかすると、煽っているだけの誇大広告をみたことがあるかもしれませんが、ああいう誇大広告と、売れるセールスコピーの違いは「リサーチ」にあります。</p>
+						<p class="article-01 sp-item" data-item-type="text">売れるセールスコピーを書くためのリサーチ・３ステップ、見込み客の心をつかむ７つの心理、リサーチで重要な「ペルソナ」のプロフィールをを作るときの３つのポイントとそれをセールスコピーに活かす方法、必ずリサーチすべき３つの分野など、を学ぶことができます。このセクションが終わる頃には、的確なリサーチをできるようになり、簡単にセールスコピーを書くことができるようになるでしょう。</p>
+					</div><!-- /col-sm-10 -->
+				</div><!-- /borderbox-01 -->
+			</div><!-- /row -->
+			
+			<div class="row sp-row">
+				<div class="border-box-01 clr box sp-box">
+					<div class="col-sm-2">
+						<figure><img src="http://first.testing-web.com/direct_speditor/img/image3.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+					</div><!-- /col-sm-2 -->
+					<div class="col-sm-10">
+						<h5 class="subhead-05 sp-item" data-item-type="text"><b>セッション3</b>売れるセールスコピーの設計図</h5>
+						<p class="article-01 sp-item" data-item-type="text">このセッションでは、売れるセールスコピーの設計図について学びます。ほとんどの人が勘違いしているのですが、セールスコピーを書くのに、大切なのは文章力ではありません。もっとも大切なのは「型」であったり、何をどの順番で言うか、などのセールスコピー特有の設計図通りに作ることです。</p>
+						<p class="article-01 sp-item" data-item-type="text">売れるセールスコピーを支えている４つの構造、セールスコピーに説得力をもたせる2つのテクニック、読み手を誘惑し、読まずにいられなくする“ゴールデン・スレッド”など、を学ぶことができます。この構造・設計図を学び、それぞれの部分でやるべきことを覚えてしまえば、あとは、その構造・設計図通りに書けば売れるセールスコピーを書けるようになるでしょう…</p>
+					</div><!-- /col-sm-10 -->
+				</div><!-- /borderbox-01 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<div class="section sp-section">
+		<div class="contaner sp-contaier">
+			<h2 class="subhead-01 sp-item" data-item-type="text"><span>講座をただ受け身で受けるだけではありません<br>着実に知識をインストールするために･･･</span></h2>
+			
+			<div class="row sp-row">
+				<div class="col-sm-12">
+					<figure><img src="http://first.testing-web.com/direct_speditor/img/image4.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+					<h4 class="subhead-04 sp-item" data-item-type="text">私たちの祖先の歴史を知らないことは恥です</h4>
+					<p class="article-01 sp-item" data-item-type="text">空手は練習しないと身につきません。同じようにセールスライティングも手を動かさないと身につきません。この講座では、あなたに着実にこの知識、技術を身につけてもらうために、各セクションには、合計２０の演習が用意されています。 たとえば大成功したセールスレターの事例をもとに、どの部分でどんな感情を読み手に沸き起こそうとしてるか、各セッションで習った要素がどのように、実際の広告に反映されているかを見たり、お客さんに買ってもらうためにリサーチをする演習であったり、アイディアを創出する演習、、、一つ一つがあなたに着実に実力をつけるような、とても濃い演習になっています。</p>
+					<p class="article-01 sp-item" data-item-type="text">演習をやることで、あなたは知識として知るだけじゃなく、体に落ちて、着実にスキルアップすることができます。さらには、もし、あなたが既にビジネスをやっているなら、この演習を自分の商品に当てはめてやれば、ほぼ間違いなく売上が上がるだろうと言えるような実務的な演習ばかりです。</p>
+					<p class="article-01 sp-item" data-item-type="text">率直に言って、大抵の人は、セールスライティングで稼ぎたいとは思っていても、本を1冊か2冊読むだけで、知った気になって、大したことはしていません。なので、ぼくの経験上、この演習を全てやったら、あなたは既に日本ではトップ５％に入るのは間違いないと言えます！</p>
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+			
+			<div class="row sp-row">
+				<div class="col-sm-12">
+					<figure><img src="http://first.testing-web.com/direct_speditor/img/image5.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+					<h4 class="subhead-04 sp-item" data-item-type="text">プロからの添削で効果的なフィードバックを</h4>
+					<p class="article-01 sp-item" data-item-type="text">また、空手を身につけるのに必要なのが、先生からのフィードバックやコーチです。この通信講座では、あなたに短期間で素早く、この知識・スキルを身につけてもらうために、添削課題が3回ついています。</p>
+					<p class="article-01 sp-item" data-item-type="text">添削をするのは、ザレスポンスの現役セールスライターのチームです。ぼくらは現状年間約10億円の広告費を使っています。その中でのたくさんのテストや300円から400万円までセールスライティング一本で売ってきた経験を元に添削をします。（ちなみに営業は一切したことがありません）</p>
+					<p class="article-01 sp-item" data-item-type="text">添削を受けることによって、自分では気づきにくい、弱点などが分かり、着実に実力をつけることができるでしょう。自分のどこが良くてどこが改善する必要があるのか？第三者の経験者からフィードバックを受けることほど、成長スピードを上げることはありません。</p>
+					<p class="article-01 sp-item" data-item-type="text">以上が、AWAIセールスライティング通信講座：入門編の内容です</p>
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<div class="section sp-section">
+		<div class="contaner box-layout sp-contaier">		
+			<h2 class="subhead-01 sp-item" data-item-type="text"><span>あなたがこの講座を必要とする理由</span></h2>
+			
+			<div class="row sp-row">
+				<div class="col-sm-6">
+					<div class="border-box-02 box sp-box">
+						<figure><img src="http://first.testing-web.com/direct_speditor/img/image6.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+						<div>
+							<b class="subhead-04 sp-item sp-item" data-item-type="text">1.「世界で最高の講座※」</b>
+							<p class="article-01 sp-item" data-item-type="text">セールスライティングに関して50冊以上もの著者であり、この分野での権威、ボブブライ氏はこの講座をみて「私が今まで見てきたどんな形のものより、この講座はセールスライティングに関する最高の講座だ。ダイレクト・マーケティングの世界に入ろうとしている人は、誰でもこの講座からとても大きな恩恵を受けることだろう」と実質、世界最高の講座だと言っています。</p>
+							<p class="article-01 sp-item" data-item-type="text">それもそのはず、この講座はマーケティングのメッカである米国で超一流のセールスライターが人間が3人集まり17年前に開発されたもので、それ以来、改善・改善をくり返してきたベストセラー講座だからです。その辺の、最近セールスライティングを知った人が作った講座とは違います。</p>
+						</div>
+					</div><!-- /box -->
+				</div><!-- /col-sm-6 -->
+				
+				<div class="col-sm-6">
+					<div class="border-box-02 box sp-box">
+						<figure><img src="http://first.testing-web.com/direct_speditor/img/image7.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+						<div>
+							<b class="subhead-04 sp-item sp-item" data-item-type="text">2.自由ー場所も時間も</b>
+							<p class="article-01 sp-item" data-item-type="text">セールスライティングは、文字通り、どんな場所でもできます。自宅でもできますし、旅行先のリゾート地でもパソコン一つあればできます。世界中を旅行しながら、、、なんて事もできるでしょう。それに、時間も自由です。伝説のセールスライターと呼ばれた人は1日4時間しか働いてませんでした。</p>
+							<p class="article-01 sp-item" data-item-type="text">そして、セールスレターを一度書いてしまえば、それがあなたの代わりに営業をしてくれるわけです、あなたの代わりに働いてくれるわけですから（言葉を変えればあなたの代わりにお金を稼いできてくれるわけです）あなたが、きまった時間にどこかに行かなきゃいけないという必要性はありません。時間も場所もあなたが自由にコントロールできるのです。</p>
+						</div>
+					</div><!-- /box -->
+				</div><!-- /col-sm-6 -->
+			</div><!-- /row -->
+			
+			<div class="row sp-row">		
+				<div class="col-sm-6">
+					<div class="border-box-02 box sp-box">
+						<figure><img src="http://first.testing-web.com/direct_speditor/img/image8.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+						<div>
+							<b class="subhead-04 sp-item sp-item" data-item-type="text">3.レバレッジが効く</b>
+							<p class="article-01 sp-item" data-item-type="text">セールスライティングほど「レバレッジ」が効く仕事はほかにないんじゃないでしょうか？なぜなら１枚のセールスレターは同時に何百人、何千人、何万人もの人にセールスをかけることができます。見込み客ひとりひとりにセールスをかけるなら、１日あたり、１時間あたりにセールスできる人数は限られていますが、セールスレターや広告の場合はその制限はありません。</p>
+							<p class="article-01 sp-item" data-item-type="text">だからこそ、1度書いたセールスレターが14年間ずっっと売上を上げて収入を作り続けてくれた、一通で数千万円の売上をあげた、、なんて事が実際にあるのです。どんなに高度で時給の高い仕事でも、自分の時間を売ってる限りは、限界があります。この仕事にそれはありません。</p>
+						</div>
+					</div><!-- /box -->
+				</div><!-- /col-sm-6 -->
+					
+				<div class="col-sm-6">
+					<div class="border-box-02 box sp-box">
+						<figure><img src="http://first.testing-web.com/direct_speditor/img/image9.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+						<div>
+							<b class="subhead-04 sp-item sp-item" data-item-type="text">4.一生使えるスキル</b>
+							<p class="article-01 sp-item" data-item-type="text">日本には最近入ってきましたが、セールスライティングは米国では100年前からあります。そしてその時から、基本的な構造はほとんど変わっていません。なので100年後にも使えると言っても差し支えないんじゃないでしょうか。なぜならセールスは人間心理だからです。</p>
+							<p class="article-01 sp-item" data-item-type="text">人がどんな欲求を持っていて、どのような動機でモノを買うか？という心理構造は100年経っても変わりません。ダイレクトメールがWEBになったり、形は変わりますが本質はずっと一緒です。</p>
+							
+							<p class="article-01 sp-item" data-item-type="text">セールスライティングを身につけるために投資したお金や時間は、一生あなたにリターンをもたらすのです。</p>
+						</div>
+					</div><!-- /box -->
+				</div><!-- /col-sm-6 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<div class="section sp-section">
+		<div class="contaner sp-contaier">
+			<h2 class="subhead-01 sp-item" data-item-type="text"><span>最高の投資は自分自身への投資<br>講座の学費は･･･</span></h2>
+			<div class="row sp-row">
+				<div class="col-sm-8">
+					<p class="article-01 sp-item" data-item-type="text">考えてみてください。</p>
+					<p class="article-01 sp-item" data-item-type="text">このスキルはどんな資格よりも、あなたの人生を変えるはずです。たとえば、高収入資格の代名詞でもある、弁護士になるには最低でも3年、３つの難関試験の合格、約800万円の費用がかかります。医者になるには、学費が国立大学で平均350万円、私立だと約3300万円にもなります。しかも、医学書だけでも100万円くらいの投資が必要です。</p>
+					<p class="article-01 sp-item" data-item-type="text">セールスライティングのスキルは、人を動かす、お金を生み出すスキルです。</p>
+					<p class="article-01 sp-item" data-item-type="text">なので、実際に医者や弁護士以上に安定して稼いでいる人もいます。そして、一度身につけたら、一生あなたに利益をもたらし続けるスキルです。 このスキルを身につけるためのAWAIセールスライティング通信講座・入門編の学費は、なんと・・・</p>
+					<p class="article-01 sp-item" data-item-type="text">5,980円(税抜)の10回払い</p>
+					<p class="article-01 sp-item" data-item-type="text">一括なら、59,800円(税抜)です（※分割の場合は分割手数料が掛かります）。定価69,800円から一万円の割引価格です。もちろん、冒頭に言ったように今なら定価69,800円で5,443人が購入した僕のセールスライティングの講座もあなたにセットでプレゼントします。しかし、ちょっと待ってください。それだけじゃありません・・・</p>
+				</div><!-- /col-sm-8 -->
+				
+				<div class="col-sm-4">
+					<figure><img src="http://first.testing-web.com/direct_speditor/img/image10.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+				</div><!-- /col-sm-4 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<div class="section sp-section">
+		<div class="contaner sp-contaier">
+			<h2 class="subhead-01 sp-item" data-item-type="text"><span>さらに今日、参加するあなたに<br>特別の無料特典があります･･･</span></h2>
+					
+			<div class="row sp-row">
+				<h3 class="subhead-03 sp-item" data-item-type="text"><span>特典①AWAI殿堂入りセールスレター・ベスト（非売品）</span></h3>
+				<div class="col-sm-4">
+					<figure><img src="http://first.testing-web.com/direct_speditor/img/image11.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+				</div><!-- /col-sm-4 -->
+				<div class="col-sm-8">
+					<p class="article-01 sp-item" data-item-type="text">このAWAI殿堂入りセールスレター・ベストセレクションは、過去に大ヒットしたセールスレターや広告の実物を、集めたものです。あなたがセールスライティングの技術をマスターするときに最も役に立つのがこのような成功した広告です。業界用語で「スワイプファイル」と言いますが、このようなスワイプファイルを持っておくと、実際にあなたがセールスレターを書く時に、この大成功した広告から、パクって作れば良いのです。実際、ほとんどのプロのセールスライターは、ぼくも含め、このようなスワイプファイルを持っていて、そこからパクってセールスレターを作ります。アイディアをゼロから考えるなんて事はしません。あっちこっちから集めてくるのです。</p>
+					<p class="article-01 sp-item" data-item-type="text">ポイントはどこから集めてくるか？で下手くそのマネをすれば下手くそになりますし、世界で最高のプロのマネをすれば、たとえ素人が作ってもそれなりのものになります。</p>
+					<p class="article-01 sp-item" data-item-type="text">このベストセレクションには、37種類もの広告・セールスレターの実物が掲載されています。たった1通のレターで何億円もの売上を生み出したものばかりです。さらにそれぞれに、ちょっとした解説がついてるので、なぜ、この広告はヒットしたのか？この書き出しの部分ではどのような事をアピールしたかったか？どのような感情を動かしたかったか？などなど、実際のものを見ることで、とても深い学びが得られるでしょう。</p>
+					<p class="article-01 sp-item" data-item-type="text">とにかくパクって使ってください。</p>
+				</div><!-- /col-sm-8 -->
+			</div><!-- /row -->
+			
+			<div class="row sp-row">
+				<h3 class="subhead-03 sp-item" data-item-type="text"><span>特典②【動画セミナー】インターネットで売れるベストセラー商品の作り方／選び方（非売品）</span></h3>
+				<div class="col-sm-4">
+					<figure><img src="http://first.testing-web.com/direct_speditor/img/image12.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+				</div><!-- /col-sm-4 -->
+				<div class="col-sm-8">
+					<p class="article-01 sp-item" data-item-type="text">僕らは会社を作ってからの9年間で、累計147億円を超える商品を売ってきました。その中でわかったのは、売れる商品を作ったり選んだりするには、ちょっとしたコツと手順がある、ということです（それと同時に、ほとんどの起業家は、この手順を「逆」にして苦しんでいるということもわかりました…）どうせ扱うなら、売れにくい商品より売れやすい商品のほうがいいに決まってますよね！この 動画セミナーは、どうやって売れる商品を作るのか、選ぶのか、をあなたに教えてくれます（たとえあなたが今、売るものを何も持っていなくても！）。 <br>
+					※会員ページにて視聴、動画をダウンロード頂けます。</p>
+				</div><!-- /col-sm-8 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<div class="section sp-section">
+		<div class="contaner sp-contaier">
+			<h2 class="subhead-01 sp-item" data-item-type="text"><span>今日あなたが手に入れるのは･･･</span></h2>
+					
+			<div class="row sp-row">
+				<div class="col-sm-12">
+					<table class="table-layout01 sp-item" data-item-type="table">
+						<thead>
+							<tr>
+								<th>商品名</th>
+								<th>通常価格</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>AWAIセールスライティング通信講座：入門編</td>
+								<td>69,800円（税抜）</td>
+							</tr>
+							<tr>
+								<td>5,443人が購入した12週間セールスライティング講座</td>
+								<td>69,800円（税抜）</td>
+							</tr>
+							<tr>
+								<td>偉大なセールスライターになるためのダイレクトマーケティングの127の秘訣</td>
+								<td>非売品</td>
+							</tr>
+							<tr>
+								<td>ダイレクトマーケティング用語集</td>
+								<td>非売品</td>
+							</tr>
+							<tr>
+								<td>AWAI殿堂入りセールスレター・ベストセレクション</td>
+								<td>非売品</td>
+							</tr>
+							<tr>
+								<td>【動画セミナー】インターネットで売れるベストセラー商品の作り方／選び方</td>
+								<td>非売品</td>
+							</tr>
+							<tr>
+								<td>ケーススタディ：実績ゼロでクライアントを取る方法</td>
+								<td>非売品</td>
+							</tr>
+							<tr>
+								<td>契約書ひな形（弁護士チェック済み）</td>
+								<td>非売品</td>
+							</tr>
+							<tr>
+								<td colspan="2"><span>合計</span>　13万9600円<span>（税抜）</span></td>
+							</tr>
+							<tr>
+								<td class="red" colspan="2">今日なら、5,980円<span>（税抜）</span>×10回払い</td>
+							</tr>
+						</tbody>
+					</table>
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+			
+			<div class="row sp-row">
+				<div class="col-sm-6">
+					<h4 class="subhead-04 sp-item" data-item-type="text">30日の品質保証があるので安心して試せます</h4>
+					<p class="article-01 sp-item" data-item-type="text">どれだけこの講座がお客さんからの評判が良く、「世界最高の講座」だと言っても、あなたにはまだ不安があるかもしれません。しかし、品質保証があるので安心してください。もし、この講座の内容にあなたが満足しなかった場合、どんな理由でも、30日以内であれば、無条件で学費を100％お返しします。電話一本、メール一本で対応します。なので安心してお試しください。あなたにリスクは一切ありません。</p>
+				</div><!-- /col-sm-6 -->
+				<div class="col-sm-6">
+					<figure><img src="http://first.testing-web.com/direct_speditor/img/image13.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+				</div><!-- /col-sm-6 -->
+			</div><!-- /row -->
+			
+			<div class="row sp-row">
+				<div class="col-sm-12">
+					<h4 class="subhead-04 sp-item" data-item-type="text">この講座があなたの人生を変えるか？それとも、現状維持か？</h4>
+					<p class="article-01 sp-item" data-item-type="text">さぁ、あなたの前には２つの道があります</p>
+					<p class="article-01 sp-item" data-item-type="text">１つは、この講座を試してみて、新しい世界に一歩踏み出してみること。</p>
+					<p class="article-01 sp-item" data-item-type="text">この講座で、あなたは確実に成功する。収入が増える。といった事はお約束できません。しかし、あなたがセールスライティングの技術や知識を身につけるために、最も信頼できる講座だという事はお約束できます。簡単に身につけられる技術でもありません。それなりの努力が必要です。</p>
+					<p class="article-01 sp-item" data-item-type="text">ですが一過性の儲け話と違い、この技術は一旦身につけてしまえば、一生使うことができます。自分のがんばり次第で、収入をどんどん伸ばすこともできますし、場所にとらわれず、いろんな所で過ごすことできます。きっと、将来への漠然とした不安もなくなるでしょう･･･</p>
+					<p class="article-01 sp-item" data-item-type="text">その知識・技術は誰からも奪われません。一生モノの財産です。そして、会社が潰れても災害が起きても、どんな状況でも、パソコン一台あれば、自分1人でやっていける、家族を守れるという自信と安心感は文字通り、人生を変える、という言葉にふさわしいものです。</p>
+					<p class="article-01 sp-item" data-item-type="text">もう一方の道は、何もアクションを取らずに現状維持を続けること。</p>
+					<p class="article-01 sp-item" data-item-type="text">今の状態でなにもせずに、収入面、家族との時間などに満足してて、明るい将来が見えるならそれも良いかもしれません。世の中の大半の人は、フツーの人生に満足してなくても、新しい行動を取る勇気がないフツーの人です。なので、あなたがこの選択をしたとしても理解はできます。</p>
+					<p class="article-01 sp-item" data-item-type="text">どちらを選ぶもあなた次第です。しかし、決して将来、後悔しない選択をしてください。</p>
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<div class="section review sp-section">
+		<div class="contaner sp-contaier">
+			<div class="row sp-row">
+				<div class="col-sm-12">
+					<div class="sp-item" data-item-type="review">
+						<template>
+							<div id="dpub-reviews"></div><!-- レビュー一覧表示エリア -->
+							<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script> 
+							<script src="http://www.review-program.com/assets/index.js" charset="UTF-8" type="text/javascript"></script> 
+							<script type="text/javascript">
+								dpub_review.render_all({
+										item_id: 398,
+										order: 1,
+										count: 25
+								});
+		          			</script>
+	          			</template>
+          			</div> 
+				</div><!-- /col-sm-12 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+			
+	<div class="section conversion sp-section">
+		<div class="contaner sp-contaier">
+			<div class="row sp-row">
+				<div class="col-sm-6">
+					<figure><img src="http://first.testing-web.com/direct_speditor/img/image14.jpg" alt="" class="sp-item" data-item-type="image"></figure>
+				</div><!-- /col-sm-6 -->
+				<div class="col-sm-6">
+					<p class="article-01 sp-item" data-item-type="text">5,443人が購入した<br>12週間セールスライティング通信講座（特典付き）</p>
+					<p class="article-01 red sp-item" data-item-type="text"><span>価格：</span>5,980円（税抜）×10回払い</p>
+					<a href="http://first.testing-web.com/direct_speditor/#" class="btn-01 sp-item" data-item-type="button">いますぐ受講する </a>
+				</div><!-- /col-sm-6 -->
+			</div><!-- /row -->
+		</div><!-- /contaner -->
+	</div><!-- /section -->
+	
+	
+	
+	<footer>
+    <div class="inner">
+      <ul>
+        <li><a href="http://www.directbook.jp/business_book/">ビジネス洋書</a></li>
+        <li><a href="http://www.directbook.jp/audio_book/">オーディオブック</a></li>
+        <li><a href="http://www.directbook.jp/video/">ビデオ教材</a></li>
+        <li><a href="http://www.directbook.jp/member_service/">会員サービス</a></li>
+      </ul>
+      <ul>
+        <li><a href="/news/">最新情報</a></li>
+      </ul>
+      <ul>
+        <li><a href="http://www.directbook.jp/users_guide/">ご利用ガイド</a></li>
+        <li><a href="http://www.directbook.jp/users_guide#payment">お支払い方法について</a></li>
+        <li><a href="http://www.directbook.jp/users_guide#payment">お支払い期限について</a></li>
+        <li><a href="http://www.directbook.jp/users_guide#shipping">お届けについて</a></li>
+      </ul>
+      <ul>
+        <li><a href="http://www.directbook.jp/users_guide#shipping">送料について</a></li>
+        <li><a href="http://www.directbook.jp/users_guide#return">返品・返金について</a></li>
+        <li><a href="http://www.directbook.jp/users_guide#cancellation">解約について</a></li>
+        <li><a href="http://www.directbook.jp/users_guide#refund">返金について</a></li>
+      </ul>
+      <ul>
+        <li><a href="http://d-publishing-cs.jp/" target="_blank">お問い合わせ</a></li>
+        <li><a href="http://www.d-publishing.co.jp/" target="_blank">採用情報</a></li>
+      </ul>
+      <div class="corporate">
+        <p><a href="http://www.directbook.jp/"><img src="http://first.testing-web.com/direct_speditor/img/logo_footer.png" alt="Direct Publishing ダイレクト出版"></a></p>
+				<p><a href="http://privacymark.jp/" target="_blank"><img src="http://first.testing-web.com/direct_speditor/img/img_privacy.gif" alt="たいせつにしますプライバシー Pマーク 17000624(03)"></a></p>
+        <div>
+          <ul class="clr">
+            <li><a href="http://www.directbook.jp/company_overview/">会社概要</a></li>
+            <li><a href="http://www.d-publishing.jp/information/law/" target="_blank">特定商取引上の表記</a></li>
+            <li><a href="http://www.directbook.jp/about_the_copyright/">著作権について</a></li>
+            <li><a href="http://www.d-publishing.jp/privacy/" target="_blank">プライバシーポリシー</a></li>
+          </ul>
+          <small>Copyright © 2015 Direct Publishing. All Rights Reserved.　「ダイレクト出版」「Direct Publishing」は、ダイレクト出版株式会社の登録商標です。</small> </div>
+      </div>
+    </div>
+  </footer>
+
+<link href="img_ph/sp-animate.css" rel="stylesheet">
+
+
+
+
+		
+	</body>
+</html>
+
+
+
+
+</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</td>
+			<td colspan="2" rowspan="2" valign="top" style="border-left:1px solid #000">
+
+				<!-- ドラッグアイテムBOX -->
+				<div id="sp-id-drag-item-box" class="scroll-box">
+
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">レイアウト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="section" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>section</td>
+						</tr>
+						<!--
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="container" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>container</td>
+						</tr>
+						-->
+					</table>
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">グリッドシステム</td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-1" data-no="1" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value="12"  placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-1" data-no="1"></td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-2" data-no="2" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value="6 6" placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-2" data-no="2"></td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-3" data-no="3" draggable="false" disabled><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value=""    placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-3" data-no="3"></td>
+						</tr>
+					</table>
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">ベースアイテム</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="box" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>BOX</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="text" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>テキスト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="list" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>リスト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="button" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>ボタン</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="image" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>イメージ</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="video" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>ビデオ</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="table" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>表</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="replace-item" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>置換コード</td>
+						</tr>
+					</table>
+
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">ギミックアイテム</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="countdown-timer" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>カウントダウンタイマー</td>
+						</tr>
+					</table>
+
+				</div>
+				<!--/ ドラッグアイテムBOX -->
+
+
+
+
+				
+
+
+				
+
+				<!-- フォーマットBOX -->
+				<table id="sp-id-format-box" style="height:100%;width:100%;" style="display:none">
+					<tr id="sp-id-format-noselect-msg" style="height:40px;">
+						<td valign="top">
+							<!-- アイテム選択なし -->
+							<table class="card-table">
+								<tr>
+									<td class="header" style="border:none;">何も選択されていません</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr id="sp-id-format-tab-menu" style="height:40px;display:none;">
+						<td valign="top">
+
+							<!-- タブメニュー -->
+							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+								<div class="mdl-tabs__tab-bar">
+									<a href="#starks-panel"     class="sp-js-tab mdl-tabs__tab " id="tab-name-style"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-style').show();">スタイル</a>
+									<a href="#lannisters-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-text"          onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-text').show()"  >テキスト</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-image"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-image').show()" >イメージ</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-table"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-table').show()" >表</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-replace-item"  onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-replace-item').show()" >置換アイテム</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-gimmick"       onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-gimmick').show()" >ギミック</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-box-align"     onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-box-align').show()" >配置</a>
+								</div>
+							</div>
+					
+						</td>
+					</tr>
+					<tr id="sp-id-format-tab-contents" style="display:none;">
+						<td valign="top">
+
+							<!-- タブコンテンツ-->
+							<div  class="scroll-box">
+
+								<!--タブ内容：スタイル-->
+								<div id="sp-id-tab-content-style" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td class="header">スタイル</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-spEdit-style-button" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-btn-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-btn-green">ボタン （グリーン）</option>
+													<option value="sp-btn-blue">ボタン （ブルー）</option>
+													<option value="sp-btn-orange">ボタン （オレンジ）</option>
+													<option value="sp-btn-pink">ボタン （ピンク）</option>
+													<option value="sp-btn-shiny">ボタン （光沢）</option>
+													<option value="sp-btn-push">ボタン （押込）</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-list" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-list-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-list-order-black">連番（黒）</option>
+													<option value="sp-item-style-list-order-blue">連番（青）</option>
+													<option value="sp-item-style-list-order-red">連番（赤）</option>
+													<option value="sp-item-style-list-black">チェック（黒）</option>
+													<option value="sp-item-style-list-red"  >チェック（赤）</option>
+													<option value="sp-item-style-list-green">チェック（緑）</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-image" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-image-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-image-circle"   >円形</option>
+													<option value="sp-item-style-image-thumbnail">サムネイル</option>
+													<option value="sp-item-style-image-rounded"  >角丸</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-text" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-text-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-text-subead-red">サブヘッド（赤）</option>
+													<option value="sp-item-style-text-subead-blue">サブヘッド（青）</option>
+													<option value="sp-item-style-text-subead-green">サブヘッド（緑）</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="3">背景</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-bg-image-url-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td colspan="2">
+												<textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-bg-image-url-label" placeholder="背景画像 設定なし"></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">サイズ</td>
+											<td colspan="2">
+												<select id="sp-id-background-size" class="sp-js-change-setSpEditCss" data-css="background-size">
+													<option value="auto">自動調整</option>
+													<option value="contain">contain</option>
+													<option value="cover">cover</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td class="label"></td>
+											<td colspan="2">
+												<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sp-id-parallax">
+													<input type="checkbox" id="sp-id-parallax" class="mdl-checkbox__input sp-js-click-setParallax">
+													<span class="mdl-checkbox__label">Parallax Effect</span>
+												</label>
+												<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sp-id-overlay">
+													<input type="checkbox" id="sp-id-overlay" class="mdl-checkbox__input sp-js-click-setOverlay">
+													<span class="mdl-checkbox__label">Overlay</span>
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">背景色</td>
+											<td colspan="2"><input id="sp-id-background-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="background-color"></td>
+										</tr>
+										<tr>
+											<td class="label">透過</td>
+											<td><input type="range" min="0.00" max="1.00" step="0.01" value="1" tabindex="0" id="sp-id-opacity" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="opacity" oninput="$('#sp-id-opacity-label').text(this.value)"></td>
+											<td><label id="sp-id-opacity-label">1</label></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="3">枠線</td>
+										</tr>
+										<tr>
+											<td colspan="3">
+											    <select id="sp-id-border-style" class="sp-js-input-setSpEditCss" data-css="border-style" style="width:80px">
+											        <!-- 2014/05/30 sekiya fix : -->
+											        <!-- <option value="none">None</option> -->
+											        <option value="none"></option>
+											        <option value="solid">Solid</option>
+											        <option value="dotted">Dotted</option>
+											        <option value="dashed">Dashed</option>
+											        <option value="double">Double</option>
+											        <option value="groove">Groove</option>
+											        <option value="ridge">Ridge</option>
+											        <option value="inset">Inset</option>
+											        <option value="outset">Outset</option>
+											    </select>
+											    <select id="sp-id-border-width" class="sp-js-input-setSpEditCss" data-css="border-width" style="width:60px">
+											        <option value=""></option>
+											        <option value="1">1px</option>
+											        <option value="2">2px</option>
+											        <option value="3">3px</option>
+											        <option value="4">4px</option>
+											        <option value="5">5px</option>
+											        <option value="6">6px</option>
+											        <option value="7">7px</option>
+												        <option value="8">8px</option>
+											        <option value="9">9px</option>
+											        <option value="10">10px</option>
+											    </select>
+												<input id="sp-id-border-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="border-color">
+											</td>
+										</tr>
+										<tr>
+											<td class="label" style="width:1%">角丸</td>
+											<td><input id="sp-id-border-radius" type="number" min="0" max="150" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="border-radius" style="width:50px"></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header">影</td>
+										</tr>
+										<tr>
+											<td>
+											    <select id="sp-id-box-shadow" class="sp-js-input-setSpEditCss" data-css="box-shadow">
+											        <option value="">シャドウなし</option>
+											        <option value="rgba(0, 0, 0, 0.137255) 0px 4px 5px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 10px 0px, rgba(0, 0, 0, 0.2) 0px 2px 4px -1px">濃さ：1</option>
+											        <option value="rgba(0, 0, 0, 0.2) 0px 8px 17px 0px, rgba(0, 0, 0, 0.188235) 0px 6px 20px 0px">濃さ：2</option>
+											        <option value="rgba(0, 0, 0, 0.239216) 0px 12px 15px 0px, rgba(0, 0, 0, 0.188235) 0px 17px 50px 0px">濃さ：3</option>
+											        <option value="rgba(0, 0, 0, 0.219608) 0px 16px 28px 0px, rgba(0, 0, 0, 0.207843) 0px 25px 55px 0px">濃さ：4</option>
+											        <option value="rgba(0, 0, 0, 0.2) 0px 27px 24px 0px, rgba(0, 0, 0, 0.219608) 0px 40px 77px 0px">濃さ：5</option>
+											    </select>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">属性</td>
+										</tr>
+										<tr>
+											<td>id</td>
+											<td><input id="sp-id-attr-id" type="text" value="" class="sp-js-input-setSpEditAttr" data-attr="id"></td>
+										</tr>
+										<tr>
+											<td>class</td>
+											<td><input id="sp-id-attr-class" type="text" value="" class="sp-js-input-setSpEditAttr" data-attr="class"></td>
+										</tr>
+										<tr>
+											<td valign="top">style</td>
+											<td><textarea id="sp-id-attr-style" style="height:200px;padding:5px;" class="sp-js-input-setSpEditAttr" data-attr="style"></textarea></td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">リンク</td>
+										</tr>
+										<tr>
+											<td>URL</td>
+											<td><input id="sp-id-attr-href" type="text" value="https://" class="sp-js-input-setSpEditAttr" data-attr="href"></td>
+										</tr>
+										<tr>
+											<td>target</td>
+											<td>
+												<select id="sp-id-attr-target" class="sp-js-change-setSpEditAttr" data-attr="target">
+													<option value="">設定なし</option>
+													<option value="_self">同じウィンドウで開く</option>
+													<option value="_blank">新しいウィンドウで開く</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+
+
+
+									<hr>
+										ページ単位の設定
+									<hr>
+									<table class="card-table">
+										<tr>
+											<td class="header">テーマ</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-theme" class="sp-js-change-setThemeClass" data-class-prefix="base-color">
+													<option value="">-- 設定なし --</option>
+													<option value="base-color1">テーマ１</option>
+													<option value="base-color2">テーマ２</option>
+													<option value="base-color3">テーマ３</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+
+								</div>
+								<!--/タブ内容：スタイル-->
+
+
+								<!--タブ内容：配置-->
+								<div id="sp-id-tab-content-box-align" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td>
+												<select id="sp-id-spEdit-box-align" class="sp-js-change-setSpEditClass" data-class-prefix="sp-box-algin-">
+													<option value="">配置</option>
+													<option value="sp-box-algin-left">左揃え</option>
+													<option value="sp-box-algin-center">中央揃え</option>
+													<option value="sp-box-algin-right">右揃え</option>
+												</select>
+												<!-- 現在は縦配置（box・text共に）設定なし。margin上下でコントロール
+												<select id="sp-id-spEdit-box-valign" class="sp-js-change-setSpEditClass" data-class-prefix="sp-box-valgin-">
+													<option value="">縦配置</option>
+													<option value="sp-box-valgin-top">上揃え</option>
+													<option value="sp-box-valgin-middle">中央揃え</option>
+													<option value="sp-box-valgin-bottom">下揃え</option>
+												</select>
+												-->
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">幅</td>
+										</tr>
+										<tr>
+											<td class="label">最大幅</td>
+											<td align="right"><input type="number" min="0" max="1500" step="5" value="0" id="sp-id-max-width" class="sp-js-input-setSpEditCss" data-css="max-width"></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">ページ幅</td>
+										</tr>
+										<tr>
+											<td class="label">最大幅</td>
+											<td align="right"><input type="number" min="0" max="1500" step="5" value="0" id="sp-id-page-max-width" class="sp-js-input-setSpEditCss" data-css="page-max-width"></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">回転</td>
+										</tr>
+										<tr>
+											<td><input type="range" min="0" max="360" step="1" value="0" tabindex="0" id="sp-id-transform-rotate" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="transform-rotate" oninput="$('#sp-id-transform-rotate-label').text(this.value)"></td>
+											<td style="width:35px"><label id="sp-id-transform-rotate-label">0</label> °</td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">余白</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+
+												<style>
+												.padding-table{
+													border:none;
+													margin:0 auto;
+												}
+												.padding-table td{
+												    vertical-align: middle;
+												    padding: 5px;
+												    text-align: center;
+												    border:none;
+												}
+												.padding-table input{
+													width:40px;
+												}
+												.padding-table td.bt{border-top:1px dotted #666; }
+												.padding-table td.bb{border-bottom:1px dotted #666; }
+												.padding-table td.bl{border-left:1px dotted #666; }
+												.padding-table td.br{border-right:1px dotted #666; }
+												
+												</style>
+												<table class="padding-table">
+													<tbody>
+														<tr>
+															<td></td>
+															<td></td>
+															<td><input id="sp-id-margin-top" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-top"></td>
+															<td></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td class="bt bl"></td>
+															<td class="bt"><input id="sp-id-padding-top" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-top"></td>
+															<td class="bt br"></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td><input id="sp-id-margin-left" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-left"></td>
+															<td class="bl"><input id="sp-id-padding-left" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-left"></td>
+															<td style="text-align: center;white-space:nowrap">コンテンツ</td>
+															<td class="br"><input id="sp-id-padding-right" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-right"></td>
+															<td><input id="sp-id-margin-right" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-right"></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td class="bb bl"></td>
+															<td class="bb"><input id="sp-id-padding-bottom" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-bottom"></td>
+															<td class="bb br"></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td></td>
+															<td><input id="sp-id-margin-bottom" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-bottom"></td>
+															<td></td>
+															<td></td>
+														</tr>
+													</tbody>
+												</table>
+
+											</td>
+										</tr>
+									</table>
+
+								</div>
+								<!--/タブ内容：配置-->
+
+
+								<!--タブ内容：テキスト-->
+								<div id="sp-id-tab-content-text" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header">フォント</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-font-name" class="sp-js-input-execcommand" data-cmd="fontName">
+													<option value="Arial">Arial</option>
+													<option value="Comic Sans MS">Comic Sans MS</option>
+													<option value="Courier New">Courier New</option>
+													<option value="Droid Sans Japanese">Droid Sans Japanese</option>
+													<option value="Georgia">Georgia</option>
+													<option value="Hiragino Kaku Gothic Pro">Hiragino Kaku Gothic Pro</option>
+													<option value="Hiragino Kaku Gothic ProN">Hiragino Kaku Gothic ProN</option>
+													<option value="Hiragino Kaku Gothic StdN">Hiragino Kaku Gothic StdN</option>
+													<option value="Hiragino Maru Gothic ProN">Hiragino Maru Gothic ProN</option>
+													<option value="Hiragino Mincho ProN">Hiragino Mincho ProN</option>
+													<option value="Hiragino Sans">Hiragino Sans</option>
+													<option value="HiraginoSans-W0">HiraginoSans-W0</option>
+													<option value="KanjiStrokeOrders">KanjiStrokeOrders</option>
+													<option value="Klee">Klee</option>
+													<option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+													<option value="MS Gothic">MS Gothic</option>
+													<option value="MS Mincho">MS Mincho</option>
+													<option value="MS PGothic">MS PGothic</option>
+													<option value="MS PMincho">MS PMincho</option>
+													<option value="MS UI Gothic">MS UI Gothic</option>
+													<option value="Meirio">Meirio</option>
+													<option value="Meiryo UI">Meiryo UI</option>
+													<option value="Meiryo">Meiryo</option>
+													<option value="Osaka">Osaka</option>
+													<option value="Osaka-Mono">Osaka-Mono</option>
+													<option value="Osaka−等幅">Osaka−等幅</option>
+													<option value="Tahoma">Tahoma</option>
+													<option value="Times New Roman">Times New Roman</option>
+													<option value="Trebuchet MS">Trebuchet MS</option>
+													<option value="Tsukushi A Round Gothic">Tsukushi A Round Gothic</option>
+													<option value="Tsukushi B Round Gothic">Tsukushi B Round Gothic</option>
+													<option value="VL Gothic">VL Gothic</option>
+													<option value="VL PGothic">VL PGothic</option>
+													<option value="Verdana">Verdana</option>
+													<option value="Yu Gothic UI Bold">Yu Gothic UI Bold</option>
+													<option value="Yu Gothic UI Light">Yu Gothic UI Light</option>
+													<option value="Yu Gothic UI">Yu Gothic UI</option>
+													<option value="Yu Gothic">Yu Gothic</option>
+													<option value="Yu Mincho">Yu Mincho</option>
+													<option value="YuGothic">YuGothic</option>
+													<option value="YuMincho +36p Kana">YuMincho +36p Kana</option>
+													<option value="YuMincho">YuMincho</option>
+													<option value="クレー">クレー</option>
+													<option value="ヒラギノ丸ゴ ProN">ヒラギノ丸ゴ ProN</option>
+													<option value="ヒラギノ明朝 ProN">ヒラギノ明朝 ProN</option>
+													<option value="ヒラギノ角ゴ Pro">ヒラギノ角ゴ Pro</option>
+													<option value="ヒラギノ角ゴ ProN">ヒラギノ角ゴ ProN</option>
+													<option value="ヒラギノ角ゴ StdN">ヒラギノ角ゴ StdN</option>
+													<option value="ヒラギノ角ゴシック W0">ヒラギノ角ゴシック W0</option>
+													<option value="ヒラギノ角ゴシック">ヒラギノ角ゴシック</option>
+													<option value="メイリオ">メイリオ</option>
+													<option value="游ゴシック Light">游ゴシック Light</option>
+													<option value="游ゴシック">游ゴシック</option>
+													<option value="游ゴシック体">游ゴシック体</option>
+													<option value="游明朝">游明朝</option>
+													<option value="游明朝体">游明朝体</option>
+													<option value="游明朝体+36ポかな">游明朝体+36ポかな</option>
+													<option value="筑紫A丸ゴシック">筑紫A丸ゴシック</option>
+													<option value="筑紫B丸ゴシック">筑紫B丸ゴシック</option>
+													<option value="ＭＳ ゴシック">ＭＳ ゴシック</option>
+													<option value="ＭＳ 明朝">ＭＳ 明朝</option>
+													<option value="ＭＳ Ｐゴシック">ＭＳ Ｐゴシック</option>
+													<option value="ＭＳ Ｐ明朝">ＭＳ Ｐ明朝</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+											    <input id="sp-id-font-size"  type="number" value="" step="1" min="0" max="100" class="sp-js-input-execcommand" data-cmd="fontSize" style="width:auto">
+												<input id="sp-id-fore-color" type="color" value="#000000" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="foreColor">
+												<input id="sp-id-back-color" type="color" value="#000000" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="backColor">
+											</td>
+										</tr>
+										<tr>
+											<td>
+											    <div class="btn-group">
+													<a href="#" id="sp-id-bold"          class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="bold"          title="太字"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_bold</i></a>
+													<a href="#" id="sp-id-underline"     class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="underline"     title="下線"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_underlined</i></a>
+													<a href="#" id="sp-id-strikethrough" class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="strikethrough" title="取り消し線" onclick="$(this).toggleClass('active')"><i class="material-icons">strikethrough_s</i></a>
+													<a href="#" id="sp-id-italic"        class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="italic"        title="斜体"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_italic</i></a>
+											    </div>
+											</td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header">配置</td>
+										</tr>
+										<tr>
+											<td>
+											    <div class="btn-group">
+													<a href="#" id="sp-id-text-align-left"   class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="left"   title="左"   onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_left</i></a>
+													<a href="#" id="sp-id-text-align-center" class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="center" title="中央" onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_center</i></a>
+													<a href="#" id="sp-id-text-align-right"  class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="right"  title="右"   onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_right</i></a>
+											    </div>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">間隔</td>
+										</tr>
+										<tr>
+											<td class="label">行間</td>
+											<td align="right"><input id="sp-id-line-height" type="number" value="" class="sp-js-input-execcommand" data-cmd="lineHeight"></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：テキスト-->
+
+
+								<!--タブ内容：イメージ-->
+								<div id="sp-id-tab-content-image" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">イメージ</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-img-src-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td><textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-image-url-label" placeholder="設定なし"></textarea></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：イメージ-->
+
+								<!--タブ内容：置換アイテム-->
+								<div id="sp-id-tab-content-replace-item" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">置換コード</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-replace-item-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td><textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-replace-item-label" placeholder="設定なし"></textarea></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：置換アイテム-->
+
+								<!--タブ内容：ギミック-->
+								<div id="sp-id-tab-content-gimmick" class="sp-js-tab-content">
+
+									<table class="card-table" id="sp-id-timer-table">
+										<tr>
+											<td class="header">タイマー表示設定</td>
+											<td class="switch-btn" align="right">
+												<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect sp-js-change-setTimer" for="sp-id-spEdit-timer-switch">
+													<input type="checkbox" id="sp-id-spEdit-timer-switch" class="mdl-switch__input">
+													<span class="mdl-switch__label"></span>
+												</label>
+											</td>
+										</tr>
+										<tr style="display:none;">
+											<td>
+												選択範囲をページロード後
+												<input id="sp-id-timer-second" type="number" min="1" step="1"value="5" class="sp-js-change-setTimer">
+												秒後に表示する
+											</td>
+										</tr>
+										<tr style="display:none;">
+											<td style="padding-bottom: 50px;">
+												<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sp-id-timer-first-access-only">
+													<input type="checkbox" id="sp-id-timer-first-access-only" class="mdl-checkbox__input sp-js-change-setTimer">
+													<span class="mdl-checkbox__label">初回のみタイマー表示（2回目以降は常に表示）</span>
+												</label>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table" id="sp-id-animation-table">
+										<tr>
+											<td class="header">アニメーション</td>
+											<td class="switch-btn" align="right">
+												<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect sp-js-change-setAnimation" for="sp-id-spEdit-animation-switch">
+													<input type="checkbox" id="sp-id-spEdit-animation-switch" class="mdl-switch__input">
+													<span class="mdl-switch__label"></span>
+												</label>
+											</td>
+										</tr>
+										<tr style="display:none;">
+											<td class="label">種類</td>
+											<td>
+												<select id="sp-id-ani-name" class="sp-js-change-setAnimation">
+												    <optgroup label="Attention Seekers">
+												      <option value="sp-ani-bounce">bounce</option>
+												      <option value="sp-ani-flash">flash</option>
+												      <option value="sp-ani-pulse">pulse</option>
+												      <option value="sp-ani-rubberBand">rubberBand</option>
+												      <option value="sp-ani-shake">shake</option>
+												      <option value="sp-ani-swing">swing</option>
+												      <option value="sp-ani-tada">tada</option>
+												      <option value="sp-ani-wobble">wobble</option>
+												      <option value="sp-ani-jello">jello</option>
+												    </optgroup>
+
+												    <optgroup label="Bouncing Entrances">
+												      <option value="sp-ani-bounceIn">bounceIn</option>
+												      <option value="sp-ani-bounceInDown">bounceInDown</option>
+												      <option value="sp-ani-bounceInLeft">bounceInLeft</option>
+												      <option value="sp-ani-bounceInRight">bounceInRight</option>
+												      <option value="sp-ani-bounceInUp">bounceInUp</option>
+												    </optgroup>
+
+												    <optgroup label="Bouncing Exits">
+												      <option value="sp-ani-bounceOut">bounceOut</option>
+												      <option value="sp-ani-bounceOutDown">bounceOutDown</option>
+												      <option value="sp-ani-bounceOutLeft">bounceOutLeft</option>
+												      <option value="sp-ani-bounceOutRight">bounceOutRight</option>
+												      <option value="sp-ani-bounceOutUp">bounceOutUp</option>
+												    </optgroup>
+
+												    <optgroup label="Fading Entrances">
+												      <option value="sp-ani-fadeIn">fadeIn</option>
+												      <option value="sp-ani-fadeInDown">fadeInDown</option>
+												      <option value="sp-ani-fadeInDownBig">fadeInDownBig</option>
+												      <option value="sp-ani-fadeInLeft">fadeInLeft</option>
+												      <option value="sp-ani-fadeInLeftBig">fadeInLeftBig</option>
+												      <option value="sp-ani-fadeInRight">fadeInRight</option>
+												      <option value="sp-ani-fadeInRightBig">fadeInRightBig</option>
+												      <option value="sp-ani-fadeInUp">fadeInUp</option>
+												      <option value="sp-ani-fadeInUpBig">fadeInUpBig</option>
+												    </optgroup>
+
+												    <optgroup label="Fading Exits">
+												      <option value="sp-ani-fadeOut">fadeOut</option>
+												      <option value="sp-ani-fadeOutDown">fadeOutDown</option>
+												      <option value="sp-ani-fadeOutDownBig">fadeOutDownBig</option>
+												      <option value="sp-ani-fadeOutLeft">fadeOutLeft</option>
+												      <option value="sp-ani-fadeOutLeftBig">fadeOutLeftBig</option>
+												      <option value="sp-ani-fadeOutRight">fadeOutRight</option>
+												      <option value="sp-ani-fadeOutRightBig">fadeOutRightBig</option>
+												      <option value="sp-ani-fadeOutUp">fadeOutUp</option>
+												      <option value="sp-ani-fadeOutUpBig">fadeOutUpBig</option>
+												    </optgroup>
+
+												    <optgroup label="Flippers">
+												      <option value="sp-ani-flip">flip</option>
+												      <option value="sp-ani-flipInX">flipInX</option>
+												      <option value="sp-ani-flipInY">flipInY</option>
+												      <option value="sp-ani-flipOutX">flipOutX</option>
+												      <option value="sp-ani-flipOutY">flipOutY</option>
+												    </optgroup>
+
+												    <optgroup label="Lightspeed">
+												      <option value="sp-ani-lightSpeedIn">lightSpeedIn</option>
+												      <option value="sp-ani-lightSpeedOut">lightSpeedOut</option>
+												    </optgroup>
+
+												    <optgroup label="Rotating Entrances">
+												      <option value="sp-ani-rotateIn">rotateIn</option>
+												      <option value="sp-ani-rotateInDownLeft">rotateInDownLeft</option>
+												      <option value="sp-ani-rotateInDownRight">rotateInDownRight</option>
+												      <option value="sp-ani-rotateInUpLeft">rotateInUpLeft</option>
+												      <option value="sp-ani-rotateInUpRight">rotateInUpRight</option>
+												    </optgroup>
+
+												    <optgroup label="Rotating Exits">
+												      <option value="sp-ani-rotateOut">rotateOut</option>
+												      <option value="sp-ani-rotateOutDownLeft">rotateOutDownLeft</option>
+												      <option value="sp-ani-rotateOutDownRight">rotateOutDownRight</option>
+												      <option value="sp-ani-rotateOutUpLeft">rotateOutUpLeft</option>
+												      <option value="sp-ani-rotateOutUpRight">rotateOutUpRight</option>
+												    </optgroup>
+
+												    <optgroup label="Sliding Entrances">
+												      <option value="sp-ani-slideInUp">slideInUp</option>
+												      <option value="sp-ani-slideInDown">slideInDown</option>
+												      <option value="sp-ani-slideInLeft">slideInLeft</option>
+												      <option value="sp-ani-slideInRight">slideInRight</option>
+                                                                    
+												    </optgroup>
+												    <optgroup label="Sliding Exits">
+												      <option value="sp-ani-slideOutUp">slideOutUp</option>
+												      <option value="sp-ani-slideOutDown">slideOutDown</option>
+												      <option value="sp-ani-slideOutLeft">slideOutLeft</option>
+												      <option value="sp-ani-slideOutRight">slideOutRight</option>
+												      
+												    </optgroup>
+												    
+												    <optgroup label="Zoom Entrances">
+												      <option value="sp-ani-zoomIn">zoomIn</option>
+												      <option value="sp-ani-zoomInDown">zoomInDown</option>
+												      <option value="sp-ani-zoomInLeft">zoomInLeft</option>
+												      <option value="sp-ani-zoomInRight">zoomInRight</option>
+												      <option value="sp-ani-zoomInUp">zoomInUp</option>
+												    </optgroup>
+												    
+												    <optgroup label="Zoom Exits">
+												      <option value="sp-ani-zoomOut">zoomOut</option>
+												      <option value="sp-ani-zoomOutDown">zoomOutDown</option>
+												      <option value="sp-ani-zoomOutLeft">zoomOutLeft</option>
+												      <option value="sp-ani-zoomOutRight">zoomOutRight</option>
+												      <option value="sp-ani-zoomOutUp">zoomOutUp</option>
+												    </optgroup>
+
+												    <optgroup label="Specials">
+												      <option value="sp-ani-hinge">hinge</option>
+												      <option value="sp-ani-rollIn">rollIn</option>
+												      <option value="sp-ani-rollOut">rollOut</option>
+												    </optgroup>
+												</select>
+											</td>
+										</tr>
+										<tr style="display:none;">
+											<td class="label">繰り返し間隔</td>
+											<td>
+												<input id="sp-id-ani-interval-second" type="number" step="1" min="1" value="3" class="sp-js-change-setAnimation">
+												秒間隔で実行
+											</td>
+										</tr>
+									</table>
+
+								</div>
+								<!--/タブ内容：ギミック-->
+
+								<!--タブ内容：表-->
+								<div id="sp-id-tab-content-table" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">行</td>
+										</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="row-add-top" gable="true"><i class="material-icons">add</i></button>
+										</td>
+										<td>現在セルの上に行追加</td>
+									</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="row-add-bottom" gable="true"><i class="material-icons">add</i></button>
+										</td>
+										<td>現在セルの下に行追加</td>
+									</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="row-delete" gable="true"><i class="material-icons">remove</i></button>
+										</td>
+										<td>現在セルの行削除</td>
+									</tr>
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">列</td>
+										</tr>
+										<tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="col-add-left" gable="true"><i class="material-icons">add</i></button>
+											</td>
+											<td>現在セルの左に列追加</td>
+										</tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="col-add-right" gable="true"><i class="material-icons">add</i></button>
+											</td>
+											<td>現在セルの右に行追加</td>
+										</tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="col-delete" gable="true"><i class="material-icons">remove</i></button>
+											</td>
+											<td>現在セルの列を削除</td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：表-->
+							</div>
+							<!--/ .scroll-box-->
+
+					
+						</td>
+					</tr>
+						
+					
+				</table>
+				<!--/ フォーマットBOX-->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="height:30px;border-top:1px solid #000">
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">code</i></button>
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect">CSS</button>
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect">JS</button>
+
+　<input type="checkbox" id="checkbox-section" style="width:auto;vertical-align: middle;"> section
+　<input type="checkbox" id="checkbox-col" style="width:auto;vertical-align: middle;"> col
+　<input type="checkbox" id="checkbox-item" style="width:auto;vertical-align: middle;"> item
+
+
+				
+			</td>
+		</tr>
+	<table>
+
+
+	<!-- tooltip -->
+	<div class="mdl-tooltip" for="sp-id-gimmick-timer">
+		現在選択中のアイテムを<br>
+		ページが表示されてから<br>
+		指定秒数後に表示するギミックです。<br>
+		<br>
+		主に「VSLで動画再生してから●秒後に購入ボタンを出す」に使用されています。
+	</div>
+	<div class="mdl-tooltip" for="sp-id-img-src-edit-btn">
+		イメージの挿入・編集
+	</div>
+
+	<div class="mdl-tooltip" for="sp-id-bg-image-url-edit-btn">
+		背景画像の設定・編集
+	</div>
+	<div class="mdl-tooltip" for="sp-id-link-edit-btn">
+		リンクの設定・編集
+	</div>
+	<div class="mdl-tooltip" for="sp-id-replace-item-edit-btn">
+		置換コードの設定・編集
+	</div>
+
+	<div class="mdl-tooltip" for="sp-id-font-size">
+		フォントサイズ
+	</div>
+	<div class="mdl-tooltip" for="sp-id-fore-color">
+		テキストの色
+	</div>
+	<div class="mdl-tooltip" for="sp-id-back-color">
+		塗りつぶし
+	</div>
+
+
+	<!-- dialog : image -->
+<!--
+	<dialog id="sp-id-dialog-name-image" class="mdl-dialog" style="margin:auto;width: 500px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">イメージの挿入・編集</h4>
+		<div class="mdl-dialog__content">
+			画像URL：<input type="text" id="sp-id-dialog-input-image-url" value="">
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+-->
+
+<script>
+function imageLibrarySearch(){
+	
+	
+	var imgType = $('#sp-id-image-type').val();
+	var myImageOnly = $('#sp-id-my-image-only').find('input[type=checkbox]').first().prop('checked');
+	console.log(myImageOnly);
+	var dataUploader = myImageOnly == true ? '[data-uploader="mine"]' : '';
+
+	$('.image-thumbnail').hide();
+
+	if(imgType == 'all'){
+		$('.image-thumbnail'+dataUploader).show();
+	}else{
+		$('.sp-js-image-type-'+imgType+dataUploader).show();
+	}
+}
+
+</script>
+
+<dialog id="sp-id-dialog-name-image" class="mdl-dialog" style="margin:auto;width: 70%;height: 85%;">
+	<h4 class="mdl-dialog__title" style="white-space:nowrap;padding: 15px;">イメージの挿入・編集
+
+		<select id="sp-id-image-type" onchange="imageLibrarySearch()" style="width: 170px;float: right;vertical-align: middle;">
+			<option value="all">すべて</option>
+			<option value="guarantee">お試し保証・返金保証</option>
+			<option value="bg">背景画像</option>
+			<option value="card-info">カード情報</option>
+			<option value="company-logo">会社ロゴ</option>
+		</select>
+
+		<label id="sp-id-my-image-only" style="float: right;margin-right: 15px;vertical-align: -webkit-baseline-middle;" onclick="imageLibrarySearch()">
+			<input type="checkbox" style="vertical-align: middle;width:auto;" checked> 自分のアップした画像のみ表示
+		</label>
+
+	</h4>
+
+	
+	<div class="mdl-dialog__content" style="background-color: #f8f8f8;background-image: linear-gradient(45deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025) 100%),linear-gradient(45deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025) 100%);background-size: 20px 20px;background-position: 0 0, 50px 50px;border-color: #F3F3F3;vertical-align: middle;height: calc(100% - 115px);overflow-y: auto;">
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/logo-sp3.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="http://nichibou.main.jp/img/member_hp/toukou/images/img1.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/0ae6609c-logop-h_06o00y06o00y000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/1s27nw5-quote1.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/217aff9d-macbook_0hm09b0hk09a000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/check_borad.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img src="img_ph/7989ac57-toshio-nishi_05d04v04v04v009000.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/a5bcf928-hoover.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/e8d7ad1d-nirk8-1-mp4_0bn06k0bf06k000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/images/credit.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc "><img  src="http://directbook.s3.amazonaws.com/site/images/mail_image.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img  src="http://directbook.s3.amazonaws.com/site/images/support_mail_L.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img src="http://directbook.s3.amazonaws.com/site/img/1year_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/30days_trial_60days_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/30days_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/30days_return.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/30days_warranty.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/cancel_ok.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/divide_ok.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/firstfree.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/hyakuen.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/keiyaku_cancel.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/present.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/refund.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/90days_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/bttm_buynow.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/bttm_cpend.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/App_Store.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy2_small.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy2_small_ov.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_BOM_choice.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_reBOM_choice.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_trial.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/cupn_button.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/dl_button.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/dl_pdf.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/download.gif"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img src="http://directbook.s3.amazonaws.com/site/img/card_img/card1.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card2.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card3.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card4.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/card_img/track.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/card_img/track_sp.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/dp_logo.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/head/dp_tell.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/logo.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/logo_big.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/commuter.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_1.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_2.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_3.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/logo/sq_logo.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/mobile/img/logo.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/0.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/1.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/5.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star30.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star35.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star40.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star45.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star50.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Free_Trial_IMG2970.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_BOM_2950.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDA.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDA_tax.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDAexp.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice5_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice_bre_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/flow_BOM_BKF.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/flow_BOM_SHIN_BRE_2970.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/month_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_SHIN_BRE_2970.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_annual.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_annual29800.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_choice.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_FDV_continuity.gif"></div>
+
+	</div>
+	<div class="mdl-dialog__actions" style="flex-direction: row;">
+		<button type="button" class="mdl-button sp-js-image-upload">IMAGE UPLOAD</button>
+		<button type="button" id="sp-id-change-target-image-url-btn" class="mdl-button">画像URLを変更する</button>
+		<input type="text" id="sp-id-change-target-image-url" value="" style="width:50%;">
+		<button type="button" class="mdl-button close" style="margin-left:auto;">CANCEL</button>
+	</div>
+</dialog>
+
+
+
+
+
+	<!-- dialog : link -->
+	<dialog id="sp-id-dialog-name-link" class="mdl-dialog" style="margin:auto;width: 500px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">リンクの設定・編集</h4>
+		<div class="mdl-dialog__content">
+			リンクURL：<input type="text" id="sp-id-dialog-input-link-url" value="">
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+
+	<!-- dialog : replace-item -->
+	<dialog id="sp-id-dialog-name-replace-item" class="mdl-dialog" style="margin:auto;width: 600px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">置換コードの挿入・編集</h4>
+		<div class="mdl-dialog__content">
+			置換コード：<textarea id="sp-id-dialog-input-replace-code" style="width:100%;height:200px;"></textarea>
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+
+	<!--drag item Tempate-->
+	<template id="sp-js-template">
+
+		<!-- section -->
+		<div id="section" data-drag-type="section">
+			<div class="sp-section sp-drop-here">
+				<div class="container sp-container">
+					<div class="row sp-row">
+						<div class="col-sm-12">
+							<p class="sp-item sp-drop-here" data-item-type="text" contenteditable="true">12カラム</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- box -->
+		<div id="box" data-drag-type="box">
+			<div class="sp-box sp-drop-here" data-item-type="box">
+				<p class="sp-item" data-item-type="text" contenteditable="true">BOX</p>
+			</div>
+		</div>
+
+		<!-- text -->
+		<div id="text" data-drag-type="item">
+			<p class="sp-item sp-drop-here" data-item-type="text" contenteditable="true">テキスト</p>
+		</div>
+
+		<!-- list -->
+		<div id="list" data-drag-type="item">
+			<ul class="sp-item sp-drop-here" data-item-type="list">
+			   <li>なぜ20代が人生の分岐点なのか？30代40代とは全く違う20代で人生に一度しかないこと</li>
+			   <li>必死になって就職活動しても半分が失敗するワケー仕事や会社選びを間違える典型的なパターン</li>
+			   <li>自分の市場価値を高める方法〜自分の才能を知り、それを伸ばすには？</li>
+			   <li>心理学で見る、あなたにとって最悪な仕事と最高の仕事は？</li>
+			   <li>他、ダイレクト出版の会社のぶっちゃけを知ることができる従業員の生の声ー</li>
+			</ul>
+		</div>
+
+		<!-- button -->
+		<div id="button" data-drag-type="item">
+			<a href="test.php" class="sp-item sp-drop-here sp-btn" data-item-type="button" contenteditable="true">ボタン</a>
+		</div>
+		
+		<!-- image -->
+		<div id="image" data-drag-type="item">
+			<img src="http://nichibou.main.jp/img/member_hp/toukou/images/img1.jpg" class="sp-item sp-drop-here img-responsive center-block"  data-item-type="image" style="margin-bottom:30px">
+		</div>
+
+		<!-- video -->
+		<div id="video" data-drag-type="item">
+			<div class="sp-item sp-drop-here embed-responsive embed-responsive-16by9" data-item-type="replace-item" data-contents="video" style="margin-bottom:30px">
+				<template><iframe class="embed-responsive-item" src="http://www.youtube.com/embed/gqryJRAlS0c"></iframe></template>
+			</div>
+		</div>
+
+		<!-- table -->
+		<div id="table" data-drag-type="item">
+			<table class="sp-item table table-hover sp-drop-here" data-item-type="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Username</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>1</th>
+						<td>Mark</td>
+						<td>Otto</td>
+						<td>@mdo</td>
+					</tr>
+					<tr>
+						<th>2</th>
+						<td>Jacob</td>
+						<td>Thornton</td>
+						<td>@fat</td>
+					</tr>
+					<tr>
+						<th>3</th>
+						<td>Larry</td>
+						<td>the Bird</td>
+						<td>@twitter</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- replace-item -->
+		<div id="replace-item" data-drag-type="item">
+			<div class="sp-item sp-drop-here" data-item-type="replace-item" data-contents="" data-title="-- ここがアップロード後に設定した内容に置き換えられます --" style="margin-bottom:30px">
+				<template><script>alert('alert');</script></template>
+			</div>
+		</div>
+
+		<!-- countdown-timer -->
+		<div id="countdown-timer" data-drag-type="item">
+			<div class="sp-item sp-drop-here" data-item-type="replace-item" data-contents="" data-title="-- カウントダウンタイマー --" style="margin-bottom:30px">
+				<template>
+					<!--sp:countdonw:start-->
+					<div class="sp-js-load-countdown" style="margin-bottom:30px;"></div>
+					<!--sp:countdonw:end-->
+				</template>
+			</div>
+		</div>
+
+	</template>
+
+
+	<script type="text/javascript" src="js/material.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="js/spEditor/sp2Editor-miko3_sp.js"></script>
+	<script type="text/javascript">
+	$(function(){
+	  $('#htmlBody').sp2Editor({
+            pageId  : '1499',
+	        staffId : '220',
+	        cssFile : '',
+	        scrollTop : '0'
+	    });
+	});
+	</script>
+
+	
+
+</body>
+</html>
+
+
+
+
+

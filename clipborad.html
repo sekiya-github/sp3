@@ -1,0 +1,1413 @@
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="expires" content="0">
+        <title>{$thisPageTitlle}</title>
+        <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/editor-page.css" rel="stylesheet">
+    </head>
+    <body id="bodyTag">
+        <form name="editForm" id="editForm" action="edit_html_2.php" method="post" onsubmit="return false;">
+            <input type="hidden" name="tokenId" id="tokenId" value="{$form.tokenId|htmlspecialchars:$smarty.const.ENT_QUOTES}">
+            <input type="hidden" name="pageId"   id="pageId"   value="{$form.pageId}">
+            <input type="hidden" name="accessUrl"  id="accessUrl"  value="{$form.accessUrl}">
+
+            <!-- <table id="sp-page-layout-table" cellpadding="0" cellspacing="0" class="animated rotateIn"> -->
+            <table id="sp-page-layout-table" cellpadding="0" cellspacing="0">
+                <!-- ROW : Title bar-->
+                <tr>
+                    <td colspan="3" style="height: 44px;background-color: #000;" id="TitleBarTd">
+                        <div id="sp-title-bar-div">
+                            <input type="text" name="pageManagementName" id="pageManagementName" value="{$form.pageManagementName}" require="require" placeholder="管理しやすいページ名を入力してください" style="width:500px;">
+                            <button class="sp-btn sp-btn-upload" id="uploadHtml">
+                                アップロード
+                            </button>
+                            <span style="float:right;">
+                                <span style="font-weight:bold;font-size:15px;" onclick="history.back()">戻る</span>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- ROW : iframe -->
+                <tr>
+                    <!-- Editor TD -->
+                    <td valign="top" class="sp-border-color sp-bg-color" style="min-width:340px;" id="sp2-html-body-td">
+                        <textarea  name="htmlBody" id="htmlBody">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          <!DOCTYPE html>
+                          <html>
+                          <head>
+                          		<title>BS研修</title>
+                          		<meta name="description" content="">
+                          		<meta name="viewport" content="width=device-width, initial-scale=1">
+                          		<!-- Latest compiled and minified CSS -->
+								<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+                          		<style>
+
+                          ::selection {
+                          background: #000;
+                          color: #fff;
+                          }
+
+                          			body{
+                          			  color: #333;
+                          			  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+                          			  color: #444;
+                          			  font-size:16px;
+                          			  line-height: 1.6em;
+                          			  padding:0;
+                          /*
+                          	position: relative;
+                              background-color: #000;
+                              background: url(http://freedom-income.jp/pr/lies/sp/images/lies-bg.jpg) no-repeat;
+                              background-size: cover;
+                              background-position: center;
+                              background-attachment: fixed;
+                          */
+
+
+
+                          			}
+                          			.asterisk{
+                          				color: #D9534F;
+                          				font-weight: 400;
+                          			}
+                                .sp-section{
+                                  padding-top:40px;
+                                  padding-bottom:40px;
+
+                                }
+
+                          			.sp-subhead-border-b{
+                             				 border-bottom: dotted 1px #CCC;
+                             				 padding: 12px 0 9px;
+                             				 font-weight:bold;
+                          			}
+                          			.sp-subhead-border-tb{
+                          				 border-top: dotted 1px #CCC;
+                             				 border-bottom: dotted 1px #CCC;
+                             				 padding: 12px 0 9px;
+                             				 font-weight:bold;
+                          			}
+
+
+                          			.container {
+                          			    max-width: 900px;
+                          			}
+
+
+                          			p{
+                          				margin:0 0 30px 0;
+                          			}
+                          			h3{
+                          				margin:0 0 30px 0;
+                          			}
+                                h3:last-child, p:last-child{
+                                  /*margin-bottom:0;*/
+                                }
+
+
+
+
+                          			hr{
+                          				border:1px solid blue;
+                          			}
+
+                          			ul.list-green li{
+                          			    padding: 5px 0 5px 40px;
+                          			    margin: 15px 0;
+                          			    line-height: 130%;
+                          			    background: url('http://www.directsales.jp/sp/img/template/check_green.jpg') no-repeat;
+                          			}
+
+                          			ul.list-red li{
+                          			    padding: 5px 0 5px 40px;
+                          			    margin: 15px 0;
+                          			    line-height: 130%;
+                          			    background: url('http://www.directsales.jp/sp/img/template/check_red.jpg') no-repeat;
+                          			}
+
+                          			ol.list-decimal li{
+                          			    padding: 5px 0 5px 1em;
+                          			    margin: 15px 2em;
+                          			    line-height: 130%;
+                          			    list-style-type: decimal;
+                          			}
+
+
+                          			/*------------ CSS BUTTON -----------------------------------------------*/
+                          			.diet_purchsaeButton1 {
+                          			    cursor: pointer;
+                          			    display: inline-block;
+                          			    white-space: nowrap;
+                          			    text-decoration: none;
+                          			    padding: 30px 40px 30px 95px;
+                          			    font-size: 30px;
+                          			    font-weight: bold;
+                          			    color: #1A2B55;
+                          			    -webkit-border-radius: 56px 18px 18px 56px;
+                          			    -moz-border-radius: 56px 18px 18px 56px;
+                          			    -o-border-radius: 56px 18px 18px 56px;
+                          			    border-radius: 56px 18px 18px 56px;
+                          			    border: 3px solid navy;
+                          			    -webkit-box-shadow: 0px 5px 0px 0px #fff6af;
+                          			    -moz-box-shadow: 0px 5px 0px 0px #fff6af;
+                          			    box-shadow: 0px 5px 0px 0px #fff6af;
+                          			    background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%, -webkit-gradient( linear, left top, left bottom, color-stop(39%, #ffec64), color-stop(66%, #ffab23) );
+                          			    background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%, -moz-linear-gradient( center top, #ffec64 39%, #ffab23 66% );
+                          			    background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%, -ms-linear-gradient( top, #ffec64 39%, #ffab23 66% );
+                          			    /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64');*//*IE8だと背景画像とグラデを両立不可。背景画像を優先。11から通常のグラデが適用になる。*/
+                          			    background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50% #ffec64\9;/*IE9用*/
+                          			}.diet_purchsaeButton1:hover {
+                          			    background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%,-webkit-gradient( linear, left top, left bottom, color-stop(39%, #ffab23), color-stop(66%, #ffec64) );
+                          			    background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%,-moz-linear-gradient( center top, #ffab23 39%, #ffec64 66% );
+                          			    background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50%,-ms-linear-gradient( top, #ffab23 39%, #ffec64 66% );
+                          			    /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64');*//*IE8だと背景画像とグラデを両立不可。背景画像を優先。11から通常のグラデが適用になる。*/
+                          			    background: url(http://www.directsales.jp/sp/img/template/diet_purchaseButton1.png) no-repeat 30px 50% #ffec64\9;/*IE9用*/
+                          			}.diet_purchsaeButton1:active {
+                          			    position: relative;
+                          			    top: 1px;
+                          			}
+
+                          			.sction-1{
+                          				display: block;
+                          				color:white;
+                          				background: rgba(53,66,73,1);
+                          				-pie-background: rgba(53,66,73,1);
+                          				border-style: none;
+                          				width: 100%;
+                          				height: 600px;
+                          				border-radius: 0px;
+                          				padding:15px 0;
+                          			}
+
+                          			.sction-0{
+                          				display: block;
+                          				color:white;
+                          				background: rgba(53,66,73,1);
+                          				-pie-background: rgba(53,66,73,1);
+                          				background: rgba(53,66,73,1);
+                          				background-image:url(http://d9hhrg4mnvzow.cloudfront.net/pages.theresponse.jp/saleswriter_certificate_school/roof-cta-background-pattern.original.png);
+                          				background-repeat: repeat;
+                           			   background-position: center center;
+                          				border-style: none;
+                          				width: 100%;
+                          				mix-height: 50px;
+                          				border-radius: 0px;
+
+                          			}
+
+                          		</style>
+                          		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+                          	</head>
+                          	<body class="sp-iframe-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          		<!-- header : section  -->
+                          		<div class="sp-section" style="
+                          padding-top: 13px;
+                          padding-bottom: 13px;
+                          ">
+                          			<div class="container sp-container" style="
+                          /* outline: 1px solid #5cb85c; */
+                          ">
+                          				<div class="row">
+                          					<div class="col-sm-6">
+                          						<img src="http://prideandhistory.s3.amazonaws.com/images/ad/logo.png" class="sp-text img-responsive center-block pull-left" style="
+                          max-width: 300px;
+                          /* height: auto; */
+                          ">
+                          					</div>
+                          					<div class="col-sm-6">
+                          						<img src="http://prideandhistory.s3.amazonaws.com/images/tel.jpg" class="sp-text  img-responsive center-block pull-right" style="
+                          max-width: 300px;
+                          ">
+                          					</div>
+                          				</div>
+                          			</div>
+                          		</div>
+
+                          		<!-- headline : section  -->
+                          		<div class="sp-section " style="color:white;background-image:url('http://prideandhistory.s3.amazonaws.com/images/background_color_blue_original.jpg');background-repeat: no-repeat;background-position: center center;background-size: cover;">
+                          			<div class="container sp-container" style="
+                          /* margin-top: 45px; */
+                          ">
+                          				<div class="row ">
+                          					<div class="col-sm-6">
+                          						<h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead" style="white-space:nowrap;font-size: 36px;">スタンフォード西鋭夫の講演録</h3>
+                          						<h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead" style="
+                          font-size: 60px;
+                          white-space: nowrap;
+                          ">"誰も言わない<br>明治維新の真実"</h3>
+                          						<h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead" style="
+                          font-size: 34px;
+                          ">¥2980のところ<br>送料だけでどうぞ！</h3>
+                          						<p class="sp-drag-item-type-text sp-text" data-explain="text" style="border-radius: 0px;padding: 14px;background-color: rgba(255, 153, 0, 0.870588);text-align:center;margin-bottom: 5px;">
+                          							<span style="line-height: 1.6em;font-size: 24px;">今すぐ講演録をもらう</span>
+                          						</p>
+                          						<p><span style="font-size:12px;">※送料手数料だけご負担ください</span></p>
+                          					</div>
+                          					<div class="col-sm-6">
+                          						<img src="http://www.prideandhistory.jp/sp/img/303__pc_20160420144458_nikoumj_cd_head2.png" class="sp-text  img-responsive center-block" style="
+                          max-width: 100%;
+                          vertical-align: bottom;
+                          margin-top: 70px;
+                          ">
+                          					</div>
+                          				</div>
+                          			</div>
+                          		</div>
+
+                          		<!-- content white : section  -->
+                          		<div class="sp-section" style="">
+
+                                <div class="container sp-container">
+
+
+                                  <div class="row">
+                                    <div class="col-sm-12">
+                                      <h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">サブヘッド１１１</h3>
+                              				<p class="sp-drag-item-type-text  sp-text">迫り来<img src="http://phpjavascriptroom.com/content/img/js/event_onmousemove2.png">る欧米列強の脅威ーまわりの国を見渡せば、植民地化…戦争…搾取…荒廃…。儒教の国と崇めていた隣の中国は、大英帝国によってアヘン戦争でズタズタにされていました。日本に残された道は「国を強くする」大改革。しかし、この大改革には、都合のよい謎が多過ぎることを知っていますか？</p>
+                              				<p class="sp-drag-item-type-text  sp-text">その謎を追いやって、この10年20年、政治家もNHKもわれわれ日本人全員が、日本を守ったと明治維新のヒーローに憧れています。しかし、本当の明治維新とはどんなものだったのか。</p>
+                              				<p class="sp-drag-item-type-text  sp-text">なぜ、22~3の若造の集まりが、強大な権力をもった幕府を倒すことができたのか？（現代で20代の若造の集まりが打倒安倍内閣と言ったら笑いものになるだけです）そしてなぜ、その若造たちを中心に、欧米列強と渡り合って独立を守ることができたのか？維新のヒーロー坂本龍馬に誰がカネを出したのか？海援隊という5〜60人の働いて</p>
+                              				<p class="sp-drag-item-type-text  sp-text">なぜ、22~3の若造の集まりが、強大な権力をもった幕府を倒すことができたのか？（現代で20代の若造の集まりが打倒安倍内閣と言ったら笑いものになるだけです）そしてなぜ、その若造たちを中心に、欧米列強と渡り合って独立を守ることができたのか？維新のヒーロー坂本龍馬に誰がカネを出したのか？海援隊という5〜60人の働いて</p>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-sm-12">
+                                      <h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">サブヘッド２２２</h3>
+                              				<p class="sp-drag-item-type-text  sp-text">迫り来<img src="http://phpjavascriptroom.com/content/img/js/event_onmousemove2.png">る欧米列強の脅威ーまわりの国を見渡せば、植民地化…戦争…搾取…荒廃…。儒教の国と崇めていた隣の中国は、大英帝国によってアヘン戦争でズタズタにされていました。日本に残された道は「国を強くする」大改革。しかし、この大改革には、都合のよい謎が多過ぎることを知っていますか？</p>
+                              				<p class="sp-drag-item-type-text  sp-text">その謎を追いやって、この10年20年、政治家もNHKもわれわれ日本人全員が、日本を守ったと明治維新のヒーローに憧れています。しかし、本当の明治維新とはどんなものだったのか。</p>
+                              				<p class="sp-drag-item-type-text  sp-text">なぜ、22~3の若造の集まりが、強大な権力をもった幕府を倒すことができたのか？（現代で20代の若造の集まりが打倒安倍内閣と言ったら笑いものになるだけです）そしてなぜ、その若造たちを中心に、欧米列強と渡り合って独立を守ることができたのか？維新のヒーロー坂本龍馬に誰がカネを出したのか？海援隊という5〜60人の働いて</p>
+                              				<p class="sp-drag-item-type-text  sp-text">なぜ、22~3の若造の集まりが、強大な権力をもった幕府を倒すことができたのか？（現代で20代の若造の集まりが打倒安倍内閣と言ったら笑いものになるだけです）そしてなぜ、その若造たちを中心に、欧米列強と渡り合って独立を守ることができたのか？維新のヒーロー坂本龍馬に誰がカネを出したのか？海援隊という5〜60人の働いて</p>
+                                    </div>
+                                  </div>
+
+                                  <div class="row">
+                                    <div class="col-sm-12">
+                                      <h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">サブヘッド３３３</h3>
+                              				<p class="sp-drag-item-type-text  sp-text">迫り来<img src="http://phpjavascriptroom.com/content/img/js/event_onmousemove2.png">る欧米列強の脅威ーまわりの国を見渡せば、植民地化…戦争…搾取…荒廃…。儒教の国と崇めていた隣の中国は、大英帝国によってアヘン戦争でズタズタにされていました。日本に残された道は「国を強くする」大改革。しかし、この大改革には、都合のよい謎が多過ぎることを知っていますか？</p>
+                              			</div>
+                                  </div>
+
+
+                                  <div class="row">
+                                    <div class="col-sm-12">
+                                      <h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">講演録目次</h3>
+                              				<p class="sp-drag-item-type-text  sp-text">迫り来<img src="http://phpjavascriptroom.com/content/img/js/event_onmousemove2.png">る欧米列強の脅威ーまわりの国を見渡せば、植民地化…戦争…搾取…荒廃…。儒教の国と崇めていた隣の中国は、大英帝国によってアヘン戦争でズタズタにされていました。日本に残された道は「国を強くする」大改革。しかし、この大改革には、都合のよい謎が多過ぎることを知っていますか？</p>
+                              				<p class="sp-drag-item-type-text  sp-text">その謎を追いやって、この10年20年、政治家もNHKもわれわれ日本人全員が、日本を守ったと明治維新のヒーローに憧れています。しかし、本当の明治維新とはどんなものだったのか。</p>
+                              				<p class="sp-drag-item-type-text  sp-text">なぜ、22~3の若造の集まりが、強大な権力をもった幕府を倒すことができたのか？（現代で20代の若造の集まりが打倒安倍内閣と言ったら笑いものになるだけです）そしてなぜ、その若造たちを中心に、欧米列強と渡り合って独立を守ることができたのか？維新のヒーロー坂本龍馬に誰がカネを出したのか？海援隊という5〜60人の働いて</p>
+                              				<p class="sp-drag-item-type-text  sp-text">なぜ、22~3の若造の集まりが、強大な権力をもった幕府を倒すことができたのか？（現代で20代の若造の集まりが打倒安倍内閣と言ったら笑いものになるだけです）そしてなぜ、その若造たちを中心に、欧米列強と渡り合って独立を守ることができたのか？維新のヒーロー坂本龍馬に誰がカネを出したのか？海援隊という5〜60人の働いて</p>
+                                    </div>
+                                  </div>
+
+                                  <div class="row">
+
+
+                                    <div style="
+                                        outline: 1px solid #00c0ff;
+                                        outline-offset: -1px;
+                                        /* position: relative; */
+                                        /* min-height: 30px; */
+                                        border: 1px solid #00c0ff;
+                                        line-height: 20px;
+                                        font-weight: 700;
+                                        background-color: #00c0ff;
+                                        font-size: 12px;
+                                        padding: 0 3px;
+                                        color: #FFFFFF;
+                                        position: absolute;
+                                        /* left: 0; */
+                                        top: -21px;
+                                        z-index: 999;
+                                        width: 100%;
+                                        display:none;
+                                    ">グリッド
+<div style="float:right;">
+<div title="選択中アイテムをドラッグ移動します" class="ignore ipkMenuCmdBtn ipkMenuCmd ipk-menu-drag sp-js-click-execIpkMenuCmd" data-cmd="drag" id="ipk-menu-drag" draggable="true" style="visibility: visible;"><span class="ignore glyphicon glyphicon-move" aria-hidden="true"></span></div><div title="選択中アイテムを複製します" class="ignore ipkMenuCmdBtn ipkMenuCmd ipk-menu-copy sp-js-click-execIpkMenuCmd" data-cmd="copy" style="visibility: visible;"><span class="ignore glyphicon glyphicon-duplicate" aria-hidden="true"></span></div><div title="選択中アイテムを削除します" class="ignore ipkMenuCmdBtn ipkMenuCmd ipk-menu-delete sp-js-click-execIpkMenuCmd" data-cmd="delete" id="ipkMenuDelete" style="visibility: visible;"><span class="ignore glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+</div>
+
+
+                                  </div>
+
+
+                                    <div class="col-sm-6">
+                                      <h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">講演録目次</h3>
+                              				<p class="sp-drag-item-type-text  sp-text">迫り来<img src="http://phpjavascriptroom.com/content/img/js/event_onmousemove2.png">る欧米列強の脅威ーまわりの国を見渡せば、植民地化…戦争…搾取…荒廃…。儒教の国と崇めていた隣の中国は、大英帝国によってアヘン戦争でズタズタにされていました。日本に残された道は「国を強くする」大改革。しかし、この大改革には、都合のよい謎が多過ぎることを知っていますか？</p>
+                              				<p class="sp-drag-item-type-text  sp-text">その謎を追いやって、この10年20年、政治家もNHKもわれわれ日本人全員が、日本を守ったと明治維新のヒーローに憧れています。しかし、本当の明治維新とはどんなものだったのか。</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">講演録目次</h3>
+                              				<p class="sp-drag-item-type-text  sp-text">迫り来<img src="http://phpjavascriptroom.com/content/img/js/event_onmousemove2.png">る欧米列強の脅威ーまわりの国を見渡せば、植民地化…戦争…搾取…荒廃…。儒教の国と崇めていた隣の中国は、大英帝国によってアヘン戦争でズタズタにされていました。日本に残された道は「国を強くする」大改革。しかし、この大改革には、都合のよい謎が多過ぎることを知っていますか？</p>
+                              				<p class="sp-drag-item-type-text  sp-text">その謎を追いやって、この10年20年、政治家もNHKもわれわれ日本人全員が、日本を守ったと明治維新のヒーローに憧れています。しかし、本当の明治維新とはどんなものだったのか。</p>
+                                    </div>
+                                  </div>
+                                </div>
+                          		</div>
+
+
+
+                          		<!-- content grey : section  -->
+                          		<div class="sp-section " style="background-color:#f0f0f0;">
+                          			<div class="container sp-container">
+                          				<div class="row">
+                          					<div class="col-sm-12">
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/65a19681-207a0069_0a60f90a609900000x.jpg" class="sp-text  img-responsive center-block">
+                          						<div class="sp-drag-item-type-spacing sp-text" style="height:30px;"></div>
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/1f608657-hoover_0a605j0a605j000000.png" class="sp-text  img-responsive center-block">
+                          						<div class="sp-drag-item-type-spacing sp-text" style="height:30px;"></div>
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/1f608657-hoover_0a605j0a605j000000.png" class="sp-text  img-responsive center-block">
+                          						<div class="sp-drag-item-type-spacing sp-text" style="height:30px;"></div>
+                          						<p class="sp-drag-item-type-text  sp-text">スタンフォード大学にあるフーヴァータワー。西教授の職場は10階この上の窓のあるところ。政権によりフーヴァー研究所からは多数の教授がホワイトハウスの要職につく</p>
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/dafd9869-book-unconditional_04c06i04c06h000000.jpeg" class="sp-text">
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/84d30866-book_04l06i04k06h000000.jpg" class="sp-text">
+                          						<div class="sp-drag-item-type-spacing sp-text" style="height:30px;"></div>
+                          						<p class="sp-drag-item-type-text  sp-text">「Unconditional democracy」邦訳「國破れてマッカーサー」フーヴァー研究所から発行された西教授の著書は米国の大学で日米関係、日本近代史のテキストとして使われ、経済学を学ぶ者がケインズを学ぶように、日米関係を学ぶ人間が西鋭夫を学ばないと話にならないと言われる。米国機密文書を世界で初めて開いた世界的権威 スタンフォード大学フーヴァー研究所教授西鋭夫世界中の天才が集まり100人中3人しか合格しない超難関、超名門と言われるスタンフォード大学。その中でも格が違うのがフーヴァー研究所。元英国首相マーガレット・サッチャーは、「政治・経済・国際問題に関して世界で最も重要な研究組織はフーヴァー研究所であります」と評価をしている。在籍する教授は133名(うち3名はノーベル経済学賞受賞者)。前政権時にはそのうち25名がホワイトハウスの要職につきアメリカを舵取りする。西教授はその世界の情報が一手に集まるフーヴァー研究所に30年以上にもわたり在籍している唯一の日本人である。長年の日米アジア研究を通じて、日米の政財界やシンクタンクに情報源を持ち、アメリカ政府の機密文書を世界で初めて開いた人物でGHQ占領政策の研究で世界的な権威である。フーヴァー研究所から出版された著書は「日米関係、占領史、日本近代史」を研究している人間で知らなかったらモグリだと言われるほど。 形式:オーディオCD 時間:1時間24分今すぐ無料で講演録をもらう</p>
+                          					</div>
+                          				</div>
+
+                          				<div class="row">
+                          					<div class="col-sm-6">
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/65a19681-207a0069_0a60f90a609900000x.jpg" class="sp-text  img-responsive center-block">
+                          						<div class="sp-drag-item-type-spacing sp-text" style="height:30px;"></div>
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/1f608657-hoover_0a605j0a605j000000.png" class="sp-text  img-responsive center-block">
+                          						<div class="sp-drag-item-type-spacing sp-text" style="height:30px;"></div>
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/1f608657-hoover_0a605j0a605j000000.png" class="sp-text  img-responsive center-block">
+                          						<div class="sp-drag-item-type-spacing sp-text" style="height:30px;"></div>
+                          						<p class="sp-drag-item-type-text  sp-text">スタンフォード大学にあるフーヴァータワー。西教授の職場は10階この上の窓のあるところ。政権によりフーヴァー研究所からは多数の教授がホワイトハウスの要職につく</p>
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/dafd9869-book-unconditional_04c06i04c06h000000.jpeg" class="sp-text">
+                          						<img src="http://d9hhrg4mnvzow.cloudfront.net/you.prideandhistory.jp/freemeiji-ogawa/84d30866-book_04l06i04k06h000000.jpg" class="sp-text">
+                          						<div class="sp-drag-item-type-spacing sp-text" style="height:30px;"></div>
+                          						<p class="sp-drag-item-type-text  sp-text">「Unconditional democracy」邦訳「國破れてマッカーサー」フーヴァー研究所から発行された西教授の著書は米国の大学で日米関係、日本近代史のテキストとして使われ、経済学を学ぶ者がケインズを学ぶように、日米関係を学ぶ人間が西鋭夫を学ばないと話にならないと言われる。米国機密文書を世界で初めて開いた世界的権威 スタンフォード大学フーヴァー研究所教授西鋭夫世界中の天才が集まり100人中3人しか合格しない超難関、超名門と言われるスタンフォード大学。その中でも格が違うのがフーヴァー研究所。元英国首相マーガレット・サッチャーは、「政治・経済・国際問題に関して世界で最も重要な研究組織はフーヴァー研究所であります」と評価をしている。在籍する教授は133名(うち3名はノーベル経済学賞受賞者)。前政権時にはそのうち25名がホワイトハウスの要職につきアメリカを舵取りする。西教授はその世界の情報が一手に集まるフーヴァー研究所に30年以上にもわたり在籍している唯一の日本人である。長年の日米アジア研究を通じて、日米の政財界やシンクタンクに情報源を持ち、アメリカ政府の機密文書を世界で初めて開いた人物でGHQ占領政策の研究で世界的な権威である。フーヴァー研究所から出版された著書は「日米関係、占領史、日本近代史」を研究している人間で知らなかったらモグリだと言われるほど。 形式:オーディオCD 時間:1時間24分今すぐ無料で講演録をもらう</p>
+                          					</div>
+                          					<div class="col-sm-6">
+                          						<h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">米国機密文書を世界で初めて開いた世界的権威</h3>
+                          						<p class="sp-drag-item-type-text  sp-text">スタンフォード大学フーヴァー研究所教授西鋭夫</p>
+                          						<p class="sp-drag-item-type-text  sp-text">世界中の天才が集まり100人中3人しか合格しない超難関、超名門と言われるスタンフォード大学。その中でも格が違うのがフーヴァー研究所。元英国首相マーガレット・サッチャーは、「政治・経済・国際問題に関して世界で最も重要な研究組織はフーヴァー研究所であります」と評価をしている。</p>
+                          						<p class="sp-drag-item-type-text  sp-text">在籍する教授は133名(うち3名はノーベル経済学賞受賞者)。前政権時にはそのうち25名がホワイトハウスの要職につきアメリカを舵取りする。西教授はその世界の情報が一手に集まるフーヴァー研究所に30年以上にもわたり在籍している唯一の日本人である。長年の日米アジア研究を通じて、日米の政財界やシンクタンクに情報源を持ち、アメリカ政府の機密文書を世界で初めて開いた人物でGHQ占領政策の研究で世界的な権威である。フーヴァー研究所から出版された著書は「日米関係、占領史、日本近代史」を研究している人間で知らなかったらモグリだと言われるほど。</p>
+                          						<p class="sp-drag-item-type-text  sp-text">在籍する教授は133名(うち3名はノーベル経済学賞受賞者)。前政権時にはそのうち25名がホワイトハウスの要職につきアメリカを舵取りする。西教授はその世界の情報が一手に集まるフーヴァー研究所に30年以上にもわたり在籍している唯一の日本人である。長年の日米アジア研究を通じて、日米の政財界やシンクタンクに情報源を持ち、アメリカ政府の機密文書を世界で初めて開いた人物でGHQ占領政策の研究で世界的な権威である。フーヴァー研究所から出版された著書は「日米関係、占領史、日本近代史」を研究している人間で知らなかったらモグリだと言われるほど。</p>
+                          						<h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">CIAのスカウトを蹴りラストサムライの異名を持つ</h3>
+                          						<p class="sp-drag-item-type-text  sp-text">その調査能力が買われ、博士号を取得して10日後にCIAからスカウトを受ける。CIAの一員になれば、カネも地位も簡単に手に入る。調査官曰く「東京にはCIAの協力者がかなりいる」「国会議員にも10人以上」(明確な数字は言わない)「産業スパイも当然の政策だ」（注:これらの発言は1976年当時のものである）そしてCIAになれば毎日が大冒険だと...誘ってきた。</p>
+                          						<p class="sp-drag-item-type-text  sp-text">その調査能力が買われ、博士号を取得して10日後にCIAからスカウトを受ける。CIAの一員になれば、カネも地位も簡単に手に入る。調査官曰く「東京にはCIAの協力者がかなりいる」「国会議員にも10人以上」(明確な数字は言わない)「産業スパイも当然の政策だ」（注:これらの発言は1976年当時のものである）そしてCIAになれば毎日が大冒険だと...誘ってきた。</p>
+                          					</div>
+                          				</div>
+
+                          				<div class="row">
+                          					<div class="col-sm-12">
+                          						<h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">米国機密文書を世界で初めて開いた世界的権威</h3>
+                          						<p class="sp-drag-item-type-text  sp-text">スタンフォード大学フーヴァー研究所教授西鋭夫</p>
+                          						<p class="sp-drag-item-type-text  sp-text">世界中の天才が集まり100人中3人しか合格しない超難関、超名門と言われるスタンフォード大学。その中でも格が違うのがフーヴァー研究所。元英国首相マーガレット・サッチャーは、「政治・経済・国際問題に関して世界で最も重要な研究組織はフーヴァー研究所であります」と評価をしている。</p>
+                          						<h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">米国機密文書を世界で初めて開いた世界的権威</h3>
+                          						<p class="sp-drag-item-type-text  sp-text">スタンフォード大学フーヴァー研究所教授西鋭夫</p>
+                          						<p class="sp-drag-item-type-text  sp-text">世界中の天才が集まり100人中3人しか合格しない超難関、超名門と言われるスタンフォード大学。その中でも格が違うのがフーヴァー研究所。元英国首相マーガレット・サッチャーは、「政治・経済・国際問題に関して世界で最も重要な研究組織はフーヴァー研究所であります」と評価をしている。</p>
+                          						<h3 class="sp-item sp-subhead-border-tb  sp-text" data-explain="subhead">米国機密文書を世界で初めて開いた世界的権威</h3>
+                          						<p class="sp-drag-item-type-text  sp-text">スタンフォード大学フーヴァー研究所教授西鋭夫</p>
+                          						<p class="sp-drag-item-type-text  sp-text">世界中の天才が集まり100人中3人しか合格しない超難関、超名門と言われるスタンフォード大学。その中でも格が違うのがフーヴァー研究所。元英国首相マーガレット・サッチャーは、「政治・経済・国際問題に関して世界で最も重要な研究組織はフーヴァー研究所であります」と評価をしている。</p>
+
+                          					</div>
+                          				</div>
+
+
+
+<ul class="icons-ul">
+  <li><i class="icon-li icon-ok"></i>Bulleted lists (like this one)</li>
+  <li><i class="icon-li icon-ok"></i>Buttons</li>
+  <li><i class="icon-li icon-ok"></i>Button groups</li>
+  <li><i class="icon-li icon-ok"></i>Navigation</li>
+  <li><i class="icon-li icon-ok"></i>Prepended form inputs</li>
+  <li><i class="icon-li icon-ok"></i>&hellip;and many more with custom CSS</li>
+</ul>
+
+
+
+                          			</div>
+                          		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<template>
+                          		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+								<!-- Latest compiled and minified JavaScript -->
+								<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</template>
+
+
+                          </body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </textarea>
+                    </td>
+
+                    <!-- Tag info TD -->
+                    <td valign="top" class="sp-border-color sp-bg-color " style="width:280px;" rowspan="2">
+
+
+						<style>
+							.layout-table{
+								display:table;
+								list-style-type
+							}
+							.layout-cell{
+								display:table-cell;
+								padding:5px;
+								text-align:center;
+							}
+							.layout-cell:hover{
+								color:#fff;
+								background-color:#666;
+								background-image:none;
+							}
+							.border-color-02 {
+							    border-top: 1px solid #1a1a1a;
+							    border-right: 1px solid #000;
+							    border-bottom: 1px solid #1a1a1a;
+							    border-left: 1px solid #000;
+							}
+
+							.border-r-color-02 {
+							    border-right: 1px solid #000;
+							}
+
+							.border-l-color-02 {
+							    border-left: 1px solid #000;
+							}
+
+							.bg-color-02 {
+							    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#333), to(#222));
+							}
+							.width-100p{
+								width:100%;
+							}
+							.width-90{
+								width:90px;
+							}
+
+							.btn-group{
+								display:table;
+								list-style-type
+							}
+							.btn-group>.btn{
+								display:table-cell;
+								padding:5px;
+								text-align:center;
+							}
+							.btn-group>.btn:hover{
+								color:#fff;
+								background-color:#666;
+								background-image:none;
+							}
+              hr{
+                border-width: 1px 0 0 0;
+                border-style: solid;
+                border-color: white;
+              }
+						</style>
+
+						<!-- タブ表示 -->
+						<ul class="layout-table width-100p">
+							<li class="layout-cell border-color-02 bg-color-02" id="tab-name-style">スタイル</li>
+							<li class="layout-cell border-color-02 bg-color-02" id="tab-name-text">テキスト</li>
+							<li class="layout-cell border-color-02 bg-color-02" id="tab-name-table">表</li>
+						</ul>
+
+
+					  <!-- タブ内容-->
+                      <div class="sp-tag-info-div">
+
+
+
+                        <!-- タブ内容：テキスト-->
+            						<div id="sp-id-tab-content-text" class="sp-js-tab-content">
+                                  	  <div class="sp-tag-info-title">フォント</div>
+                                  		<div class="sp-tag-info-row">
+                                  			<select id="sp-id-font-name" class="sp-js-input-execcommand" data-cmd="fontName">
+                                  				<option value="Hiragino Kaku Gothic ProN">Hiragino Kaku Gothic ProN</option>
+                                  				<option value="Meirio">Meirio</option>
+                                  				<option value="monospace">monospace</option>
+                                  			</select>
+                                  		</div>
+                                  		<div class="sp-tag-info-row">
+                                  		    <input id="sp-id-font-size" type="number" value="" step="1" min="0" max="100" class="sp-js-input-execcommand" data-cmd="fontSize">
+                                  			<select id="sp-id-font-size-unit" class="sp-js-input-execcommand" data-cmd="fontSize">
+                                  				<option value="px">px</option>
+                                  				<option value="em">em</option>
+                                  			</select>
+                                  			<input id="sp-id-fore-color" type="color" value="" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="foreColor">
+                                  			<input id="sp-id-back-color" type="color" value="" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="backColor">
+                                  		</div>
+                                  		<!--
+                                  		<div class="sp-tag-info-row">
+                                  		    <input id="sp-id-font-size-range" type="range" min="6" max="100" step="1" value="" class="sp-js-input-execcommand" data-cmd="fontSize" oninput="spIdFontSizeRangeOutput.value=this.value">
+                                  		    <output name="spIdFontSizeRangeOutput">10</output>
+                                  		</div>
+                                  		-->
+                                  		<div class="sp-tag-info-row">
+                                  		    <div class="btn-group width-100p">
+                                  		    	<a href="#" id="sp-id-bold"          class="btn border-color-02 bg-color-02 sp-js-click-execcommand" data-cmd="bold"          title="太字"       ><i class="fa fa-bold"></i></a>
+                                  		    	<a href="#" id="sp-id-underline"     class="btn border-color-02 bg-color-02 sp-js-click-execcommand" data-cmd="underline"     title="下線"       ><i class="fa fa-underline"></i></a>
+                                  		    	<a href="#" id="sp-id-strikethrough" class="btn border-color-02 bg-color-02 sp-js-click-execcommand" data-cmd="strikethrough" title="取り消し線" ><i class="fa fa-strikethrough"></i></a>
+                                  		    	<a href="#" id="sp-id-italic"        class="btn border-color-02 bg-color-02 sp-js-click-execcommand" data-cmd="italic"        title="斜体"       ><i class="fa fa-italic"></i></a>
+                                  		    </div>
+                                  		</div>
+
+                                      <hr>
+
+            	                      	  <div class="sp-tag-info-title">配置</div>
+            	                      		<div class="sp-tag-info-row">
+            	                      		    <div class="btn-group width-100p">
+            	                      				<a href="#" class="btn border-color-02 bg-color-02 sp-js-click-setSpEditCss" data-css="text-align" value="left"   style="width: 33.3%;" title="左"  ><i class="fa fa-align-left"></i></a>
+            	                      				<a href="#" class="btn border-color-02 bg-color-02 sp-js-click-setSpEditCss" data-css="text-align" value="center" style="width: 33.3%;" title="中央"><i class="fa fa-align-center"></i></a>
+            	                      				<a href="#" class="btn border-color-02 bg-color-02 sp-js-click-setSpEditCss" data-css="text-align" value="right"  style="width: 33.3%;" title="右"  ><i class="fa fa-align-right"></i></a>
+            	                      		    </div>
+            	                      		</div>
+
+                                        <hr>
+
+            	                      	    <div class="sp-tag-info-title">間隔</div>
+            	                      	    <div class="sp-tag-info-row">
+              	                      			<label>行間</label>
+              	                      			<input id="sp-id-line-height" type="number" value="" class="sp-js-input-execcommand" data-cmd="lineHeight">
+            	                      		  </div>
+
+
+            						</div>
+            						<!--/タブ内容：テキスト-->
+
+
+
+
+						<!-- タブ内容：スタイル（.spEdit）-->
+						<div id="sp-id-tab-content-text" class="sp-js-tab-content">
+
+							<div class="sp-tag-info-title">幅</div>
+							<div class="sp-tag-info-row">
+								<input id="sp-id-max-width" type="range" min="0" max="2000" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="max-width">
+							</div>
+							<div class="sp-tag-info-title">背景</div>
+							<div class="sp-tag-info-row">
+							    <label>イメージ</label>
+								<input id="sp-id-background-image"  type="text" value="" style="width:210px" class="sp-js-input-setSpEditCss" data-css="background-image">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>背景色</label>
+								<input id="sp-id-background-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="background-color">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>透過</label>
+							    <input id="sp-id-opacity"  type="range" min="0.00" max="1.00" step="0.01" value="0.00" class="sp-js-input-setSpEditCss" data-css="opacity">
+							</div>
+							<div class="sp-tag-info-title">枠線</div>
+							<div class="sp-tag-info-row">
+								<label>枠線</label>
+							    <select id="sp-id-border-style" class="sp-js-input-setSpEditCss" data-css="border-style">
+							        <!-- 2014/05/30 sekiya fix : -->
+							        <!-- <option value="none">None</option> -->
+							        <option value="none"></option>
+							        <option value="solid">Solid</option>
+							        <option value="dotted">Dotted</option>
+							        <option value="dashed">Dashed</option>
+							        <option value="double">Double</option>
+							        <option value="groove">Groove</option>
+							        <option value="ridge">Ridge</option>
+							        <option value="inset">Inset</option>
+							        <option value="outset">Outset</option>
+							    </select>
+							    <select id="sp-id-border-width" class="sp-js-input-setSpEditCss" data-css="border-width">
+							        <option value=""></option>
+							        <option value="1">1px</option>
+							        <option value="2">2px</option>
+							        <option value="3">3px</option>
+							        <option value="4">4px</option>
+							        <option value="5">5px</option>
+							        <option value="6">6px</option>
+							        <option value="7">7px</option>
+							        <option value="8">8px</option>
+							        <option value="9">9px</option>
+							        <option value="10">10px</option>
+							    </select>
+								<input id="sp-id-border-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="border-color">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>角丸</label>
+							    <input id="sp-id-border-radius" type="range" min="0" max="150" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="border-radius">
+							</div>
+							<div class="sp-tag-info-title">余白</div>
+							<div class="sp-js-disp" id="sp-js-disp-padding">
+							<div class="sp-tag-info-row">
+								<label>内側（padding）</label>
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>すべて</label>
+							    <input id="sp-id-padding" type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="padding">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>上</label>
+							    <input id="sp-id-padding-top" type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="padding-top">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>下</label>
+							    <input id="sp-id-padding-bottom"  type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="padding-bottom">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>左</label>
+							    <input id="sp-id-padding-left" type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="padding-left">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>右</label>
+							    <input id="sp-id-padding-right" type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="padding-right">
+							</div>
+							<div class="sp-tag-info-row">
+								<label>外側（margin）</label>
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>すべて</label>
+							    <input id="sp-id-margin" type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="margin">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>上</label>
+							    <input id="sp-id-margin-top"  type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="margin-top">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>下</label>
+							    <input id="sp-id-margin-bottom"  type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="margin-bottom">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>左</label>
+							    <input id="sp-id-margin-left"  type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="margin-left">
+							</div>
+							<div class="sp-tag-info-row">
+							    <label>右</label>
+							    <input id="sp-id-margin-right"  type="range" min="0" max="100" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="margin-right">
+							</div>
+						</div>
+						<!--/タブ内容：スタイル（.spEdit）-->
+
+
+                      	<!-- タブ内容：イメージ-->
+                      	<div id="sp-id-tab-content-image" class="sp-js-tab-content">
+                      	    <div class="sp-tag-info-title">イメージ</div>
+                      		<div class="sp-tag-info-row">
+                      			<input id="sp-id-attr-img-src" type="text" value="" style="width:295px" autocomplete="off" class="sp-js-input-setSpEditAttr" data-attr="src">
+                      		</div>
+                      		<div class="sp-tag-info-row">
+                      			<form id="spUploadImageForm" enctype="multipart/form-data" encoding="multipart/form-data" method="post">
+                      			    <button type="button" class="sp-btn sp-btn-upload">
+                      			        <span>
+                      			            新しい画像を挿入する
+                      			            <input type="file" name="uploadFile" class="sp-js-click-showImgDialog" style="display:none;">
+                      			        </span>
+                      			    </button>
+                      			</form>
+                      		</div>
+                      		<div class="sp-tag-info-row">
+                      			<select id="sp-id-img-style" class="sp-js-exec-cmd" data-cmd="fontName">
+                      				<option value="img-rounded">スタイル</option>
+                      				<option value="img-rounded">角丸</option>
+                      				<option value="img-circle">円形</option>
+                      				<option value="img-thumbnail">サムネイル</option>
+                      			</select>
+                      		</div>
+                      	    <div class="sp-tag-info-title">リンク</div>
+                      		<div class="sp-tag-info-row">
+                              <div class="btn-group">
+                                <button id="sp-id-link-btn" class="sp-icon-panel btn btn-default sp-js-click-openDialogLink" title="リンクの設定・編集"><i class="fa fa-link"></i></button>
+                                <!--ダイアログ：リンク-->
+                                <dialog id="sp-id-dialog-link" style="background-color:red;color:#000;">
+
+                                    <p>これはモーダルダイアログです。本当によろしいですか？</p>
+                                    <input type="text" name="link-url" id="sp-id-link-url" value="">
+                                    <select id="sp-id-link-target">
+                                      <option value="_blank">新しいタブで開く</option>
+                                      <option value="_self">別タブで開く</option>
+                                    </select>
+                                    <button type="button" class="sp-js-click-closeDialogLink">はい</button>
+                                    <button type="button" class="sp-js-click-closeDialog">いいえ</button>
+
+                                </dialog>
+                              </div>
+                              <input type="text" id="sp-id-label-link-url" value="" style="width: 250px;background-color: transparent;border: none;" readonly="true">
+                      		</div>
+                      	</div>
+                      	<!--/ タブ内容：イメージ-->
+
+                      	<!--タブ内容：属性-->
+                      	<div class="sp-js-disp" id="sp-js-disp-attr">
+                      		<div class="sp-tag-info-title">属性</div>
+                      		<div class="sp-tag-info-row">
+                      		    <label>Id</label>
+                      		    <input id="sp-id-attr-id" type="text" value="" style="width:210px">
+                      		</div>
+                      		<div class="sp-tag-info-row">
+                      		    <label>Class</label>
+                      		    <input id="sp-id-attr-class" type="text" value="" style="width:210px">
+                      		</div>
+                      		<div class="sp-tag-info-row">
+                      		    <label style="vertical-align: top;">Style</label>
+                      		    <textarea id="sp-id-attr-style" style="width:210px;height:50%;"></textarea>
+                      		</div>
+                      	</div>
+                      	<!--/ タブ内容：属性-->
+
+                      </div>
+                      <!--/ タブ内容-->
+
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height:30px;padding:1px 3px;" class="sp-border-color sp-bg-color">
+
+						<ul class="layout-table">
+							<li class="layout-cell width-90 border-r-color-02 bg-color-02"><i class="fa fa-code" aria-hidden="true"></i></li>
+							<li class="layout-cell width-90 border-r-color-02 bg-color-02">CSS</li>
+							<li class="layout-cell width-90 border-r-color-02 bg-color-02">JS</li>
+						</ul>
+
+                    </td>
+                </tr>
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!--■insert tags -->
+            <div class="sp-hidden-box sp-input-form-div" id="sp-input-div-tags" style="display:none;">
+                <div class="sp-input-form-header">トラッキングタグ・A/Bテストタグ・リマーケタグの&lt;script&gt;を設定してください</div>
+                <div class="sp-input-form-main">
+                    <table>
+                        <tr>
+                            <td style="width:">
+                                １．Google Analyticsトラッキングタグ<br><br>
+                                 　　<label><input type="radio" name="tagsTrackingFlag" value="1" {if $form.tagsTrackingFlag === '1'}checked{/if}> ON</label>
+                                 　　<label><input type="radio" name="tagsTrackingFlag" value="0" {if $form.tagsTrackingFlag === '0'}checked{/if}> OFF</label>
+                            </td>
+                            <td>
+                                <span class="sp2-notice">※下記のコードはSP Editorのドメインごとに設定されているトラッキング用コードです。</span><br>
+                                <span class="sp2-notice">※「ON」にすると、アップロード時に下記のコードが&lt;body&gt;の下に配置されます</span><br>
+                                <textarea class="sp2-code"readonly >{$domain.analyticsTag|escape}</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ２．リマーケタグ<br><br>
+                                 　　<label><input type="radio" name="tagsRemarketingFlag" value="1" {if $form.tagsRemarketingFlag === '1'}checked{/if}> ON</label>
+                                 　　<label><input type="radio" name="tagsRemarketingFlag" value="0" {if $form.tagsRemarketingFlag === '0'}checked{/if}> OFF</label>
+                            </td>
+                            <td>
+                                <span class="sp2-notice">※下記のコードはSP Editorのドメインごとに設定されているリマーケティング用コードです。</span><br>
+                                <span class="sp2-notice">※「ON」にすると、アップロード時に下記のコードが&lt;/body&gt;の上に配置されます</span><br>
+                                <textarea class="sp2-code"readonly >{if !isBlankOrNull($domain.remarketingTag)}{$domain.remarketingTag|escape}{else}リマーケタグは設定されていません。設定する場合は、システムに依頼してください。{/if}</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ３．Google Analytics A/Bテストタグ<br><br>
+                            </td>
+                            <td>
+                                <span class="sp2-notice">※ABテストコードを入力すると、アップロード時に右記のコードを&lt;head&gt;の下に配置されます</span><br>
+                                <textarea name="tagsAbtestCode" style="width:550px;height:135px;font-size:10px;padding:5px;" placeholder="Google analyticsのA/Bテストコードを貼り付けてください。">{$form.tagsAbtestCode}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="sp-input-form-footer">
+                    <button type="button" class="sp-btn sp-btn-ok" id="sp-btn-tags-ok">OK</button>
+                </div>
+            </div>
+
+        </form>
+
+        <div id="sp-layer" style="display:none">LOADING…</div>
+
+        <div id="sp2-common-msg" onmouseover="$(this).fadeOut('first');"></div>
+
+
+
+        <!--■hidden boxリスト -->
+
+        <!--■color picker -->
+        <div id="sp-color-picker-div" class="sp-hidden-box" style="display:none;" data-cmd="foreColor or bgColor">
+            <div style="display: inline-block;"><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#000000" style="background-color: rgb(0, 0, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#444444" style="background-color: rgb(68, 68, 68);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#666666" style="background-color: rgb(102, 102, 102);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#999999" style="background-color: rgb(153, 153, 153);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#CCCCCC" style="background-color: rgb(204, 204, 204);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#EEEEEE" style="background-color: rgb(238, 238, 238);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#F3F3F3" style="background-color: rgb(243, 243, 243);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#FFFFFF" style="background-color: rgb(255, 255, 255);">&nbsp;</button><hr style="border:none;margin:0;height:8px;"><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#FF0000" style="background-color: rgb(255, 0, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#FF9900" style="background-color: rgb(255, 153, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#FFFF00" style="background-color: rgb(255, 255, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#00FF00" style="background-color: rgb(0, 255, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#00FFFF" style="background-color: rgb(0, 255, 255);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#0000FF" style="background-color: rgb(0, 0, 255);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#9900FF" style="background-color: rgb(153, 0, 255);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#FF00FF" style="background-color: rgb(255, 0, 255);">&nbsp;</button><hr style="border:none;margin:0;height:8px;"><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#F4CCCC" style="background-color: rgb(244, 204, 204);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#FCE5CD" style="background-color: rgb(252, 229, 205);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#FFF2CC" style="background-color: rgb(255, 242, 204);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#D9EAD3" style="background-color: rgb(217, 234, 211);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#D0E0E3" style="background-color: rgb(208, 224, 227);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#CFE2F3" style="background-color: rgb(207, 226, 243);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#D9D2E9" style="background-color: rgb(217, 210, 233);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#EAD1DC" style="background-color: rgb(234, 209, 220);">&nbsp;</button><hr style="border:none;margin:0;height:1px;"><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#EA9999" style="background-color: rgb(234, 153, 153);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#F9CB9C" style="background-color: rgb(249, 203, 156);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#FFE599" style="background-color: rgb(255, 229, 153);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#B6D7A8" style="background-color: rgb(182, 215, 168);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#A2C4C9" style="background-color: rgb(162, 196, 201);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#9FC5E8" style="background-color: rgb(159, 197, 232);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#B4A7D6" style="background-color: rgb(180, 167, 214);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#D5A6BD" style="background-color: rgb(213, 166, 189);">&nbsp;</button><hr style="border:none;margin:0;height:1px;"><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#E06666" style="background-color: rgb(224, 102, 102);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#F6B26B" style="background-color: rgb(246, 178, 107);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#FFD966" style="background-color: rgb(255, 217, 102);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#93C47D" style="background-color: rgb(147, 196, 125);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#76A5AF" style="background-color: rgb(118, 165, 175);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#6FA8DC" style="background-color: rgb(111, 168, 220);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#8E7CC3" style="background-color: rgb(142, 124, 195);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#C27BA0" style="background-color: rgb(194, 123, 160);">&nbsp;</button><hr style="border:none;margin:0;height:1px;"><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#CC0000" style="background-color: rgb(204, 0, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#E69138" style="background-color: rgb(230, 145, 56);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#F1C232" style="background-color: rgb(241, 194, 50);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#6AA84F" style="background-color: rgb(106, 168, 79);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#45818E" style="background-color: rgb(69, 129, 142);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#3D85C6" style="background-color: rgb(61, 133, 198);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#674EA7" style="background-color: rgb(103, 78, 167);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#A64D79" style="background-color: rgb(166, 77, 121);">&nbsp;</button><hr style="border:none;margin:0;height:1px;"><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#990000" style="background-color: rgb(153, 0, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#B45F06" style="background-color: rgb(180, 95, 6);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#BF9000" style="background-color: rgb(191, 144, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#38771D" style="background-color: rgb(56, 119, 29);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#134F5C" style="background-color: rgb(19, 79, 92);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#0B5394" style="background-color: rgb(11, 83, 148);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#351C75" style="background-color: rgb(53, 28, 117);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#741B47" style="background-color: rgb(116, 27, 71);">&nbsp;</button><hr style="border:none;margin:0;height:1px;"><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#660000" style="background-color: rgb(102, 0, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#783F04" style="background-color: rgb(120, 63, 4);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#7F6000" style="background-color: rgb(127, 96, 0);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#274E13" style="background-color: rgb(39, 78, 19);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#0C343D" style="background-color: rgb(12, 52, 61);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#073763" style="background-color: rgb(7, 55, 99);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#201211" style="background-color: rgb(32, 18, 17);">&nbsp;</button><button class="sp-color-picker-panel sp-exec-cmd"  data-val="#4C1130" style="background-color: rgb(76, 17, 48);">&nbsp;</button></div>
+        </div>
+
+        <!--■insert image -->
+        <div class="sp-hidden-box sp-input-form-div" id="sp-input-div-image" style="display:none;">
+            <div class="sp-input-form-header">画像の挿入・編集</div>
+            <div class="sp-input-form-main">
+                <table>
+                    <tr>
+                        <td>
+                            <form id="spUploadImageForm" enctype="multipart/form-data" encoding="multipart/form-data" method="post">
+                                <button type="button" class="sp-btn sp-btn-upload">
+                                    <label>
+                                        新しい画像を挿入する
+                                        <input type="file" name="uploadFile" id="spUploadImageInputBox" style="display:none;">
+                                    </label>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><hr></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            画像URL : <input type="text" id="sp-input-box-image" value="" style="width:550px;" placeholder="画像のフルパスURLを入力、または「新しい画像を挿入する」ボタンを押してください。">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="sp-input-form-footer">
+                <button type="button" class="sp-btn sp-btn-ok sp-exec-cmd" data-cmd="insertImage">OK</button>
+                <button type="button" class="sp-btn sp-btn-cancel">Cancel</button>
+            </div>
+        </div>
+
+        <!--■insert bg-image -->
+        <div class="sp-hidden-box sp-input-form-div" id="sp-input-div-bg-image" style="display:none;">
+            <div class="sp-input-form-header">背景画像の挿入・編集</div>
+            <div class="sp-input-form-main">
+                <table>
+                    <tr>
+                        <td>
+                            <form id="spUploadBgImageForm" enctype="multipart/form-data" encoding="multipart/form-data" method="post">
+                                <button type="button" class="sp-btn sp-btn-upload">
+                                    <label>
+                                        新しい背景画像を挿入する
+                                        <input type="file" name="uploadFile" id="spUploadBgImageInputBox" style="display:none;">
+                                    </label>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><hr></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            背景画像URL : <input type="text" id="sp-input-box-bg-image" value="" style="width:550px;" placeholder="背景画像のフルパスURLを入力、または「新しい背景画像を挿入する」ボタンを押してください。">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="sp-input-form-footer">
+                <button type="button" class="sp-btn sp-btn-ok sp-exec-cmd" data-cmd="insertBgImage">OK</button>
+                <button type="button" class="sp-btn sp-btn-cancel">Cancel</button>
+            </div>
+        </div>
+
+        <!--■insert replace string -->
+        <div class="sp-hidden-box sp-input-form-div" id="sp-input-div-replace-string" style="display:none;">
+            <div class="sp-input-form-header">ビデオの挿入・編集</div>
+            <div class="sp-input-form-main">
+                <table>
+                    <tr>
+                        <td><textarea id="sp-input-box-replace-string" style="width:550px;height:200px;" placeholder="例） &lt;iframe width=&quot;100%&quot; height=&quot;100%&quot; src=&quot;https://www.youtube.com/embed/N_2Iw7BTxl8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;"></textarea></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="sp-input-form-footer">
+                <button type="button" class="sp-btn sp-btn-ok sp-exec-cmd" data-cmd="insertVideo">OK</button>
+                <button type="button" class="sp-btn sp-btn-cancel">Cancel</button>
+            </div>
+        </div>
+
+        <!--■insert link -->
+        <div class="sp-hidden-box sp-input-form-div" id="sp-input-div-link" style="display:none;">
+            <div class="sp-input-form-header">リンクの挿入・編集</div>
+            <div class="sp-input-form-main">
+                <table>
+                    <tr>
+                        <td>
+                            リンクURL : <input type="text" id="sp-input-box-link" value="" style="width:550px;" placeholder="リンク先のURLを入力してください。">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="sp-input-form-footer">
+                <button type="button" class="sp-btn sp-btn-ok sp-exec-cmd" data-cmd="createLink">OK</button>
+                <button type="button" class="sp-btn sp-btn-cancel">Cancel</button>
+            </div>
+        </div>
+
+        <!--■insert timer -->
+        <div class="sp-hidden-box sp-input-form-div" id="sp-input-div-timer" style="display:none;">
+            <div class="sp-input-form-header">タイマー表示の設定</div>
+            <div class="sp-input-form-main">
+                <table>
+                    <tr>
+                        <td>
+                            「編集中」の領域を<br>
+                            <br>
+                            ページ表示されてから <input type="number" id="sp-input-box-timer" value="" step="1" min="0" style="width:60px;"> 秒後に表示する
+                            <br>
+                            <br>
+                            <span style="color:#000;font-size:11px;">※タイマーOFFにしたい場合は、0秒後、または空を設定してください。</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="sp-input-form-footer">
+                <button type="button" class="sp-btn sp-btn-ok sp-exec-cmd" data-cmd="setTimer">OK</button>
+                <button type="button" class="sp-btn sp-btn-cancel">Cancel</button>
+            </div>
+        </div>
+
+        <!--■insert form info -->
+        <div class="sp-hidden-box sp-input-form-div" id="sp-input-div-form-info" style="display:none;">
+            <div class="sp-input-form-header">フォーム情報の編集</div>
+            <div class="sp-input-form-main">
+                <table>
+                    <tr>
+                        <td>
+                            フォーム遷移先URL<br>
+                            <input type="url" id="sp-input-box-form-action-url" style="width:550px;" placeholder="例）https://123direct.jp/regist/customer/customerRegist.php">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            hiddenパラメーター<br>
+                            <textarea id="sp-input-box-form-hidden" style="width:550px;height:120px;" placeholder="例）&lt;input type=&quot;hidden&quot; name=&quot;scenarioId[]&quot; value=&quot;1234&quot;&gt;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="padding: 30px;background-color: rgb(247, 247, 247);color: #000;border: 1px solid gray;border-radius: 7px;">
+                                DRM顧客登録フォームタグ<br>
+                                <input type="url" id="sp-input-box-drm-form-tag" style="width:550px;margin:15px 0" placeholder="例）&lt;script src=&quot;http://123direct.jp/form/customer/BFRDYMB6/1/&quot;&gt;&lt;/script&gt;">
+                                <br>
+                                <span style="font-size:12px;color:#000">
+                                    ※DRM顧客登録フォームタグから、<br>
+                                    「シナリオID」「HTMLフォームID」など、<br>
+                                    DRMシナリオ登録に必要なパラメーターを抽出し、セットします。<br>
+                                </span>
+                                <br>
+                                <button type="button" class="sp-btn sp-btn-action" onclick="setDrmFormInfo()">抽出＋セットする</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="sp-input-form-footer">
+                <button type="button" class="sp-btn sp-btn-ok sp-exec-cmd" data-cmd="setFormInfo">OK</button>
+                <button type="button" class="sp-btn sp-btn-cancel">Cancel</button>
+            </div>
+        </div>
+
+<!--Tempate Tag : Drag item HTML -->
+<template id="sp-drag-item-html-template">
+    <div id="sp-drag-item-html-text"><p class="sp-drag-item-html sp-drag-item-type-text targetOutline sp-drop-effect" contenteditable="true">Text</p></div>
+    <div id="sp-drag-item-html-image"><div class="sp-drag-item-html sp-drag-item-type-image targetOutline sp-drop-effect" style="text-align:center" contenteditable="true"><img src="" alt="ココをクリックして画像URLを設定してください"></div></div>
+    <div id="sp-drag-item-html-video"><div class="sp-drag-item-html sp-drag-item-type-video targetOutline sp-drop-effect" style="text-align:center" contenteditable="true"><span class="sp-replace-span" data-replace-type="video"><template><iframe width="640" height="360" src="https://www.youtube.com/embed/N_2Iw7BTxl8" frameborder="0" allowfullscreen></iframe></template></span></div></div>
+    <div id="sp-drag-item-html-countdown"><center><div style="display:inline-block;">%%COUNTDOWNSTART%%{$smarty.const.COUNTDOWN_YYYYMMDD_HHIISS}%%COUNTDOWNEND%%</div></center></div>
+    <div id="sp-drag-item-html-optinform1">
+        {$smarty.const.SPACING_DIV_DEFAULT}
+        <div data-sp2-explain="オプトインフォーム" style="max-width: 600px;margin:0 auto;padding:0 30px;">
+
+            <form action="" method="post" class="sp-drag-item-html sp2-drm-form" data-sp2-explain="入力フォーム">
+
+                <!-- opt-in email -->
+                <input type="text" name="email" value="" class="sp2-optin-form-input" placeholder="メールアドレスを入力してください。">
+
+                <span style="font-size:80%;margin-bottom:20px;" class=""> ※Yahoo、MSN(Hotmail)、携帯電話のメールアドレスでは登録できません </span>
+
+                {$smarty.const.SPACING_DIV_DEFAULT}
+
+                <!-- opt-in button-->
+                <button type="submit" class="sp2-button-orange">オプトインする</button>
+
+                %%OPTIN_AGREE_ORDER%%
+
+            </form>
+
+            {$smarty.const.SPACING_DIV_DEFAULT}
+
+            <!--▼プライバシーポリシーについてー-->
+            {*プライバシーポリシーについて表示*}
+            {if $smarty.session.staff.pmarkFlag === '1'}
+                <table style="width: 100%; background-color: #ffffff;" border="0" cellspacing="0" cellpadding="0" data-sp2-explain="プライバシーポリシーについて（table）">
+                    <tr>
+                        <td colspan="2" style="padding:3px;">
+                            <div style="border-bottom: #235091 1px solid; margin-bottom: 4px;" align="left">
+                                <strong style="color: #235091;">プライバシーポリシーについて</strong>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:3px;" align="left">
+                            <p style="margin: 0px; padding: 0px; font-size: 80%; line-height: 1.3em;">
+                                %%COMPANY_FULL_NAME%%はお客様の個人情報保護に取り組む企業を示す「プライバシーマーク」を取得しております。
+                            </p>
+                            <div style="padding-top: 5px; font-size: 0.7em; line-height: 1.3em;">
+                                <a style="line-height: 1.5em;" href="%%PRIVACY_POLICY_URL%%" target="_blank">プライバシーポリシー</a><br>
+                                <a href="%%SPECIFIC_TRADE_LAW_URL%%" target="_blank">特定商取引法上の表記</a>
+                            </div>
+                        </td>
+                        <td style="width:75px;padding:3px;">
+                            <a href="http://privacymark.jp/" target="_blank">
+                                <img style="width:75px;height:75px;margin-right: 5px;" src="https://www.d-publishing.co.jp/pmark/small.gif" alt="" border="0">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            {else}
+                <!--pmark none-->
+            {/if}
+            <!--▲プライバシーポリシーについてー-->
+
+            {$smarty.const.SPACING_DIV_DEFAULT}
+
+            <!--▼SSLシール-->
+            {*SSLセキュアシール表示*}
+            {if $domain.sslType === 'SSL_TYPE_VERISIGN' || $domain.sslType === 'SSL_TYPE_GEOTRUST'}
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #FFF;" data-sp2-explain="SSLセキュアシール（table）">
+                    <tr>
+                        <td colspan="2" style="padding:3px;" align="left">
+                            <div style="border-bottom:#235091 1px solid; margin-bottom:4px;" align="left">
+                                <strong style="color:#235091;">安心のSSL暗号化</strong>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            <p style="margin: 0px; padding: 3px; font-size: 80%;">このサイトは128ビットSSL暗号化技術採用により、お客様の情報を最高水準のセキュリティで保護しています。</p>
+                        </td>
+                        <td style="width:115px;font-size: 80%;padding:3px;">
+                            %%SSL_SECURE_SEAL%%
+                        </td>
+                    </tr>
+                </table>
+            {else}
+                <!--SSL TYPE : NONE -->
+            {/if}
+            <!--▲SSLシール-->
+            {$smarty.const.SPACING_DIV_DEFAULT}
+        </div>
+        {$smarty.const.SPACING_DIV_DEFAULT}
+    </div>
+</template>
+
+<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+<!--<script type="text/javascript" src="js/spEditor/spEditor-3.0.js"></script>-->
+<script type="text/javascript" src="js/spEditor/sp2Editor-miko3_sp.js"></script>
+
+<!--▼共通JS処理-->
+<script type="text/javascript">
+// (function(){
+//     /**
+//      * ユーザー体感表示結果
+//      */
+//     window.addEventListener('load',function(e){
+//         var start = window.performance.timing.navigationStart;
+//         var now = Date.now();
+//         cc(now - start);
+//         // 高精度タイムスタンプ（ページナビゲートからの経過時間をマイクロ秒を返す）
+//         cc(window.performance.now());
+
+//         var entries = window.performance.getEntriesByType('resource');
+//         cc(entries);
+//         for(var i=0;i<entries.length;i++){
+//             var entry = entries[i];
+//             if(entry.initiatorType == 'img'){
+//                 var elapsed = entry.responseEnd - entry.startTime;
+//                 cc(elapsed + 'ms');
+//             }
+//         }
+//         if()
+//     },false);
+// })();
+
+
+$(function(){
+    //console.log('sp2.html end : %f',window.performance.now());
+    //console.time('sp2EditorAll');
+    //console.time('sp2EditorWithOutIframe');
+    //mark('HTML: spEditor exec : start');
+  $('#htmlBody').sp2Editor({
+        staffId : '220',
+        cssFile : '',
+        scrollTop : '0'
+    });
+    //mark('HTML: spEditor exec : end');
+    //console.timeEnd('sp2EditorWithOutIframe');
+    console.log('page init complete : %f',window.performance.now());
+});
+
+function tabClose(){
+    if(confirm('編集中のデータが失われます。タブを閉じますか？')){
+        window.close();
+    }
+}
+function setDrmFormInfo(){
+    var drmFormTag = $('#sp-input-box-drm-form-tag').val();
+    if(drmFormTag){
+        $.ajax({
+            type: "POST",
+            url: "select_drm_form_parameter.php",
+            dataType:'json',
+            data: { "drmFormTag": drmFormTag},
+            timeout:10000
+        }).done(function( res ) {
+            cc(res);
+            if(res.resultType == 'SUCCESS'){
+                $('#sp-input-box-form-action-url').val(res.action);
+                $('#sp-input-box-form-hidden').val(res.hidden);
+                showCommonMsg('success','DRM顧客登録フォームタグからオプトインに必要なデータを抽出し、「フォーム遷移先URL」「hiddenパラメーター」をセットしました！！');
+            }else{
+                showCommonMsg('error','DRM顧客登録フォームタグからパラメーター（シナリオID等）が抽出できませんでした！！DRM顧客登録フォームタグが正しい形式ではありません。');
+            }
+        });
+    }else{
+        showCommonMsg('error','DRM顧客登録フォームタグを入力してください！！');
+    }
+}
+</script>
+<!--▲共通JS処理-->
+
+
+    </body>
+</html>

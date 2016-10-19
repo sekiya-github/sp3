@@ -1,0 +1,83 @@
+<!--sp2:countdown timer (micro second):start-->
+<div class="sp-countdown-timer-micro-second-2"></div>
+<style>
+.sp-countdown-timer-micro-second-2{
+	font-family: serif;
+	font-weight: bold;
+	max-width: 100%;
+	color: #990000;
+	margin: 0 auto;
+	display: block;
+    border: 2px double #990000;
+    border-radius: 4px;
+    padding: 30px;
+    text-align: center;
+	
+}
+/*カウントする数字の大きさ*/
+.day, .hou, .min, .sec, .mil {
+	font-size: 48px;
+}
+.day {
+}
+.hou {
+}
+.min {
+}
+.sec {
+}
+.mil {
+}
+.moji {/*日とか時間とか秒とかの文字の色と大きさ*/
+	font-size: 36px;
+	color:#000000;
+}
+</style>
+<script>
+window.jQuery || document.write('<script type="text/javascript" src="http://s3-ap-northeast-1.amazonaws.com/jp.speditor.common/js/jquery-1.10.2.min.js"><\/script>');
+</script>
+<script>
+$(function() {
+    spCountdownTimerMicroSecond2();
+});
+function spCountdownTimerMicroSecond2() {
+    // 終了時刻　※カウントダウンの終わりの設定
+    // 指定は下記のような形で
+    // "Jan 1 2015 00:00:00" "2010 Jan 1 00:00:00" "Jan 01,2015 00:00:00" "06/11/2014 00:00:00"
+    var endDate = new Date("09/29/2016 00:00:00"); // ←ここにデットラインを指定する。
+    // 現在時刻
+    var nowDate = new Date();
+    // 残り時間（ミリ秒）
+    var sands = endDate - nowDate;
+    
+    // Math.floor で小数点以下切り捨て
+    // 残り時間「日」
+    var d = Math.floor(sands / (1000 * 60 * 60 * 24));
+    
+    // 残り時間「時」
+    sands -= (d * (1000 * 60 * 60 * 24));
+    var h = Math.floor(sands / (1000 * 60 * 60));
+    
+    // 残り時間「分」
+    sands -= (h * (1000 * 60 * 60));
+    var m = Math.floor(sands / (1000 * 60));
+    
+    // 残り時間「秒」
+    sands -= (m * (1000 * 60));
+    var s = Math.floor(sands / 1000);
+    
+    // 残り時間「ミリ秒」
+    sands -= (s * 1000);
+    var ms = Math.floor(sands / 10);
+    
+    // 表示させる
+    if (endDate > nowDate) {
+        $(".sp-countdown-timer-micro-second-2").html('<span class="day">'+d+'</span><span class="moji">日</span><span class="hou">'+h+'</span><span class="moji">時間</span><span class="min">'+m+'</span><span class="moji">分</span><span class="sec">'+s+'</span><span class="moji">秒</span><span class="mil">'+ms+'</span>');
+    } else {
+        $(".sp-countdown-timer-micro-second-2").text('公開済み!!');
+    }
+    // 指定ミリ秒ごとにループ
+    setTimeout(spCountdownTimerMicroSecond2, 10);
+}
+</script>
+<!--sp2:countdown timer (micro second):end-->

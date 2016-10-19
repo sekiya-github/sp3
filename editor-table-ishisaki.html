@@ -1,0 +1,3339 @@
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>{$thisPageTitlle}</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue-pink.min.css" />-->
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<!--     <link href="css/edit-page.css" rel="stylesheet">
+ -->
+<style>
+*{
+	padding: 0;
+	margin: 0;
+	font-size:11px;
+	box-sizing: border-box;
+    border-collapse: collapse;
+    font-family: 'Roboto', 'Helvetica', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+}
+html,body{
+	 overflow-y: hidden;
+	 width:100%;
+	 height:100%;
+}
+.layout-table{
+	width:100%;
+	height:100%;
+	border-collapse: collapse;
+}
+.layout-table td{
+}
+
+
+.card-table{
+	width:calc(100% - 30px);
+	margin:15px;
+
+
+}
+.card-table td{
+	border:none;
+	padding-bottom:15px;
+}
+.card-table > tbody > tr:last-child {
+	border-bottom:1px solid #aaa;
+}
+.card-table .header{
+	font-size:14px;
+	color:#555;
+    font-weight: bold;
+}
+.card-table .label{
+	font-size:14px;
+	padding-right: 15px;
+	font-size:11px;
+	white-space:nowrap;
+}
+.card-table .icon{
+    width: 1%;
+    padding-right: 15px;
+}
+.card-table .icon-btn{
+    width: 1%;
+    padding-right: 15px;
+    padding-left: 15px;
+    white-space:nowrap;
+}
+.card-table .switch-btn{
+	padding-right:10px;
+}
+.card-table .switch-btn .mdl-switch{
+	display: inline;
+}
+
+.active{
+	color:white !important;
+	background-color:#00c0ff !important;
+}
+
+
+
+
+
+div.scroll-box{
+	width:100%;
+	height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+
+
+/* form */
+input, select, textarea{
+	border:1px solid #aaa;
+	border-radius:2px;
+    width: 100%;
+    height: 24px;
+    padding: 0 5px;
+    background-color: #fff;
+	color:#000;
+
+}
+
+input[type="number"]{
+	width: 65px;
+}
+input[type="range"]{
+	border:none;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	-webkit-animation: 1s;
+	width: 27px;
+	height: 24px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	vertical-align: bottom;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+	margin: 0;
+}
+
+
+/* compornent */
+
+.btn-group{
+	display:table;
+	width:100%;
+
+}
+.btn-group>.btn{
+	display:table-cell;
+	width:auto;
+	min-width:auto;
+	border:1px solid #aaa;
+	padding: 2px;
+	height:auto;
+}
+
+.btn-drag-item{
+	width: 65px;
+    height: 22px;
+    min-width: 1px;
+    padding: 0;
+    font-size: 11px;
+    line-height: 1.3em;
+    text-transform:capitalize;
+}
+.btn-table-edit{
+	height:25px;
+}
+
+.material-icons{
+	vertical-align: sub;
+}
+
+
+.iframe-mobile-preview{
+	width:375px !important; /* iphone6 width */
+	height:95% !important;
+	margin:0 auto !important;
+	border:1px solid #000 !important;
+}
+
+
+
+
+/* Material design lite Overwrite */
+.mdl-tabs__tab-bar {
+    height: 39px;
+    display: table;
+    width:100%;
+}
+.mdl-tabs__tab {
+	display: table-cell;
+	float: none;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 39px;
+    font-size: 11px;
+}
+.mdl-checkbox__label{
+	font-size:11px;
+}
+.mdl-button {
+}
+.material-icons {
+    font-size: 14px;
+    font-family: 'Material Icons';
+}
+.btn-group .mdl-button:hover {
+    background-color: inherit;
+}
+
+</style>
+
+<style>
+.image-thumbnail {
+    display: inline-block;
+    border: 1px solid #aeb5e3;
+    padding: 15px;
+    height: 150px;
+    width: 150px;
+    border-radius: 4px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 10px;
+}
+.image-thumbnail img{
+    max-width: 100%;
+    max-height: 118px;
+}
+
+</style>
+
+</head>
+<body>
+<form name="editForm" id="editForm" action="edit_html_2.php" method="post" onsubmit="return false;">
+    <input type="hidden" name="tokenId" id="tokenId" value="{$form.tokenId|htmlspecialchars:$smarty.const.ENT_QUOTES}">
+    <input type="hidden" name="pageId"   id="pageId"   value="{$form.pageId}">
+    <input type="hidden" name="accessUrl"  id="accessUrl"  value="{$form.accessUrl}">
+
+	<table class="layout-table">
+		<tr style="height:52px;border-bottom:1px solid #000">
+			<td style="padding-left:15px;">
+				<table>
+					<tr>
+						<td>
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+								<input type="checkbox" id="checkbox-1" class="mdl-checkbox__input sp-js-click-showTagGuide" data-guide-tag="all">
+								<span class="mdl-checkbox__label">ガイド表示</span>
+							</label>
+						</td>
+						<td style="padding-left:20px;">
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+								<input type="checkbox" id="checkbox-2" class="mdl-checkbox__input sp-js-click-showMobileView" data-guide-tag="all">
+								<span class="mdl-checkbox__label">モバイルビュー</span>
+							</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td align="right" style="padding-right:30px;">
+				<!-- Flat button with ripple -->
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect sp-js-click-saveHtml">保存</button>
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect sp-js-click-restoreHtml">リストア</button>
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect">アップロード</button>
+			</td>
+			<td style="width:250px">
+			  <div class="mdl-tabs__tab-bar">
+				<!-- タブメニュー -->
+				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" style="postion:fixed;">
+					<div class="mdl-tabs__tab-bar">
+						<a href="#starks-panel"     id="sp-id-tab-format"    class="mdl-tabs__tab"           onclick="$('#sp-id-drag-item-box').hide();$('#sp-id-format-box').show();">フォーマット</a>
+						<a href="#lannisters-panel" id="sp-id-tab-drag-item" class="mdl-tabs__tab is-active" onclick="$('#sp-id-format-box').hide();$('#sp-id-drag-item-box').show();">ドラッグアイテム</a>
+					</div>
+				</div>
+			  </div>
+			</td>
+			<td style="width:50px;text-align:center;">
+				<button class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons" style="font-weight:bold;font-size:22px;">close</i></button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-top: 1px solid #000;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<textarea  name="htmlBody" id="htmlBody">
+
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!--ブラウザタブに表示するタイトル-->
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!--templateId : 269-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2_2_20160916_145011_sp-animate.css" rel="stylesheet">
+    <link href="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2_3_20160916_145011_font-awesome.min.css" rel="stylesheet">
+    <style>
+/*------------------------------------------------------
+ SP3
+--------------------------------------------------------*/
+
+/* box-align */
+.sp-box-algin-left{
+display:block !important;
+margin-left:0 !important;
+margin-right:auto !important;
+}
+.sp-box-algin-center{
+display:block !important;
+margin-left:auto !important;
+margin-right:auto !important;
+}
+.sp-box-algin-right{
+display:block !important;
+margin-left:auto !important;
+margin-right:0 !important;
+}
+
+/* overlay */
+.sp-overlay{
+    background: rgba(5,5,5,0.85);
+}
+
+
+/* image */
+.sp-item-style-image-rounded{
+border-radius: 6px;
+}
+.sp-item-style-image-circle{
+border-radius: 50%;
+}
+.sp-item-style-image-thumbnail{
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.sp-box{
+    padding:15px;
+    margin:0;
+}
+
+
+/*------------------------------------------------------
+ bootstrap overwrite
+--------------------------------------------------------*/
+[class^="col-xs-"],
+[class*=" col-xs-"],
+[class^="col-sm-"],
+[class*=" col-sm-"],
+[class^="col-md-"],
+[class*=" col-md-"]
+[class^="col-lg-"],
+[class*=" col-lg-"]{
+    padding:15px;
+}
+
+
+a, a:focus, a:hover {
+    color: white;
+    text-decoration: none;
+}
+ol, ul {
+    margin-bottom: 30px;
+}
+
+
+
+/*------------------------------------------------------
+ テンプレートクラス
+--------------------------------------------------------*/
+body{
+    color: #333;
+    color: #444;
+        color: rgb(68, 68, 68);
+    color: rgb(0, 0, 0);
+    font-family: 'helvetica', 'arial', sans-serif;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-size:16px;
+    font-size:18px;
+    line-height: 2em;
+    padding:0;
+    /*
+    position: relative;
+    background-color: #000;
+    background: url(http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145001_lies-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    */
+}
+.sp-item{
+    margin-bottom:30px;
+}
+.sp-item:last-child{
+    /*margin-bottom:0;*/
+}
+.section-headline{
+	background-color: rgb(0, 0, 0);
+    /*
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 17px 0px, rgba(0, 0, 0, 0.188235) 0px 6px 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 12px 15px 0px, rgba(0, 0, 0, 0.188235) 0px 17px 50px 0px;
+    */
+    box-shadow: rgba(0, 0, 0, 0.137255) 0px 4px 5px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 10px 0px, rgba(0, 0, 0, 0.2) 0px 2px 4px -1px;
+}
+
+.subhead{
+    font-size: 28px;
+    line-height: 45px;
+    font-weight: bolder;
+    text-align: center;
+}
+.subhead-headline{
+	font-family: helvetica, arial, sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    text-align: center;
+    /* margin: 63px 0; */
+    /* margin-bottom: 55px; */
+    padding: 45px 0;
+}
+.subhead-session{
+    font-size: 26px;
+    line-height: 45px;
+    font-weight: normal;
+    /* text-align: center; */
+    cursor: pointer;
+    color: rgb(34, 34, 34);
+    margin-bottom: 0;
+    background: url(data:image/gif;base64,R0lGODlhFwANAIAAAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjY5RkZBQTE1NkI3NUU2MTFBQjI3QjQ3REU0N0Q2NzAzIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBENUY4OTcwNzU5RjExRTY4QjdEQThFNEFCN0FDQUY3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBENUY4OTZGNzU5RjExRTY4QjdEQThFNEFCN0FDQUY3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MkVENjhGOUY2Rjc1RTYxMThBRUQ5OTU5MENGNzFENTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NjlGRkFBMTU2Qjc1RTYxMUFCMjdCNDdERTQ3RDY3MDMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQAAAAAACwAAAAAFwANAAACJoSDqYvmx2J4VK5a7XwpR99wDNiJpWN55MitH4VqCgzIbGxfkFQAADs=) no-repeat 95% center;
+}
+.subhead-session:hover{
+    opacity:0.5;
+}
+.subhead-session.allow-close{
+	background: url(data:image/gif;base64,R0lGODlhFwANAIAAAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjY5RkZBQTE1NkI3NUU2MTFBQjI3QjQ3REU0N0Q2NzAzIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBENUY4OTc0NzU5RjExRTY4QjdEQThFNEFCN0FDQUY3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBENUY4OTczNzU5RjExRTY4QjdEQThFNEFCN0FDQUY3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MkVENjhGOUY2Rjc1RTYxMThBRUQ5OTU5MENGNzFENTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NjlGRkFBMTU2Qjc1RTYxMUFCMjdCNDdERTQ3RDY3MDMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQAAAAAACwAAAAAFwANAAACJIyPoMidupwMsM5W8z1aX09ZEmiQnMiY5gOd7WetToZuoQwDBQA7) no-repeat 95% center;
+}
+
+
+.subhead-session-row{
+    border-top: 1px solid #dddddd;
+}
+
+
+.container.container-session{
+    max-width: 763px;
+    font-size: 85%;
+}
+.container.container-session p:last-child{
+    margin-bottom:0;
+}
+.container.container-session img{
+    margin-top: 6px;
+}
+
+.product-summary-box {
+	border:1px solid #ccc;
+	border-radius:4px;
+}
+.product-summary-box li, product-summary-box p{
+	font-size:85%;
+}
+
+.text-small{
+	font-size:85%;
+}
+
+
+p{
+    margin:0 0 30px 0;
+        /*text-indent:1em;*/
+}
+
+
+h3{
+    margin:0 0 30px 0;
+}
+
+hr{
+    border-top: none;
+    height: 1px;
+    background-color: #ccc;
+}
+.my-section{
+    padding:0;
+}
+.container {
+    max-width: 880px;
+}
+
+ul.list-green li{
+    padding: 5px 0 5px 40px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145001_check_green.jpg') no-repeat;
+}
+ul.list-red li{
+    padding: 5px 0 5px 40px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_check_red.jpg') no-repeat;
+}
+ol.list-decimal li{
+    padding: 5px 0 5px 1em;
+    margin: 15px 2em;
+    line-height: 130%;
+    list-style-type: decimal;
+}
+[data-item-type="list"]{
+    list-style-type: disc;
+    list-style-image: none;
+    padding-left:40px;
+}
+[data-item-type="list"] li{
+    margin: 5px 0;
+}
+.blet-table{
+    width:100%;
+}
+.blet-table tr{
+    border-top:1px solid #ccc
+}
+
+.blet-table td{
+    padding:10px;
+    vertical-align:top;
+    font-size:18px;
+}
+
+.blet-table td:last-child {
+    vertical-align: middle;
+    font-size:18px;
+    text-align: center;
+}
+
+
+
+
+/*------------------------------------------------------
+ .sp-item-style-***  ( text / list / button / table )
+--------------------------------------------------------*/
+/*button*/
+.sp-btn{
+    display: block;
+    width: 193px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    font-family: arial;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display:block;
+    box-shadow: rgb(255, 100, 100) 0px 1px 0px inset, rgb(153, 2, 2) 0px -1px 2px inset;
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 5px;
+    text-shadow: rgb(82, 1, 1) 1px 1px;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(rgb(235, 22, 22), rgb(204, 4, 4));
+}.sp-btn-blue:hover {
+    background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+    background:-ms-linear-gradient( top, #1e62d0 5%, #3d94f6 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #1e62d0), color-stop(100%, #3d94f6) );
+    background-color:#1e62d0;
+}.sp-btn:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-green {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 5px;
+    border:1px solid #74b807;
+    text-decoration:none;
+    background:-moz-linear-gradient( center top, #89c403 5%, #77a809 100% );
+    background:-ms-linear-gradient( top, #89c403 5%, #77a809 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#89c403', endColorstr='#77a809');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #89c403), color-stop(100%, #77a809) );
+    background-color:#89c403;
+    color:#ffffff;
+    text-shadow:1px 1px 0px #528009;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #a4e271;
+    -moz-box-shadow:inset 1px 1px 0px 0px #a4e271;
+    box-shadow:inset 1px 1px 0px 0px #a4e271;
+}.sp-btn-green:hover {
+    background:-moz-linear-gradient( center top, #77a809 5%, #89c403 100% );
+    background:-ms-linear-gradient( top, #77a809 5%, #89c403 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77a809', endColorstr='#89c403');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #77a809), color-stop(100%, #89c403) );
+    background-color:#77a809;
+}.sp-btn-green:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-blue {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 5px;
+    border:1px solid #337fed;
+    text-decoration:none;
+    background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+    background:-ms-linear-gradient( top, #3d94f6 5%, #1e62d0 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #3d94f6), color-stop(100%, #1e62d0) );
+    background-color:#3d94f6;
+    color:#ffffff;
+    text-shadow:1px 1px 0px #1570cd;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #97c4fe;
+    -moz-box-shadow:inset 1px 1px 0px 0px #97c4fe;
+    box-shadow:inset 1px 1px 0px 0px #97c4fe;
+}.sp-btn-blue:hover {
+    background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+    background:-ms-linear-gradient( top, #1e62d0 5%, #3d94f6 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #1e62d0), color-stop(100%, #3d94f6) );
+    background-color:#1e62d0;
+}.sp-btn-blue:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-orange {
+    border-radius:5px;
+    border:1px solid #eda933;
+    background:-moz-linear-gradient( center top, #f6b33d 5%, #d29105 100% );
+    background:-ms-linear-gradient( top, #f6b33d 5%, #d29105 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6b33d', endColorstr='#d29105');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #f6b33d), color-stop(100%, #d29105) );
+    background-color:#f6b33d;
+    color:#ffffff;
+    text-shadow:1px 1px 0px #cd8a15;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #fed897;
+    -moz-box-shadow:inset 1px 1px 0px 0px #fed897;
+    box-shadow:inset 1px 1px 0px 0px #fed897;
+}.sp-btn-orange:hover {
+    background:-moz-linear-gradient( center top, #d29105 5%, #f6b33d 100% );
+    background:-ms-linear-gradient( top, #d29105 5%, #f6b33d 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d29105', endColorstr='#f6b33d');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #d29105), color-stop(100%, #f6b33d) );
+    background-color:#d29105;
+}.sp-btn-orange:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-pink {
+    border-radius:5px;
+    border:1px solid #d83526;
+    text-decoration:none;
+    background:-moz-linear-gradient( center top, #fa665a 5%, #d34639 100% );
+    background:-ms-linear-gradient( top, #fa665a 5%, #d34639 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa665a', endColorstr='#d34639');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #fa665a), color-stop(100%, #d34639) );
+    background-color:#fa665a;
+    color:#ffffff;
+    text-shadow:1px 1px 0px #98231a;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #fab3ad;
+    -moz-box-shadow:inset 1px 1px 0px 0px #fab3ad;
+    box-shadow:inset 1px 1px 0px 0px #fab3ad;
+}.sp-btn-pink:hover {
+    background:-moz-linear-gradient( center top, #d34639 5%, #fa665a 100% );
+    background:-ms-linear-gradient( top, #d34639 5%, #fa665a 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d34639', endColorstr='#fa665a');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #d34639), color-stop(100%, #fa665a) );
+    background-color:#d34639;
+}.sp-btn-pink:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-push{
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    background: none;
+    background-color: #ff2b2f;
+    box-shadow: 0 20px 0 #DA2E31;
+    transition: 0.3s ease-in-out;
+    margin: 0 auto 50px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 44px;
+    padding: 40px 0;
+    border: none;
+}
+.sp-btn-push:hover{
+    box-shadow:0 5px 0 #DA2E31;
+    transform:translate(0, 15px);
+}
+@media screen and (max-width: 480px){
+    .sp-btn-push{
+        box-shadow:0 10px 0 #6d0202;
+    }
+    .sp-btn-push:hover{
+        box-shadow:0 5px 0 #6d0202;
+        transform:translate(0, 5px);
+    }   
+}
+@-webkit-keyframes sheen {
+  0% {
+    -webkit-transform: skewY(-45deg) translateX(0);
+            transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    -webkit-transform: skewY(-45deg) translateX(12.5em);
+            transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+@keyframes sheen {
+  0% {
+    -webkit-transform: skewY(-45deg) translateX(0);
+            transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    -webkit-transform: skewY(-45deg) translateX(12.5em);
+            transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+
+.sp-btn-shiny {
+    display:block;
+    width:100%;
+    box-sizing:border-box;  
+    padding: 0.75em 2em;
+    text-align: center;
+    text-decoration: none;
+    color: #2194E0;
+    border: 2px solid #2194E0;
+    font-size: 24px;
+    display: inline-block;
+    border-radius: 0.3em;
+    -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    background-image:none;
+    background:inherit;
+    box-shadow: none;
+    text-shadow: none;
+    
+}
+.sp-btn-shiny:before {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 3em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -4.5em;
+    -webkit-transform: skewX(-45deg) translateX(0);
+      -ms-transform: skewX(-45deg) translateX(0);
+          transform: skewX(-45deg) translateX(0);
+    -webkit-transition: none;
+          transition: none;
+}
+.sp-btn-shiny:hover {
+    background-color: #2194E0;
+    color: #fff;
+    border-bottom: 4px solid #1977b5;
+}
+.sp-btn-shiny:hover:before {
+    -webkit-transform: skewX(-45deg) translateX(13.5em);
+      -ms-transform: skewX(-45deg) translateX(13.5em);
+          transform: skewX(-45deg) translateX(13.5em);
+    -webkit-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;
+}
+
+
+
+
+
+/* list ol */
+.sp-item-style-list-order-black{
+    list-style: none;
+    counter-reset: num;
+}
+.sp-item-style-list-order-black li:before{
+    counter-increment: num;
+    content: counter(num);
+    position: absolute;
+    left: 0;
+    background: rgb(0, 0, 0);
+    min-width: 1.5em;
+    text-align: center;
+    height: 1.5em;
+    line-height: 1.6;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    font-family: Arial;
+}
+.sp-item-style-list-order-blue{
+    list-style: none;
+    counter-reset: num;
+}
+.sp-item-style-list-order-blue li:before{
+    counter-increment: num;
+    content: counter(num);
+    position: absolute;
+    left: 0;
+    background: rgba(62,156,227,1);
+    min-width: 1.5em;
+    text-align: center;
+    height: 1.5em;
+    line-height: 1.6;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    font-family: Arial;
+}
+.sp-item-style-list-order-red{
+    list-style: none;
+    counter-reset: num;
+}
+.sp-item-style-list-order-red li:before{
+    counter-increment: num;
+    content: counter(num);
+    position: absolute;
+    left: 0;
+    background: rgb(255, 90, 90);
+    min-width: 1.5em;
+    text-align: center;
+    height: 1.5em;
+    line-height: 1.6;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    font-family: Arial;
+}
+
+/* list ul */
+.sp-item-style-list-black li{
+    list-style: none;
+    padding: 5px 0 5px 35px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_check_black.jpg') no-repeat;
+}
+.sp-item-style-list-red li{
+    list-style: none;
+    padding: 5px 0 5px 35px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_check_red.jpg') no-repeat;
+}
+.sp-item-style-list-green li{
+    list-style: none;
+    padding: 5px 0 5px 35px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_check_green.jpg') no-repeat;
+}
+.sp-item-style-list-check-circle-green li{
+    list-style: none;
+    padding: 5px 0 5px 35px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkM4M0U0M0NEMERDMzExRTVBNDc5ODZGNkY1OUI0RjdEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkM4M0U0M0NFMERDMzExRTVBNDc5ODZGNkY1OUI0RjdEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QzgzRTQzQ0IwREMzMTFFNUE0Nzk4NkY2RjU5QjRGN0QiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QzgzRTQzQ0MwREMzMTFFNUE0Nzk4NkY2RjU5QjRGN0QiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7vgZ21AAACMklEQVR42pTVS0gVURzH8blHeyB4AxNqoRRiUel1FbaSqEVSkGCIRIhUENEq7QUt2qgU9FzWIkLIqEWkCW1aaA+QClehFQWRrYzQ6N5e0MvvH34XDsPMdebAB/ScOb87c+bM/2SC21uCmFaHndiDRmTVn8cURvAA76MmZyKCq9CLk/iBp3iDTxpfhQ1oQQUu4Arm/ZDyUGgOg2jCOdzFy5gnsms6cBq70I3pqDu2x32IX9iLF0Gy1ow7WI4dWqbAaTCrO7XQ7SlCA127TXMHi+/CySk0oBMfgvRtRnMblOUstBY9uITJhEH20m5gFJvUN6kMy6q14N34g6GEoRmcxwHNbfPGLOO39Tnt0yd4lzD4MI7o7zk88sbeanu2O+2G1/ibIHQrBvRe7CmP4pk3/k9ZjXZBJWZDATW4hn5vr6/FdazU/7YctyJ+3LIqy2PurEuPbK0aZ3EV9eob1p3Htf8WXMDqiL35FStwSBu/RmOv9OZ/xoRaVsHpS9mIMm9wDAf1o2UqSEvxWf0fY0KdsqadqpQVlHWhi+5hP757fcfxvMQSrFfWiAXfxxKtaxARvg+P9UXdXGTXdClr1IqQhffpblpSfH3htll72L6+M8XqltW6VqmgzKQMXYNx1WQrYnnnnQrdKn3jKoVBirJpc5YpI++XzeI2asUXTGh5ciUCc7pmQnNalVHyaDqGE6Gjadbbp/7RdBGXw0dTZpHD1I6cdu8wtVrwTUfQcKnDdEGAAQB+T4CVOMJCowAAAABJRU5ErkJggg==) no-repeat center left;
+}
+
+
+/* text */
+.sp-item-style-text-subead-red{
+    border-left:4px solid #fd4a41;
+    font-size:21px;
+    padding:15px;
+}
+.sp-item-style-text-subead-blue{
+    border-left:4px solid #00c0ff;
+    font-size:21px;
+    padding:15px;
+}
+.sp-item-style-text-subead-green{
+    border-left:4px solid #00AD2A;
+    font-size:21px;
+    padding:15px;
+}
+
+/* img check */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------------
+ mobile 
+--------------------------------------------------------*/
+@media screen and (max-width: 420px) {
+    body{
+		/*
+        font-size:15px;
+        line-height: 1.5em;
+        */
+    }
+	.subhead-headline{
+		font-size: 26px;
+		line-height: 1.6em;
+	}
+	.sp-btn{
+		margin-left:auto !important;
+		margin-right:auto !important;
+		font-size:28px;
+	}
+	.subhead-session{
+		text-align:center;
+	}
+	.container.container-session{
+		padding:0 30px;
+	}
+	.container.container-session .row{
+		border-bottom:1px solid #ccc;
+	}
+	.sp-btn{
+		width: 100%;
+		padding: 30px 0;
+	}
+	.sp-btn-push,
+	.sp-btn-shiny,
+	.sp-btn *{
+		font-size: 32px !important;
+	}
+	.container{
+		padding-right: 30px;
+		padding-left: 30px;
+	}
+}  
+</style>
+  </head>
+  <body class="">
+    <!-- ヘッドライン -->
+    <div class="my-section sp-section section-headline">
+      <div class="container sp-container">
+        <div class="row sp-row">
+          <div class="col-sm-12" >
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_0ae6609c-logop-h_06o00y06o00y000000.png" class="sp-item img-responsive center-block sp-box-algin-left" data-item-type="image" style="margin-bottom:30px">
+            <p class="sp-item subhead-headline" data-item-type="text">あなたはこれがどの国の話かわかりますか？ </p>
+            <p></p>
+            <a href="" data-sp2-replace-href="test.php" class="sp-item sp-box-algin-right sp-btn" data-item-type="button">いますぐ受講する </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- コンテンツ開始 -->
+    <div class="my-section sp-section" style="">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="margin-top: 30px;">教育費が無料。その国の国民は、小学校から大学まで、教育費が一切無料。医療費が無料。病気になっても怪我をしても、どんな大きな手術でも医療費の負担はありません。電気代までもが、すべて無料。さらに、マイホームを買うときは500万円政府から支給され、、、車を買うときには、政府が半額払ってくれて、、、ローンはすべて利子０％そして極めつけは、、、税金がゼロ。まるで地上の楽園のようなこの豊かな国、、、その国の名はリビア。カダフィ大佐が長期間独裁政治をしてきたと言われる、アフリカのリビアです。 
+              <br>
+              <br>私たち日本人は、カダフィ大佐といえば、ちょっと頭のおかしな独裁者みたいなイメージを持っていますが、、、リビアがこのように世界で最も住みやすい豊かな国だったのは、カダフィ大佐のおかげでした、、、彼が政権を取るまで、リビアの石油の利益は欧米に流出し、国民は貧困に苦しみ続けていました。しかし、カダフィ大佐が政権を取ると、リビアの石油を国有化して、利益の流出を防ぎ、、、そしてその利益を、国民に還元していきました、、、その結果、できあがったのが世界最高の福祉国家、リビアです。 
+              <br>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">サブヘッド</p>
+            <p class="sp-item" data-item-type="text">しかし、、、その世界最高の福祉国家を作り上げたカダフィ大佐に対して、反政府デモが起きます、、、世に言う「アラブの春」です。ほとんどの人はカダフィ大佐が変人で、国民に圧政を強いてると思わされていました。なので、この民主化デモも「正義のデモ」のように報道されていましたが、、、果たして、このような世界最高の福祉国家で反政府デモなど起きるのでしょうか？メディアでは、デモを鎮圧するカダフィ政権に対して、「民主主義 vs. 独裁者カダフィ」という構図が報道され始めました。途中から国連までも動き、、、NATO(北大西洋条約機構)が出撃し、、、「カダフィからリビア国民を守る」という名目で、ＮＡＴＯ連合軍は６ヶ月の間にのべ２万６０００機が出撃し、約８０００回の空爆を行っています、、、欧米が軍事介入したリビア内戦は次第に拡大し、デモが始まってから半年後の８月２３日、首都は陥落し、カダフィ政権は完全に崩壊。しかし、ＮＡＴＯ連合軍による攻撃は終わることはなく、カダフィを捜索し続け、、、２ヶ月後の１０月２０日、カダフィ殺害によって紛争は幕を閉じたのでした、、、 
+              <br>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">サブヘッド</p>
+            <p class="sp-item" data-item-type="text">なぜ、国連やＮＡＴＯがアフリカの一国の内戦に、ここまで介入したのでしょうか？カダフィはアフリカの富、地下資源をバックに、アフリカに３つの物を作ろうとしていました、、、アフリカ通貨基金、アフリカ中央銀行、アフリカ投資銀行、、、つまり彼は、、、アフリカ統一通貨を作ることで米ドルの支配をなくし、、、アフリカを豊かにしようとしたのでした、、、それはつまり、欧米諸国が甚大な不利益を被るということでした、、、実際、カダフィ大佐がアメリカとＥＵに貸しつけていた６００億ドル(約４．５兆円)は、全て凍結、、、そして何より驚きなのは、、、反政府デモを主導した反乱軍がカダフィ殺害後、最初に行ったことは、、、「中央銀行の設立」でした。こうしてカダフィ大佐の夢は敗れ、欧米の息がかかった（ロスチャイルドの支配下にある）中央銀行が、リビアに設立されました、、、 
+              <br>
+              <br>あなたはどう思いましたか？われわれが変人独裁者だと思っていたカダフィ大佐が、実は、国民の幸せを心から願い、アフリカの発展に尽力した人物であったこと、、、こうした事実は、日本のメディアではほとんど報じられることはありません。その結果、このような事件に無関心で、平和に過ごせてしまう、、、、それって実は、ある意味、とても恐ろしいことではないでしょうか？なぜなら、もしかしたら私たち自身が、このような事件を知らず知らずのうちに支援していることになっているかもしれません。あるいは、大量破壊兵器という嘘に先導されて、一つの国家を潰す戦争に加担しているかもしれないわけです、、、（イラク戦争の時、私たち日本人は一人当たり5万円のお金を出しました） 
+              <br>
+              <br>そして私たちは、事実の根本を知らないまま、、真実を隠され、、、考える能力を奪われ、、、簡単に操れる人間になっているかもしれないのです、、、事実、、、世界では「情報操作」が当たり前のようになされています。その国の政権を潰すため、資源や利権を確保するため、テロや誘拐、反政府運動、内戦、信じられないような武器の開発そしてそれは、政府や国家だけの問題ではありません。実際に、私たちが勤める企業ですら、そのターゲットとなっています。企業の秘密を盗むための産業スパイ、盗聴、誘拐、武装集団による襲撃あなたはきっと「大げさに言いすぎじゃないか」と思われていることでしょう、、、しかしこれらは、今現在も、世界で起きている実際の出来事です。日本でも戦国時代には謀略やスパイ活動が日常茶飯事でした。 
+              <br>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">サブヘッド</p>
+            <p class="sp-item" data-item-type="text" style="margin-bottom: 65px;">問題は、現代の、今のわれわれ日本人が、このような謀略や情報操作だらけの現実の世界を忘れて、そこから目を背け平和ボケしてしまったことです、、、しかし、私たちがどんなに平和ボケしようが、世界では苛烈な情報戦やプロパガンダが今、この瞬間にも起きているのが現実です。そして、私たちがそれに気づかなくても、、、そのような動きに巻き込まれているのは間違いありません、、、実際、従軍慰安婦や南京事件などの歴史戦もそうですし、グローバル化で企業の海外進出などが増え、結果、テロや誘拐に巻き込まれる日本人はこれからも増えるでしょう、、残念ながら、日本には、日本のために情報を報道するマスコミはほとんどありません。そして、日本のメディアはどこも同じような内容しか流さず、各局に違いがありません。これは、情報操作する側からすれば、とても好都合です。大衆には、一方的な側面しか知られないわけですから、、、なので、単に新聞やテレビのニュースを見ているだけでは、真実はわからずいいように「操られたまま」です、、、マスコミの報道や政府の情報操作に「操られない」ように、、、世界の現実を知ることができるように、、、自分の力で情報を見抜く力をつけなけなければならない、、、そうでなければ、恐ろしい、、、そう考えて、危機管理の専門家、丸谷さんに２日間のセミナーとして開催してもらいました。 
+              <br>
+              <br>「日本人のためのインテリジェンス養成講座」世界の情報操作はどこまで進んでいるか？あなたはきっと丸谷さんのことはご存知ないと思います。彼の本職は言論活動ではなく、グローバル企業のセキュリティ要員だからです。パプアニューギニアや東南アジアなど治安の悪い地域での企業の事業展開支援や、要人警護・地元部族対策・企業施設の安全強化を含む危機管理業務を担当し、、、西アフリカの石油関連施設では防弾車を運用した大手企業駐在員と施設の警護や、イスラム過激派・民兵集団へのテロ対策、地元マフィアに対する犯罪抑止対策や、時に暴力的になる労働組合・地元部族集団に対する情報収集と宣撫工作に従事した経験を持つ現場の人だからです。実際、毎週のように誘拐や人殺しがあるような地域で、時には武器を片手に情報を集め、安全対策から政治経済情報の分析まで行っていた経験の持ち主で、、、その経験談を聞くと「こんな人がいたんだ」と驚くほどです、、、机上の空論だけの学者とは全く違います。海外法執行機関や軍の戦闘訓練などにも参加し、現在では、危機管理コンサルタントとしても活動しつつ、「日本戦略研究フォーラム」政策提言委員として、テロ対策や安全保障に関する複数の論文を発表しています。 
+              <br>
+              <br>この講座は、アフリカやアジアなど紛争の多い地域で実際にセキュリティ要員としてスパイ活動にかなり近いことを行っていた丸谷さんが実際の現場の経験をもとに、世界で起きている紛争やテロの裏側がどうなっているか？いかに情報機関やスパイがあなたに「情報工作」やプロパガンダを仕掛けてくるか？その手の内を明かす内容となっています、、、遠い昔の話ではなく、実際に今現在、起きている事件をベースに話してくれるので、いかに自分たちが簡単に騙されていたのか？という事がよく分かるでしょう。この講座を見終わった後には、おそらく、あなたのニュースを見る目は完全に変わっているでしょう。日本で世界で起きている事の裏側、本当のところはどうなんだ？という事に気づく事ができるでしょう。 
+              <br>
+            </p>
+            <p class="sp-item" data-item-type="text">この講座は６つのセッション、合計60の講義と２つのＱ＆Ａセッションからなります。 
+              <br>その内容は、、、 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- セクション開始 -->
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション１</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">インテリジェンスとインフォメーションの違い情報を読み解く能力を磨くには？完全に変わった世界の情勢に個人、企業、日本にとって必要なこと</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">世界の現実70年前にデザインされた日本の分断統治、急激に近代化した中国軍の背後、活発になる産業スパイ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">大衆から思考能力を奪い既成事実化するメディアや情報機関の手口</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">謀略アレルギーになった日本が危険なワケ世界の現実が見れなくなった日本人</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">現代の見えない戦争「条約」と「通貨」ＴＰＰはなぜ危険なのか？フランスとアメリカの対立、フランス石油メジャー会長の不審な死亡事故</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">危機管理の実務経験からわかった頼れない日本大使館と信じがたい外務省書記官の本音</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">企業にも必要なインテリジェンス一番重要な２つの情報収集のやり方</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">どの国でも好かれている日本人のソフト・パワーを活かせ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">軍事クーデター、労働争議、現実に起きているリスクに無頓着な日本企業セキュリティとインテリジェンスの情報対策の違い</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション２</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">国家の謀略ー簡単に騙せるお人好しな日本人（マスコミ・大企業への盲信と映画、教科書教育）</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">「嘘」で作られる戦争ー2016年現在も続く戦争プロパガンダー</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ジャンヌダルク症候群ーアウン=サン=スーチーの秘密、BBCの放送事故から３ヶ月後に不審死を遂げた女史、、ゾウをも仕留める45口径で撃たれて無事だったマララの背後にいる黒い影</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">全ては武器になる。イルカ、ウイルス、食料、水、資源ーなぜ日本では突然、食料自給率の話が消えたのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本を分断統治するー北方領土、竹島、尖閣諸島問題の根本をデザインした元CIA長官と、周恩来の関係</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">戦前から今日までずっと日本にいるスパイたち：極秘情報を握りつぶした大本営の参謀ー長崎原爆投下の8月9日だけ迎撃隊が「休み」だった謎</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">情報戦に敗れ戦争に追い込まれた日本ー海外では大問題？日本では絶対に語られない、スパイ戦に負けた高級官僚の話</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">今日も続くスパイ活動ー技術情報、交渉情報を徹底的に盗られても、スパイ防止法がない日本</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション３</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ファイブ・アイズと日本を最大のターゲットとした経済盗聴ネットワークー安倍政権、日銀、三菱商事、三井物産、被害がメディアに出ない謎</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">激化するテロと次々と犠牲になる日本人：うやむやになった日揮の事件ー危機管理がなく犠牲が最大になったテロ事件とマスコミの低俗な報道</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">海外で襲われる日本企業、増える誘拐事件ー大企業の幹部ですら危機意識が低い</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アルカイダの正体を言ってしまい３ヶ月後に変死した元英国外相</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">IS は「アメリカが支援すべき資産」？国家が支援するテロ団体は空爆を事前に予知できるのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ISを支援し訓練するトルコの闇ー見てはいけないものを見たある女性ジャーナリストの事故死とドイツの思惑</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ロシア軍機撃墜事件の真相～元防衛大臣クラスでも軍事オンチで真相が見えない日本、実際はこうだった～トルコ大統領の謝罪翌日に発生したインスタブール空港テロ事件</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">米軍と親しいトルコ空軍によるクーデター未遂事件～背後にアメリカがいたのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アメリカに見捨てられるサウジ：イランの接近、石油価格戦とシェールオイル、次々と逮捕されるサウジの王室関係者</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">影の同盟ーサウジとイスラエル：ユダヤ教とイスラム教、徹底的に対立してた国同士の利害の一致、中性子爆弾使用か？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">資源戦争の新たな中心、アフリカ：アメリカ軍の最大の目的ー基地設置を拒むと必ず現れる過激派やテロリスト</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">世界最高の福祉国家を作った理想家カダフィ暗殺の裏側ーアルカイダと戦ったカダフィにNATOの空爆</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">2015.日本人も犠牲になったチュニジア・テロ事件：観光立国で治安が良かった国にテロが頻発するようになった理由</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">Q&amp;A１</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">人工知能は危険なのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">エイズは生物兵器なのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">過酷な現実：世界で増える誘拐ビジネスと誘拐保険～日本の誘拐保険には入ってはいけないワケ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">どのような事件や出来事が起きたら警戒レベルが変わるか？ー５段階緊急対策要領について</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アフリカの安全性は？アンゴラ、ガーナ、ナイジェリア、各国の思惑によって変わる国の治安</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">これからのEU:ドイツの覇権復活とそれを許さないアメリカ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">テロ対策で日本人一人一人が意識すべきことは何か？テロ対策は防災の一環</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション４</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本の新聞は絶対に言わない、現在進行形で行われる世界の秘密作戦：ベトナム戦争を作った自作自演作戦から、カダフィ大佐とフランス大統領の黒い関係、去年の、ISISとイギリス軍特殊部隊の秘密共同作戦まで…</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">超大国の政府転覆作戦：経済詐欺から大統領暗殺、武装反政府組織、戦争広告代理店まで～中国のAIIBの真の狙いは何か？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">政府転覆作戦の２つ実例～CIAに狙われた愛国的大統領と、何十年続いたグアテマラ内戦～現在もアメリカ政府に保護されるキューバ航空爆破テロの犯人～</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">緊迫するアジア：誰が中国軍を近代化したか？～明治維新と同じ手法で武器を売った人たちー遠い昔の話ではありません。2016年8月時点でもそれは起きています…</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">尖閣有事でアメリカは出動しない？条約を読めば分かる、尖閣出動は経済的にも戦略的にもアメリカにメリットなし。</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">中国の軍拡で儲かる人たちー史上空前の貿易黒字を出したドイツ、サード・ミサイル防衛システムを即時導入した韓国、儲かるロッキード社、ヒラリークリントン。AIIBで儲かるロンドン。</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">40年前から続くアメリカ中国の日本封じの共謀ー30年前から着実に計画を実行する中国</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">2015.パリ同時多発テロの真実：豊富な資金と人員、武器をバックアップした組織と特殊部隊並みの技術</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">メディアによる情報操作：なかった事実を証言する人ー存在しない男の証言を放送するメディア</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">メディアによる情報操作：あまりに少ない一般人の現場写真とあまりに多い偶然、現場にいた報道関係者～大口径弾丸で打たれても携帯電話をいじる人、 
+              <br>食い違う目撃証言、異常な速さで解決するテロ事件、戒律を守らないイスラム原理主義者？ 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション５</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">写真はウソをつく：消えた負傷者、不審な事件現場</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">フランス当局はテロの発生を知っていたのか？～身分証を必ず残していくテロリスト、偶然スタンバイしていた救急チーム</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">テロで富を得た人たち</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">テロはフランスにとって天の恵みだった！？今現在、ボロ儲けしているフランス軍事産業、特需のように株価が上がった企業</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ユーロ対ドル通貨戦争：利用価値の高いテロ組織IS</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">フロリダ銃乱射事件の真相：不審なことだらけの現場、消えた人々、怪しい生存者の証言、ありえない犯人、そして大統領選の争点になった「銃規制」</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">カリフォルニア銃乱射事件の真相：なぜ犯人は両手両足を縛られた状態で警察と銃撃戦ができたのか？～民主党政権時に頻発する銃乱射事件～</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">極めて弱い日本のインテリジェンス：警察・公安は優秀でも、国外事情に弱い理由ーインテリジェンス組織に絶対にあってはならないこと</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション６</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本に強い情報機関(インテリジェンス)を作るには？鍵を握る公安調査庁とジェトロ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">インテリジェンスの高い視点を持つには？３つの鉄則～すべての事件は偶然には起きない</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本企業への警告：インフラ輸出で増える誘拐・工作・襲撃（2015マリのホテル襲撃事件から学べ）</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">脆弱な日本企業のセキュリティー：現地の大企業に軟禁された日本企業の幹部、イギリス企業襲撃の巻き添えになった日本人、インドのスズキ工場暴動事件、実際に起きている事件とそれを知らされない日本人社員</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">海外大手企業との違い：GEのセキュリティ対策、マイクロソフトのセキュリティ担当、サイバー攻撃、産業スパイの対策、専門部隊と強い権限</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">現実に起きてる電力施設テロ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">緊急対策室でやるべきこと：世界で増える誘拐ビジネス、社員が誘拐されたらどうする？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">産業スパイから情報を守るには？日本の造船会社の情報を盗んで世界最大の造船会社になった韓国・現代重工業の事例、盗まれた日産の電気自動車技術の事例、ニコン社員の情報流出の事例、新日本製鉄、東芝などなど</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">政府が主導する産業スパイの現実～秘密口座、巨大利権、 
+              <br>情報を隠す現地の顧客やパートナー企業とあまりにひどい日本企業の脇の甘さ、危険を察知した場合、どのタイミングで逃げるべきか？航空会社に人種の壁はあるか？ 
+            </p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本企業の危機管理はどうあるべきか？黙っていたらやられっぱなしになる…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">Q&amp;A２</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アフリカ・アメリカ軍はどこを狙っているか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">外国に進出した場合の情報収集はどうすべきか？そしてその情報をどう判断すれば良いか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本に情報機関を作ることはできるか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">国家や情報機関が一私企業のために動くのはなぜ？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">インテリジェンス教育をどうすべきか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">先生はどのような情報源から情報を得ているか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アメリカ共和党と民主党の背後は一緒？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本のマスコミは誰かに操られているのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">尖閣諸島など日本が直面する脅威に対してアメリカはどう見ているか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">インドのスズキ工場暴動の原因は？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">オススメの海外の誘拐保険は？</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- セクション終わり -->
+    <div class="my-section sp-section" style="">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="margin-top: 60px; text-align: left;">いかがでしょうか？きっと、この講義のタイトルを見ただけでも、かなりのインパクトがあったのではないかと思います、、、このような知識を知らないと、私たちは、これから一生、マスコミや情報機関に騙され、操られ続けることになるでしょう。 
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 人物紹介 section -->
+    <div class="my-section sp-section" style="background-image: url(http://www.prideandhistory.jp/sp/sp2_test/0916/a5bcf928-hoover.jpg);background-attachment: fixed;background-repeat: no-repeat;background-position: center center;background-size: cover;">
+      <div class="sp-overlay">
+        <div class="container sp-container">
+          <div class="row sp-row " style="margin-top: 70px;">
+            <div class="col-sm-4">
+              <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_7989ac57-toshio-nishi_05d04v04v04v009000.jpg" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px">
+            </div>
+            <div class="col-sm-8">
+              <p class="sp-item" data-item-type="text">
+                <span style="color: rgb(255, 255, 255); font-size: 28px; font-weight: bold; line-height: 45px;" class="subhead-font-18">"歴史を知らない人は自分の両親を知らない人
+		                                    <br>
+		                                    　本当の自分自身を知らない人間だ" </span>
+              </p>
+              <p class="sp-item" data-item-type="text">
+                <span style="color: rgb(255, 255, 255); line-height: 22px;">西教授が米国スタンフォード大学フーヴァー研究所にて研究を始めたのは1977年。以来、約40年間にもわたり機密文書などの一次資料、膨大な書物、資料などから読み解いた歴史の裏側を分かりやすく語る。「Follow the money」誰が金を出しているか？お金の跡を追えば本当の歴史が見える。本当の歴史は必ずしも美しくない。むしろ醜い話で満たされている。しかし、それを知る事で、われわれはより強く、本当の意味で、今の世界を知り、自分自身を知ることができる。 </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- クロージング -->
+    <div class="my-section sp-section">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text" style="margin-top: 30px;">サブ</p>
+            <p class="sp-item" data-item-type="text">そこで考えてみてください。この講座で習う知識にはどれくらいの価値があると思いますか？実際、丸谷さんの苛酷な実体験をベースにしたものです。死にかける経験もしていますし、実際にインテリジェンス、情報不足で亡くなられた方もいるそうです。その経験の価値を考えると、お金では買えないとてつもない価値になると思いませんか？他の誰にも教えられないような実体験の価値です。しかし、できるだけ多くの人に知ってもらえるようにと、価格を39,800円にしました。そして、今なら、、、先行販売価格として半額の19,800円で試すことができます。※この講座は現在製作中のため、提供は１０月中旬を予定しています。 
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 保証内容 -->
+    <div class="sp-sectio">
+      <div class="container sp-container">
+        <div class="row sp-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">安心の３０日間保証付</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_30days_warranty.png" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px">
+          </div>
+          <div class="col-sm-9">
+            <p class="sp-item" data-item-type="text">さらに、この講座には３０日間の品質保証がついています。つまり、この講座を３０日の間に見てみて、もし、「学ぶものがない」と思われたなら、講座提供から３０日以内であれば、どんな理由であろうと注文を取り消す事ができます。メール一本、電話一本で、代金は100％戻ってきます。 
+              <br>
+              <br>実際、私たちは今まで１０年間で５０万人以上のお客様に商品・サービスを提供し、カスタマーサポートの評価は、５段階のうち４.７と非常に高い評価を頂いています。なのであなたは安心して試すことができます。 
+              <br>
+            </p>
+            <p class="sp-item" data-item-type="text" style="font-size:90%;color: rgb(0, 0, 128);">カスタマーサポート</p>
+            <p class="sp-item text-small" data-item-type="text">１．メールでの連絡：support@prideandhistory.jp 
+              <br>２．FAXでの連絡：06-6268-0851（24時間受付） 
+              <br>３．電話での連絡：06-6268-0850（平日10時～17時受付） 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- クロージング -->
+    <div class="my-section sp-section">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">サブ</p>
+            <p class="sp-item" data-item-type="text" style="margin-bottom: 60px;">さて、あなたの前には２つの選択肢があります。 
+              <br>１つは、このまま何もせず、マスコミや政府の発表を鵜呑みにすること。これは、とても楽な道ではありますが、いつになっても本当のことは分からないまま、騙され、操られ続ける。 
+              <br>もう１つは、自分自身で、世界中で現実に起きている、もちろん日本でも起きている、情報操作を読み解く力をつけること。そして、本当のことを知り、自分と自分の会社、家族、そして大切な日本を守るために、知識武装すること。 
+              <br>どちらの道も、選択するのはあなたです。勇気ある選択をしてください。一緒に大切な日本を守りましょう。 
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 商品概要  -->
+    <div class="my-section sp-section" style="">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-6">
+            <p class="sp-item title" data-item-type="text" style="text-align: center; margin-top: 30px; font-weight:bold">↓に商品概要が分かるイメージ画像を挿入</p>
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145004_img1.jpg" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px">
+          </div>
+          <div class="col-sm-6">
+            <div class="sp-box product-summary-box" data-item-type="box">
+              <p class="sp-item title" data-item-type="text" style="text-align: center; margin-top: 30px; font-weight:bold">「日本人のためのインテリジェンス養成講座」</p>
+              <ul class="sp-item" data-item-type="list">
+                <li>危機管理ジャーナリスト丸谷元人さんの講座</li>
+                <li>６つのセッションと２つのＱ＆Ａセッション</li>
+                <li>合計７時間前後の講座</li>
+                <li>安心の３０日間返金保証付き</li>
+                <li>今なら先行販売価格の19,800円 
+                  <br>
+                </li>
+              </ul>
+              <p class="sp-item text-small" data-item-type="text">※講座の提供は１０月中旬を予定しています。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- クロージング -->
+    <div class="my-section sp-section" style="">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="margin-top: 100px;margin-bottom: 50px;">この講座の注文方法は簡単です。下にある、注文ボタンをクリックして、必要な情報を入力するだけです。</p>
+            <a href="" data-sp2-replace-href="test.php" class="sp-item sp-btn sp-btn-push" data-item-type="button" style="
+    width: auto;
+    font-size: 40px;
+    max-width: 400px;
+">いますぐ受講する </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- フッター -->
+    <div class="my-section sp-section" style="background-color: rgb(0, 0, 0);">
+      <div class="container sp-container">
+        <div class="row sp-row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="text-align: center; color: white; margin-bottom: 15px;">
+              <span style="line-height: 30px;font-size:12px;font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;">
+                <a href="" data-sp2-replace-href="clkn/http/www.d-publishing.jp/company/" target="_blank" class="">会社概要 </a>
+                <span style="color: rgb(255, 255, 255); ">&nbsp;|&nbsp; </span>
+                <a href="" data-sp2-replace-href="clkn/http/www.d-publishing.jp/law/" style="" target="_blank" class="">特定商取引法上の表記 </a>
+                <span style="color: rgb(255, 255, 255); ">&nbsp;|&nbsp; </span>
+                <a href="" data-sp2-replace-href="clkn/http/www.d-publishing.jp/privacy/" style="" target="_blank" class="">プライバシーポリシー </a>
+                <span style="color: rgb(255, 255, 255); ">&nbsp;|&nbsp; </span>
+                <a href="" data-sp2-replace-href="clkn/http/d-publishing-cs.jp/" style="" target="_blank" class="">ダイレクト出版株式会社 サポート </a>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="text-align: center; margin-bottom: 0px;">
+              <span style="font-size: 12px;color: rgb(255, 255, 255);line-height: 14px;font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;" class="">掲載の情報・画像など、すべてのコンテンツの無断複写・転載を禁じます。 
+                <br>大阪府大阪市中央区安土町2丁目3-13大阪国際ビルディング13F　 TEL：06-6268-0850　FAX：06-6268-0851 
+                <br>Copyright c 2014 ダイレクト出版株式会社. All Rights Reserved. 
+              </span>
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ボタン -->
+    <!-- script -->
+    <script type="text/javascript" src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145011_jquery-1.11.0.js"></script>
+    <script type="text/javascript">
+$(function(){
+	
+	//$('.subhead-session').on('click',function(e){
+	//	$(this).closest('.sp-section').next('.sp-section').slideToggle();
+	//	$(this).toggleClass('allow-close');
+	//});
+	//
+	//// セッションアコーディオンの初期クローズ設定
+	//// :gt(0)：セッション２以降初期クローズ。
+	//// :gt(1)：セッション３以降初期クローズ。
+	//// :gt(2)：セッション４以降初期クローズ。
+	//// 続く…
+	//$('.subhead-session:gt(1)').addClass('allow-close').closest('.sp-section').next('.sp-section').hide();
+});
+
+</script>
+    <script id="sp-func-list">
+function sp_setAnimation(idClassName, aniClass, intervalSecond){
+
+    var demoStart = function(){
+        var stopTimer = null;
+        var t = document.querySelector('.'+idClassName);
+
+        if(t){
+            var classStr = t.getAttribute('class');
+            if(classStr != null && classStr.indexOf(aniClass) != -1){
+                t.classList.remove('sp-ani');
+                t.classList.remove(aniClass);
+                console.log('ani class remove',idClassName);
+            }
+            stopTimer = setTimeout(demoStop, 500);
+        }
+        
+        if(stopTimer && !t){
+            clearTimeout(stopTimer);
+            stopTimer = null;
+            return false;
+        }
+
+    };
+    
+    var demoStop = function(){
+        var startTimer = null;
+        var t = document.querySelector('.'+idClassName);
+        if(startTimer && !flag){
+            clearTimeout(startTimer);
+            startTimer = null;
+            return false;
+        }
+        t.classList.add('sp-ani');
+        t.classList.add(aniClass);
+        console.log('ani class add',idClassName,intervalSecond);
+        startTimer = setTimeout(demoStart, intervalSecond);
+    };
+    
+    demoStart();
+}
+</script>
+  </body>
+</html>
+
+
+
+
+</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</td>
+			<td colspan="2" rowspan="2" valign="top" style="border-left:1px solid #000">
+
+				<!-- ドラッグアイテムBOX -->
+				<div id="sp-id-drag-item-box" class="scroll-box">
+
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">レイアウト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="section" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>section</td>
+						</tr>
+						<!--
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="container" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>container</td>
+						</tr>
+						-->
+					</table>
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">グリッドシステム</td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-1" data-no="1" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value="12"  placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-1" data-no="1"></td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-2" data-no="2" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value="6 6" placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-2" data-no="2"></td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-3" data-no="3" draggable="false" disabled><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value=""    placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-3" data-no="3"></td>
+						</tr>
+					</table>
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">ベースアイテム</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="box" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>BOX</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="text" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>テキスト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="list" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>リスト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="button" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>ボタン</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="image" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>イメージ</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="video" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>ビデオ</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="table" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>表</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="replace-item" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>置換コード</td>
+						</tr>
+					</table>
+
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">ギミックアイテム</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="countdown-timer" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>カウントダウンタイマー</td>
+						</tr>
+					</table>
+
+				</div>
+				<!--/ ドラッグアイテムBOX -->
+
+
+
+
+				
+
+
+				
+
+				<!-- フォーマットBOX -->
+				<table id="sp-id-format-box" style="height:100%;width:100%;" style="display:none">
+					<tr id="sp-id-format-noselect-msg" style="height:40px;">
+						<td valign="top">
+							<!-- アイテム選択なし -->
+							<table class="card-table">
+								<tr>
+									<td class="header" style="border:none;">何も選択されていません</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr id="sp-id-format-tab-menu" style="height:40px;display:none;">
+						<td valign="top">
+
+							<!-- タブメニュー -->
+							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+								<div class="mdl-tabs__tab-bar">
+									<a href="#starks-panel"     class="sp-js-tab mdl-tabs__tab " id="tab-name-style"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-style').show();">スタイル</a>
+									<a href="#lannisters-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-text"          onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-text').show()"  >テキスト</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-image"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-image').show()" >イメージ</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-table"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-table').show()" >表</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-replace-item"  onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-replace-item').show()" >置換アイテム</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-gimmick"       onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-gimmick').show()" >ギミック</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-box-align"     onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-box-align').show()" >配置</a>
+								</div>
+							</div>
+					
+						</td>
+					</tr>
+					<tr id="sp-id-format-tab-contents" style="display:none;">
+						<td valign="top">
+
+							<!-- タブコンテンツ-->
+							<div  class="scroll-box">
+
+								<!--タブ内容：スタイル-->
+								<div id="sp-id-tab-content-style" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td class="header">スタイル</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-spEdit-style-button" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-btn-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-btn-green">ボタン （グリーン）</option>
+													<option value="sp-btn-blue">ボタン （ブルー）</option>
+													<option value="sp-btn-orange">ボタン （オレンジ）</option>
+													<option value="sp-btn-pink">ボタン （ピンク）</option>
+													<option value="sp-btn-shiny">ボタン （光沢）</option>
+													<option value="sp-btn-push">ボタン （押込）</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-list" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-list-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-list-order-black">連番（黒）</option>
+													<option value="sp-item-style-list-order-blue">連番（青）</option>
+													<option value="sp-item-style-list-order-red">連番（赤）</option>
+													<option value="sp-item-style-list-black">チェック（黒）</option>
+													<option value="sp-item-style-list-red"  >チェック（赤）</option>
+													<option value="sp-item-style-list-green">チェック（緑）</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-image" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-image-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-image-circle"   >円形</option>
+													<option value="sp-item-style-image-thumbnail">サムネイル</option>
+													<option value="sp-item-style-image-rounded"  >角丸</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-text" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-text-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-text-subead-red">サブヘッド（赤）</option>
+													<option value="sp-item-style-text-subead-blue">サブヘッド（青）</option>
+													<option value="sp-item-style-text-subead-green">サブヘッド（緑）</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="3">背景</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-bg-image-url-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td colspan="2">
+												<textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-bg-image-url-label" placeholder="背景画像 設定なし"></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">サイズ</td>
+											<td colspan="2">
+												<select id="sp-id-background-size" class="sp-js-change-setSpEditCss" data-css="background-size">
+													<option value="auto">自動調整</option>
+													<option value="contain">contain</option>
+													<option value="cover">cover</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td class="label"></td>
+											<td colspan="2">
+												<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sp-id-parallax">
+													<input type="checkbox" id="sp-id-parallax" class="mdl-checkbox__input sp-js-click-setParallax">
+													<span class="mdl-checkbox__label">Parallax Effect</span>
+												</label>
+												<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sp-id-overlay">
+													<input type="checkbox" id="sp-id-overlay" class="mdl-checkbox__input sp-js-click-setOverlay">
+													<span class="mdl-checkbox__label">Overlay</span>
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">背景色</td>
+											<td colspan="2"><input id="sp-id-background-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="background-color"></td>
+										</tr>
+										<tr>
+											<td class="label">透過</td>
+											<td><input type="range" min="0.00" max="1.00" step="0.01" value="1" tabindex="0" id="sp-id-opacity" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="opacity" oninput="$('#sp-id-opacity-label').text(this.value)"></td>
+											<td><label id="sp-id-opacity-label">1</label></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="3">枠線</td>
+										</tr>
+										<tr>
+											<td colspan="3">
+											    <select id="sp-id-border-style" class="sp-js-input-setSpEditCss" data-css="border-style" style="width:80px">
+											        <!-- 2014/05/30 sekiya fix : -->
+											        <!-- <option value="none">None</option> -->
+											        <option value="none"></option>
+											        <option value="solid">Solid</option>
+											        <option value="dotted">Dotted</option>
+											        <option value="dashed">Dashed</option>
+											        <option value="double">Double</option>
+											        <option value="groove">Groove</option>
+											        <option value="ridge">Ridge</option>
+											        <option value="inset">Inset</option>
+											        <option value="outset">Outset</option>
+											    </select>
+											    <select id="sp-id-border-width" class="sp-js-input-setSpEditCss" data-css="border-width" style="width:60px">
+											        <option value=""></option>
+											        <option value="1">1px</option>
+											        <option value="2">2px</option>
+											        <option value="3">3px</option>
+											        <option value="4">4px</option>
+											        <option value="5">5px</option>
+											        <option value="6">6px</option>
+											        <option value="7">7px</option>
+												        <option value="8">8px</option>
+											        <option value="9">9px</option>
+											        <option value="10">10px</option>
+											    </select>
+												<input id="sp-id-border-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="border-color">
+											</td>
+										</tr>
+										<tr>
+											<td class="label" style="width:1%">角丸</td>
+											<td><input id="sp-id-border-radius" type="number" min="0" max="150" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="border-radius" style="width:50px"></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header">影</td>
+										</tr>
+										<tr>
+											<td>
+											    <select id="sp-id-box-shadow" class="sp-js-input-setSpEditCss" data-css="box-shadow">
+											        <option value="">シャドウなし</option>
+											        <option value="rgba(0, 0, 0, 0.137255) 0px 4px 5px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 10px 0px, rgba(0, 0, 0, 0.2) 0px 2px 4px -1px">濃さ：1</option>
+											        <option value="rgba(0, 0, 0, 0.2) 0px 8px 17px 0px, rgba(0, 0, 0, 0.188235) 0px 6px 20px 0px">濃さ：2</option>
+											        <option value="rgba(0, 0, 0, 0.239216) 0px 12px 15px 0px, rgba(0, 0, 0, 0.188235) 0px 17px 50px 0px">濃さ：3</option>
+											        <option value="rgba(0, 0, 0, 0.219608) 0px 16px 28px 0px, rgba(0, 0, 0, 0.207843) 0px 25px 55px 0px">濃さ：4</option>
+											        <option value="rgba(0, 0, 0, 0.2) 0px 27px 24px 0px, rgba(0, 0, 0, 0.219608) 0px 40px 77px 0px">濃さ：5</option>
+											    </select>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">属性</td>
+										</tr>
+										<tr>
+											<td>id</td>
+											<td><input id="sp-id-attr-id" type="text" value="" class="sp-js-input-setSpEditAttr" data-attr="id"></td>
+										</tr>
+										<tr>
+											<td>class</td>
+											<td><input id="sp-id-attr-class" type="text" value="" class="sp-js-input-setSpEditAttr" data-attr="class"></td>
+										</tr>
+										<tr>
+											<td valign="top">style</td>
+											<td><textarea id="sp-id-attr-style" style="height:200px;padding:5px;" class="sp-js-input-setSpEditAttr" data-attr="style"></textarea></td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">リンク</td>
+										</tr>
+										<tr>
+											<td>URL</td>
+											<td><input id="sp-id-attr-href" type="text" value="https://" class="sp-js-input-setSpEditAttr" data-attr="href"></td>
+										</tr>
+										<tr>
+											<td>target</td>
+											<td>
+												<select id="sp-id-attr-target" class="sp-js-change-setSpEditAttr" data-attr="target">
+													<option value="">設定なし</option>
+													<option value="_self">同じウィンドウで開く</option>
+													<option value="_blank">新しいウィンドウで開く</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+								</div>
+								<!--/タブ内容：スタイル-->
+
+
+								<!--タブ内容：配置-->
+								<div id="sp-id-tab-content-box-align" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td>
+												<select id="sp-id-spEdit-box-align" class="sp-js-change-setSpEditClass" data-class-prefix="sp-box-algin-">
+													<option value="">配置</option>
+													<option value="sp-box-algin-left">左揃え</option>
+													<option value="sp-box-algin-center">中央揃え</option>
+													<option value="sp-box-algin-right">右揃え</option>
+												</select>
+												<!-- 現在は縦配置（box・text共に）設定なし。margin上下でコントロール
+												<select id="sp-id-spEdit-box-valign" class="sp-js-change-setSpEditClass" data-class-prefix="sp-box-valgin-">
+													<option value="">縦配置</option>
+													<option value="sp-box-valgin-top">上揃え</option>
+													<option value="sp-box-valgin-middle">中央揃え</option>
+													<option value="sp-box-valgin-bottom">下揃え</option>
+												</select>
+												-->
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">幅</td>
+										</tr>
+										<tr>
+											<td class="label">最大幅</td>
+											<td align="right"><input type="number" min="0" max="1500" step="5" value="0" id="sp-id-max-width" class="sp-js-input-setSpEditCss" data-css="max-width"></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">ページ幅</td>
+										</tr>
+										<tr>
+											<td class="label">最大幅</td>
+											<td align="right"><input type="number" min="0" max="1500" step="5" value="0" id="sp-id-page-max-width" class="sp-js-input-setSpEditCss" data-css="page-max-width"></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">回転</td>
+										</tr>
+										<tr>
+											<td><input type="range" min="0" max="360" step="1" value="0" tabindex="0" id="sp-id-transform-rotate" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="transform-rotate" oninput="$('#sp-id-transform-rotate-label').text(this.value)"></td>
+											<td style="width:35px"><label id="sp-id-transform-rotate-label">0</label> °</td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">余白</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+
+												<style>
+												.padding-table{
+													border:none;
+													margin:0 auto;
+												}
+												.padding-table td{
+												    vertical-align: middle;
+												    padding: 5px;
+												    text-align: center;
+												    border:none;
+												}
+												.padding-table input{
+													width:40px;
+												}
+												.padding-table td.bt{border-top:1px dotted #666; }
+												.padding-table td.bb{border-bottom:1px dotted #666; }
+												.padding-table td.bl{border-left:1px dotted #666; }
+												.padding-table td.br{border-right:1px dotted #666; }
+												
+												</style>
+												<table class="padding-table">
+													<tbody>
+														<tr>
+															<td></td>
+															<td></td>
+															<td><input id="sp-id-margin-top" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-top"></td>
+															<td></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td class="bt bl"></td>
+															<td class="bt"><input id="sp-id-padding-top" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-top"></td>
+															<td class="bt br"></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td><input id="sp-id-margin-left" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-left"></td>
+															<td class="bl"><input id="sp-id-padding-left" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-left"></td>
+															<td style="text-align: center;white-space:nowrap">コンテンツ</td>
+															<td class="br"><input id="sp-id-padding-right" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-right"></td>
+															<td><input id="sp-id-margin-right" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-right"></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td class="bb bl"></td>
+															<td class="bb"><input id="sp-id-padding-bottom" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-bottom"></td>
+															<td class="bb br"></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td></td>
+															<td><input id="sp-id-margin-bottom" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-bottom"></td>
+															<td></td>
+															<td></td>
+														</tr>
+													</tbody>
+												</table>
+
+											</td>
+										</tr>
+									</table>
+
+								</div>
+								<!--/タブ内容：配置-->
+
+
+								<!--タブ内容：テキスト-->
+								<div id="sp-id-tab-content-text" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header">フォント</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-font-name" class="sp-js-input-execcommand" data-cmd="fontName">
+													<option value="Arial">Arial</option>
+													<option value="Comic Sans MS">Comic Sans MS</option>
+													<option value="Courier New">Courier New</option>
+													<option value="Droid Sans Japanese">Droid Sans Japanese</option>
+													<option value="Georgia">Georgia</option>
+													<option value="Hiragino Kaku Gothic Pro">Hiragino Kaku Gothic Pro</option>
+													<option value="Hiragino Kaku Gothic ProN">Hiragino Kaku Gothic ProN</option>
+													<option value="Hiragino Kaku Gothic StdN">Hiragino Kaku Gothic StdN</option>
+													<option value="Hiragino Maru Gothic ProN">Hiragino Maru Gothic ProN</option>
+													<option value="Hiragino Mincho ProN">Hiragino Mincho ProN</option>
+													<option value="Hiragino Sans">Hiragino Sans</option>
+													<option value="HiraginoSans-W0">HiraginoSans-W0</option>
+													<option value="KanjiStrokeOrders">KanjiStrokeOrders</option>
+													<option value="Klee">Klee</option>
+													<option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+													<option value="MS Gothic">MS Gothic</option>
+													<option value="MS Mincho">MS Mincho</option>
+													<option value="MS PGothic">MS PGothic</option>
+													<option value="MS PMincho">MS PMincho</option>
+													<option value="MS UI Gothic">MS UI Gothic</option>
+													<option value="Meirio">Meirio</option>
+													<option value="Meiryo UI">Meiryo UI</option>
+													<option value="Meiryo">Meiryo</option>
+													<option value="Osaka">Osaka</option>
+													<option value="Osaka-Mono">Osaka-Mono</option>
+													<option value="Osaka−等幅">Osaka−等幅</option>
+													<option value="Tahoma">Tahoma</option>
+													<option value="Times New Roman">Times New Roman</option>
+													<option value="Trebuchet MS">Trebuchet MS</option>
+													<option value="Tsukushi A Round Gothic">Tsukushi A Round Gothic</option>
+													<option value="Tsukushi B Round Gothic">Tsukushi B Round Gothic</option>
+													<option value="VL Gothic">VL Gothic</option>
+													<option value="VL PGothic">VL PGothic</option>
+													<option value="Verdana">Verdana</option>
+													<option value="Yu Gothic UI Bold">Yu Gothic UI Bold</option>
+													<option value="Yu Gothic UI Light">Yu Gothic UI Light</option>
+													<option value="Yu Gothic UI">Yu Gothic UI</option>
+													<option value="Yu Gothic">Yu Gothic</option>
+													<option value="Yu Mincho">Yu Mincho</option>
+													<option value="YuGothic">YuGothic</option>
+													<option value="YuMincho +36p Kana">YuMincho +36p Kana</option>
+													<option value="YuMincho">YuMincho</option>
+													<option value="クレー">クレー</option>
+													<option value="ヒラギノ丸ゴ ProN">ヒラギノ丸ゴ ProN</option>
+													<option value="ヒラギノ明朝 ProN">ヒラギノ明朝 ProN</option>
+													<option value="ヒラギノ角ゴ Pro">ヒラギノ角ゴ Pro</option>
+													<option value="ヒラギノ角ゴ ProN">ヒラギノ角ゴ ProN</option>
+													<option value="ヒラギノ角ゴ StdN">ヒラギノ角ゴ StdN</option>
+													<option value="ヒラギノ角ゴシック W0">ヒラギノ角ゴシック W0</option>
+													<option value="ヒラギノ角ゴシック">ヒラギノ角ゴシック</option>
+													<option value="メイリオ">メイリオ</option>
+													<option value="游ゴシック Light">游ゴシック Light</option>
+													<option value="游ゴシック">游ゴシック</option>
+													<option value="游ゴシック体">游ゴシック体</option>
+													<option value="游明朝">游明朝</option>
+													<option value="游明朝体">游明朝体</option>
+													<option value="游明朝体+36ポかな">游明朝体+36ポかな</option>
+													<option value="筑紫A丸ゴシック">筑紫A丸ゴシック</option>
+													<option value="筑紫B丸ゴシック">筑紫B丸ゴシック</option>
+													<option value="ＭＳ ゴシック">ＭＳ ゴシック</option>
+													<option value="ＭＳ 明朝">ＭＳ 明朝</option>
+													<option value="ＭＳ Ｐゴシック">ＭＳ Ｐゴシック</option>
+													<option value="ＭＳ Ｐ明朝">ＭＳ Ｐ明朝</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+											    <input id="sp-id-font-size"  type="number" value="" step="1" min="0" max="100" class="sp-js-input-execcommand" data-cmd="fontSize" style="width:auto">
+												<input id="sp-id-fore-color" type="color" value="#000000" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="foreColor">
+												<input id="sp-id-back-color" type="color" value="#000000" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="backColor">
+											</td>
+										</tr>
+										<tr>
+											<td>
+											    <div class="btn-group">
+													<a href="#" id="sp-id-bold"          class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="bold"          title="太字"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_bold</i></a>
+													<a href="#" id="sp-id-underline"     class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="underline"     title="下線"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_underlined</i></a>
+													<a href="#" id="sp-id-strikethrough" class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="strikethrough" title="取り消し線" onclick="$(this).toggleClass('active')"><i class="material-icons">strikethrough_s</i></a>
+													<a href="#" id="sp-id-italic"        class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="italic"        title="斜体"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_italic</i></a>
+											    </div>
+											</td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header">配置</td>
+										</tr>
+										<tr>
+											<td>
+											    <div class="btn-group">
+													<a href="#" id="sp-id-text-align-left"   class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="left"   title="左"   onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_left</i></a>
+													<a href="#" id="sp-id-text-align-center" class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="center" title="中央" onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_center</i></a>
+													<a href="#" id="sp-id-text-align-right"  class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="right"  title="右"   onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_right</i></a>
+											    </div>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">間隔</td>
+										</tr>
+										<tr>
+											<td class="label">行間</td>
+											<td align="right"><input id="sp-id-line-height" type="number" value="" class="sp-js-input-execcommand" data-cmd="lineHeight"></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：テキスト-->
+
+
+								<!--タブ内容：イメージ-->
+								<div id="sp-id-tab-content-image" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">イメージ</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-img-src-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td><textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-image-url-label" placeholder="設定なし"></textarea></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：イメージ-->
+
+								<!--タブ内容：置換アイテム-->
+								<div id="sp-id-tab-content-replace-item" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">置換コード</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-replace-item-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td><textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-replace-item-label" placeholder="設定なし"></textarea></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：置換アイテム-->
+
+								<!--タブ内容：ギミック-->
+								<div id="sp-id-tab-content-gimmick" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td class="header">タイマー表示設定</td>
+											<td class="switch-btn" align="right">
+												<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="sp-id-spEdit-timer-switch">
+													<input type="checkbox" id="sp-id-spEdit-timer-switch" class="mdl-switch__input" checked>
+													<span class="mdl-switch__label"></span>
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												選択範囲をページロード後
+												<input id="sp-id-timer-second" type="number" value="" class="sp-js-change-setSpEditTimer">
+												秒後に表示する
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table" id="sp-id-animation-table">
+										<tr>
+											<td class="header">アニメーション</td>
+											<td class="switch-btn" align="right">
+												<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect sp-js-change-setAnimation" for="sp-id-spEdit-animation-switch">
+													<input type="checkbox" id="sp-id-spEdit-animation-switch" class="mdl-switch__input" checked>
+													<span class="mdl-switch__label"></span>
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">種類</td>
+											<td>
+												<select id="sp-id-ani-name" class="sp-js-change-setAnimation">
+												    <optgroup label="Attention Seekers">
+												      <option value="sp-ani-bounce">bounce</option>
+												      <option value="sp-ani-flash">flash</option>
+												      <option value="sp-ani-pulse">pulse</option>
+												      <option value="sp-ani-rubberBand">rubberBand</option>
+												      <option value="sp-ani-shake">shake</option>
+												      <option value="sp-ani-swing">swing</option>
+												      <option value="sp-ani-tada">tada</option>
+												      <option value="sp-ani-wobble">wobble</option>
+												      <option value="sp-ani-jello">jello</option>
+												    </optgroup>
+
+												    <optgroup label="Bouncing Entrances">
+												      <option value="sp-ani-bounceIn">bounceIn</option>
+												      <option value="sp-ani-bounceInDown">bounceInDown</option>
+												      <option value="sp-ani-bounceInLeft">bounceInLeft</option>
+												      <option value="sp-ani-bounceInRight">bounceInRight</option>
+												      <option value="sp-ani-bounceInUp">bounceInUp</option>
+												    </optgroup>
+
+												    <optgroup label="Bouncing Exits">
+												      <option value="sp-ani-bounceOut">bounceOut</option>
+												      <option value="sp-ani-bounceOutDown">bounceOutDown</option>
+												      <option value="sp-ani-bounceOutLeft">bounceOutLeft</option>
+												      <option value="sp-ani-bounceOutRight">bounceOutRight</option>
+												      <option value="sp-ani-bounceOutUp">bounceOutUp</option>
+												    </optgroup>
+
+												    <optgroup label="Fading Entrances">
+												      <option value="sp-ani-fadeIn">fadeIn</option>
+												      <option value="sp-ani-fadeInDown">fadeInDown</option>
+												      <option value="sp-ani-fadeInDownBig">fadeInDownBig</option>
+												      <option value="sp-ani-fadeInLeft">fadeInLeft</option>
+												      <option value="sp-ani-fadeInLeftBig">fadeInLeftBig</option>
+												      <option value="sp-ani-fadeInRight">fadeInRight</option>
+												      <option value="sp-ani-fadeInRightBig">fadeInRightBig</option>
+												      <option value="sp-ani-fadeInUp">fadeInUp</option>
+												      <option value="sp-ani-fadeInUpBig">fadeInUpBig</option>
+												    </optgroup>
+
+												    <optgroup label="Fading Exits">
+												      <option value="sp-ani-fadeOut">fadeOut</option>
+												      <option value="sp-ani-fadeOutDown">fadeOutDown</option>
+												      <option value="sp-ani-fadeOutDownBig">fadeOutDownBig</option>
+												      <option value="sp-ani-fadeOutLeft">fadeOutLeft</option>
+												      <option value="sp-ani-fadeOutLeftBig">fadeOutLeftBig</option>
+												      <option value="sp-ani-fadeOutRight">fadeOutRight</option>
+												      <option value="sp-ani-fadeOutRightBig">fadeOutRightBig</option>
+												      <option value="sp-ani-fadeOutUp">fadeOutUp</option>
+												      <option value="sp-ani-fadeOutUpBig">fadeOutUpBig</option>
+												    </optgroup>
+
+												    <optgroup label="Flippers">
+												      <option value="sp-ani-flip">flip</option>
+												      <option value="sp-ani-flipInX">flipInX</option>
+												      <option value="sp-ani-flipInY">flipInY</option>
+												      <option value="sp-ani-flipOutX">flipOutX</option>
+												      <option value="sp-ani-flipOutY">flipOutY</option>
+												    </optgroup>
+
+												    <optgroup label="Lightspeed">
+												      <option value="sp-ani-lightSpeedIn">lightSpeedIn</option>
+												      <option value="sp-ani-lightSpeedOut">lightSpeedOut</option>
+												    </optgroup>
+
+												    <optgroup label="Rotating Entrances">
+												      <option value="sp-ani-rotateIn">rotateIn</option>
+												      <option value="sp-ani-rotateInDownLeft">rotateInDownLeft</option>
+												      <option value="sp-ani-rotateInDownRight">rotateInDownRight</option>
+												      <option value="sp-ani-rotateInUpLeft">rotateInUpLeft</option>
+												      <option value="sp-ani-rotateInUpRight">rotateInUpRight</option>
+												    </optgroup>
+
+												    <optgroup label="Rotating Exits">
+												      <option value="sp-ani-rotateOut">rotateOut</option>
+												      <option value="sp-ani-rotateOutDownLeft">rotateOutDownLeft</option>
+												      <option value="sp-ani-rotateOutDownRight">rotateOutDownRight</option>
+												      <option value="sp-ani-rotateOutUpLeft">rotateOutUpLeft</option>
+												      <option value="sp-ani-rotateOutUpRight">rotateOutUpRight</option>
+												    </optgroup>
+
+												    <optgroup label="Sliding Entrances">
+												      <option value="sp-ani-slideInUp">slideInUp</option>
+												      <option value="sp-ani-slideInDown">slideInDown</option>
+												      <option value="sp-ani-slideInLeft">slideInLeft</option>
+												      <option value="sp-ani-slideInRight">slideInRight</option>
+                                                                    
+												    </optgroup>
+												    <optgroup label="Sliding Exits">
+												      <option value="sp-ani-slideOutUp">slideOutUp</option>
+												      <option value="sp-ani-slideOutDown">slideOutDown</option>
+												      <option value="sp-ani-slideOutLeft">slideOutLeft</option>
+												      <option value="sp-ani-slideOutRight">slideOutRight</option>
+												      
+												    </optgroup>
+												    
+												    <optgroup label="Zoom Entrances">
+												      <option value="sp-ani-zoomIn">zoomIn</option>
+												      <option value="sp-ani-zoomInDown">zoomInDown</option>
+												      <option value="sp-ani-zoomInLeft">zoomInLeft</option>
+												      <option value="sp-ani-zoomInRight">zoomInRight</option>
+												      <option value="sp-ani-zoomInUp">zoomInUp</option>
+												    </optgroup>
+												    
+												    <optgroup label="Zoom Exits">
+												      <option value="sp-ani-zoomOut">zoomOut</option>
+												      <option value="sp-ani-zoomOutDown">zoomOutDown</option>
+												      <option value="sp-ani-zoomOutLeft">zoomOutLeft</option>
+												      <option value="sp-ani-zoomOutRight">zoomOutRight</option>
+												      <option value="sp-ani-zoomOutUp">zoomOutUp</option>
+												    </optgroup>
+
+												    <optgroup label="Specials">
+												      <option value="sp-ani-hinge">hinge</option>
+												      <option value="sp-ani-rollIn">rollIn</option>
+												      <option value="sp-ani-rollOut">rollOut</option>
+												    </optgroup>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">繰り返し間隔</td>
+											<td>
+												<input id="sp-id-ani-interval-second" type="number" step="1" min="1" value="3" class="sp-js-change-setAnimation">
+												秒間隔で実行
+											</td>
+										</tr>
+									</table>
+
+								</div>
+								<!--/タブ内容：ギミック-->
+
+								<!--タブ内容：表-->
+								<div id="sp-id-tab-content-table" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">行</td>
+										</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="row-add-top" gable="true"><i class="material-icons">add</i></button>
+										</td>
+										<td>現在セルの上に行追加</td>
+									</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="row-add-bottom" gable="true"><i class="material-icons">add</i></button>
+										</td>
+										<td>現在セルの下に行追加</td>
+									</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="row-delete" gable="true"><i class="material-icons">remove</i></button>
+										</td>
+										<td>現在セルの行削除</td>
+									</tr>
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">列</td>
+										</tr>
+										<tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="col-add-left" gable="true"><i class="material-icons">add</i></button>
+											</td>
+											<td>現在セルの左に列追加</td>
+										</tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="col-add-right" gable="true"><i class="material-icons">add</i></button>
+											</td>
+											<td>現在セルの右に行追加</td>
+										</tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="col-delete" gable="true"><i class="material-icons">remove</i></button>
+											</td>
+											<td>現在セルの列を削除</td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：表-->
+							</div>
+							<!--/ .scroll-box-->
+
+					
+						</td>
+					</tr>
+						
+					
+				</table>
+				<!--/ フォーマットBOX-->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="height:30px;border-top:1px solid #000">
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">code</i></button>
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect">CSS</button>
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect">JS</button>
+
+　<input type="checkbox" id="checkbox-section" style="width:auto;vertical-align: middle;"> section
+　<input type="checkbox" id="checkbox-col" style="width:auto;vertical-align: middle;"> col
+　<input type="checkbox" id="checkbox-item" style="width:auto;vertical-align: middle;"> item
+
+
+				
+			</td>
+		</tr>
+	<table>
+
+
+	<!-- tooltip -->
+	<div class="mdl-tooltip" for="sp-id-gimmick-timer">
+		現在選択中のアイテムを<br>
+		ページが表示されてから<br>
+		指定秒数後に表示するギミックです。<br>
+		<br>
+		主に「VSLで動画再生してから●秒後に購入ボタンを出す」に使用されています。
+	</div>
+	<div class="mdl-tooltip" for="sp-id-img-src-edit-btn">
+		イメージの挿入・編集
+	</div>
+
+	<div class="mdl-tooltip" for="sp-id-bg-image-url-edit-btn">
+		背景画像の設定・編集
+	</div>
+	<div class="mdl-tooltip" for="sp-id-link-edit-btn">
+		リンクの設定・編集
+	</div>
+	<div class="mdl-tooltip" for="sp-id-replace-item-edit-btn">
+		置換コードの設定・編集
+	</div>
+
+	<div class="mdl-tooltip" for="sp-id-font-size">
+		フォントサイズ
+	</div>
+	<div class="mdl-tooltip" for="sp-id-fore-color">
+		テキストの色
+	</div>
+	<div class="mdl-tooltip" for="sp-id-back-color">
+		塗りつぶし
+	</div>
+
+
+	<!-- dialog : image -->
+<!--
+	<dialog id="sp-id-dialog-name-image" class="mdl-dialog" style="margin:auto;width: 500px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">イメージの挿入・編集</h4>
+		<div class="mdl-dialog__content">
+			画像URL：<input type="text" id="sp-id-dialog-input-image-url" value="">
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+-->
+
+<script>
+function imageLibrarySearch(){
+	
+	
+	var imgType = $('#sp-id-image-type').val();
+	var myImageOnly = $('#sp-id-my-image-only').find('input[type=checkbox]').first().prop('checked');
+	console.log(myImageOnly);
+	var dataUploader = myImageOnly == true ? '[data-uploader="mine"]' : '';
+
+	$('.image-thumbnail').hide();
+
+	if(imgType == 'all'){
+		$('.image-thumbnail'+dataUploader).show();
+	}else{
+		$('.sp-js-image-type-'+imgType+dataUploader).show();
+	}
+}
+
+</script>
+
+<dialog id="sp-id-dialog-name-image" class="mdl-dialog" style="margin:auto;width: 70%;height: 85%;">
+	<h4 class="mdl-dialog__title" style="white-space:nowrap;padding: 15px;">イメージの挿入・編集
+
+		<select id="sp-id-image-type" onchange="imageLibrarySearch()" style="width: 170px;float: right;vertical-align: middle;">
+			<option value="all">すべて</option>
+			<option value="guarantee">お試し保証・返金保証</option>
+			<option value="bg">背景画像</option>
+			<option value="card-info">カード情報</option>
+			<option value="company-logo">会社ロゴ</option>
+		</select>
+
+		<label id="sp-id-my-image-only" style="float: right;margin-right: 15px;vertical-align: -webkit-baseline-middle;" onclick="imageLibrarySearch()">
+			<input type="checkbox" style="vertical-align: middle;width:auto;" checked> 自分のアップした画像のみ表示
+		</label>
+
+	</h4>
+
+	
+	<div class="mdl-dialog__content" style="background-color: #f8f8f8;background-image: linear-gradient(45deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025) 100%),linear-gradient(45deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025) 100%);background-size: 20px 20px;background-position: 0 0, 50px 50px;border-color: #F3F3F3;vertical-align: middle;height: calc(100% - 115px);overflow-y: auto;">
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/logo-sp3.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="http://nichibou.main.jp/img/member_hp/toukou/images/img1.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/0ae6609c-logop-h_06o00y06o00y000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/1s27nw5-quote1.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/217aff9d-macbook_0hm09b0hk09a000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img src="img_ph/7989ac57-toshio-nishi_05d04v04v04v009000.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/a5bcf928-hoover.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/e8d7ad1d-nirk8-1-mp4_0bn06k0bf06k000000.png"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/images/credit.jpg"></div>
+		<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc "><img  src="http://directbook.s3.amazonaws.com/site/images/mail_image.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img  src="http://directbook.s3.amazonaws.com/site/images/support_mail_L.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img src="http://directbook.s3.amazonaws.com/site/img/1year_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/30days_trial_60days_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/30days_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/30days_return.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/30days_warranty.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/cancel_ok.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/divide_ok.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/firstfree.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/hyakuen.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/keiyaku_cancel.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/present.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/refund.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/90days_warranty.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/bttm_buynow.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/bttm_cpend.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/App_Store.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy2_small.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy2_small_ov.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_BOM_choice.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_reBOM_choice.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_trial.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/cupn_button.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/dl_button.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/dl_pdf.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/download.gif"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img src="http://directbook.s3.amazonaws.com/site/img/card_img/card1.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card2.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card3.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card4.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/card_img/track.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/card_img/track_sp.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/dp_logo.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/head/dp_tell.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/logo.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/logo_big.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/commuter.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_1.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_2.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_3.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/logo/sq_logo.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/mobile/img/logo.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/0.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/1.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/5.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star30.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star35.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star40.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star45.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star50.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Free_Trial_IMG2970.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_BOM_2950.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDA.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDA_tax.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDAexp.png"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice5_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice_bre_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/flow_BOM_BKF.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/flow_BOM_SHIN_BRE_2970.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/month_flow.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_SHIN_BRE_2970.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_annual.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_annual29800.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_choice.jpg"></div>
+		<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_FDV_continuity.gif"></div>
+
+	</div>
+	<div class="mdl-dialog__actions" style="flex-direction: row;">
+		<button type="button" class="mdl-button sp-js-image-upload">IMAGE UPLOAD</button>
+		<button type="button" id="sp-id-change-target-image-url-btn" class="mdl-button">画像URLを変更する</button>
+		<input type="text" id="sp-id-change-target-image-url" value="" style="width:50%;">
+		<button type="button" class="mdl-button close" style="margin-left:auto;">CANCEL</button>
+	</div>
+</dialog>
+
+
+
+
+
+	<!-- dialog : link -->
+	<dialog id="sp-id-dialog-name-link" class="mdl-dialog" style="margin:auto;width: 500px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">リンクの設定・編集</h4>
+		<div class="mdl-dialog__content">
+			リンクURL：<input type="text" id="sp-id-dialog-input-link-url" value="">
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+
+	<!-- dialog : replace-item -->
+	<dialog id="sp-id-dialog-name-replace-item" class="mdl-dialog" style="margin:auto;width: 600px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">置換コードの挿入・編集</h4>
+		<div class="mdl-dialog__content">
+			置換コード：<textarea id="sp-id-dialog-input-replace-code" style="width:100%;height:200px;"></textarea>
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+
+	<!--drag item Tempate-->
+	<template id="sp-js-template">
+
+		<!-- section -->
+		<div id="section" data-drag-type="section">
+			<div class="sp-section sp-drop-here">
+				<div class="container sp-container">
+					<div class="row sp-row">
+						<div class="col-sm-12">
+							<p class="sp-item sp-drop-here" data-item-type="text" contenteditable="true">12カラム</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- box -->
+		<div id="box" data-drag-type="item">
+			<div class="sp-box sp-drop-here" data-item-type="box">
+				<p class="sp-item sp-drop-here" data-item-type="text" contenteditable="true">BOX</p>
+			</div>
+		</div>
+
+		<!-- text -->
+		<div id="text" data-drag-type="item">
+			<p class="sp-item sp-drop-here" data-item-type="text" contenteditable="true">テキスト</p>
+		</div>
+
+		<!-- list -->
+		<div id="list" data-drag-type="item">
+			<ul class="sp-item sp-drop-here" data-item-type="list">
+			   <li>なぜ20代が人生の分岐点なのか？30代40代とは全く違う20代で人生に一度しかないこと</li>
+			   <li>必死になって就職活動しても半分が失敗するワケー仕事や会社選びを間違える典型的なパターン</li>
+			   <li>自分の市場価値を高める方法〜自分の才能を知り、それを伸ばすには？</li>
+			   <li>心理学で見る、あなたにとって最悪な仕事と最高の仕事は？</li>
+			   <li>他、ダイレクト出版の会社のぶっちゃけを知ることができる従業員の生の声ー</li>
+			</ul>
+		</div>
+
+		<!-- button -->
+		<div id="button" data-drag-type="item">
+			<a href="test.php" class="sp-item sp-drop-here sp-btn" data-item-type="button" contenteditable="true">ボタン</a>
+		</div>
+		
+		<!-- image -->
+		<div id="image" data-drag-type="item">
+			<img src="http://nichibou.main.jp/img/member_hp/toukou/images/img1.jpg" class="sp-item sp-drop-here img-responsive center-block"  data-item-type="image" style="margin-bottom:30px">
+		</div>
+
+		<!-- video -->
+		<div id="video" data-drag-type="item">
+			<div class="sp-item sp-drop-here embed-responsive embed-responsive-16by9" data-item-type="replace-item" data-contents="video" style="margin-bottom:30px">
+				<template><iframe class="embed-responsive-item" src="http://www.youtube.com/embed/gqryJRAlS0c"></iframe></template>
+			</div>
+		</div>
+
+		<!-- table -->
+		<div id="table" data-drag-type="item">
+			<table class="sp-item table table-hover sp-drop-here" data-item-type="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Username</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>1</th>
+						<td>Mark</td>
+						<td>Otto</td>
+						<td>@mdo</td>
+					</tr>
+					<tr>
+						<th>2</th>
+						<td>Jacob</td>
+						<td>Thornton</td>
+						<td>@fat</td>
+					</tr>
+					<tr>
+						<th>3</th>
+						<td>Larry</td>
+						<td>the Bird</td>
+						<td>@twitter</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- replace-item -->
+		<div id="replace-item" data-drag-type="item">
+			<div class="sp-item sp-drop-here" data-item-type="replace-item" data-contents="" data-title="-- ここがアップロード後に設定した内容に置き換えられます --" style="margin-bottom:30px">
+				<template><script>alert('alert');</script></template>
+			</div>
+		</div>
+
+		<!-- countdown-timer -->
+		<div id="countdown-timer" data-drag-type="item">
+			<div class="sp-item sp-drop-here" data-item-type="replace-item" data-contents="" data-title="-- カウントダウンタイマー --" style="margin-bottom:30px">
+				<template>
+					<!--sp:countdonw:start-->
+					<div class="sp-js-load-countdown" style="margin-bottom:30px;"></div>
+					<!--sp:countdonw:end-->
+				</template>
+			</div>
+		</div>
+
+	</template>
+
+
+
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="js/spEditor/sp2Editor-miko3_sp.js"></script>
+	<script type="text/javascript">
+	$(function(){
+	  $('#htmlBody').sp2Editor({
+	        staffId : '220',
+	        cssFile : '',
+	        scrollTop : '0'
+	    });
+	});
+	</script>
+
+
+</body>
+</html>
+
+
+
+

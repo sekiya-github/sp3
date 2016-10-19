@@ -1,0 +1,17 @@
+.fa-font-back:before {
+  content: "\f031";
+  background-color: rgb(79, 79, 79);
+  border: 1px solid rgb(79, 79, 79);
+  border-radius: 2px;
+  display: inline-block;
+  padding: 2px 3px 3px 3px;
+}
+.sp-icon-code-head:before {
+  content: "head";
+}
+.sp-icon-code-body:before {
+  content: "body";
+}
+.sp-icon-code-tags:before {
+  content: "tags";
+}

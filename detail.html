@@ -1,0 +1,109 @@
+<style>
+.layoutTable{
+max-width:100%;
+border:none;
+}
+.layoutTable tr{
+border:none;
+}
+.layoutTable td{
+padding:10px 17px 10px 0;
+white-space:nowrap;
+border:none;
+}
+.margin-right{
+margin-right:30px;
+}
+.margin-bottom{
+margin-bottom:20px;
+}
+</style>
+
+    <div class="spadminBar">
+        <a class="logo" href="list.php">SP Editor</a>
+        <a href="//s3-ap-northeast-1.amazonaws.com/jp.speditor.common/manual/speditor2_manual_0616.pdf" target="manual" style="margin-left: 20px;">マニュアルを見る</a>
+        <span style="float:right">
+            <input type="button" value="戻る"  class="btn-action" onclick="location.href='list.php';">
+        </span>
+    </div>
+
+    <div class="titleBar">ページID：{$page.pageId} の情報</div>
+    <div class="inputDiv">
+        <table class="layoutTable margin-bottom">
+            <tr>
+                <td>ページ名</td>
+                <td>：</td>
+                <td>{$page.pageManagementName|default:'-- 未設定 --'}</td>
+            </tr>
+            <tr>
+                <td>URL</td>
+                <td>：</td>
+                <td>{$page.accessUrl}</td>
+            </tr>
+        </table>
+
+        <input type="button" value="ページのデザインを編集する" class="btn-action margin-right" onclick="location.href='edit_html_1.php?pageId={$page.pageId}';">
+        <a href="{$page.accessUrl}" class="btn-action margin-right" target="preview">ページのデザインを確認する</a>
+        <input type="button" value="ページのコピーを作成する" class="btn-action margin-right" onclick="location.href='create_page_1.php?copyPageId={$page.pageId}&copyTemplateId={$page.templateId}';">
+        <input type="button" value="ページを削除する" class="btn-action margin-right" onclick="if(confirm('このページを削除しますか？')) location.href='delete_page.php?pageId={$page.pageId}';">
+    </div>
+
+    <div class="titleBar">リダイレクト設定</div>
+    <div class="inputDiv">
+        <form name="redirectForm" id="redirectForm" action="edit_redirect.php" method="post" onsubmit="return false">
+            <input type="hidden" name="pageId" value="{$page.pageId}">
+            <input type="hidden" name="redirectFlag" value="{if $page.redirectFlag == '1'}0{else}1{/if}">
+
+            {if !isBlankOrNull($redirectErrorMsg)}
+                <div class="alert alert-danger">{$redirectErrorMsg}</div>
+            {/if}
+
+            {if !isBlankOrNull($smarty.get.redirectsuccessmsg)}
+                <div class="successMsg">{$smarty.get.redirectsuccessmsg}</div>
+            {/if}
+
+            <div class="margin-bottom">
+                現在のリダイレクト設定：
+                {if $page.redirectFlag == '1'}
+                    <span class="bold">リダイレクトする</span>
+                {else}
+                    <span class="bold">リダイレクトしない</span>
+                {/if}
+            </div>
+
+            <div class="margin-bottom">
+                <label>
+                    <input type="radio" id="redirectFlag" name="redirectFlag" value="0" onclick="$('#redirectInputDiv').hide()" {if $form.redirectFlag == '0'}checked{/if}> リダイレクトしない
+                </label>
+                　　　
+                <label>
+                    <input type="radio" id="redirectFlag" name="redirectFlag" value="1" onclick="$('#redirectInputDiv').show()" {if $form.redirectFlag == '1'}checked{/if}> リダイレクトする
+                </label>
+            </div>
+
+            <div id="redirectInputDiv" style="display:none;" class="margin-bottom">
+                <input type="date" name="redirectDate" value="{if isBlankOrNull($form.redirectDate)}{$smarty.const.NOW_DATE}{else}{$form.redirectDate}{/if}">
+                <input type="time" name="redirectTime" value="{if isBlankOrNull($form.redirectTime)}00:00:00{else}{$form.redirectTime}{/if}">
+                　以降は　
+                <input type="url" name="redirectUrl" value="{$form.redirectUrl}" placeholder="リダイレクト先URL" style="width:500px;">
+                　にリダイレクトする
+            </div>
+
+            <div style="margin-bottom:15px">
+                <input type="button" value="リダイレクト設定を更新する" class="btn-action" onclick="$('#redirectForm').removeAttr('onsubmit').submit();">
+            </div>
+
+        </form>
+    </div>
+
+<script type="text/javascript" src="js/jquery-1.11.0.js?t={$smarty.const.NOW_YYYYMMDDHHIISS}"></script>
+<script type="text/javascript">
+$(function(){
+    if($('#redirectFlag[value="1"]').prop('checked')){
+        $('#redirectInputDiv').show();
+    }else{
+        $('#redirectInputDiv').hide();
+    }
+});
+</script>
+

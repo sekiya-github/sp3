@@ -1,0 +1,36 @@
+/**----------------------------------------------
+dragItem
+----------------------------------------------*/
+.dragItem {
+  width: 85px;
+  border: 1px solid orange;
+  border-radius: 4px;
+  background-color: orange;
+  margin: 20px auto;
+  padding: 5px;
+  text-align: center;
+}
+
+/**----------------------------------------------
+ display none
+----------------------------------------------*/
+.sp-hide {
+  display:none;
+}
+
+
+/**----------------------------------------------
+ show .spEdit exsit only.
+----------------------------------------------*/
+.sp-show-edit-only-place{
+  opacity:0.2;
+}
+.sp2-notice{
+    font-size: 90%;
+    color: #666 !important;
+}
+
+
+/**----------------------------------------------
+ loader
+----------------------------------------------*/

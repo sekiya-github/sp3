@@ -1,0 +1,86 @@
+<style>
+.listTable{
+max-width:100%;
+}
+.listTable tr{
+border:1px solid #ccc;
+}
+.listTable td{
+padding:10px 17px;
+font-size:12px;
+white-space:nowrap;
+}
+.listTable th{
+white-space:nowrap;
+text-align:left;
+padding:10px 15px;
+background-color: #f6f8f4;
+}
+
+
+</style>
+
+
+<div class="spadminBar">
+    <a class="logo" href="list.php">SP Editor</a>
+    <a href="//s3-ap-northeast-1.amazonaws.com/jp.speditor.common/manual/speditor2_manual_0616.pdf" target="manual" style="margin-left: 20px;">マニュアルを見る</a>
+    <span style="color:red" onclick="$('.sp2-display-none').toggle()">　　　</span>
+    <span style="float:right">
+        <input type="button" value="ページ新規作成"  class="btn-ok" onclick="location.href='create_page_1.php';">
+        <a href="logout.php" class="btn-action">ログアウト</a>
+    </span>
+</div>
+
+<div class="titleBar">① 検索条件を入力</div>
+<div class="inputDiv">
+    <form name="searchForm" id="searchForm" action="list.php" method="post">
+        <input type="hidden" name="mode" value="SEARCH">
+        <input type="text" name="pageId" id="pageId" value="{$smarty.get.pageId}" maxlength="6" style="widht:100px" placeholder="ページID">
+        　<input type="text" name="pageManagementName" id="pageManagementName" value="{$smarty.post.pageManagementName}" maxlength="50" style="widht:300px" placeholder="ページ名">
+        　{html_options name="domainId" id="domainId" options=$domainList selected=$smarty.post.domainId}
+        　{html_options name="staffId" id="staffId" options=$staffList selected=$smarty.post.staffId}
+        　<input type="submit" class="btn-action" value="検索">
+        　<input type="reset" class="btn-action" value="リセット">
+    </form>
+</div>
+
+<div class="titleBar">② 検索結果 <span style="font-size:18px;font-weight:bold;"> {count($pageList)}</span> 件表示</div>
+<div class="inputDiv">
+
+    {if !isBlankOrNull($smarty.get.deletePageId)}
+        <div class="successMsg">ページID（{$smarty.get.deletePageId}）を削除しました。</div>
+    {/if}
+
+    <form name="listForm" id="listForm" action="edit_1.php?from=first" method="post">
+        <table class="listTable">
+            <tr>
+                <th><a href="javascript:sortData('mpa_page_id','{if $smarty.get.desc == 'desc'}asc{else}desc{/if}')">ページID</a></th>
+                <th><a href="javascript:sortData('mpa_page_management_name','{if $smarty.get.desc == 'desc'}asc{else}desc{/if}')">ページ名</a></th>
+                <th><a href="javascript:sortData('mpa_staff_id','{if $smarty.get.desc == 'desc'}asc{else}desc{/if}')">更新者</a></th>
+                <th><a href="javascript:sortData('mpa_update_datetime','{if $smarty.get.desc == 'desc'}asc{else}desc{/if}')">更新日</a></th>
+                <th></th>
+            </tr>
+
+            {foreach from=$pageList key="k" item="v" name="f1"}
+                <tr {if $v.msl_delete_flag === '1'}style="background-color:#ccc"{/if}>
+                    <td><span class="sp2-display-none">{$v.mpa_template_id} - </span>{$v.mpa_page_id}</td>
+                    <td style="min-width: 200px;white-space:normal;">
+                        {$v.mpa_page_management_name|default:'-- 未設定 --'}<br>
+                        &nbsp;
+                        <!--<a href="{$v.mpa_access_url}" target="_blank" style="color:rgb(74, 74, 74)" onmouseover="pWin = window.open(this.href, 'preview', 'width=1000, height=240, menubar=no, toolbar=no, scrollbars=yes'); return false;" onmouseout="if(pWin) pWin.close();">{$v.mpa_access_url|replace:'http://www.':''}</a>-->
+                        <a href="{$v.mpa_access_url}" target="_blank" style="color:rgb(74, 74, 74)">{$v.mpa_access_url|replace:'http://www.':''}</a>
+
+                    </td>
+                    <td>{$v.mst_last_name}</td>
+                    <td>{$v.mpa_update_datetime}</td>
+                    <td><a href="detail.php?pageId={$v.mpa_page_id}" class="btn-action">編集</a></td>
+                </tr>
+            {foreachelse}
+                <td colspan="5">登録されたページはありません</td>
+            {/foreach}
+        </table>
+    </form>
+</div>
+
+
+<script type="text/javascript" src="js/jquery-1.11.0.js?t={$smarty.const.NOW_YYYYMMDDHHIISS}"></script>

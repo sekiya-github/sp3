@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!--ブラウザタブに表示するタイトル-->
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!--templateId : 269-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2_2_20160916_145011_sp-animate.css" rel="stylesheet">
+    <link href="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2_3_20160916_145011_font-awesome.min.css" rel="stylesheet">
+    <style>
+/*------------------------------------------------------
+ SP3
+--------------------------------------------------------*/
+
+/* box-align */
+.sp-box-algin-left{
+display:block !important;
+margin-left:0 !important;
+margin-right:auto !important;
+}
+.sp-box-algin-center{
+display:block !important;
+margin-left:auto !important;
+margin-right:auto !important;
+}
+.sp-box-algin-right{
+display:block !important;
+margin-left:auto !important;
+margin-right:0 !important;
+}
+
+/* overlay */
+.sp-overlay{
+    background: rgba(5,5,5,0.85);
+}
+
+
+/* image */
+.sp-item-style-image-rounded{
+border-radius: 6px;
+}
+.sp-item-style-image-circle{
+border-radius: 50%;
+}
+.sp-item-style-image-thumbnail{
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.sp-box{
+    padding:15px;
+    margin:0;
+}
+
+
+/*------------------------------------------------------
+ bootstrap overwrite
+--------------------------------------------------------*/
+[class^="col-xs-"],
+[class*=" col-xs-"],
+[class^="col-sm-"],
+[class*=" col-sm-"],
+[class^="col-md-"],
+[class*=" col-md-"]
+[class^="col-lg-"],
+[class*=" col-lg-"]{
+    padding:15px;
+}
+
+
+a, a:focus, a:hover {
+    color: white;
+    text-decoration: none;
+}
+ol, ul {
+    margin-bottom: 30px;
+}
+
+
+
+/*------------------------------------------------------
+ テンプレートクラス
+--------------------------------------------------------*/
+body{
+    color: #333;
+    color: #444;
+        color: rgb(68, 68, 68);
+    color: rgb(0, 0, 0);
+    font-family: 'helvetica', 'arial', sans-serif;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-size:16px;
+    font-size:18px;
+    line-height: 2em;
+    padding:0;
+    /*
+    position: relative;
+    background-color: #000;
+    background: url(http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145001_lies-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    */
+}
+.sp-item{
+    margin-bottom:30px;
+}
+.sp-item:last-child{
+    /*margin-bottom:0;*/
+}
+.section-headline{
+	background-color: rgb(0, 0, 0);
+    /*
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 17px 0px, rgba(0, 0, 0, 0.188235) 0px 6px 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 12px 15px 0px, rgba(0, 0, 0, 0.188235) 0px 17px 50px 0px;
+    */
+    box-shadow: rgba(0, 0, 0, 0.137255) 0px 4px 5px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 10px 0px, rgba(0, 0, 0, 0.2) 0px 2px 4px -1px;
+}
+
+.subhead{
+    font-size: 28px;
+    line-height: 45px;
+    font-weight: bolder;
+    text-align: center;
+}
+.subhead-headline{
+	font-family: helvetica, arial, sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    text-align: center;
+    /* margin: 63px 0; */
+    /* margin-bottom: 55px; */
+    padding: 45px 0;
+}
+.subhead-session{
+    font-size: 26px;
+    line-height: 45px;
+    font-weight: normal;
+    /* text-align: center; */
+    cursor: pointer;
+    color: rgb(34, 34, 34);
+    margin-bottom: 0;
+    background: url(data:image/gif;base64,R0lGODlhFwANAIAAAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjY5RkZBQTE1NkI3NUU2MTFBQjI3QjQ3REU0N0Q2NzAzIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBENUY4OTcwNzU5RjExRTY4QjdEQThFNEFCN0FDQUY3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBENUY4OTZGNzU5RjExRTY4QjdEQThFNEFCN0FDQUY3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MkVENjhGOUY2Rjc1RTYxMThBRUQ5OTU5MENGNzFENTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NjlGRkFBMTU2Qjc1RTYxMUFCMjdCNDdERTQ3RDY3MDMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQAAAAAACwAAAAAFwANAAACJoSDqYvmx2J4VK5a7XwpR99wDNiJpWN55MitH4VqCgzIbGxfkFQAADs=) no-repeat 95% center;
+}
+.subhead-session:hover{
+    opacity:0.5;
+}
+.subhead-session.allow-close{
+	background: url(data:image/gif;base64,R0lGODlhFwANAIAAAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjY5RkZBQTE1NkI3NUU2MTFBQjI3QjQ3REU0N0Q2NzAzIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBENUY4OTc0NzU5RjExRTY4QjdEQThFNEFCN0FDQUY3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBENUY4OTczNzU5RjExRTY4QjdEQThFNEFCN0FDQUY3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUuMSBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MkVENjhGOUY2Rjc1RTYxMThBRUQ5OTU5MENGNzFENTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NjlGRkFBMTU2Qjc1RTYxMUFCMjdCNDdERTQ3RDY3MDMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQAAAAAACwAAAAAFwANAAACJIyPoMidupwMsM5W8z1aX09ZEmiQnMiY5gOd7WetToZuoQwDBQA7) no-repeat 95% center;
+}
+
+
+.subhead-session-row{
+    border-top: 1px solid #dddddd;
+}
+
+
+.container.container-session{
+    max-width: 763px;
+    font-size: 85%;
+}
+.container.container-session p:last-child{
+    margin-bottom:0;
+}
+.container.container-session img{
+    margin-top: 6px;
+}
+
+.product-summary-box {
+	border:1px solid #ccc;
+	border-radius:4px;
+}
+.product-summary-box li, product-summary-box p{
+	font-size:85%;
+}
+
+.text-small{
+	font-size:85%;
+}
+
+
+p{
+    margin:0 0 30px 0;
+        /*text-indent:1em;*/
+}
+
+
+h3{
+    margin:0 0 30px 0;
+}
+
+hr{
+    border-top: none;
+    height: 1px;
+    background-color: #ccc;
+}
+.my-section{
+    padding:0;
+}
+.container {
+    max-width: 880px;
+}
+
+ul.list-green li{
+    padding: 5px 0 5px 40px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145001_check_green.jpg') no-repeat;
+}
+ul.list-red li{
+    padding: 5px 0 5px 40px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_check_red.jpg') no-repeat;
+}
+ol.list-decimal li{
+    padding: 5px 0 5px 1em;
+    margin: 15px 2em;
+    line-height: 130%;
+    list-style-type: decimal;
+}
+[data-item-type="list"]{
+    list-style-type: disc;
+    list-style-image: none;
+    padding-left:40px;
+}
+[data-item-type="list"] li{
+    margin: 5px 0;
+}
+.blet-table{
+    width:100%;
+}
+.blet-table tr{
+    border-top:1px solid #ccc
+}
+
+.blet-table td{
+    padding:10px;
+    vertical-align:top;
+    font-size:18px;
+}
+
+.blet-table td:last-child {
+    vertical-align: middle;
+    font-size:18px;
+    text-align: center;
+}
+
+
+
+
+/*------------------------------------------------------
+ .sp-item-style-***  ( text / list / button / table )
+--------------------------------------------------------*/
+/*button*/
+.sp-btn{
+    display: block;
+    width: 193px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    font-family: arial;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display:block;
+    box-shadow: rgb(255, 100, 100) 0px 1px 0px inset, rgb(153, 2, 2) 0px -1px 2px inset;
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 5px;
+    text-shadow: rgb(82, 1, 1) 1px 1px;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(rgb(235, 22, 22), rgb(204, 4, 4));
+}.sp-btn-blue:hover {
+    background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+    background:-ms-linear-gradient( top, #1e62d0 5%, #3d94f6 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #1e62d0), color-stop(100%, #3d94f6) );
+    background-color:#1e62d0;
+}.sp-btn:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-green {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 5px;
+    border:1px solid #74b807;
+    text-decoration:none;
+    background:-moz-linear-gradient( center top, #89c403 5%, #77a809 100% );
+    background:-ms-linear-gradient( top, #89c403 5%, #77a809 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#89c403', endColorstr='#77a809');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #89c403), color-stop(100%, #77a809) );
+    background-color:#89c403;
+    color:#ffffff;
+    text-shadow:1px 1px 0px #528009;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #a4e271;
+    -moz-box-shadow:inset 1px 1px 0px 0px #a4e271;
+    box-shadow:inset 1px 1px 0px 0px #a4e271;
+}.sp-btn-green:hover {
+    background:-moz-linear-gradient( center top, #77a809 5%, #89c403 100% );
+    background:-ms-linear-gradient( top, #77a809 5%, #89c403 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77a809', endColorstr='#89c403');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #77a809), color-stop(100%, #89c403) );
+    background-color:#77a809;
+}.sp-btn-green:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-blue {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius: 5px;
+    border:1px solid #337fed;
+    text-decoration:none;
+    background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+    background:-ms-linear-gradient( top, #3d94f6 5%, #1e62d0 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #3d94f6), color-stop(100%, #1e62d0) );
+    background-color:#3d94f6;
+    color:#ffffff;
+    text-shadow:1px 1px 0px #1570cd;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #97c4fe;
+    -moz-box-shadow:inset 1px 1px 0px 0px #97c4fe;
+    box-shadow:inset 1px 1px 0px 0px #97c4fe;
+}.sp-btn-blue:hover {
+    background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+    background:-ms-linear-gradient( top, #1e62d0 5%, #3d94f6 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #1e62d0), color-stop(100%, #3d94f6) );
+    background-color:#1e62d0;
+}.sp-btn-blue:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-orange {
+    border-radius:5px;
+    border:1px solid #eda933;
+    background:-moz-linear-gradient( center top, #f6b33d 5%, #d29105 100% );
+    background:-ms-linear-gradient( top, #f6b33d 5%, #d29105 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6b33d', endColorstr='#d29105');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #f6b33d), color-stop(100%, #d29105) );
+    background-color:#f6b33d;
+    color:#ffffff;
+    text-shadow:1px 1px 0px #cd8a15;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #fed897;
+    -moz-box-shadow:inset 1px 1px 0px 0px #fed897;
+    box-shadow:inset 1px 1px 0px 0px #fed897;
+}.sp-btn-orange:hover {
+    background:-moz-linear-gradient( center top, #d29105 5%, #f6b33d 100% );
+    background:-ms-linear-gradient( top, #d29105 5%, #f6b33d 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d29105', endColorstr='#f6b33d');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #d29105), color-stop(100%, #f6b33d) );
+    background-color:#d29105;
+}.sp-btn-orange:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-pink {
+    border-radius:5px;
+    border:1px solid #d83526;
+    text-decoration:none;
+    background:-moz-linear-gradient( center top, #fa665a 5%, #d34639 100% );
+    background:-ms-linear-gradient( top, #fa665a 5%, #d34639 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa665a', endColorstr='#d34639');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #fa665a), color-stop(100%, #d34639) );
+    background-color:#fa665a;
+    color:#ffffff;
+    text-shadow:1px 1px 0px #98231a;
+    -webkit-box-shadow:inset 1px 1px 0px 0px #fab3ad;
+    -moz-box-shadow:inset 1px 1px 0px 0px #fab3ad;
+    box-shadow:inset 1px 1px 0px 0px #fab3ad;
+}.sp-btn-pink:hover {
+    background:-moz-linear-gradient( center top, #d34639 5%, #fa665a 100% );
+    background:-ms-linear-gradient( top, #d34639 5%, #fa665a 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d34639', endColorstr='#fa665a');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #d34639), color-stop(100%, #fa665a) );
+    background-color:#d34639;
+}.sp-btn-pink:active {
+    position:relative;
+    top:1px;
+}
+
+.sp-btn-push{
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    background: none;
+    background-color: #ff2b2f;
+    box-shadow: 0 20px 0 #DA2E31;
+    transition: 0.3s ease-in-out;
+    margin: 0 auto 50px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 44px;
+    padding: 40px 0;
+    border: none;
+}
+.sp-btn-push:hover{
+    box-shadow:0 5px 0 #DA2E31;
+    transform:translate(0, 15px);
+}
+@media screen and (max-width: 480px){
+    .sp-btn-push{
+        box-shadow:0 10px 0 #6d0202;
+    }
+    .sp-btn-push:hover{
+        box-shadow:0 5px 0 #6d0202;
+        transform:translate(0, 5px);
+    }   
+}
+@-webkit-keyframes sheen {
+  0% {
+    -webkit-transform: skewY(-45deg) translateX(0);
+            transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    -webkit-transform: skewY(-45deg) translateX(12.5em);
+            transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+@keyframes sheen {
+  0% {
+    -webkit-transform: skewY(-45deg) translateX(0);
+            transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    -webkit-transform: skewY(-45deg) translateX(12.5em);
+            transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+
+.sp-btn-shiny {
+    display:block;
+    width:100%;
+    box-sizing:border-box;  
+    padding: 0.75em 2em;
+    text-align: center;
+    text-decoration: none;
+    color: #2194E0;
+    border: 2px solid #2194E0;
+    font-size: 24px;
+    display: inline-block;
+    border-radius: 0.3em;
+    -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    background-image:none;
+    background:inherit;
+    box-shadow: none;
+    text-shadow: none;
+    
+}
+.sp-btn-shiny:before {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 3em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -4.5em;
+    -webkit-transform: skewX(-45deg) translateX(0);
+      -ms-transform: skewX(-45deg) translateX(0);
+          transform: skewX(-45deg) translateX(0);
+    -webkit-transition: none;
+          transition: none;
+}
+.sp-btn-shiny:hover {
+    background-color: #2194E0;
+    color: #fff;
+    border-bottom: 4px solid #1977b5;
+}
+.sp-btn-shiny:hover:before {
+    -webkit-transform: skewX(-45deg) translateX(13.5em);
+      -ms-transform: skewX(-45deg) translateX(13.5em);
+          transform: skewX(-45deg) translateX(13.5em);
+    -webkit-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;
+}
+
+
+
+
+
+/* list ol */
+.sp-item-style-list-order-black{
+    list-style: none;
+    counter-reset: num;
+}
+.sp-item-style-list-order-black li:before{
+    counter-increment: num;
+    content: counter(num);
+    position: absolute;
+    left: 0;
+    background: rgb(0, 0, 0);
+    min-width: 1.5em;
+    text-align: center;
+    height: 1.5em;
+    line-height: 1.6;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    font-family: Arial;
+}
+.sp-item-style-list-order-blue{
+    list-style: none;
+    counter-reset: num;
+}
+.sp-item-style-list-order-blue li:before{
+    counter-increment: num;
+    content: counter(num);
+    position: absolute;
+    left: 0;
+    background: rgba(62,156,227,1);
+    min-width: 1.5em;
+    text-align: center;
+    height: 1.5em;
+    line-height: 1.6;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    font-family: Arial;
+}
+.sp-item-style-list-order-red{
+    list-style: none;
+    counter-reset: num;
+}
+.sp-item-style-list-order-red li:before{
+    counter-increment: num;
+    content: counter(num);
+    position: absolute;
+    left: 0;
+    background: rgb(255, 90, 90);
+    min-width: 1.5em;
+    text-align: center;
+    height: 1.5em;
+    line-height: 1.6;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    font-family: Arial;
+}
+
+/* list ul */
+.sp-item-style-list-black li{
+    list-style: none;
+    padding: 5px 0 5px 35px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_check_black.jpg') no-repeat;
+}
+.sp-item-style-list-red li{
+    list-style: none;
+    padding: 5px 0 5px 35px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_check_red.jpg') no-repeat;
+}
+.sp-item-style-list-green li{
+    list-style: none;
+    padding: 5px 0 5px 35px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url('http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_check_green.jpg') no-repeat;
+}
+.sp-item-style-list-check-circle-green li{
+    list-style: none;
+    padding: 5px 0 5px 35px;
+    margin: 15px 0;
+    line-height: 130%;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkM4M0U0M0NEMERDMzExRTVBNDc5ODZGNkY1OUI0RjdEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkM4M0U0M0NFMERDMzExRTVBNDc5ODZGNkY1OUI0RjdEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QzgzRTQzQ0IwREMzMTFFNUE0Nzk4NkY2RjU5QjRGN0QiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QzgzRTQzQ0MwREMzMTFFNUE0Nzk4NkY2RjU5QjRGN0QiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7vgZ21AAACMklEQVR42pTVS0gVURzH8blHeyB4AxNqoRRiUel1FbaSqEVSkGCIRIhUENEq7QUt2qgU9FzWIkLIqEWkCW1aaA+QClehFQWRrYzQ6N5e0MvvH34XDsPMdebAB/ScOb87c+bM/2SC21uCmFaHndiDRmTVn8cURvAA76MmZyKCq9CLk/iBp3iDTxpfhQ1oQQUu4Arm/ZDyUGgOg2jCOdzFy5gnsms6cBq70I3pqDu2x32IX9iLF0Gy1ow7WI4dWqbAaTCrO7XQ7SlCA127TXMHi+/CySk0oBMfgvRtRnMblOUstBY9uITJhEH20m5gFJvUN6kMy6q14N34g6GEoRmcxwHNbfPGLOO39Tnt0yd4lzD4MI7o7zk88sbeanu2O+2G1/ibIHQrBvRe7CmP4pk3/k9ZjXZBJWZDATW4hn5vr6/FdazU/7YctyJ+3LIqy2PurEuPbK0aZ3EV9eob1p3Htf8WXMDqiL35FStwSBu/RmOv9OZ/xoRaVsHpS9mIMm9wDAf1o2UqSEvxWf0fY0KdsqadqpQVlHWhi+5hP757fcfxvMQSrFfWiAXfxxKtaxARvg+P9UXdXGTXdClr1IqQhffpblpSfH3htll72L6+M8XqltW6VqmgzKQMXYNx1WQrYnnnnQrdKn3jKoVBirJpc5YpI++XzeI2asUXTGh5ciUCc7pmQnNalVHyaDqGE6Gjadbbp/7RdBGXw0dTZpHD1I6cdu8wtVrwTUfQcKnDdEGAAQB+T4CVOMJCowAAAABJRU5ErkJggg==) no-repeat center left;
+}
+
+
+/* text */
+.sp-item-style-text-subead-red{
+    border-left:4px solid #fd4a41;
+    font-size:21px;
+    padding:15px;
+}
+.sp-item-style-text-subead-blue{
+    border-left:4px solid #00c0ff;
+    font-size:21px;
+    padding:15px;
+}
+.sp-item-style-text-subead-green{
+    border-left:4px solid #00AD2A;
+    font-size:21px;
+    padding:15px;
+}
+
+/* img check */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------------
+ mobile 
+--------------------------------------------------------*/
+@media screen and (max-width: 420px) {
+    body{
+		/*
+        font-size:15px;
+        line-height: 1.5em;
+        */
+    }
+	.subhead-headline{
+		font-size: 26px;
+		line-height: 1.6em;
+	}
+	.sp-btn{
+		margin-left:auto !important;
+		margin-right:auto !important;
+		font-size:28px;
+	}
+	.subhead-session{
+		text-align:center;
+	}
+	.container.container-session{
+		padding:0 30px;
+	}
+	.container.container-session .row{
+		border-bottom:1px solid #ccc;
+	}
+	.sp-btn{
+		width: 100%;
+		padding: 30px 0;
+	}
+	.sp-btn-push,
+	.sp-btn-shiny,
+	.sp-btn *{
+		font-size: 32px !important;
+	}
+	.container{
+		padding-right: 30px;
+		padding-left: 30px;
+	}
+}  
+</style>
+  </head>
+  <body class="">
+    <!-- ヘッドライン -->
+    <div class="my-section sp-section section-headline">
+      <div class="container sp-container">
+        <div class="row sp-row">
+          <div class="col-sm-12" >
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_0ae6609c-logop-h_06o00y06o00y000000.png" class="sp-item img-responsive center-block sp-box-algin-left" data-item-type="image" style="margin-bottom:30px">
+            <p class="sp-item subhead-headline" data-item-type="text">あなたはこれがどの国の話かわかりますか？ </p>
+            <p></p>
+            <a href="" data-sp2-replace-href="test.php" class="sp-item sp-box-algin-right sp-btn" data-item-type="button">いますぐ受講する </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- コンテンツ開始 -->
+    <div class="my-section sp-section" style="">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="margin-top: 30px;">教育費が無料。その国の国民は、小学校から大学まで、教育費が一切無料。医療費が無料。病気になっても怪我をしても、どんな大きな手術でも医療費の負担はありません。電気代までもが、すべて無料。さらに、マイホームを買うときは500万円政府から支給され、、、車を買うときには、政府が半額払ってくれて、、、ローンはすべて利子０％そして極めつけは、、、税金がゼロ。まるで地上の楽園のようなこの豊かな国、、、その国の名はリビア。カダフィ大佐が長期間独裁政治をしてきたと言われる、アフリカのリビアです。 
+              <br>
+              <br>私たち日本人は、カダフィ大佐といえば、ちょっと頭のおかしな独裁者みたいなイメージを持っていますが、、、リビアがこのように世界で最も住みやすい豊かな国だったのは、カダフィ大佐のおかげでした、、、彼が政権を取るまで、リビアの石油の利益は欧米に流出し、国民は貧困に苦しみ続けていました。しかし、カダフィ大佐が政権を取ると、リビアの石油を国有化して、利益の流出を防ぎ、、、そしてその利益を、国民に還元していきました、、、その結果、できあがったのが世界最高の福祉国家、リビアです。 
+              <br>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">サブヘッド</p>
+            <p class="sp-item" data-item-type="text">しかし、、、その世界最高の福祉国家を作り上げたカダフィ大佐に対して、反政府デモが起きます、、、世に言う「アラブの春」です。ほとんどの人はカダフィ大佐が変人で、国民に圧政を強いてると思わされていました。なので、この民主化デモも「正義のデモ」のように報道されていましたが、、、果たして、このような世界最高の福祉国家で反政府デモなど起きるのでしょうか？メディアでは、デモを鎮圧するカダフィ政権に対して、「民主主義 vs. 独裁者カダフィ」という構図が報道され始めました。途中から国連までも動き、、、NATO(北大西洋条約機構)が出撃し、、、「カダフィからリビア国民を守る」という名目で、ＮＡＴＯ連合軍は６ヶ月の間にのべ２万６０００機が出撃し、約８０００回の空爆を行っています、、、欧米が軍事介入したリビア内戦は次第に拡大し、デモが始まってから半年後の８月２３日、首都は陥落し、カダフィ政権は完全に崩壊。しかし、ＮＡＴＯ連合軍による攻撃は終わることはなく、カダフィを捜索し続け、、、２ヶ月後の１０月２０日、カダフィ殺害によって紛争は幕を閉じたのでした、、、 
+              <br>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">サブヘッド</p>
+            <p class="sp-item" data-item-type="text">なぜ、国連やＮＡＴＯがアフリカの一国の内戦に、ここまで介入したのでしょうか？カダフィはアフリカの富、地下資源をバックに、アフリカに３つの物を作ろうとしていました、、、アフリカ通貨基金、アフリカ中央銀行、アフリカ投資銀行、、、つまり彼は、、、アフリカ統一通貨を作ることで米ドルの支配をなくし、、、アフリカを豊かにしようとしたのでした、、、それはつまり、欧米諸国が甚大な不利益を被るということでした、、、実際、カダフィ大佐がアメリカとＥＵに貸しつけていた６００億ドル(約４．５兆円)は、全て凍結、、、そして何より驚きなのは、、、反政府デモを主導した反乱軍がカダフィ殺害後、最初に行ったことは、、、「中央銀行の設立」でした。こうしてカダフィ大佐の夢は敗れ、欧米の息がかかった（ロスチャイルドの支配下にある）中央銀行が、リビアに設立されました、、、 
+              <br>
+              <br>あなたはどう思いましたか？われわれが変人独裁者だと思っていたカダフィ大佐が、実は、国民の幸せを心から願い、アフリカの発展に尽力した人物であったこと、、、こうした事実は、日本のメディアではほとんど報じられることはありません。その結果、このような事件に無関心で、平和に過ごせてしまう、、、、それって実は、ある意味、とても恐ろしいことではないでしょうか？なぜなら、もしかしたら私たち自身が、このような事件を知らず知らずのうちに支援していることになっているかもしれません。あるいは、大量破壊兵器という嘘に先導されて、一つの国家を潰す戦争に加担しているかもしれないわけです、、、（イラク戦争の時、私たち日本人は一人当たり5万円のお金を出しました） 
+              <br>
+              <br>そして私たちは、事実の根本を知らないまま、、真実を隠され、、、考える能力を奪われ、、、簡単に操れる人間になっているかもしれないのです、、、事実、、、世界では「情報操作」が当たり前のようになされています。その国の政権を潰すため、資源や利権を確保するため、テロや誘拐、反政府運動、内戦、信じられないような武器の開発そしてそれは、政府や国家だけの問題ではありません。実際に、私たちが勤める企業ですら、そのターゲットとなっています。企業の秘密を盗むための産業スパイ、盗聴、誘拐、武装集団による襲撃あなたはきっと「大げさに言いすぎじゃないか」と思われていることでしょう、、、しかしこれらは、今現在も、世界で起きている実際の出来事です。日本でも戦国時代には謀略やスパイ活動が日常茶飯事でした。 
+              <br>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">サブヘッド</p>
+            <p class="sp-item" data-item-type="text" style="margin-bottom: 65px;">問題は、現代の、今のわれわれ日本人が、このような謀略や情報操作だらけの現実の世界を忘れて、そこから目を背け平和ボケしてしまったことです、、、しかし、私たちがどんなに平和ボケしようが、世界では苛烈な情報戦やプロパガンダが今、この瞬間にも起きているのが現実です。そして、私たちがそれに気づかなくても、、、そのような動きに巻き込まれているのは間違いありません、、、実際、従軍慰安婦や南京事件などの歴史戦もそうですし、グローバル化で企業の海外進出などが増え、結果、テロや誘拐に巻き込まれる日本人はこれからも増えるでしょう、、残念ながら、日本には、日本のために情報を報道するマスコミはほとんどありません。そして、日本のメディアはどこも同じような内容しか流さず、各局に違いがありません。これは、情報操作する側からすれば、とても好都合です。大衆には、一方的な側面しか知られないわけですから、、、なので、単に新聞やテレビのニュースを見ているだけでは、真実はわからずいいように「操られたまま」です、、、マスコミの報道や政府の情報操作に「操られない」ように、、、世界の現実を知ることができるように、、、自分の力で情報を見抜く力をつけなけなければならない、、、そうでなければ、恐ろしい、、、そう考えて、危機管理の専門家、丸谷さんに２日間のセミナーとして開催してもらいました。 
+              <br>
+              <br>「日本人のためのインテリジェンス養成講座」世界の情報操作はどこまで進んでいるか？あなたはきっと丸谷さんのことはご存知ないと思います。彼の本職は言論活動ではなく、グローバル企業のセキュリティ要員だからです。パプアニューギニアや東南アジアなど治安の悪い地域での企業の事業展開支援や、要人警護・地元部族対策・企業施設の安全強化を含む危機管理業務を担当し、、、西アフリカの石油関連施設では防弾車を運用した大手企業駐在員と施設の警護や、イスラム過激派・民兵集団へのテロ対策、地元マフィアに対する犯罪抑止対策や、時に暴力的になる労働組合・地元部族集団に対する情報収集と宣撫工作に従事した経験を持つ現場の人だからです。実際、毎週のように誘拐や人殺しがあるような地域で、時には武器を片手に情報を集め、安全対策から政治経済情報の分析まで行っていた経験の持ち主で、、、その経験談を聞くと「こんな人がいたんだ」と驚くほどです、、、机上の空論だけの学者とは全く違います。海外法執行機関や軍の戦闘訓練などにも参加し、現在では、危機管理コンサルタントとしても活動しつつ、「日本戦略研究フォーラム」政策提言委員として、テロ対策や安全保障に関する複数の論文を発表しています。 
+              <br>
+              <br>この講座は、アフリカやアジアなど紛争の多い地域で実際にセキュリティ要員としてスパイ活動にかなり近いことを行っていた丸谷さんが実際の現場の経験をもとに、世界で起きている紛争やテロの裏側がどうなっているか？いかに情報機関やスパイがあなたに「情報工作」やプロパガンダを仕掛けてくるか？その手の内を明かす内容となっています、、、遠い昔の話ではなく、実際に今現在、起きている事件をベースに話してくれるので、いかに自分たちが簡単に騙されていたのか？という事がよく分かるでしょう。この講座を見終わった後には、おそらく、あなたのニュースを見る目は完全に変わっているでしょう。日本で世界で起きている事の裏側、本当のところはどうなんだ？という事に気づく事ができるでしょう。 
+              <br>
+            </p>
+            <p class="sp-item" data-item-type="text">この講座は６つのセッション、合計60の講義と２つのＱ＆Ａセッションからなります。 
+              <br>その内容は、、、 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- セクション開始 -->
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション１</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">インテリジェンスとインフォメーションの違い情報を読み解く能力を磨くには？完全に変わった世界の情勢に個人、企業、日本にとって必要なこと</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">世界の現実70年前にデザインされた日本の分断統治、急激に近代化した中国軍の背後、活発になる産業スパイ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">大衆から思考能力を奪い既成事実化するメディアや情報機関の手口</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">謀略アレルギーになった日本が危険なワケ世界の現実が見れなくなった日本人</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">現代の見えない戦争「条約」と「通貨」ＴＰＰはなぜ危険なのか？フランスとアメリカの対立、フランス石油メジャー会長の不審な死亡事故</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">危機管理の実務経験からわかった頼れない日本大使館と信じがたい外務省書記官の本音</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">企業にも必要なインテリジェンス一番重要な２つの情報収集のやり方</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">どの国でも好かれている日本人のソフト・パワーを活かせ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">軍事クーデター、労働争議、現実に起きているリスクに無頓着な日本企業セキュリティとインテリジェンスの情報対策の違い</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション２</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">国家の謀略ー簡単に騙せるお人好しな日本人（マスコミ・大企業への盲信と映画、教科書教育）</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">「嘘」で作られる戦争ー2016年現在も続く戦争プロパガンダー</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ジャンヌダルク症候群ーアウン=サン=スーチーの秘密、BBCの放送事故から３ヶ月後に不審死を遂げた女史、、ゾウをも仕留める45口径で撃たれて無事だったマララの背後にいる黒い影</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">全ては武器になる。イルカ、ウイルス、食料、水、資源ーなぜ日本では突然、食料自給率の話が消えたのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本を分断統治するー北方領土、竹島、尖閣諸島問題の根本をデザインした元CIA長官と、周恩来の関係</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">戦前から今日までずっと日本にいるスパイたち：極秘情報を握りつぶした大本営の参謀ー長崎原爆投下の8月9日だけ迎撃隊が「休み」だった謎</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">情報戦に敗れ戦争に追い込まれた日本ー海外では大問題？日本では絶対に語られない、スパイ戦に負けた高級官僚の話</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">今日も続くスパイ活動ー技術情報、交渉情報を徹底的に盗られても、スパイ防止法がない日本</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション３</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ファイブ・アイズと日本を最大のターゲットとした経済盗聴ネットワークー安倍政権、日銀、三菱商事、三井物産、被害がメディアに出ない謎</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">激化するテロと次々と犠牲になる日本人：うやむやになった日揮の事件ー危機管理がなく犠牲が最大になったテロ事件とマスコミの低俗な報道</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">海外で襲われる日本企業、増える誘拐事件ー大企業の幹部ですら危機意識が低い</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アルカイダの正体を言ってしまい３ヶ月後に変死した元英国外相</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">IS は「アメリカが支援すべき資産」？国家が支援するテロ団体は空爆を事前に予知できるのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ISを支援し訓練するトルコの闇ー見てはいけないものを見たある女性ジャーナリストの事故死とドイツの思惑</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ロシア軍機撃墜事件の真相～元防衛大臣クラスでも軍事オンチで真相が見えない日本、実際はこうだった～トルコ大統領の謝罪翌日に発生したインスタブール空港テロ事件</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">米軍と親しいトルコ空軍によるクーデター未遂事件～背後にアメリカがいたのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アメリカに見捨てられるサウジ：イランの接近、石油価格戦とシェールオイル、次々と逮捕されるサウジの王室関係者</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">影の同盟ーサウジとイスラエル：ユダヤ教とイスラム教、徹底的に対立してた国同士の利害の一致、中性子爆弾使用か？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">資源戦争の新たな中心、アフリカ：アメリカ軍の最大の目的ー基地設置を拒むと必ず現れる過激派やテロリスト</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">世界最高の福祉国家を作った理想家カダフィ暗殺の裏側ーアルカイダと戦ったカダフィにNATOの空爆</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">2015.日本人も犠牲になったチュニジア・テロ事件：観光立国で治安が良かった国にテロが頻発するようになった理由</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">Q&amp;A１</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">人工知能は危険なのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">エイズは生物兵器なのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">過酷な現実：世界で増える誘拐ビジネスと誘拐保険～日本の誘拐保険には入ってはいけないワケ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">どのような事件や出来事が起きたら警戒レベルが変わるか？ー５段階緊急対策要領について</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アフリカの安全性は？アンゴラ、ガーナ、ナイジェリア、各国の思惑によって変わる国の治安</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">これからのEU:ドイツの覇権復活とそれを許さないアメリカ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">テロ対策で日本人一人一人が意識すべきことは何か？テロ対策は防災の一環</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション４</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本の新聞は絶対に言わない、現在進行形で行われる世界の秘密作戦：ベトナム戦争を作った自作自演作戦から、カダフィ大佐とフランス大統領の黒い関係、去年の、ISISとイギリス軍特殊部隊の秘密共同作戦まで…</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">超大国の政府転覆作戦：経済詐欺から大統領暗殺、武装反政府組織、戦争広告代理店まで～中国のAIIBの真の狙いは何か？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">政府転覆作戦の２つ実例～CIAに狙われた愛国的大統領と、何十年続いたグアテマラ内戦～現在もアメリカ政府に保護されるキューバ航空爆破テロの犯人～</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">緊迫するアジア：誰が中国軍を近代化したか？～明治維新と同じ手法で武器を売った人たちー遠い昔の話ではありません。2016年8月時点でもそれは起きています…</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">尖閣有事でアメリカは出動しない？条約を読めば分かる、尖閣出動は経済的にも戦略的にもアメリカにメリットなし。</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">中国の軍拡で儲かる人たちー史上空前の貿易黒字を出したドイツ、サード・ミサイル防衛システムを即時導入した韓国、儲かるロッキード社、ヒラリークリントン。AIIBで儲かるロンドン。</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">40年前から続くアメリカ中国の日本封じの共謀ー30年前から着実に計画を実行する中国</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">2015.パリ同時多発テロの真実：豊富な資金と人員、武器をバックアップした組織と特殊部隊並みの技術</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">メディアによる情報操作：なかった事実を証言する人ー存在しない男の証言を放送するメディア</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">メディアによる情報操作：あまりに少ない一般人の現場写真とあまりに多い偶然、現場にいた報道関係者～大口径弾丸で打たれても携帯電話をいじる人、 
+              <br>食い違う目撃証言、異常な速さで解決するテロ事件、戒律を守らないイスラム原理主義者？ 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション５</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">写真はウソをつく：消えた負傷者、不審な事件現場</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">フランス当局はテロの発生を知っていたのか？～身分証を必ず残していくテロリスト、偶然スタンバイしていた救急チーム</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">テロで富を得た人たち</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">テロはフランスにとって天の恵みだった！？今現在、ボロ儲けしているフランス軍事産業、特需のように株価が上がった企業</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">ユーロ対ドル通貨戦争：利用価値の高いテロ組織IS</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">フロリダ銃乱射事件の真相：不審なことだらけの現場、消えた人々、怪しい生存者の証言、ありえない犯人、そして大統領選の争点になった「銃規制」</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">カリフォルニア銃乱射事件の真相：なぜ犯人は両手両足を縛られた状態で警察と銃撃戦ができたのか？～民主党政権時に頻発する銃乱射事件～</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">極めて弱い日本のインテリジェンス：警察・公安は優秀でも、国外事情に弱い理由ーインテリジェンス組織に絶対にあってはならないこと</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">セッション６</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本に強い情報機関(インテリジェンス)を作るには？鍵を握る公安調査庁とジェトロ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">インテリジェンスの高い視点を持つには？３つの鉄則～すべての事件は偶然には起きない</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本企業への警告：インフラ輸出で増える誘拐・工作・襲撃（2015マリのホテル襲撃事件から学べ）</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">脆弱な日本企業のセキュリティー：現地の大企業に軟禁された日本企業の幹部、イギリス企業襲撃の巻き添えになった日本人、インドのスズキ工場暴動事件、実際に起きている事件とそれを知らされない日本人社員</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">海外大手企業との違い：GEのセキュリティ対策、マイクロソフトのセキュリティ担当、サイバー攻撃、産業スパイの対策、専門部隊と強い権限</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">現実に起きてる電力施設テロ</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">緊急対策室でやるべきこと：世界で増える誘拐ビジネス、社員が誘拐されたらどうする？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">産業スパイから情報を守るには？日本の造船会社の情報を盗んで世界最大の造船会社になった韓国・現代重工業の事例、盗まれた日産の電気自動車技術の事例、ニコン社員の情報流出の事例、新日本製鉄、東芝などなど</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">政府が主導する産業スパイの現実～秘密口座、巨大利権、 
+              <br>情報を隠す現地の顧客やパートナー企業とあまりにひどい日本企業の脇の甘さ、危険を察知した場合、どのタイミングで逃げるべきか？航空会社に人種の壁はあるか？ 
+            </p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本企業の危機管理はどうあるべきか？黙っていたらやられっぱなしになる…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sp-section">
+      <div class="container sp-container">
+        <div class="row sp-row subhead-session-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead-session" data-item-type="text">Q&amp;A２</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-section sp-section">
+      <div class="container sp-container container-session">
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アフリカ・アメリカ軍はどこを狙っているか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">外国に進出した場合の情報収集はどうすべきか？そしてその情報をどう判断すれば良いか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本に情報機関を作ることはできるか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">国家や情報機関が一私企業のために動くのはなぜ？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">インテリジェンス教育をどうすべきか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">先生はどのような情報源から情報を得ているか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">アメリカ共和党と民主党の背後は一緒？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">日本のマスコミは誰かに操られているのか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">尖閣諸島など日本が直面する脅威に対してアメリカはどう見ているか？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">インドのスズキ工場暴動の原因は？</p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-1">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block">
+          </div>
+          <div class="col-sm-11">
+            <p class="sp-item" data-item-type="text">オススメの海外の誘拐保険は？</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- セクション終わり -->
+    <div class="my-section sp-section" style="">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="margin-top: 60px; text-align: left;">いかがでしょうか？きっと、この講義のタイトルを見ただけでも、かなりのインパクトがあったのではないかと思います、、、このような知識を知らないと、私たちは、これから一生、マスコミや情報機関に騙され、操られ続けることになるでしょう。 
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 人物紹介 section -->
+    <div class="my-section sp-section" style="background-image: url(http://www.prideandhistory.jp/sp/sp2_test/0916/a5bcf928-hoover.jpg);background-attachment: fixed;background-repeat: no-repeat;background-position: center center;background-size: cover;">
+      <div class="sp-overlay">
+        <div class="container sp-container">
+          <div class="row sp-row " style="margin-top: 70px;">
+            <div class="col-sm-4">
+              <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_7989ac57-toshio-nishi_05d04v04v04v009000.jpg" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px">
+            </div>
+            <div class="col-sm-8">
+              <p class="sp-item" data-item-type="text">
+                <span style="color: rgb(255, 255, 255); font-size: 28px; font-weight: bold; line-height: 45px;" class="subhead-font-18">"歴史を知らない人は自分の両親を知らない人
+		                                    <br>
+		                                    　本当の自分自身を知らない人間だ" </span>
+              </p>
+              <p class="sp-item" data-item-type="text">
+                <span style="color: rgb(255, 255, 255); line-height: 22px;">西教授が米国スタンフォード大学フーヴァー研究所にて研究を始めたのは1977年。以来、約40年間にもわたり機密文書などの一次資料、膨大な書物、資料などから読み解いた歴史の裏側を分かりやすく語る。「Follow the money」誰が金を出しているか？お金の跡を追えば本当の歴史が見える。本当の歴史は必ずしも美しくない。むしろ醜い話で満たされている。しかし、それを知る事で、われわれはより強く、本当の意味で、今の世界を知り、自分自身を知ることができる。 </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- クロージング -->
+    <div class="my-section sp-section">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text" style="margin-top: 30px;">サブ</p>
+            <p class="sp-item" data-item-type="text">そこで考えてみてください。この講座で習う知識にはどれくらいの価値があると思いますか？実際、丸谷さんの苛酷な実体験をベースにしたものです。死にかける経験もしていますし、実際にインテリジェンス、情報不足で亡くなられた方もいるそうです。その経験の価値を考えると、お金では買えないとてつもない価値になると思いませんか？他の誰にも教えられないような実体験の価値です。しかし、できるだけ多くの人に知ってもらえるようにと、価格を39,800円にしました。そして、今なら、、、先行販売価格として半額の19,800円で試すことができます。※この講座は現在製作中のため、提供は１０月中旬を予定しています。 
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 保証内容 -->
+    <div class="sp-sectio">
+      <div class="container sp-container">
+        <div class="row sp-row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">安心の３０日間保証付</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145002_30days_warranty.png" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px">
+          </div>
+          <div class="col-sm-9">
+            <p class="sp-item" data-item-type="text">さらに、この講座には３０日間の品質保証がついています。つまり、この講座を３０日の間に見てみて、もし、「学ぶものがない」と思われたなら、講座提供から３０日以内であれば、どんな理由であろうと注文を取り消す事ができます。メール一本、電話一本で、代金は100％戻ってきます。 
+              <br>
+              <br>実際、私たちは今まで１０年間で５０万人以上のお客様に商品・サービスを提供し、カスタマーサポートの評価は、５段階のうち４.７と非常に高い評価を頂いています。なのであなたは安心して試すことができます。 
+              <br>
+            </p>
+            <p class="sp-item" data-item-type="text" style="font-size:90%;color: rgb(0, 0, 128);">カスタマーサポート</p>
+            <p class="sp-item text-small" data-item-type="text">１．メールでの連絡：support@prideandhistory.jp 
+              <br>２．FAXでの連絡：06-6268-0851（24時間受付） 
+              <br>３．電話での連絡：06-6268-0850（平日10時～17時受付） 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- クロージング -->
+    <div class="my-section sp-section">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item subhead" data-item-type="text">サブ</p>
+            <p class="sp-item" data-item-type="text" style="margin-bottom: 60px;">さて、あなたの前には２つの選択肢があります。 
+              <br>１つは、このまま何もせず、マスコミや政府の発表を鵜呑みにすること。これは、とても楽な道ではありますが、いつになっても本当のことは分からないまま、騙され、操られ続ける。 
+              <br>もう１つは、自分自身で、世界中で現実に起きている、もちろん日本でも起きている、情報操作を読み解く力をつけること。そして、本当のことを知り、自分と自分の会社、家族、そして大切な日本を守るために、知識武装すること。 
+              <br>どちらの道も、選択するのはあなたです。勇気ある選択をしてください。一緒に大切な日本を守りましょう。 
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 商品概要  -->
+    <div class="my-section sp-section" style="">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-6">
+            <p class="sp-item title" data-item-type="text" style="text-align: center; margin-top: 30px; font-weight:bold">↓に商品概要が分かるイメージ画像を挿入</p>
+            <img src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145004_img1.jpg" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px">
+          </div>
+          <div class="col-sm-6">
+            <div class="sp-box product-summary-box" data-item-type="box">
+              <p class="sp-item title" data-item-type="text" style="text-align: center; margin-top: 30px; font-weight:bold">「日本人のためのインテリジェンス養成講座」</p>
+              <ul class="sp-item" data-item-type="list">
+                <li>危機管理ジャーナリスト丸谷元人さんの講座</li>
+                <li>６つのセッションと２つのＱ＆Ａセッション</li>
+                <li>合計７時間前後の講座</li>
+                <li>安心の３０日間返金保証付き</li>
+                <li>今なら先行販売価格の19,800円 
+                  <br>
+                </li>
+              </ul>
+              <p class="sp-item text-small" data-item-type="text">※講座の提供は１０月中旬を予定しています。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- クロージング -->
+    <div class="my-section sp-section" style="">
+      <div class="container sp-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="margin-top: 100px;margin-bottom: 50px;">この講座の注文方法は簡単です。下にある、注文ボタンをクリックして、必要な情報を入力するだけです。</p>
+            <a href="" data-sp2-replace-href="test.php" class="sp-item sp-btn sp-btn-push" data-item-type="button" style="
+    width: auto;
+    font-size: 40px;
+    max-width: 400px;
+">いますぐ受講する </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- フッター -->
+    <div class="my-section sp-section" style="background-color: rgb(0, 0, 0);">
+      <div class="container sp-container">
+        <div class="row sp-row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="text-align: center; color: white; margin-bottom: 15px;">
+              <span style="line-height: 30px;font-size:12px;font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;">
+                <a href="" data-sp2-replace-href="clkn/http/www.d-publishing.jp/company/" target="_blank" class="">会社概要 </a>
+                <span style="color: rgb(255, 255, 255); ">&nbsp;|&nbsp; </span>
+                <a href="" data-sp2-replace-href="clkn/http/www.d-publishing.jp/law/" style="" target="_blank" class="">特定商取引法上の表記 </a>
+                <span style="color: rgb(255, 255, 255); ">&nbsp;|&nbsp; </span>
+                <a href="" data-sp2-replace-href="clkn/http/www.d-publishing.jp/privacy/" style="" target="_blank" class="">プライバシーポリシー </a>
+                <span style="color: rgb(255, 255, 255); ">&nbsp;|&nbsp; </span>
+                <a href="" data-sp2-replace-href="clkn/http/d-publishing-cs.jp/" style="" target="_blank" class="">ダイレクト出版株式会社 サポート </a>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="row sp-row">
+          <div class="col-sm-12">
+            <p class="sp-item" data-item-type="text" style="text-align: center; margin-bottom: 0px;">
+              <span style="font-size: 12px;color: rgb(255, 255, 255);line-height: 14px;font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;" class="">掲載の情報・画像など、すべてのコンテンツの無断複写・転載を禁じます。 
+                <br>大阪府大阪市中央区安土町2丁目3-13大阪国際ビルディング13F　 TEL：06-6268-0850　FAX：06-6268-0851 
+                <br>Copyright c 2014 ダイレクト出版株式会社. All Rights Reserved. 
+              </span>
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ボタン -->
+    <!-- script -->
+    <script type="text/javascript" src="http://www.prideandhistory.jp/sp/sp2_test/0916/sp2__20160916_145011_jquery-1.11.0.js"></script>
+    <script type="text/javascript">
+$(function(){
+	
+	$('.subhead-session').on('click',function(e){
+		$(this).closest('.sp-section').next('.sp-section').slideToggle();
+		$(this).toggleClass('allow-close');
+	});
+	
+	// セッションアコーディオンの初期クローズ設定
+	// :gt(0)：セッション２以降初期クローズ。
+	// :gt(1)：セッション３以降初期クローズ。
+	// :gt(2)：セッション４以降初期クローズ。
+	// 続く…
+	$('.subhead-session:gt(1)').addClass('allow-close').closest('.sp-section').next('.sp-section').hide();
+});
+
+</script>
+    <script id="sp-func-list">
+function sp_setAnimation(idClassName, aniClass, intervalSecond){
+
+    var demoStart = function(){
+        var stopTimer = null;
+        var t = document.querySelector('.'+idClassName);
+
+        if(t){
+            var classStr = t.getAttribute('class');
+            if(classStr != null && classStr.indexOf(aniClass) != -1){
+                t.classList.remove('sp-ani');
+                t.classList.remove(aniClass);
+                console.log('ani class remove',idClassName);
+            }
+            stopTimer = setTimeout(demoStop, 500);
+        }
+        
+        if(stopTimer && !t){
+            clearTimeout(stopTimer);
+            stopTimer = null;
+            return false;
+        }
+
+    };
+    
+    var demoStop = function(){
+        var startTimer = null;
+        var t = document.querySelector('.'+idClassName);
+        if(startTimer && !flag){
+            clearTimeout(startTimer);
+            startTimer = null;
+            return false;
+        }
+        t.classList.add('sp-ani');
+        t.classList.add(aniClass);
+        console.log('ani class add',idClassName,intervalSecond);
+        startTimer = setTimeout(demoStart, intervalSecond);
+    };
+    
+    demoStart();
+}
+</script>
+  </body>
+</html>

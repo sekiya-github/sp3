@@ -1,0 +1,726 @@
+/* line 26, ../sass/editor-page.scss */
+#htmlBody {
+  width: 100%;
+  height: 100%;
+  padding: 5px 0 0 5px;
+  background-color: inherit;
+  color: white;
+  display: none;
+  white-space: pre-wrap; }
+
+/*--------------------------------------------------------------*/
+/* Element
+/*--------------------------------------------------------------*/
+/* line 4, ../sass/_01-sp2-element.scss */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  color: white;
+  font-size: 11px;
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  font-style: normal; }
+
+/* line 19, ../sass/_01-sp2-element.scss */
+:-webkit-full-screen #full {
+  width: 100%;
+  height: 100%; }
+
+/* line 24, ../sass/_01-sp2-element.scss */
+html {
+  width: 100%;
+  height: 100%; }
+
+/* line 29, ../sass/_01-sp2-element.scss */
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  /*border: 2px dotted red;*/ }
+
+/* user agent stylesheet overwrite*/
+/* line 40, ../sass/_01-sp2-element.scss */
+td {
+  white-space: nowrap; }
+
+/* line 44, ../sass/_01-sp2-element.scss */
+img {
+  vertical-align: middle;
+  border: none; }
+
+/* line 49, ../sass/_01-sp2-element.scss */
+input {
+  vertical-align: middle;
+  /*
+      background-color: #fff;
+      border: 1px solid #c5c5c5;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      transition: border linear .2s, box-shadow linear .2s;
+      padding: 0 4px 0 4px;
+      white-space: pre-wrap;
+      color: #333;
+  */
+  color: #000; }
+
+/* line 64, ../sass/_01-sp2-element.scss */
+textarea {
+  color: #000; }
+
+/* Let's get this party started */
+/* line 70, ../sass/_01-sp2-element.scss */
+::-webkit-scrollbar {
+  width: 6px; }
+
+/* Track */
+/* line 75, ../sass/_01-sp2-element.scss */
+::-webkit-scrollbar-track {
+  /*     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+  -webkit-border-radius: 10px;
+  border-radius: 10px; }
+
+/* Handle */
+/* line 82, ../sass/_01-sp2-element.scss */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #666;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }
+
+/* line 88, ../sass/_01-sp2-element.scss */
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #000; }
+
+/*--------------------------------------------------------------*/
+/* sp-page-layout-table
+/*--------------------------------------------------------------*/
+/* line 4, ../sass/_02-sp2-layout.scss */
+#sp-page-layout-table {
+  width: 100%;
+  height: 100%; }
+
+/* line 9, ../sass/_02-sp2-layout.scss */
+#sp-page-layout-table td {
+  /*border:1px dotted orange;*/ }
+
+/* line 14, ../sass/_02-sp2-layout.scss */
+#sp-page-layout-table td.sp-bg-color {
+  background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#333), to(#222)); }
+
+/* line 18, ../sass/_02-sp2-layout.scss */
+#sp-page-layout-table td.sp-border-color {
+  border-top: 1px solid #1a1a1a;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #1a1a1a;
+  border-left: 1px solid #000; }
+
+/*--------------------------------------------------------------*/
+/* titleBar
+/*--------------------------------------------------------------*/
+/* line 28, ../sass/_02-sp2-layout.scss */
+#sp-title-bar-div {
+  padding: 0 10px;
+  /*
+      box-shadow: rgba(0, 0, 0, 0.34902) 0px 1px 3px 0px inset;
+      background-image: $titleBarBgColor;
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: $baseBorderRadius;
+      text-shadow: -1px -1px #000;
+  */ }
+
+/*--------------------------------------------------------------*/
+/* menuBar
+/*--------------------------------------------------------------*/
+/*
+#sp-menu-bar-div {
+    margin: 5px;
+    background-color: inherit;
+    i{
+        color:#ccc;
+    }
+}
+
+#sp-menu-bar-div button{
+    cursor: pointer;
+    color: $menuColor;
+    background-color: $menuBgColor;
+    width: 105px;
+    height: 30px;
+    padding: 1px 5px;
+    border: none;
+    border-radius: $baseBorderRadius;
+    cursor: pointer;
+    display: inline-block;
+    word-spacing: 0px;
+    letter-spacing: normal;
+    line-height: 18px;
+    text-align: center;
+    text-indent: 0px;
+    text-rendering: auto;
+    text-shadow: none;
+    text-transform: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+#sp-menu-bar-div button:hover {
+    color: $menuColor_Hover;
+    background-color: $menuBgColor_Hover;
+}
+
+#sp-menu-bar-div button img{
+width: 20px;
+height: 20px;
+vertical-align:bottom;
+}
+*/
+/*--------------------------------------------------------------*/
+/* iconBar
+/*--------------------------------------------------------------*/
+/* line 88, ../sass/_02-sp2-layout.scss */
+#sp-icon-list-div {
+  background-image: inherit; }
+
+/* line 92, ../sass/_02-sp2-layout.scss */
+.sp-icon-panel {
+  color: #fff;
+  background-color: inherit;
+  display: inline-block;
+  cursor: default;
+  width: 35px;
+  height: 30px;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  outline: 0;
+  border: none; }
+
+/* line 107, ../sass/_02-sp2-layout.scss */
+.sp-icon-panel:hover {
+  color: #fff;
+  background-color: #666; }
+
+/* line 112, ../sass/_02-sp2-layout.scss */
+.sp-icon-panel option, .sp-icon-panel option:hover {
+  color: #fff;
+  background-color: #666; }
+
+/* line 117, ../sass/_02-sp2-layout.scss */
+.sp-icon-panel i {
+  font-family: FontAwesome;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  outline: 0;
+  display: inline-block;
+  line-height: 1; }
+
+/* line 128, ../sass/_02-sp2-layout.scss */
+.sp-icon-panel[data-on-off-status="on"] {
+  color: #fff;
+  background-color: #666; }
+
+/* line 133, ../sass/_02-sp2-layout.scss */
+.sp-icon-panel-active {
+  background-color: orange; }
+
+/* line 137, ../sass/_02-sp2-layout.scss */
+.sp-icon-sep {
+  border-right: 1px solid #999999;
+  box-sizing: content-box;
+  margin: 0 10px; }
+
+/*--------------------------------------------------------------*/
+/* Btn
+/*--------------------------------------------------------------*/
+/* line 4, ../sass/_03-sp2-btn.scss */
+.sp-btn {
+  color: #fff;
+  background-color: #000;
+  background-position: 0% 0%;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 20px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border-collapse: collapse;
+  box-sizing: border-box; }
+
+/* line 20, ../sass/_03-sp2-btn.scss */
+.sp-btn:hover {
+  background-image: none;
+  /*     background-position: 0 -15px; */
+  /*     transition: background-position 0.1s linear; */ }
+
+/* line 26, ../sass/_03-sp2-btn.scss */
+.sp-btn:active {
+  position: relative;
+  top: 1px; }
+
+/* line 31, ../sass/_03-sp2-btn.scss */
+.sp-btn-ok {
+  width: 65px;
+  color: #fff;
+  text-shadow: 1px 1px #333;
+  border: 1px solid #006dcc;
+  background-color: #006dcc;
+  background-image: linear-gradient(#0088cc, #0044cc);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); }
+  /* line 39, ../sass/_03-sp2-btn.scss */
+  .sp-btn-ok:hover {
+    background-color: blue;
+    /*         background-color: #005fb3; */
+    /*         background-image: linear-gradient(to bottom, #0077b3, #003cb3); */ }
+
+/* line 46, ../sass/_03-sp2-btn.scss */
+.sp-btn-cancel {
+  width: 65px;
+  color: #333;
+  text-shadow: rgba(255, 255, 255, 0.74902) 0px 1px 1px;
+  border: 1px solid rgba(0, 0, 0, 0.24706);
+  background-image: linear-gradient(white, #d9d9d9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); }
+  /* line 53, ../sass/_03-sp2-btn.scss */
+  .sp-btn-cancel:hover {
+    /*         color:#fff; */
+    /*         background-color: silver; */
+    border: 1px solid silver;
+    background-image: linear-gradient(to bottom, #f2f2f2, #ccc); }
+
+/* line 61, ../sass/_03-sp2-btn.scss */
+.sp-btn-upload {
+  /*     width: 105px; */
+  padding: 0 30px;
+  color: #fff;
+  text-shadow: rgba(255, 255, 255, 0.74902) 0px 1px 1px;
+  border: 1px solid #4cae4c;
+  background-color: #51A351;
+  background-image: linear-gradient(#62C462, #51A351);
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04706) 0px 1px 2px 0px; }
+  /* line 70, ../sass/_03-sp2-btn.scss */
+  .sp-btn-upload:hover {
+    background-color: green;
+    border: 1px solid green;
+    /*         background-color: #47a447; */
+    /*         border-color: #398439; */ }
+
+/* line 1, ../sass/_04-sp2-tag-info.scss */
+.sp-tag-info-place {
+  display: none; }
+
+/* line 5, ../sass/_04-sp2-tag-info.scss */
+.sp-tag-info-div {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align: left;
+  font-size: 10px; }
+  /* line 11, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div .sp-tag-info-title {
+    font-size: 14px;
+    padding: 5px 0;
+    margin-bottom: 5px; }
+  /* line 17, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div .sp-tag-info-row {
+    margin-bottom: 15px; }
+  /* line 20, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div .sp-spacing {
+    height: 5px; }
+  /* line 23, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div label {
+    width: 60px;
+    padding: 5px;
+    font-size: 10px;
+    color: #fff;
+    display: inline-block; }
+  /* line 30, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div select, .sp-tag-info-div select:hover {
+    color: #fff;
+    background-color: inherit;
+    width: 100%;
+    vertical-align: bottom;
+    border: 1px solid #666; }
+  /* line 37, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div option, .sp-tag-info-div option:hover {
+    color: #fff;
+    background-color: #666; }
+  /* line 41, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div textarea {
+    color: #fff;
+    background-color: inherit;
+    border: 1px solid #666;
+    padding: 0 5px; }
+  /* line 47, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div input[type="text"] {
+    color: #fff;
+    background-color: inherit;
+    border: 1px solid #666;
+    width: 100%;
+    height: 24px;
+    padding: 0 5px; }
+  /* line 55, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div input[type="number"] {
+    color: #fff;
+    background-color: inherit;
+    width: 55px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    padding: 0 5px;
+    height: 23px; }
+  /* line 65, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div input[type="checkbox"] {
+    vertical-align: sub; }
+  /* line 68, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div input[type="color"] {
+    -webkit-appearance: none;
+    -webkit-animation: 1s;
+    width: 27px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 2px; }
+  /* line 78, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    margin: 0; }
+  /* line 82, ../sass/_04-sp2-tag-info.scss */
+  .sp-tag-info-div input[type="range"] {
+    width: 175px;
+    background-color: #666;
+    vertical-align: middle;
+    display: inline;
+    cursor: pointer;
+    /*
+    margin:0;padding:0;
+    position:relative;
+    cursor:pointer;
+    vertical-align:middle;
+    line-height:28px;
+    box-shadow: 0 1px 1px rgba(255,255,255,0.6);
+    height:12px;
+    background:#fff;
+    margin:0 10px;
+    border-radius: 2px;
+    border: 1px solid #333;
+    border-bottom:1px solid #555;
+    box-shadow:inset 0 1px 2px rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.2);
+    */ }
+
+/* line 1, ../sass/_05-sp2-hidden-box.scss */
+#sp-layer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.5;
+  text-align: center;
+  font-size: 45px;
+  color: #1cc;
+  text-shadow: 0 1px 8px #1cc, 0 -1px 8px #1cc;
+  padding-top: 150px;
+  letter-spacing: 15px; }
+
+/* line 17, ../sass/_05-sp2-hidden-box.scss */
+.sp-hidden-box {
+  display: none; }
+
+/**----------------------------------------------
+ sp2-common-msg (success / error)
+----------------------------------------------*/
+/* line 24, ../sass/_05-sp2-hidden-box.scss */
+#sp2-common-msg {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  display: none;
+  padding: 15px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  text-align: center; }
+
+/* line 35, ../sass/_05-sp2-hidden-box.scss */
+#sp2-common-msg i {
+  color: inherit;
+  font-size: 35px;
+  vertical-align: middle;
+  padding: 0 12px; }
+
+/* line 42, ../sass/_05-sp2-hidden-box.scss */
+.sp2-success-msg-A {
+  background-color: #cbebf5;
+  border-color: #5bc0de;
+  color: navy;
+  animation: msgEffectA 0.2s;
+  animation-iteration-count: 1; }
+
+/* line 49, ../sass/_05-sp2-hidden-box.scss */
+.sp2-success-msg-B {
+  background-color: #cbebf5;
+  border-color: #5bc0de;
+  color: navy;
+  animation: msgEffectB 0.2s;
+  animation-iteration-count: 1; }
+
+/* line 56, ../sass/_05-sp2-hidden-box.scss */
+.sp2-error-msg-A {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+  animation: msgEffectA 0.2s;
+  animation-iteration-count: 1; }
+
+/* line 63, ../sass/_05-sp2-hidden-box.scss */
+.sp2-error-msg-B {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+  animation: msgEffectB 0.2s;
+  animation-iteration-count: 1; }
+
+@keyframes msgEffectA {
+  0% {
+    transform: translate(0px, -500px); }
+  100% {
+    transform: translate(0px, 0px); } }
+@keyframes msgEffectB {
+  0% {
+    transform: translate(0px, -500px); }
+  100% {
+    transform: translate(0px, 0px); } }
+/**----------------------------------------------
+ color picker (fore/back)
+----------------------------------------------*/
+/* line 83, ../sass/_05-sp2-hidden-box.scss */
+#sp-color-picker-div {
+  position: absolute;
+  top: 121px;
+  left: 177px;
+  background-color: #fff;
+  border: solid 1px #ccc;
+  display: none;
+  white-space: nowrap;
+  padding: 10px; }
+  /* line 92, ../sass/_05-sp2-hidden-box.scss */
+  #sp-color-picker-div .sp-color-picker-panel {
+    border: none !important;
+    display: inline !important;
+    height: 18px !important;
+    line-height: 16px !important;
+    padding: 0;
+    margin: 0;
+    width: 18px !important;
+    z-index: 100;
+    margin-left: 3px; }
+    /* line 102, ../sass/_05-sp2-hidden-box.scss */
+    #sp-color-picker-div .sp-color-picker-panel:hover {
+      outline: 2px solid rgba(0, 52, 255, 0.8); }
+  /* line 106, ../sass/_05-sp2-hidden-box.scss */
+  #sp-color-picker-div .sp-color-picker-title {
+    margin: 6px 0 12px;
+    color: #000; }
+
+/*
+.sp-exec-cmd-change option,.sp-exec-cmd-change option:hover,.sp-exec-cmd-change option:active
+    {
+    color: #fff;
+    background-color: #666;
+}
+*/
+/**----------------------------------------------
+sp-input-form-div (common div)
+----------------------------------------------*/
+/* line 125, ../sass/_05-sp2-hidden-box.scss */
+.sp-input-form-div {
+  display: inline-block;
+  color: #000;
+  resize: both;
+  /*     border-radius: 6px; */
+  outline: 0 none #333;
+  box-shadow: rgba(42, 42, 42, 0.8) 0px 0px 15px 9px; }
+  /* line 132, ../sass/_05-sp2-hidden-box.scss */
+  .sp-input-form-div .sp-input-form-header {
+    color: #fff;
+    line-height: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid #c5c5c5;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #000;
+    /*         background-image: linear-gradient(rgb(253, 253, 253), rgb(221, 221, 221)); */ }
+  /* line 143, ../sass/_05-sp2-hidden-box.scss */
+  .sp-input-form-div .sp-input-form-main {
+    color: #000;
+    background-color: #fff;
+    /*         background-color: rgb(240, 240, 240); */
+    /*         background-image: linear-gradient(rgb(253, 253, 253), rgb(221, 221, 221)); */
+    padding: 10px;
+    text-align: center; }
+  /* line 151, ../sass/_05-sp2-hidden-box.scss */
+  .sp-input-form-div .sp-input-form-footer {
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    /*         border-top: 1px solid #c5c5c5; */
+    background-color: #fff;
+    /*         background-color: rgb(255, 255, 255); */
+    /*         background-image: linear-gradient(rgb(253, 253, 253), rgb(221, 221, 221)); */ }
+  /* line 160, ../sass/_05-sp2-hidden-box.scss */
+  .sp-input-form-div table {
+    width: 100%; }
+  /* line 163, ../sass/_05-sp2-hidden-box.scss */
+  .sp-input-form-div td {
+    color: #000;
+    padding: 8px;
+    text-align: center; }
+
+/**----------------------------------------------
+ insert-(image/bg-image/link/replace-string) position
+----------------------------------------------*/
+/* line 174, ../sass/_05-sp2-hidden-box.scss */
+#sp-input-div-image
+, #sp-input-div-bg-image
+, #sp-input-div-replace-string
+, #sp-input-div-link
+, #sp-input-div-timer
+, #sp-input-div-form-info {
+  position: absolute;
+  top: 18%;
+  left: 27%;
+  display: none; }
+
+/* line 186, ../sass/_05-sp2-hidden-box.scss */
+#sp-input-div-tags {
+  z-index: 100;
+  position: absolute;
+  top: 50px;
+  left: 11%;
+  display: none; }
+  /* line 192, ../sass/_05-sp2-hidden-box.scss */
+  #sp-input-div-tags textarea {
+    font-size: 10px; }
+  /* line 195, ../sass/_05-sp2-hidden-box.scss */
+  #sp-input-div-tags .sp-input-form-main td {
+    text-align: left; }
+  /* line 198, ../sass/_05-sp2-hidden-box.scss */
+  #sp-input-div-tags .sp2-code {
+    width: 550px;
+    height: 135px;
+    color: #000;
+    background-color: #f7f7f7;
+    padding: 5px;
+    font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+    -webkit-user-select: initial;
+    font-size: 85%; }
+  /* line 208, ../sass/_05-sp2-hidden-box.scss */
+  #sp-input-div-tags span, #sp-input-div-tags label {
+    color: #000; }
+
+/**----------------------------------------------
+dragItem
+----------------------------------------------*/
+/* line 4, ../sass/_06-sp2-other.scss */
+.dragItem {
+  width: 85px;
+  border: 1px solid orange;
+  border-radius: 4px;
+  background-color: orange;
+  margin: 20px auto;
+  padding: 5px;
+  text-align: center; }
+
+/**----------------------------------------------
+ display none
+----------------------------------------------*/
+/* line 17, ../sass/_06-sp2-other.scss */
+.sp-hide {
+  display: none; }
+
+/**----------------------------------------------
+ show .spEdit exsit only.
+----------------------------------------------*/
+/* line 25, ../sass/_06-sp2-other.scss */
+.sp-show-edit-only-place {
+  opacity: 0.2; }
+
+/* line 28, ../sass/_06-sp2-other.scss */
+.sp2-notice {
+  font-size: 90%;
+  color: #666 !important; }
+
+/**----------------------------------------------
+ loader
+----------------------------------------------*/
+/* line 1, ../sass/_07-sp2-drag-item.scss */
+.sp-drag-item {
+  font-size: 11px;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  color: #ccc;
+  text-shadow: rgba(255, 255, 255, 0.74902) 0px 1px 1px;
+  border: 5px solid rgba(0, 0, 0, 0.52);
+  background-color: inherit;
+  /*     background-image: linear-gradient(rgb(68, 68, 68), rgb(0, 0, 0)); */
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.04706) 0px 1px 2px 0px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 45px;
+  height: 60px;
+  width: 60px;
+  outline: none; }
+  /* line 18, ../sass/_07-sp2-drag-item.scss */
+  .sp-drag-item:hover {
+    color: #fff;
+    /* 		font-weight:bold; */
+    /* 		border: 5px solid rgba(17, 47, 255, 0.87); */ }
+  /* line 23, ../sass/_07-sp2-drag-item.scss */
+  .sp-drag-item:active {
+    color: #fff;
+    border: 5px solid orange;
+    background-color: #000;
+    /* 				border: 5px solid rgba(17, 47, 255, 0.87); */ }
+
+/* line 1, ../sass/_08-sp2-font.scss */
+.fa-font-back:before {
+  content: "\f031";
+  background-color: #4f4f4f;
+  border: 1px solid #4f4f4f;
+  border-radius: 2px;
+  display: inline-block;
+  padding: 2px 3px 3px 3px; }
+
+/* line 9, ../sass/_08-sp2-font.scss */
+.sp-icon-code-head:before {
+  content: "head"; }
+
+/* line 12, ../sass/_08-sp2-font.scss */
+.sp-icon-code-body:before {
+  content: "body"; }
+
+/* line 15, ../sass/_08-sp2-font.scss */
+.sp-icon-code-tags:before {
+  content: "tags"; }
+
+
+.is-active{
+	color: #fff !important;
+    background-color: #666 !important;
+    background-image: none !important;
+}
+
+.sp-js-tab-menu{
+	display:none !important;
+}

@@ -1,0 +1,30 @@
+<div align="center">
+
+
+    <h1 style="margin:20px;">ログイン画面</h1>
+
+    {if !isBlankOrNull($errorMsg)}
+        <p style="color:red">{$errorMsg}</p>
+    {/if}
+
+    <form action="index.php" method="post" name="form1">
+        <input type="hidden" name="loginMode" value="LOGIN">
+        <table border="0" class="login-table">
+            <tr>
+                <td align="right">ID</td>
+                <td align="right">:</td>
+                <td align="left"><input type="text" name="loginId" value="{$loginId}"></td>
+            </tr>
+            <tr>
+                <td align="right">PASS</td>
+                <td align="right">:</td>
+                <td align="left"><input type="password" name="loginPass" value="{$loginPass}"></td>
+            </tr>
+            <tr>
+                <td align="right"></td>
+                <td align="right"></td>
+                <td align="left"><input type="submit" value="ログイン" class="btn-ok"></td>
+            </tr>
+        </table>
+    </form>
+</div>

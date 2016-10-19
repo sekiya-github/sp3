@@ -1,0 +1,36 @@
+
+<div class="sp2-countdown-1-20160930_000000" style="width: 630px;display: block;margin: 0 auto;"></div>
+
+<!--sp2:countdown:start-->
+<link rel="stylesheet" href="http://s3-ap-northeast-1.amazonaws.com/jp.speditor.common/js/flipclock/flipclock.css">
+<style>
+.flip-clock-active, .flip-clock-before{
+	margin:inherit;
+}
+</style>
+<script>
+window.jQuery || document.write('<script type="text/javascript" src="http://s3-ap-northeast-1.amazonaws.com/jp.speditor.common/js/jquery-1.10.2.min.js"><\/script>');
+</script>
+<script src="http://s3-ap-northeast-1.amazonaws.com/jp.speditor.common/js/flipclock/flipclock.js"></script>    
+<!--sp2:countdown:end-->
+
+<!--sp2:countdonw:start:1-->
+<script type="text/javascript">
+    var year = 2016;
+    var month = 11;
+    var day = 30;
+    var hour = 0;
+    var minute = 0;
+    var second = 0;
+    var clock;
+    $(document).ready(function() {
+        var currentDate = new Date();
+        var futureDate  = new Date( year, month-1, day, hour, minute, second );
+        var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+        clock = $(".sp2-countdown-1-20160930_000000").FlipClock(diff, {
+            clockFace: "DailyCounter",
+            countdown: true
+        });
+    });
+</script>
+<!--sp2:countdonw:end:1-->

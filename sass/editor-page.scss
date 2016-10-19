@@ -1,0 +1,44 @@
+$baseFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$baseFontSize: 12px;
+$baseFontColor:white;
+
+$baseInputColor:#000;
+
+$baseBorderRadius: 4px;
+
+$siteBgColorLight: linear-gradient(#434343, #232323);
+$siteBgColorDeep : -webkit-gradient(linear, 0 0, 0 bottom, from(#333), to(#222));
+
+$titleBarBgColor : linear-gradient(rgb(68, 68, 68), rgb(0, 0, 0));
+
+$menuColor        : #ccc;
+$menuBgColor      : inherit;
+$menuColor_Hover  : white;
+$menuBgColor_Hover: rgba(242, 255, 242, 0.35);
+
+$iconColor        : #fff;
+$iconBgColor      : inherit;
+$iconColor_Hover  : #fff;
+$iconBgColor_Hover: #666;
+
+$dragItemBgColor: orange;
+
+#htmlBody{
+width: 100%;
+height: 100%;
+padding: 5px 0 0 5px;
+background-color: inherit;
+color: white;
+display:none;
+white-space:pre-wrap;
+}
+
+
+@import "01-sp2-element";
+@import "02-sp2-layout";
+@import "03-sp2-btn";
+@import "04-sp2-tag-info";
+@import "05-sp2-hidden-box";
+@import "06-sp2-other";
+@import "07-sp2-drag-item";
+@import "08-sp2-font";

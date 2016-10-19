@@ -1,0 +1,3578 @@
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>{$thisPageTitlle}</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="css/material.css" rel="stylesheet">
+	<!--<link rel="stylesheet" href="http://code.getmdl.io/1.1.3/material.indigo-pink.min.css">-->
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue-pink.min.css" />-->
+    <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    
+<!--     <link href="css/edit-page.css" rel="stylesheet">
+ -->
+ 
+<style>
+*{
+	padding: 0;
+	margin: 0;
+	font-size:11px;
+	box-sizing: border-box;
+    border-collapse: collapse;
+    font-family: 'Roboto', 'Helvetica', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+}
+html,body{
+	 overflow-y: hidden;
+	 width:100%;
+	 height:100%;
+}
+.layout-table{
+	width:100%;
+	height:100%;
+	border-collapse: collapse;
+}
+.layout-table td{
+}
+
+
+.card-table{
+	width:calc(100% - 30px);
+	margin:15px;
+
+
+}
+.card-table td{
+	border:none;
+	padding-bottom:15px;
+}
+.card-table > tbody > tr:last-child {
+	border-bottom:1px solid #aaa;
+}
+.card-table .header{
+	font-size:14px;
+	color:#555;
+    font-weight: bold;
+}
+.card-table .label{
+	font-size:14px;
+	padding-right: 15px;
+	font-size:11px;
+	white-space:nowrap;
+}
+.card-table .icon{
+    width: 1%;
+    padding-right: 15px;
+}
+.card-table .icon-btn{
+    width: 1%;
+    padding-right: 15px;
+    padding-left: 15px;
+    white-space:nowrap;
+}
+.card-table .switch-btn{
+	padding-right:10px;
+}
+.card-table .switch-btn .mdl-switch{
+	display: inline;
+}
+
+.active{
+	color:white !important;
+	background-color:#00c0ff !important;
+}
+
+
+
+
+
+div.scroll-box{
+	width:100%;
+	height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+
+
+/* form */
+input, select, textarea{
+	border:1px solid #aaa;
+	border-radius:2px;
+    width: 100%;
+    height: 24px;
+    padding: 0 5px;
+    background-color: #fff;
+	color:#000;
+
+}
+
+input[type="number"]{
+	width: 65px;
+}
+input[type="range"]{
+	border:none;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	-webkit-animation: 1s;
+	width: 27px;
+	height: 24px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	vertical-align: bottom;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+	margin: 0;
+}
+
+
+/* compornent */
+
+.btn-group{
+	display:table;
+	width:100%;
+
+}
+.btn-group>.btn{
+	display:table-cell;
+	width:auto;
+	min-width:auto;
+	border:1px solid #aaa;
+	padding: 2px;
+	height:auto;
+}
+
+.btn-drag-item{
+	width: 65px;
+    height: 22px;
+    min-width: 1px;
+    padding: 0;
+    font-size: 11px;
+    line-height: 1.3em;
+    text-transform:capitalize;
+}
+.btn-table-edit{
+	height:25px;
+}
+
+.material-icons{
+	vertical-align: sub;
+}
+
+
+.iframe-mobile-preview{
+	width:375px !important; /* iphone6 width */
+	height:95% !important;
+	margin:0 auto !important;
+	border:1px solid #000 !important;
+}
+
+
+
+
+/* Material design lite Overwrite */
+.mdl-tabs__tab-bar {
+    height: 39px;
+    display: table;
+    width:100%;
+}
+.mdl-tabs__tab {
+	display: table-cell;
+	float: none;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 39px;
+    font-size: 11px;
+}
+.mdl-checkbox__label{
+	font-size:11px;
+}
+.mdl-button {
+}
+.material-icons {
+    font-size: 14px;
+    font-family: 'Material Icons';
+}
+.btn-group .mdl-button:hover {
+    background-color: inherit;
+}
+
+</style>
+
+<style>
+.image-thumbnail {
+    display: inline-block;
+    border: 1px solid #aeb5e3;
+    padding: 15px;
+    height: 150px;
+    width: 150px;
+    border-radius: 4px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 10px;
+}
+.image-thumbnail img{
+    max-width: 100%;
+    max-height: 118px;
+}
+
+</style>
+
+</head>
+<body>
+<form name="editForm" id="editForm" action="edit_html_2.php" method="post" onsubmit="return false;">
+    <input type="hidden" name="tokenId" id="tokenId" value="{$form.tokenId|htmlspecialchars:$smarty.const.ENT_QUOTES}">
+    <input type="hidden" name="pageId"   id="pageId"   value="{$form.pageId}">
+    <input type="hidden" name="accessUrl"  id="accessUrl"  value="{$form.accessUrl}">
+
+	<table class="layout-table">
+		<tr style="height:52px;border-bottom:1px solid #000">
+			<td style="padding-left:15px;">
+				<table>
+					<tr>
+						<td>
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+								<input type="checkbox" id="checkbox-1" class="mdl-checkbox__input sp-js-click-showTagGuide" data-guide-tag="all">
+								<span class="mdl-checkbox__label">ガイド表示</span>
+							</label>
+						</td>
+						<td style="padding-left:20px;">
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+								<input type="checkbox" id="checkbox-2" class="mdl-checkbox__input sp-js-click-showMobileView" data-guide-tag="all">
+								<span class="mdl-checkbox__label">モバイルビュー</span>
+							</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td align="right" style="padding-right:30px;">
+				<!-- Flat button with ripple -->
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect sp-js-click-saveHtml">保存</button>
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect sp-js-click-restoreHtml">リストア</button>
+				<button class="mdl-button mdl-js-button mdl-js-ripple-effect">アップロード</button>
+			</td>
+			<td style="width:250px">
+			  <div class="mdl-tabs__tab-bar">
+				<!-- タブメニュー -->
+				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" style="postion:fixed;">
+					<div class="mdl-tabs__tab-bar">
+						<a href="#starks-panel"     id="sp-id-tab-format"    class="mdl-tabs__tab"           onclick="$('#sp-id-drag-item-box').hide();$('#sp-id-format-box').show();">フォーマット</a>
+						<a href="#lannisters-panel" id="sp-id-tab-drag-item" class="mdl-tabs__tab is-active" onclick="$('#sp-id-format-box').hide();$('#sp-id-drag-item-box').show();">ドラッグアイテム</a>
+					</div>
+				</div>
+			  </div>
+			</td>
+			<td style="width:50px;text-align:center;">
+				<button class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons" style="font-weight:bold;font-size:22px;">close</i></button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-top: 1px solid #000;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<textarea  name="htmlBody" id="htmlBody">
+
+
+
+<html>
+	<head>
+		<title>BS研修 </title>
+		<meta charset ="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style>
+
+/*------------------------------------------------------
+ SP3
+--------------------------------------------------------*/
+
+/* box-align */
+.sp-box-algin-left{
+display:block !important;
+margin-left:0 !important;
+margin-right:auto !important;
+}
+.sp-box-algin-center{
+display:block !important;
+margin-left:auto !important;
+margin-right:auto !important;
+}
+.sp-box-algin-right{
+display:block !important;
+margin-left:auto !important;
+margin-right:0 !important;
+}
+
+/* overlay */
+.sp-overlay{
+	background: rgba(5,5,5,0.85);
+}
+
+
+/* image */
+.sp-item-style-image-rounded{
+border-radius: 6px;
+}
+.sp-item-style-image-circle{
+border-radius: 50%;
+}
+.sp-item-style-image-thumbnail{
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	padding: 4px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
+.sp-box{
+	padding:15px;
+	margin:0;
+}
+
+
+
+
+
+
+/*------------------------------------------------------
+ bootstrap overwrite
+--------------------------------------------------------*/
+[class^="col-xs-"],
+[class*=" col-xs-"],
+[class^="col-sm-"],
+[class*=" col-sm-"],
+[class^="col-md-"],
+[class*=" col-md-"]
+[class^="col-lg-"],
+[class*=" col-lg-"]{
+    padding:15px;
+}
+
+
+a, a:focus, a:hover {
+	color: white;
+	text-decoration: none;
+}
+ol, ul {
+	margin-bottom: 30px;
+}
+
+
+
+/*------------------------------------------------------
+ テンプレートクラス
+--------------------------------------------------------*/
+body{
+	color: #333;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color: #444;
+	font-size:16px;
+	line-height: 1.6em;
+	padding:0;
+	/*
+	position: relative;
+	background-color: #000;
+	background: url(http://freedom-income.jp/pr/lies/sp/images/lies-bg.jpg) no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	*/
+    color: rgb(0, 0, 0);
+    font-family: 'helvetica', 'arial', sans-serif;
+    font-size:18px;
+}
+p{
+	margin:0 0 30px 0;
+}
+.sp-item{
+	margin-bottom:30px;
+}
+.sp-item:last-child{
+	margin-bottom:0;
+}
+
+
+h3{
+	margin:0 0 30px 0;
+}
+
+hr{
+	border-top: none;
+	height: 1px;
+	background-color: #ccc;
+}
+.my-section{
+	padding:0;
+}
+.container {
+	max-width: 880px;
+}
+
+ul.list-green li{
+	padding: 5px 0 5px 40px;
+	margin: 15px 0;
+	line-height: 130%;
+	background: url('http://www.directsales.jp/sp/img/template/check_green.jpg') no-repeat;
+}
+ul.list-red li{
+	padding: 5px 0 5px 40px;
+	margin: 15px 0;
+	line-height: 130%;
+	background: url('http://www.directsales.jp/sp/img/template/check_red.jpg') no-repeat;
+}
+ol.list-decimal li{
+	padding: 5px 0 5px 1em;
+	margin: 15px 2em;
+	line-height: 130%;
+	list-style-type: decimal;
+}
+[data-item-type="list"]{
+	list-style-type: disc;
+	list-style-image: none;
+	padding-left:40px;
+}
+[data-item-type="list"] li{
+	margin: 5px 0;
+}
+.blet-table{
+	width:100%;
+}
+.blet-table tr{
+	border-top:1px solid #ccc
+}
+
+.blet-table td{
+	padding:10px;
+	vertical-align:top;
+	font-size:18px;
+}
+
+.blet-table td:last-child {
+	vertical-align: middle;
+	font-size:18px;
+	text-align: center;
+}
+
+
+
+
+/*------------------------------------------------------
+ .sp-item-style-***  ( text / list / button / table )
+--------------------------------------------------------*/
+/*button*/
+.sp-btn{
+	display: block;
+	width: 193px;
+	text-align: center;
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: bold;
+	font-family: arial;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	display:block;
+	box-shadow: rgb(255, 100, 100) 0px 1px 0px inset, rgb(153, 2, 2) 0px -1px 2px inset;
+	border: 1px solid rgb(51, 51, 51);
+	border-radius: 5px;
+	text-shadow: rgb(82, 1, 1) 1px 1px;
+	color: rgb(255, 255, 255);
+	background: linear-gradient(rgb(235, 22, 22), rgb(204, 4, 4));
+}.sp-btn-blue:hover {
+	background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+	background:-ms-linear-gradient( top, #1e62d0 5%, #3d94f6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #1e62d0), color-stop(100%, #3d94f6) );
+	background-color:#1e62d0;
+}.sp-btn:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-green {
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius: 5px;
+	border:1px solid #74b807;
+	text-decoration:none;
+	background:-moz-linear-gradient( center top, #89c403 5%, #77a809 100% );
+	background:-ms-linear-gradient( top, #89c403 5%, #77a809 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#89c403', endColorstr='#77a809');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #89c403), color-stop(100%, #77a809) );
+	background-color:#89c403;
+	color:#ffffff;
+	text-shadow:1px 1px 0px #528009;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #a4e271;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #a4e271;
+ 	box-shadow:inset 1px 1px 0px 0px #a4e271;
+}.sp-btn-green:hover {
+	background:-moz-linear-gradient( center top, #77a809 5%, #89c403 100% );
+	background:-ms-linear-gradient( top, #77a809 5%, #89c403 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77a809', endColorstr='#89c403');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #77a809), color-stop(100%, #89c403) );
+	background-color:#77a809;
+}.sp-btn-green:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-blue {
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius: 5px;
+	border:1px solid #337fed;
+	text-decoration:none;
+	background:-moz-linear-gradient( center top, #3d94f6 5%, #1e62d0 100% );
+	background:-ms-linear-gradient( top, #3d94f6 5%, #1e62d0 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #3d94f6), color-stop(100%, #1e62d0) );
+	background-color:#3d94f6;
+	color:#ffffff;
+	text-shadow:1px 1px 0px #1570cd;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #97c4fe;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #97c4fe;
+ 	box-shadow:inset 1px 1px 0px 0px #97c4fe;
+}.sp-btn-blue:hover {
+	background:-moz-linear-gradient( center top, #1e62d0 5%, #3d94f6 100% );
+	background:-ms-linear-gradient( top, #1e62d0 5%, #3d94f6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #1e62d0), color-stop(100%, #3d94f6) );
+	background-color:#1e62d0;
+}.sp-btn-blue:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-orange {
+	border-radius:5px;
+	border:1px solid #eda933;
+	background:-moz-linear-gradient( center top, #f6b33d 5%, #d29105 100% );
+	background:-ms-linear-gradient( top, #f6b33d 5%, #d29105 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6b33d', endColorstr='#d29105');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #f6b33d), color-stop(100%, #d29105) );
+	background-color:#f6b33d;
+	color:#ffffff;
+	text-shadow:1px 1px 0px #cd8a15;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #fed897;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #fed897;
+ 	box-shadow:inset 1px 1px 0px 0px #fed897;
+}.sp-btn-orange:hover {
+	background:-moz-linear-gradient( center top, #d29105 5%, #f6b33d 100% );
+	background:-ms-linear-gradient( top, #d29105 5%, #f6b33d 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d29105', endColorstr='#f6b33d');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #d29105), color-stop(100%, #f6b33d) );
+	background-color:#d29105;
+}.sp-btn-orange:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-pink {
+	border-radius:5px;
+	border:1px solid #d83526;
+	text-decoration:none;
+	background:-moz-linear-gradient( center top, #fa665a 5%, #d34639 100% );
+	background:-ms-linear-gradient( top, #fa665a 5%, #d34639 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa665a', endColorstr='#d34639');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #fa665a), color-stop(100%, #d34639) );
+	background-color:#fa665a;
+	color:#ffffff;
+	text-shadow:1px 1px 0px #98231a;
+ 	-webkit-box-shadow:inset 1px 1px 0px 0px #fab3ad;
+ 	-moz-box-shadow:inset 1px 1px 0px 0px #fab3ad;
+ 	box-shadow:inset 1px 1px 0px 0px #fab3ad;
+}.sp-btn-pink:hover {
+	background:-moz-linear-gradient( center top, #d34639 5%, #fa665a 100% );
+	background:-ms-linear-gradient( top, #d34639 5%, #fa665a 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d34639', endColorstr='#fa665a');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #d34639), color-stop(100%, #fa665a) );
+	background-color:#d34639;
+}.sp-btn-pink:active {
+	position:relative;
+	top:1px;
+}
+
+.sp-btn-push{
+	width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    background: none;
+    background-color: #ff2b2f;
+    box-shadow: 0 20px 0 #DA2E31;
+    transition: 0.3s ease-in-out;
+    margin: 0 auto 50px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 44px;
+    padding: 40px 0;
+    border: none;
+}
+.sp-btn-push:hover{
+	box-shadow:0 5px 0 #DA2E31;
+	transform:translate(0, 15px);
+}
+@media screen and (max-width: 480px){
+	.sp-btn-push{
+		box-shadow:0 10px 0 #6d0202;
+	}
+	.sp-btn-push:hover{
+		box-shadow:0 5px 0 #6d0202;
+		transform:translate(0, 5px);
+	}	
+}
+@-webkit-keyframes sheen {
+  0% {
+    -webkit-transform: skewY(-45deg) translateX(0);
+            transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    -webkit-transform: skewY(-45deg) translateX(12.5em);
+            transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+@keyframes sheen {
+  0% {
+    -webkit-transform: skewY(-45deg) translateX(0);
+            transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    -webkit-transform: skewY(-45deg) translateX(12.5em);
+            transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+
+.sp-btn-shiny {
+	display:block;
+	width:100%;
+	box-sizing:border-box;	
+	padding: 0.75em 2em;
+	text-align: center;
+	text-decoration: none;
+	color: #2194E0;
+	border: 2px solid #2194E0;
+	font-size: 24px;
+	display: inline-block;
+	border-radius: 0.3em;
+	-webkit-transition: all 0.2s ease-in-out;
+		  transition: all 0.2s ease-in-out;
+	position: relative;
+	overflow: hidden;
+	background-image:none;
+	background:inherit;
+	box-shadow: none;
+    text-shadow: none;
+	
+}
+.sp-btn-shiny:before {
+	content: "";
+	background-color: rgba(255, 255, 255, 0.5);
+	height: 100%;
+	width: 3em;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -4.5em;
+	-webkit-transform: skewX(-45deg) translateX(0);
+	  -ms-transform: skewX(-45deg) translateX(0);
+		  transform: skewX(-45deg) translateX(0);
+	-webkit-transition: none;
+		  transition: none;
+}
+.sp-btn-shiny:hover {
+	background-color: #2194E0;
+	color: #fff;
+	border-bottom: 4px solid #1977b5;
+}
+.sp-btn-shiny:hover:before {
+	-webkit-transform: skewX(-45deg) translateX(13.5em);
+	  -ms-transform: skewX(-45deg) translateX(13.5em);
+		  transform: skewX(-45deg) translateX(13.5em);
+	-webkit-transition: all 0.5s ease-in-out;
+		  transition: all 0.5s ease-in-out;
+}
+
+
+
+
+
+/* list ol */
+.sp-item-style-list-order-black{
+	list-style: none;
+	counter-reset: num;
+}
+.sp-item-style-list-order-black li:before{
+	counter-increment: num;
+	content: counter(num);
+	position: absolute;
+	left: 0;
+	background: rgb(0, 0, 0);
+	min-width: 1.5em;
+	text-align: center;
+	height: 1.5em;
+	line-height: 1.6;
+	border-radius: 15px;
+	color: white;
+	font-weight: bold;
+	font-size: 17px;
+	font-family: Arial;
+}
+.sp-item-style-list-order-blue{
+	list-style: none;
+	counter-reset: num;
+}
+.sp-item-style-list-order-blue li:before{
+	counter-increment: num;
+	content: counter(num);
+	position: absolute;
+	left: 0;
+	background: rgba(62,156,227,1);
+	min-width: 1.5em;
+	text-align: center;
+	height: 1.5em;
+	line-height: 1.6;
+	border-radius: 15px;
+	color: white;
+	font-weight: bold;
+	font-size: 17px;
+	font-family: Arial;
+}
+.sp-item-style-list-order-red{
+	list-style: none;
+	counter-reset: num;
+}
+.sp-item-style-list-order-red li:before{
+	counter-increment: num;
+	content: counter(num);
+	position: absolute;
+	left: 0;
+	background: rgb(255, 90, 90);
+	min-width: 1.5em;
+	text-align: center;
+	height: 1.5em;
+	line-height: 1.6;
+	border-radius: 15px;
+	color: white;
+	font-weight: bold;
+	font-size: 17px;
+	font-family: Arial;
+}
+
+/* list ul */
+.sp-item-style-list-black li{
+	list-style: none;
+	padding: 5px 0 5px 35px;
+	margin: 15px 0;
+	line-height: 130%;
+	background: url('http://www.getaltitude.jp/sp/img/template/check_black.jpg') no-repeat;
+}
+.sp-item-style-list-red li{
+	list-style: none;
+	padding: 5px 0 5px 35px;
+	margin: 15px 0;
+	line-height: 130%;
+	background: url('http://www.getaltitude.jp/sp/img/template/check_red.jpg') no-repeat;
+}
+.sp-item-style-list-green li{
+	list-style: none;
+	padding: 5px 0 5px 35px;
+	margin: 15px 0;
+	line-height: 130%;
+	background: url('http://www.getaltitude.jp/sp/img/template/check_green.jpg') no-repeat;
+}
+
+/* text */
+.sp-item-style-text-subead-red{
+	border-left:4px solid #fd4a41;
+	font-size:21px;
+	padding:15px;
+}
+.sp-item-style-text-subead-blue{
+	border-left:4px solid #00c0ff;
+	font-size:21px;
+	padding:15px;
+}
+.sp-item-style-text-subead-green{
+	border-left:4px solid #00AD2A;
+	font-size:21px;
+	padding:15px;
+}
+
+
+
+
+
+
+/*------------------------------------------------------
+ mobile template class
+--------------------------------------------------------*/
+@media screen and (max-width: 420px) {
+
+    body{
+        font-size:15px;
+        line-height: 1.5em;
+    }
+    .headline-font-30{
+    font-size:30px !important;;
+    }
+    .headline-font-40{
+    font-size:40px !important;
+    }
+    .headline-font-20{
+    font-size:17px !important;
+    }
+    
+    .subhead-font-18{
+    font-size: 18px !important;
+    line-height: 37px;
+    }
+    .subhead-font-23{
+    font-size: 23px !important;
+    line-height: 40px;
+    }
+    .mb-font-20{
+        font-size:20px !important;
+    }
+    .mb-font-21{
+        font-size:21px !important;
+    }
+    .mb-font-22{
+        font-size:22px !important;
+    }
+    .mb-font-23{
+        font-size:23px !important;
+    }
+    .mb-center-block{
+        margin-left:auto !important;
+        margin-right:auto !important;
+        display:block !important;
+    }
+}  
+
+
+</style>
+
+
+
+	</head>
+	<body class="sp-iframe-body">
+		<div class="my-section sp-section" style="background-color: rgb(0, 0, 0);">
+			<div class="container sp-container">
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<img id="phimg" src="img_ph/0ae6609c-logop-h_06o00y06o00y000000.png" class="sp-item img-responsive center-block sp-box-algin-left" data-item-type="image" style="margin-bottom:30px;">
+						<p id="sekiya001" class="sp-item" data-item-type="text" style="font-family: helvetica, arial, sans-serif; text-align: center; margin-top: 55px; margin-bottom: 55px;">
+							<span style="font-weight: bold; color: rgb(255, 255, 255);">
+								<span style="font-size: 35px;" class="headline-font-30">よみがえる敗戦国、 </span>
+								<br>
+								<br>
+								<span style="font-size: 46px;" class="headline-font-40">『日本とドイツ』 </span>
+							</span>
+							<br>
+						</p>
+						<p class="sp-item" data-item-type="text" style="text-align: center; color: rgb(211, 211, 211); margin-bottom: 35px;">
+							<span style="font-family: helvetica, arial, sans-serif; font-weight: bolder; font-size: 20px; color: rgb(192, 192, 192);" class="headline-font-20">アメリカ帝国の衰退のはじまり・・・ </span>
+						</p>
+						<p></p>
+						<a href="test.php" class="sp-item sp-box-algin-right sp-btn" data-item-type="button">いますぐ受講する </a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--section  -->
+		<div class="my-section sp-section" style="">
+			<div class="container sp-container" style="
+                /* max-width: 85%; */
+                ">
+				<div class="row sp-row">
+					<div class="col-sm-12">
+
+						<div class="sp-box" data-item-type="box">
+							<p class="sp-item" data-item-type="text" >BOX</p>
+						</div>
+					
+						<div class="sp-box" data-item-type="box">
+							<p class="sp-item" data-item-type="text" >BOX</p>
+						</div>
+					
+						<div class="sp-box" data-item-type="box">
+						</div>
+
+						<div class="sp-box" data-item-type="box">
+							<p class="sp-item" data-item-type="text" >BOX</p>
+							<p class="sp-item" data-item-type="text" >テキスト</p>
+						</div>
+
+						<div class="sp-box" data-item-type="box">
+							<p class="sp-item" data-item-type="text" >BOX</p>
+							<p class="sp-item" data-item-type="text" >テキスト</p>
+						</div>
+
+
+						<div class="sp-box" data-item-type="box">
+							<p class="sp-item subhead-font-18" data-item-type="text" style="font-size: 28px;line-height: 45px;font-weight: bolder;text-align: center;margin-top: 30px;margin-bottom: 60px;">
+								「日本人は歴史を学んでいないので 
+									<br>今、世界で起きていることの意味が
+									わからない」 
+								
+							</p>
+							<p class="sp-item" data-item-type="text">日本が止まっていても、世界では、今現在、進行形で大きく動き続けている。そして、今ほど世界が繋がっている時代は歴史上初めてのこと。たとえば、中東で紛争が起きて、原油価格が上下すれば、それにつられて日本企業の業績が変わる。日本政府の財政も変わる。 
+								<br>
+								<br>日本人は、GHQの占領政策で、本当の歴史を習わない民族になってしまった。そして、自分の周辺しか見えないようになった。それは、「日本など取るにたらない国」という植え付けられた自虐史観によるものかもしれない。 
+								<br>
+								<br>しかし、歴史を振り返れば、日本が「取るにたらない国」であったことは一度もない。 
+								<br>
+								<br>昔から常に日本は「大国」であった。アジアが植民地にされている時代、黒船に開国を迫られ、急速に近代化してあっいう間に世界の大国になった。その前も、江戸時代は世界で最高の教育水準を持ち、江戸は世界で最高の都市であった。そして、戦争に負けてからも、あっという間に再び「大国」としてよみがえった。 
+								<br>
+								<br>ただし、今回が少し違うのは、日本人が自ら「大国」である意識と、素晴らしい民族である誇りを失っていることだった。 
+								<br>
+								<br>それは歴史の分断から来ていた。 
+								<br>
+								<br>歴史を分断された日本人は、自分が何者であり、どういった事をしてきたか記憶喪失になった。そして、記憶喪失患者のように、周りで起きている出来事にどんな意味があるのか？ が分からなくなった。結果、謝れと言われれば、謝罪し、金を出せと言われれば金を出す。 
+								<br>
+								<br>領土拡大の野心をむき出しにする中国、終わらない中東紛争とテロの拡大、弱いオバマに強気のプーチンロシア。世界から置き去りにされた日本、そんな状態でもよかったのは、アメリカの属国状態だったからだった。しかし、時代は変わる。 
+								<br>
+								<br>衰退するアメリカ帝国ーその属国になったままの日本。2600年もつながる歴史を分断された私たち日本人は、属国になったままなのか。 
+								<br>
+								<br>
+								<br>日本は再び不死鳥のように復活するのだろうか？ 
+								<br>
+								<br>
+								<br>私たちがまさに生きてきた時代に、世界ではどのような事があったのか？ そして、それにはどんな意味があるのか？ 過去から延々とつながる、歴史の流れを知らなければ、現在、起きている事の重大な意味がわからないままだ… 
+							</p>
+						</div>
+
+						<div class="sp-item" data-item-type="replace-item" data-contents="" data-title="-- ここがアップロード後に設定した内容に置き換えられます --" style="margin-bottom:30px">
+							<template><script>alert('alert');</script></template>
+						</div>
+
+						<table class="sp-item table table-hover" data-item-type="table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Username</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>1</th>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+								</tr>
+								<tr>
+									<th>2</th>
+									<td>Jacob</td>
+									<td>Thornton</td>
+									<td>@fat</td>
+								</tr>
+								<tr>
+									<th>3</th>
+									<td>Larry</td>
+									<td>the Bird</td>
+									<td>@twitter</td>
+								</tr>
+								<tr>
+									<th>3</th>
+									<td>Larry</td>
+									<td>the Bird</td>
+									<td>@twitter</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<p class="sp-item" data-item-type="text">日本を傘下におさめた大帝国アメリカ。次なる敵は、ヤルタ会談などで共に日本やドイツと戦った同盟国ソ連。相容れない価値観を持った二つの帝国。しかし核兵器を持った両帝国は、すでに直接、戦争ができない状態になっていた。 
+							<br>
+							<br>
+							<br>そして、その代わりに各地で代理戦争が行われた。中国で、ベトナムで、アフガニスタンで、、、第二次世界大戦のような大戦争が終わっても平和だったためしはない。世界は局地戦だらけだった。その中で日本だけが「憲法９条」のせいで自衛のための軍も持てない。 
+							<br>
+							<br>帝国の大統領が弱くなると、昔のペルシア帝国だったイランで革命が起きた。 
+							<br>
+							<br>その間に日本は「アメリカに追いつけ追い越せ」と徹底的に経済を強くした。気がつくと、アメリカの4%ほどの小さな島国が、大帝国の自動車や電機など主な産業を完膚なきまでに叩きのめしていた。再びアメリカが日本に警戒心を抱く。 
+							<br>
+							<br>冷戦に勝利したアメリカは石油の豊富な中東を抑えにかかるー湾岸戦争ー世界全体の軍事費の50%を持つといわれる圧倒的な米軍の軍事力の前には、独裁者サダム・フセインの率いるイラクは全く歯が立たなかった。戦争は100時間で終結。圧倒的に完勝したアメリカの世界支配が見えたかに思えた、、、 
+							<br>
+							<br>しかしその幻想は、たった一日で消える… 
+							<br>
+							<br>2001年9月11日、突然、アメリカ経済の象徴とも言えるワールドトレードセンターに２機の飛行機が突撃し、富の象徴のようなツインタワーが完全に崩壊した。テロの攻撃は、米軍の圧倒的な軍事力を無意味にしてしまった。アメリカはこれから見えない敵、国でない敵と戦わなければならなくなった。そして、皮肉だったのは9.11の攻撃をしたのは、アメリカが対ソ連戦のために育てた中東のゲリラだった。 
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item subhead-font-18" data-item-type="text" style="font-size: 28px;line-height: 45px;font-weight: bolder;text-align: center;margin-top: 30px;margin-bottom: 60px;">
+							「日本人は歴史を学んでいないので 
+								<br>今、世界で起きていることの意味が
+								わからない」 
+							
+						</p>
+						<p class="sp-item" data-item-type="text">日本が止まっていても、世界では、今現在、進行形で大きく動き続けている。そして、今ほど世界が繋がっている時代は歴史上初めてのこと。たとえば、中東で紛争が起きて、原油価格が上下すれば、それにつられて日本企業の業績が変わる。日本政府の財政も変わる。 
+							<br>
+							<br>日本人は、GHQの占領政策で、本当の歴史を習わない民族になってしまった。そして、自分の周辺しか見えないようになった。それは、「日本など取るにたらない国」という植え付けられた自虐史観によるものかもしれない。 
+							<br>
+							<br>しかし、歴史を振り返れば、日本が「取るにたらない国」であったことは一度もない。 
+							<br>
+							<br>昔から常に日本は「大国」であった。アジアが植民地にされている時代、黒船に開国を迫られ、急速に近代化してあっいう間に世界の大国になった。その前も、江戸時代は世界で最高の教育水準を持ち、江戸は世界で最高の都市であった。そして、戦争に負けてからも、あっという間に再び「大国」としてよみがえった。 
+							<br>
+							<br>ただし、今回が少し違うのは、日本人が自ら「大国」である意識と、素晴らしい民族である誇りを失っていることだった。 
+							<br>
+							<br>それは歴史の分断から来ていた。 
+							<br>
+							<br>歴史を分断された日本人は、自分が何者であり、どういった事をしてきたか記憶喪失になった。そして、記憶喪失患者のように、周りで起きている出来事にどんな意味があるのか？ が分からなくなった。結果、謝れと言われれば、謝罪し、金を出せと言われれば金を出す。 
+							<br>
+							<br>領土拡大の野心をむき出しにする中国、終わらない中東紛争とテロの拡大、弱いオバマに強気のプーチンロシア。世界から置き去りにされた日本、そんな状態でもよかったのは、アメリカの属国状態だったからだった。しかし、時代は変わる。 
+							<br>
+							<br>衰退するアメリカ帝国ーその属国になったままの日本。2600年もつながる歴史を分断された私たち日本人は、属国になったままなのか。 
+							<br>
+							<br>
+							<br>日本は再び不死鳥のように復活するのだろうか？ 
+							<br>
+							<br>
+							<br>私たちがまさに生きてきた時代に、世界ではどのような事があったのか？ そして、それにはどんな意味があるのか？ 過去から延々とつながる、歴史の流れを知らなければ、現在、起きている事の重大な意味がわからないままだ… 
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="my-section sp-section" style="">
+			<style>
+                
+                @media screen and (max-width: 420px) {
+                #blet-contaner { max-width: 85%; }
+                }  
+            </style>
+			<div class="container sp-container" id="blet-contaner">
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item subhead-font-23" data-item-type="text" style="font-size: 28px; line-height: 45px; font-weight: bolder; text-align: center;">
+							日本人が知るべき真実の歴史 
+								<br>戦後日本と戦争 
+							
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１ 戦後日本の夜明け:社会党が輝いた1960年、戦後日本の始まり </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">17:09 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２ 節目としての1960年:経済発展の代償はなんだったか？ </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">17:16 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義３ 冷戦の起源:どのようにして冷戦は起きたか？NATOの裏の目的とは </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">10:59 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義４ 国共内戦:中国でのアメリカ対ソ連代理戦争と結果生まれた台湾 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">9:02 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義５ ベトナム独立戦争とアメリカの介入、アメリカが指示した悪魔の大統領 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">16:01 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義６ 平和主義とX論文:同盟国だったアメリカとソ連が対立した理由 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">21:27 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義７ 国連の幻想:国連誕生秘話、敵国日本ドイツと常任理事国の不都合な関係 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">15:03 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義８ いつ攻撃しても良い敵国である日本が国連にお金を最も出すのはなぜか？ </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">16:59 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義９ 国連が消える日:歩み寄る中国の国連支配の野望 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">11:36 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１０ 台湾を捨てたアメリカとそれに続く日本 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">12:40 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１１ 捏造された事件、止められない戦争～ベトナムにアメリカ兵を送った人気大統領 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">16:38 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１２ ベトナム核攻撃計画と、地獄に落ちるアメリカ社会 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">18:02 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１３ 宗教戦争と軍産複合体～ベトナム戦争は何のための戦争だったか </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">16:50 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１４ 史上最悪のベトナム戦争から立ち直るためにしなければいけなかった事 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">17:19 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１５ 不死鳥のように蘇る日本とドイツ </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">14:01 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１６ アメリカが激怒した日本の行動と復讐の始まり～密談からみえる日米の従属関係 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">14:00 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１７ ドイツがバブルにならなかった理由 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">14:57 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１８ 自民党政権とCIAの関係:政府はCIAにコントロールされてるのか？ </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">17:56 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義１９ 大統領が弱くなると世界に紛争が増える？イラン革命とアフガン侵攻の始まり </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">16:35 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２０ 未来永劫イランを許さないアメリカ,イランと日本の特別な関係 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">12:06 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２１ イランと北朝鮮の特別な関係～アルカイダはいかにして生まれたか？ </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">9:49 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２２ 中国とイラン、最強国家イスラエルと力をつけたイランの対立 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">15:24 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２３ フセインのクエート侵攻、アメリカとの密約はあったのか？ </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">13:07 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２４ 湾岸戦争:100時間で勝利したアメリカの圧倒的軍事力と、日本の外交的失敗 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">14:50 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２５ 湾岸戦争の裏にあった陰謀とプロパガンダ～同盟国が戦争を始めた時、、、 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">13:28 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２８ ９.１１復讐戦～イラクから引くに引けないアメリカと強くなるイラン </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">19:56 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２６ ９.１１同時多発テロ、世界が一瞬で変わった日～隠蔽されたある国の関与 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">17:50 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２７ アメリカ・イラン・サウジアラビア、３つの大国の混沌とした敵対関係 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">19:58 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義２９ イラク占領と日本占領の決定的な違い </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">17:51 </span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;">
+					<div class="col-sm-1">
+						<img src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png" class="sp-item img-responsive center-block" >
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" >
+							<span style="line-height: 28.8px;">講義３０ 崩壊か再びよみがえるか、日本の未来と教育 </span>
+						</p>
+					</div>
+					<div class="col-sm-1">
+						<p class="sp-item sp-box-algin-center" data-item-type="text" style="text-align: center; white-space: normal;">
+							<span style="font-weight: bold; line-height: 28.8px; text-align: center;">16:54 </span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="my-section sp-section" style="">
+			<div class="container sp-container">
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item" data-item-type="text" style="text-align: center; margin-top: 20px;">
+							<span style="font-weight: bold; font-size: 23px;">合計７時間４５分４３秒 </span>
+							<br>
+						</p>
+						<a href="test.php" class="sp-item sp-box-algin-center" data-item-type="button" style="box-shadow: rgb(255, 100, 100) 0px 1px 0px inset, rgb(153, 2, 2) 0px -1px 2px inset; border: 1px solid rgb(51, 51, 51); border-radius: 5px; width: 193px; text-align: center; text-shadow: rgb(82, 1, 1) 1px 1px; color: rgb(255, 255, 255); font-size: 16px; line-height: 19px; font-weight: bold; font-family: arial; padding-top: 15px; padding-bottom: 15px; margin-top: 60px; margin-bottom: 55px; background: linear-gradient(rgb(235, 22, 22), rgb(204, 4, 4));">いますぐ受講する </a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="my-section sp-section" style="background-image: url(img_ph/a5bcf928-hoover.jpg);background-attachment: fixed;background-repeat: no-repeat;background-position: center center;background-size: cover;">
+			<div class="sp-overlay">
+				<div class="container sp-container">
+					<div class="row sp-row" style="margin-top: 70px; margin-bottom: 65px;">
+						<div class="col-sm-4">
+							<img src="img_ph/7989ac57-toshio-nishi_05d04v04v04v009000.jpg" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px">
+						</div>
+						<div class="col-sm-8">
+							<p class="sp-item" data-item-type="text">
+								<span style="color: rgb(255, 255, 255); font-size: 28px; font-weight: bold; line-height: 45px;" class="subhead-font-18">"歴史を知らない人は自分の両親を知らない人
+                                    <br>
+                                    　本当の自分自身を知らない人間だ" </span>
+							</p>
+							<p class="sp-item" data-item-type="text" contenteditable="true">
+								<span style="color: rgb(255, 255, 255); line-height: 22px; background-color: rgba(2, 2, 2, 0.741176);">西教授が米国スタンフォード大学フーヴァー研究所にて研究を始めたのは1977年。以来、約40年間にもわたり機密文書などの一次資料、膨大な書物、資料などから読み解いた歴史の裏側を分かりやすく語る。「Follow the money」誰が金を出しているか？お金の跡を追えば本当の歴史が見える。本当の歴史は必ずしも美しくない。むしろ醜い話で満たされている。しかし、それを知る事で、われわれはより強く、本当の意味で、今の世界を知り、自分自身を知ることができる。 </span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/section-->
+		<!--section  -->
+		<div class="my-section sp-section " style="">
+			<div class="container sp-container">
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item" data-item-type="text" style="font-size: 28px; line-height: 45px; font-weight: bolder; text-align: center; margin-top: 10px;">
+							<span style="line-height: 58px;">点と点がつながる </span>
+						</p>
+						<p class="sp-item" data-item-type="text">西先生の歴史観は、ただ単純に、日本国内の事だけを見たり、その時代の出来事だけを見るものではありません。大英帝国や欧米列強の世界戦略の視点から、日本の出来事を見て、その時代だけでなく、２～３００年の歴史の流れから、その出来事を捉えます。 
+							<br>
+							<br>なので、今まで「点」でしかなかった情報や出来事が、つながり「線」となり、その意味がより深く理解できることでしょう。大きな流れの中から、その出来事を見るので、とてもオモシロく、そして現在にまで続いていることを実感できます。 
+							<br>
+							<br>素人はともかく、プロの学者がこのような講座を作ることはほとんどありません。なぜなら学者や歴史家は批判を恐れる人が多いので、西先生のように独自の観点、歴史観を伝えることができないからです。西先生の10年以上、さまざまな文献を調査してできたのがこの歴史講座です。 
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item" data-item-type="text" style="font-size: 28px; line-height: 45px; font-weight: bolder; text-align: center;">
+							<span style="line-height: 58px;">オモシロく深く、学べる高度な歴史講座 </span>
+						</p>
+						<p class="sp-item" data-item-type="text">またこの講座は、博士号を持った研究員が「大学院で学ぶより多くの知見を得られる」と言うほど高度な内容なのですが、その高度さを忘れるくらい、楽しく学べます。西先生の話は、難しい内容でも非常にオモシロく、楽しく聞ける話なので、エンタメかな？と勘違いするほどです。実際、過去の歴史講座を見た人の感想にはこんな声がたくさんあります </p>
+					</div>
+				</div>
+				<div class="row sp-row">
+					<div class="col-sm-2">
+						<img src="img_ph/1s27nw5-quote1.png" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px">
+					</div>
+					<div class="col-sm-10">
+						<p class="sp-item" data-item-type="text" style="margin-bottom: 0px;">「今までどこでも教えてもらったことがない事がこんなにもたくさんあり、びっくりしております。」by田中浩之さま 
+							<br>
+							<br>「時代の流れ、人の動き、考えがまるで動画を見ているように描写されて説明されてとてもわかりや すかった。」by匿名さま 
+							<br>
+							<br>「今までに学んで来たのは、何だったのかと、目から鱗が落ちる想いです。」 
+							<br>by安川勝海さま 
+							<br>
+							<br>「この講義を聞くまで、歴史が教科書的で無味乾燥したものだったのが、西先生の講義の面白さに驚 いております」by下林桂一郎さま 
+							<br>
+							<br>「これほど深い内容をわかり易く且つ面白く伝えてくれる真実の歴史講座を他に知りません。」by松尾高明さま
+						</p>
+						<p class="sp-item" data-item-type="text" style="color: rgb(169, 169, 169); font-size: 12px; text-align: right; padding-right: 55px; margin-top: 25px;">※西鋭夫の歴史講座ーアヘン戦争編レビューより抜粋 </p>
+					</div>
+				</div>
+				<div class="row sp-row">
+					<div class="col-sm-12" style="
+    border-top: 1px solid #ccc;
+">
+						<p class="sp-item" data-item-type="text" style="margin-top: 50px;">そして、あなたは本当の意味で、美しいことも醜いことも、裏も表も知ったうえで、「世界で最も長い歴史」を持つ日本が、どれだけ「とてつもない歴史」を歩んできたか、という事を実感することができ、、、改めて自国の歴史に対して、本当の意味で誇りを持てるようになるでしょう。 
+							<br>
+							<br>それでこそ、本当に日本人としての自覚が生まれると言うものです。そしてこの知識は、どんな教育よりもあなたの人生に影響があると言っても過言ではありません。 
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row" style="padding-top: 0px;">
+					<div class="col-sm-12">
+						<p class="sp-item" data-item-type="text" style="font-size: 26px; line-height: 45px; font-weight: bolder; text-align: center; margin-top: 40px;white-space:nowrap;">
+							<span style="line-height: 58px;">なぜ歴史講座を売るのか？ </span>
+						</p>
+						<p class="sp-item" data-item-type="text">このような歴史講座を売ると、少なからずの方から「商売なのか」と言われる事があります。答えはもちろん商売です。と言うよりもあえて「ビジネスにしています」なぜか？理由は簡単です。どのような事も慈善活動では社会に大きなインパクトを与える事はできないからです。いま社会を動かしているのは明らかに経済であり、つまり主体は商売、ビジネスです。 
+							<br>
+							<br>「慈善活動では何も変わりません」 
+							<br>
+							<br>ビジネスにする事によって優秀な人材を集めることができ、さまざまな広告をして世の中に一気に広げることができるとわれわれは信じています。そしてそこで生まれた利益をより事業の拡大に投資できます。例えば講座を無料で提供することもできると思いますが、そのようなものは一過性であっと言う間に忘れ去られるでしょう。それに、西先生の何十年もの研究に対して失礼であると思います。 ビジネスにする事によって、西先生の研究を今後も支え（事実、この商品を販売する事によって得られる利益は、フーヴァー研究所での先生の研究支援にほぼ使われます）持続的にこういった知識の啓蒙活動を続けることができます。それがわれわれの信念です。 
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item mb-font-22" data-item-type="text" style="font-size: 28px; line-height: 45px; font-weight: bolder; text-align: center; margin-top: 40px;">
+							この水曜日６月８日までなら
+								特別価格で
+							
+						</p>
+						<p class="sp-item" data-item-type="text">もしあなたがスタンフォード大学で西先生の講座をオンライン講座で受けるとしたら、１講座につき約５万円くらいかかります。しかし、本講座では、そんなにかかりません。本講座の価格は29800円です。さらに、今なら発売記念として1万円割引の19800円で手に入れることができます。 
+							<br>
+							<br>オンライン講座なので、スグに全てダウンロードできますし、iPadやiPhoneなどで通勤中に見る事もできます。いつでも、どこでも、自分の都合の良い時間に何度でも見ることができます 
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item" data-item-type="text" style="font-size: 28px; line-height: 45px; font-weight: bolder; text-align: center; margin-top: 40px;">
+							
+								<span style="line-height: 58px;">30日の保証があるので
+									安心して試せます 
+								</span>
+							
+						</p>
+						<p class="sp-item" data-item-type="text">もしあなたがスタンフォード大学で西先生の講座をオンライン講座で受けるとしたら、１講座につき約５万円くらいかかります。しかし、本講座では、そんなにかかりません。本講座の価格は29800円です。さらに、今なら発売記念として1万円割引の19800円で手に入れることができます。 
+							<br>
+							<br>オンライン講座なので、スグに全てダウンロードできますし、iPadやiPhoneなどで通勤中に見る事もできます。いつでも、どこでも、自分の都合の良い時間に何度でも見ることができます 
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item" data-item-type="text" style="font-size: 28px; line-height: 45px; font-weight: bolder; text-align: center; margin-top: 40px; margin-bottom: 0px;">
+							
+								<span style="line-height: 58px;">知識は力なりー
+									歴史の知識こそ力なり 
+								</span>
+							
+						</p>
+						<p class="sp-item" data-item-type="text" style="text-align: center; margin-top: 15px;">
+							
+								<span style="font-weight: bold;font-size: 17px;" class="mb-font-20">私たちの祖先の歴史を
+									知らないことは恥です 
+								</span>
+							
+						</p>
+						<p class="sp-item" data-item-type="text">「知識は力なり」と哲学者のフランシスベーコンは言いました。現代ではさまざまな知識が本やネットで手に入ります。しかし、そのどんな知識よりも「自国の歴史の知識」ほど力になる事はないんじゃないでしょうか？ 
+							<br>
+							<br>仕事のやり方など技術的な知識を得れば、その人の能力が上がって給料があがるかもしれません。しかし、自分の祖先の歴史を知らなければ、その人間は、確固たる信念や価値観、軸をもてず、漂流してしまうでしょう。どんなに仕事が上手くいったとしても、どんなにカネを稼いだとしてもです。 
+							<br>
+							<br>自分の祖先の歴史を知ることで、自分自身が何者かに気づくことができ、確固たるアイデンティティや信念を持つことができます。そして、「強く自立した」人間になることができるでしょう。 
+							<br>
+							<br>戦後の占領軍は、われわれ日本人のそういった精神的な強さをとても恐れました。二度と強い日本を見たくないと思い、歴史教育から魂を抜きました。まさに 
+							<br>
+							<br>「祖先の歴史を知ることは、力なり」です。 
+							<br>
+							<br>われわれは全員が一人も残さず、過去の先人たちの想像を絶するような努力と献身の上で、生活しています。誰一人例外なく、その恩恵を受けてない人はいません。それを知らぬ存ぜぬでは、無責任だし、何より恥ずかしいではありませんか。 
+							<br>
+							<br>ぜひ、西先生の歴史講座から、あなたの祖先の話、お爺ちゃん、お婆ちゃんたちの本当の話を聞いてください。 
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="my-section sp-section">
+			<div class="container sp-container" style="max-width: 1000px;">
+				<div class="row sp-row">
+					<div class="col-sm-8" style="
+                    position: relative;
+                    ">
+						<img src="img_ph/217aff9d-macbook_0hm09b0hk09a000000.png" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px">
+						<img src="img_ph/e8d7ad1d-nirk8-1-mp4_0bn06k0bf06k000000.png" class="sp-item img-responsive center-block" data-item-type="image" style="margin-bottom:30px;position: absolute;top: 10%;left: 19%;max-width: 62%;">
+					</div>
+					<div class="col-sm-4" style="
+                padding: 10px;
+                background-color: rgba(243,241,241,1);
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                ">
+						<p class="sp-item" data-item-type="text" style="text-align: center; margin-top: 30px; margin-bottom: 10px;">
+							<span style="font-weight: bold; font-size: 21px;">
+								<span style="text-decoration: line-through;">29800円 </span>が今日なら19800円
+							</span>
+						</p>
+						<a href="aaa.php" class="sp-item center-block sp-item-style-button-green" data-item-type="button" style="background: linear-gradient(#f7941d,#d75305);
+                box-shadow: inset 0px 1px 0px #ffbb6a,inset 0 -1px 2px #a33f03;
+                text-shadow: 1px 1px #521601;
+                border-radius: 5px;
+                width: 296px;
+                height: 62px;
+                border-width: 1px;
+                border-color: #333333;
+                font-size: 24px;
+                line-height: 29px;
+                font-weight: bold;
+                font-family: Arial,Helvetica,sans-serif;
+                text-align: center;
+                font-weight:bold;
+                border:1px solid #333333;
+                ">割引価格で受講する </a>
+						<hr style="
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+            ">
+						<ul class="sp-item sp-list-default" data-item-type="list" style="padding-top: 0px; margin-top: 20px;">
+							<li>
+								<span style="line-height: 21px;">西先生本人の３０本の講義 </span>
+							</li>
+							<li>
+								<span style="line-height: 21px;">合計：７時間４５分４３秒 </span>
+							</li>
+							<li>
+								<span style="line-height: 21px;">安心の３０日間返金保証 </span>
+							</li>
+							<li>
+								<span style="line-height: 21px;">ビデオはダウンロード可能 </span>
+							</li>
+							<li>
+								<span style="line-height: 21px;">割引価格は６月８日(水)まで </span>
+								<br>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="my-section sp-section" style="background-color: rgb(0, 0, 0);">
+			<div class="container sp-container">
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item" data-item-type="text" style="text-align: center; color: white; margin-bottom: 15px;">
+							<span style="line-height: 30px;font-size:12px;font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;">
+								<a href="clkn/http/www.d-publishing.jp/company/" target="_blank">会社概要 </a>
+								<span style="color: rgb(255, 255, 255); ">&nbsp;|&nbsp; </span>
+								<a href="clkn/http/www.d-publishing.jp/law/" style="" target="_blank">特定商取引法上の表記 </a>
+								<span style="color: rgb(255, 255, 255); ">&nbsp;|&nbsp; </span>
+								<a href="clkn/http/www.d-publishing.jp/privacy/" style="" target="_blank">プライバシーポリシー </a>
+								<span style="color: rgb(255, 255, 255); ">&nbsp;|&nbsp; </span>
+								<a href="clkn/http/d-publishing-cs.jp/" style="" target="_blank">ダイレクト出版株式会社 サポート </a>
+							</span>
+						</p>
+					</div>
+				</div>
+				<div class="row sp-row">
+					<div class="col-sm-12">
+						<p class="sp-item" data-item-type="text" style="text-align: center; margin-bottom: 0px;">
+							<span style="font-size: 12px;color: rgb(255, 255, 255);line-height: 14px;font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;">掲載の情報・画像など、すべてのコンテンツの無断複写・転載を禁じます。 
+								<br>大阪府大阪市中央区安土町2丁目3-13大阪国際ビルディング13F　 TEL：06-6268-0850　FAX：06-6268-0851 
+								<br>Copyright c 2014 ダイレクト出版株式会社. All Rights Reserved. 
+							</span>
+							<br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/section-->
+		<!--section ：アイテム紹介 -->
+		<!--/section-->
+		<!--section  -->
+		<!--/section-->
+		<!--section  -->
+		<!-- section -->
+		<!--/ section -->
+		<!-- section -->
+		<!--/ section -->
+		<!-- section -->
+		<!--/ section -->
+		<!-- section -->
+		<!--/ section -->
+
+<link href="img_ph/sp-animate.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="js/jquery.jrumble.1.3.min.js"></script>
+<script>
+$(function(){
+
+	////-----------------------------------------------
+	//// .sp-js-ani-wobble
+	////-----------------------------------------------
+	//function setAni(idName){
+    //
+	//	var t = $('#'+idName);
+	//	var aniClass = t.data('ani-class');
+	//	var aniSecond = t.data('ani-second');
+    //
+	//	setInterval(function(e){
+	//		if(t.hasClass(aniClass)){
+	//			t.removeClass(aniClass).removeClass('animated');
+	//			console.log('remove');
+	//		}else{
+	//			t.addClass(aniClass).addClass('animated');
+	//			console.log('add');
+	//		}
+	//	}, aniSecond);
+	//}
+    //
+	//setAni();
+	
+//	//-----------------------------------------------
+//	// .sp-js-ani-wobble
+//	//-----------------------------------------------
+//	var wobble_start = function(){
+//		$('.sp-js-ani-wobble').addClass('wobble').addClass('animated');
+//		console.log('start');
+//		setTimeout(wobble_stop, 500);
+//	};
+//	
+//	var wobble_stop = function(){
+//		$('.sp-js-ani-wobble').removeClass('wobble').removeClass('animated');
+//		console.log('stop');
+//		setTimeout(wobble_start, 3000);
+//	};
+//	
+//	wobble_start();
+//
+//
+//	//-----------------------------------------------
+//	// .sp-js-ani-flash
+//	//-----------------------------------------------
+//	var flash_start = function(){
+//		$('.sp-js-ani-flash').addClass('flash').addClass('animated');
+//		console.log('start');
+//		setTimeout(flash_stop, 500);
+//	};
+//	
+//	var flash_stop = function(){
+//		$('.sp-js-ani-flash').removeClass('flash').removeClass('animated');
+//		console.log('stop');
+//		setTimeout(flash_start, 3000);
+//	};
+//	
+//	flash_start();
+//
+//
+//	//-----------------------------------------------
+//	// .sp-js-ani-jrumble
+//	//-----------------------------------------------
+//	$('.sp-js-ani-jrumble').jrumble();
+//
+//	var jrumble_start = function(){
+//		$('.sp-js-ani-jrumble').trigger('startRumble');
+//		setTimeout(jrumble_stop, 500);
+//	};
+//	
+//	var jrumble_stop = function(){
+//		$('.sp-js-ani-jrumble').trigger('stopRumble');
+//		setTimeout(jrumble_start, 3000);
+//	};
+//	
+//	jrumble_start();
+});
+</script>
+<script id="sp-func-list">
+function sp_setAnimation(idName, aniClass, intervalSecond){
+
+	var demoStart = function(){
+		console.log('demo start');
+		var stopTimer = null;
+		var t = document.getElementById(idName);
+		var classStr = t.getAttribute('class');
+
+		if(classStr != null && classStr.indexOf(aniClass) != -1){
+			t.classList.remove(aniClass);
+		}
+
+		stopTimer = setTimeout(demoStop, 500);
+
+		console.log(classStr,classStr.indexOf('sp-ani'));
+		if(stopTimer && ( !classStr || classStr.indexOf('sp-ani') == -1)){
+			clearTimeout(stopTimer);
+			stopTimer = null;
+			return false;
+		}
+	};
+	
+	var demoStop = function(){
+		console.log('demo stop');
+		var startTimer = null;
+		var t = document.getElementById(idName);
+		var classStr = t.getAttribute('class');
+
+		t.classList.add(aniClass);
+
+		startTimer = setTimeout(demoStart, intervalSecond);
+
+		console.log(classStr,classStr.indexOf('sp-ani'));
+		if(startTimer && ( !classStr || classStr.indexOf('sp-ani') == -1)){
+			clearTimeout(startTimer);
+			startTimer = null;
+			return false;
+		}
+	};
+	
+	demoStart();
+
+
+
+
+//	try{
+//		var t = document.getElementById(idName);
+//		if(t){
+//			var timer = setInterval(function(e){
+//				var flag = document.querySelector('.'+idName);
+//				if(timer && !flag){
+//					clearInterval(timer);
+//					return false;
+//				}
+//				var classStr = t.getAttribute('class');
+//				if(classStr != null && classStr.indexOf(aniClass) != -1){
+//					t.classList.remove('sp-ani');
+//					t.classList.remove(aniClass);
+//					console.log('ani class remove');
+//				}else{
+//					t.classList.add('sp-ani');
+//					t.classList.add(aniClass);
+//					console.log('ani class add');
+//				}
+//
+//			}, intervalSecond);
+//		}
+//	}catch(e){
+//		console.log('exception catch');
+//		console.log('型：' + e.name);
+//		console.log('メッセージ：' + e.message);
+//	}
+//	return timer;
+//
+//
+
+	
+}
+</script>
+
+
+
+
+
+
+
+		
+	</body>
+</html>
+
+
+
+
+</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</td>
+			<td colspan="2" rowspan="2" valign="top" style="border-left:1px solid #000">
+
+				<!-- ドラッグアイテムBOX -->
+				<div id="sp-id-drag-item-box" class="scroll-box">
+
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">レイアウト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="section" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>section</td>
+						</tr>
+						<!--
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="container" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>container</td>
+						</tr>
+						-->
+					</table>
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">グリッドシステム</td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-1" data-no="1" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value="12"  placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-1" data-no="1"></td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-2" data-no="2" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value="6 6" placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-2" data-no="2"></td>
+						</tr>
+						<tr>
+							<td  class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="grid" id="btn-drag-item-grid-3" data-no="3" draggable="false" disabled><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td><input type="text" value=""    placeholder="合計12になるように入力" class="sp-js-input-showGridDragButton" id="input-grid-col-3" data-no="3"></td>
+						</tr>
+					</table>
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">ベースアイテム</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="box" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>BOX</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="text" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>テキスト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="list" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>リスト</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="button" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>ボタン</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="image" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>イメージ</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="video" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>ビデオ</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="table" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>表</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="replace-item" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>置換コード</td>
+						</tr>
+					</table>
+
+					<table class="card-table">
+						<tr>
+							<td class="header" colspan="2">ギミックアイテム</td>
+						</tr>
+						<tr>
+							<td class="icon-btn">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-drag-item sp-js-dragstart-dragItemDoc" data-drag-id="countdown-timer" draggable="true"><i class="material-icons">reply</i> drag</button>
+							</td>
+							<td>カウントダウンタイマー</td>
+						</tr>
+					</table>
+
+				</div>
+				<!--/ ドラッグアイテムBOX -->
+
+
+
+
+				
+
+
+				
+
+				<!-- フォーマットBOX -->
+				<table id="sp-id-format-box" style="height:100%;width:100%;" style="display:none">
+					<tr id="sp-id-format-noselect-msg" style="height:40px;">
+						<td valign="top">
+							<!-- アイテム選択なし -->
+							<table class="card-table">
+								<tr>
+									<td class="header" style="border:none;">何も選択されていません</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr id="sp-id-format-tab-menu" style="height:40px;display:none;">
+						<td valign="top">
+
+							<!-- タブメニュー -->
+							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+								<div class="mdl-tabs__tab-bar">
+									<a href="#starks-panel"     class="sp-js-tab mdl-tabs__tab " id="tab-name-style"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-style').show();">スタイル</a>
+									<a href="#lannisters-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-text"          onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-text').show()"  >テキスト</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-image"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-image').show()" >イメージ</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-table"         onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-table').show()" >表</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-replace-item"  onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-replace-item').show()" >置換アイテム</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-gimmick"       onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-gimmick').show()" >ギミック</a>
+									<a href="#targaryens-panel" class="sp-js-tab mdl-tabs__tab"  id="tab-name-box-align"     onclick="$('.sp-js-tab-content').hide();$('#sp-id-tab-content-box-align').show()" >配置</a>
+								</div>
+							</div>
+					
+						</td>
+					</tr>
+					<tr id="sp-id-format-tab-contents" style="display:none;">
+						<td valign="top">
+
+							<!-- タブコンテンツ-->
+							<div  class="scroll-box">
+
+								<!--タブ内容：スタイル-->
+								<div id="sp-id-tab-content-style" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td class="header">スタイル</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-spEdit-style-button" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-btn-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-btn-green">ボタン （グリーン）</option>
+													<option value="sp-btn-blue">ボタン （ブルー）</option>
+													<option value="sp-btn-orange">ボタン （オレンジ）</option>
+													<option value="sp-btn-pink">ボタン （ピンク）</option>
+													<option value="sp-btn-shiny">ボタン （光沢）</option>
+													<option value="sp-btn-push">ボタン （押込）</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-list" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-list-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-list-order-black">連番（黒）</option>
+													<option value="sp-item-style-list-order-blue">連番（青）</option>
+													<option value="sp-item-style-list-order-red">連番（赤）</option>
+													<option value="sp-item-style-list-black">チェック（黒）</option>
+													<option value="sp-item-style-list-red"  >チェック（赤）</option>
+													<option value="sp-item-style-list-green">チェック（緑）</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-image" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-image-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-image-circle"   >円形</option>
+													<option value="sp-item-style-image-thumbnail">サムネイル</option>
+													<option value="sp-item-style-image-rounded"  >角丸</option>
+												</select>
+
+												<select id="sp-id-spEdit-style-text" class="sp-id-spEdit-style sp-js-change-setSpEditClass" data-class-prefix="sp-item-style-text-">
+													<option value="">-- 設定なし --</option>
+													<option value="sp-item-style-text-subead-red">サブヘッド（赤）</option>
+													<option value="sp-item-style-text-subead-blue">サブヘッド（青）</option>
+													<option value="sp-item-style-text-subead-green">サブヘッド（緑）</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="3">背景</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-bg-image-url-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td colspan="2">
+												<textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-bg-image-url-label" placeholder="背景画像 設定なし"></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">サイズ</td>
+											<td colspan="2">
+												<select id="sp-id-background-size" class="sp-js-change-setSpEditCss" data-css="background-size">
+													<option value="auto">自動調整</option>
+													<option value="contain">contain</option>
+													<option value="cover">cover</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td class="label"></td>
+											<td colspan="2">
+												<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sp-id-parallax">
+													<input type="checkbox" id="sp-id-parallax" class="mdl-checkbox__input sp-js-click-setParallax">
+													<span class="mdl-checkbox__label">Parallax Effect</span>
+												</label>
+												<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sp-id-overlay">
+													<input type="checkbox" id="sp-id-overlay" class="mdl-checkbox__input sp-js-click-setOverlay">
+													<span class="mdl-checkbox__label">Overlay</span>
+												</label>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">背景色</td>
+											<td colspan="2"><input id="sp-id-background-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="background-color"></td>
+										</tr>
+										<tr>
+											<td class="label">透過</td>
+											<td><input type="range" min="0.00" max="1.00" step="0.01" value="1" tabindex="0" id="sp-id-opacity" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="opacity" oninput="$('#sp-id-opacity-label').text(this.value)"></td>
+											<td><label id="sp-id-opacity-label">1</label></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="3">枠線</td>
+										</tr>
+										<tr>
+											<td colspan="3">
+											    <select id="sp-id-border-style" class="sp-js-input-setSpEditCss" data-css="border-style" style="width:80px">
+											        <!-- 2014/05/30 sekiya fix : -->
+											        <!-- <option value="none">None</option> -->
+											        <option value="none"></option>
+											        <option value="solid">Solid</option>
+											        <option value="dotted">Dotted</option>
+											        <option value="dashed">Dashed</option>
+											        <option value="double">Double</option>
+											        <option value="groove">Groove</option>
+											        <option value="ridge">Ridge</option>
+											        <option value="inset">Inset</option>
+											        <option value="outset">Outset</option>
+											    </select>
+											    <select id="sp-id-border-width" class="sp-js-input-setSpEditCss" data-css="border-width" style="width:60px">
+											        <option value=""></option>
+											        <option value="1">1px</option>
+											        <option value="2">2px</option>
+											        <option value="3">3px</option>
+											        <option value="4">4px</option>
+											        <option value="5">5px</option>
+											        <option value="6">6px</option>
+											        <option value="7">7px</option>
+												        <option value="8">8px</option>
+											        <option value="9">9px</option>
+											        <option value="10">10px</option>
+											    </select>
+												<input id="sp-id-border-color" type="color" list="sp-id-color-picker" class="sp-js-input-setSpEditCss" data-css="border-color">
+											</td>
+										</tr>
+										<tr>
+											<td class="label" style="width:1%">角丸</td>
+											<td><input id="sp-id-border-radius" type="number" min="0" max="150" step="1" value="0" class="sp-js-input-setSpEditCss" data-css="border-radius" style="width:50px"></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header">影</td>
+										</tr>
+										<tr>
+											<td>
+											    <select id="sp-id-box-shadow" class="sp-js-input-setSpEditCss" data-css="box-shadow">
+											        <option value="">シャドウなし</option>
+											        <option value="rgba(0, 0, 0, 0.137255) 0px 4px 5px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 10px 0px, rgba(0, 0, 0, 0.2) 0px 2px 4px -1px">濃さ：1</option>
+											        <option value="rgba(0, 0, 0, 0.2) 0px 8px 17px 0px, rgba(0, 0, 0, 0.188235) 0px 6px 20px 0px">濃さ：2</option>
+											        <option value="rgba(0, 0, 0, 0.239216) 0px 12px 15px 0px, rgba(0, 0, 0, 0.188235) 0px 17px 50px 0px">濃さ：3</option>
+											        <option value="rgba(0, 0, 0, 0.219608) 0px 16px 28px 0px, rgba(0, 0, 0, 0.207843) 0px 25px 55px 0px">濃さ：4</option>
+											        <option value="rgba(0, 0, 0, 0.2) 0px 27px 24px 0px, rgba(0, 0, 0, 0.219608) 0px 40px 77px 0px">濃さ：5</option>
+											    </select>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">属性</td>
+										</tr>
+										<tr>
+											<td>id</td>
+											<td><input id="sp-id-attr-id" type="text" value="" class="sp-js-input-setSpEditAttr" data-attr="id"></td>
+										</tr>
+										<tr>
+											<td>class</td>
+											<td><input id="sp-id-attr-class" type="text" value="" class="sp-js-input-setSpEditAttr" data-attr="class"></td>
+										</tr>
+										<tr>
+											<td valign="top">style</td>
+											<td><textarea id="sp-id-attr-style" style="height:200px;padding:5px;" class="sp-js-input-setSpEditAttr" data-attr="style"></textarea></td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">リンク</td>
+										</tr>
+										<tr>
+											<td>URL</td>
+											<td><input id="sp-id-attr-href" type="text" value="https://" class="sp-js-input-setSpEditAttr" data-attr="href"></td>
+										</tr>
+										<tr>
+											<td>target</td>
+											<td>
+												<select id="sp-id-attr-target" class="sp-js-change-setSpEditAttr" data-attr="target">
+													<option value="">設定なし</option>
+													<option value="_self">同じウィンドウで開く</option>
+													<option value="_blank">新しいウィンドウで開く</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+
+
+
+									<hr>
+										ページ単位の設定
+									<hr>
+									<table class="card-table">
+										<tr>
+											<td class="header">テーマ</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-theme" class="sp-js-change-setThemeClass" data-class-prefix="base-color">
+													<option value="">-- 設定なし --</option>
+													<option value="base-color1">テーマ１</option>
+													<option value="base-color2">テーマ２</option>
+													<option value="base-color3">テーマ３</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+
+								</div>
+								<!--/タブ内容：スタイル-->
+
+
+								<!--タブ内容：配置-->
+								<div id="sp-id-tab-content-box-align" class="sp-js-tab-content">
+
+									<table class="card-table">
+										<tr>
+											<td>
+												<select id="sp-id-spEdit-box-align" class="sp-js-change-setSpEditClass" data-class-prefix="sp-box-algin-">
+													<option value="">配置</option>
+													<option value="sp-box-algin-left">左揃え</option>
+													<option value="sp-box-algin-center">中央揃え</option>
+													<option value="sp-box-algin-right">右揃え</option>
+												</select>
+												<!-- 現在は縦配置（box・text共に）設定なし。margin上下でコントロール
+												<select id="sp-id-spEdit-box-valign" class="sp-js-change-setSpEditClass" data-class-prefix="sp-box-valgin-">
+													<option value="">縦配置</option>
+													<option value="sp-box-valgin-top">上揃え</option>
+													<option value="sp-box-valgin-middle">中央揃え</option>
+													<option value="sp-box-valgin-bottom">下揃え</option>
+												</select>
+												-->
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">幅</td>
+										</tr>
+										<tr>
+											<td class="label">最大幅</td>
+											<td align="right"><input type="number" min="0" max="1500" step="5" value="0" id="sp-id-max-width" class="sp-js-input-setSpEditCss" data-css="max-width"></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">ページ幅</td>
+										</tr>
+										<tr>
+											<td class="label">最大幅</td>
+											<td align="right"><input type="number" min="0" max="1500" step="5" value="0" id="sp-id-page-max-width" class="sp-js-input-setSpEditCss" data-css="page-max-width"></td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">回転</td>
+										</tr>
+										<tr>
+											<td><input type="range" min="0" max="360" step="1" value="0" tabindex="0" id="sp-id-transform-rotate" class="mdl-slider mdl-js-slider sp-js-input-setSpEditCss" data-css="transform-rotate" oninput="$('#sp-id-transform-rotate-label').text(this.value)"></td>
+											<td style="width:35px"><label id="sp-id-transform-rotate-label">0</label> °</td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">余白</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+
+												<style>
+												.padding-table{
+													border:none;
+													margin:0 auto;
+												}
+												.padding-table td{
+												    vertical-align: middle;
+												    padding: 5px;
+												    text-align: center;
+												    border:none;
+												}
+												.padding-table input{
+													width:40px;
+												}
+												.padding-table td.bt{border-top:1px dotted #666; }
+												.padding-table td.bb{border-bottom:1px dotted #666; }
+												.padding-table td.bl{border-left:1px dotted #666; }
+												.padding-table td.br{border-right:1px dotted #666; }
+												
+												</style>
+												<table class="padding-table">
+													<tbody>
+														<tr>
+															<td></td>
+															<td></td>
+															<td><input id="sp-id-margin-top" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-top"></td>
+															<td></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td class="bt bl"></td>
+															<td class="bt"><input id="sp-id-padding-top" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-top"></td>
+															<td class="bt br"></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td><input id="sp-id-margin-left" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-left"></td>
+															<td class="bl"><input id="sp-id-padding-left" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-left"></td>
+															<td style="text-align: center;white-space:nowrap">コンテンツ</td>
+															<td class="br"><input id="sp-id-padding-right" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-right"></td>
+															<td><input id="sp-id-margin-right" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-right"></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td class="bb bl"></td>
+															<td class="bb"><input id="sp-id-padding-bottom" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="padding-bottom"></td>
+															<td class="bb br"></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td></td>
+															<td></td>
+															<td><input id="sp-id-margin-bottom" type="number" min="0" max="500" step="5" value="0" class="sp-js-input-setSpEditCss" data-css="margin-bottom"></td>
+															<td></td>
+															<td></td>
+														</tr>
+													</tbody>
+												</table>
+
+											</td>
+										</tr>
+									</table>
+
+								</div>
+								<!--/タブ内容：配置-->
+
+
+								<!--タブ内容：テキスト-->
+								<div id="sp-id-tab-content-text" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header">フォント</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="sp-id-font-name" class="sp-js-input-execcommand" data-cmd="fontName">
+													<option value="Arial">Arial</option>
+													<option value="Comic Sans MS">Comic Sans MS</option>
+													<option value="Courier New">Courier New</option>
+													<option value="Droid Sans Japanese">Droid Sans Japanese</option>
+													<option value="Georgia">Georgia</option>
+													<option value="Hiragino Kaku Gothic Pro">Hiragino Kaku Gothic Pro</option>
+													<option value="Hiragino Kaku Gothic ProN">Hiragino Kaku Gothic ProN</option>
+													<option value="Hiragino Kaku Gothic StdN">Hiragino Kaku Gothic StdN</option>
+													<option value="Hiragino Maru Gothic ProN">Hiragino Maru Gothic ProN</option>
+													<option value="Hiragino Mincho ProN">Hiragino Mincho ProN</option>
+													<option value="Hiragino Sans">Hiragino Sans</option>
+													<option value="HiraginoSans-W0">HiraginoSans-W0</option>
+													<option value="KanjiStrokeOrders">KanjiStrokeOrders</option>
+													<option value="Klee">Klee</option>
+													<option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+													<option value="MS Gothic">MS Gothic</option>
+													<option value="MS Mincho">MS Mincho</option>
+													<option value="MS PGothic">MS PGothic</option>
+													<option value="MS PMincho">MS PMincho</option>
+													<option value="MS UI Gothic">MS UI Gothic</option>
+													<option value="Meirio">Meirio</option>
+													<option value="Meiryo UI">Meiryo UI</option>
+													<option value="Meiryo">Meiryo</option>
+													<option value="Osaka">Osaka</option>
+													<option value="Osaka-Mono">Osaka-Mono</option>
+													<option value="Osaka−等幅">Osaka−等幅</option>
+													<option value="Tahoma">Tahoma</option>
+													<option value="Times New Roman">Times New Roman</option>
+													<option value="Trebuchet MS">Trebuchet MS</option>
+													<option value="Tsukushi A Round Gothic">Tsukushi A Round Gothic</option>
+													<option value="Tsukushi B Round Gothic">Tsukushi B Round Gothic</option>
+													<option value="VL Gothic">VL Gothic</option>
+													<option value="VL PGothic">VL PGothic</option>
+													<option value="Verdana">Verdana</option>
+													<option value="Yu Gothic UI Bold">Yu Gothic UI Bold</option>
+													<option value="Yu Gothic UI Light">Yu Gothic UI Light</option>
+													<option value="Yu Gothic UI">Yu Gothic UI</option>
+													<option value="Yu Gothic">Yu Gothic</option>
+													<option value="Yu Mincho">Yu Mincho</option>
+													<option value="YuGothic">YuGothic</option>
+													<option value="YuMincho +36p Kana">YuMincho +36p Kana</option>
+													<option value="YuMincho">YuMincho</option>
+													<option value="クレー">クレー</option>
+													<option value="ヒラギノ丸ゴ ProN">ヒラギノ丸ゴ ProN</option>
+													<option value="ヒラギノ明朝 ProN">ヒラギノ明朝 ProN</option>
+													<option value="ヒラギノ角ゴ Pro">ヒラギノ角ゴ Pro</option>
+													<option value="ヒラギノ角ゴ ProN">ヒラギノ角ゴ ProN</option>
+													<option value="ヒラギノ角ゴ StdN">ヒラギノ角ゴ StdN</option>
+													<option value="ヒラギノ角ゴシック W0">ヒラギノ角ゴシック W0</option>
+													<option value="ヒラギノ角ゴシック">ヒラギノ角ゴシック</option>
+													<option value="メイリオ">メイリオ</option>
+													<option value="游ゴシック Light">游ゴシック Light</option>
+													<option value="游ゴシック">游ゴシック</option>
+													<option value="游ゴシック体">游ゴシック体</option>
+													<option value="游明朝">游明朝</option>
+													<option value="游明朝体">游明朝体</option>
+													<option value="游明朝体+36ポかな">游明朝体+36ポかな</option>
+													<option value="筑紫A丸ゴシック">筑紫A丸ゴシック</option>
+													<option value="筑紫B丸ゴシック">筑紫B丸ゴシック</option>
+													<option value="ＭＳ ゴシック">ＭＳ ゴシック</option>
+													<option value="ＭＳ 明朝">ＭＳ 明朝</option>
+													<option value="ＭＳ Ｐゴシック">ＭＳ Ｐゴシック</option>
+													<option value="ＭＳ Ｐ明朝">ＭＳ Ｐ明朝</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+											    <input id="sp-id-font-size"  type="number" value="" step="1" min="0" max="100" class="sp-js-input-execcommand" data-cmd="fontSize" style="width:auto">
+												<input id="sp-id-fore-color" type="color" value="#000000" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="foreColor">
+												<input id="sp-id-back-color" type="color" value="#000000" list="sp-id-color-picker" class="sp-js-input-execcommand" data-cmd="backColor">
+											</td>
+										</tr>
+										<tr>
+											<td>
+											    <div class="btn-group">
+													<a href="#" id="sp-id-bold"          class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="bold"          title="太字"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_bold</i></a>
+													<a href="#" id="sp-id-underline"     class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="underline"     title="下線"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_underlined</i></a>
+													<a href="#" id="sp-id-strikethrough" class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="strikethrough" title="取り消し線" onclick="$(this).toggleClass('active')"><i class="material-icons">strikethrough_s</i></a>
+													<a href="#" id="sp-id-italic"        class="btn mdl-button mdl-js-button sp-js-click-execcommand" data-cmd="italic"        title="斜体"       onclick="$(this).toggleClass('active')"><i class="material-icons">format_italic</i></a>
+											    </div>
+											</td>
+										</tr>
+									</table>
+
+
+									<table class="card-table">
+										<tr>
+											<td class="header">配置</td>
+										</tr>
+										<tr>
+											<td>
+											    <div class="btn-group">
+													<a href="#" id="sp-id-text-align-left"   class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="left"   title="左"   onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_left</i></a>
+													<a href="#" id="sp-id-text-align-center" class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="center" title="中央" onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_center</i></a>
+													<a href="#" id="sp-id-text-align-right"  class="btn mdl-button mdl-js-button sp-js-text-align-btn sp-js-click-setSpEditCss" data-css="text-align" data-value="right"  title="右"   onclick="$('.sp-js-text-align-btn').removeClass('active');$(this).toggleClass('active')"><i class="material-icons">format_align_right</i></a>
+											    </div>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">間隔</td>
+										</tr>
+										<tr>
+											<td class="label">行間</td>
+											<td align="right"><input id="sp-id-line-height" type="number" value="" class="sp-js-input-execcommand" data-cmd="lineHeight"></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：テキスト-->
+
+
+								<!--タブ内容：イメージ-->
+								<div id="sp-id-tab-content-image" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">イメージ</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-img-src-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+											</td>
+											<td><textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-image-url-label" placeholder="設定なし"></textarea></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：イメージ-->
+
+								<!--タブ内容：置換アイテム-->
+								<div id="sp-id-tab-content-replace-item" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">置換コード</td>
+										</tr>
+										<tr>
+											<td class="icon">
+												<button id="sp-id-replace-item-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+													<i class="material-icons">mode_edit</i>
+												</button>
+
+												<button id="sp-id-countdown-edit-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" >カウントダウンコード編集</button>
+												
+											</td>
+											<td><textarea style="border:none;overflow:hidden;outline:none" readonly id="sp-id-replace-item-label" placeholder="設定なし"></textarea></td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：置換アイテム-->
+
+								<!--タブ内容：ギミック-->
+								<div id="sp-id-tab-content-gimmick" class="sp-js-tab-content">
+
+									<table class="card-table" id="sp-id-timer-table">
+										<tr>
+											<td class="header">タイマー表示設定</td>
+											<td class="switch-btn" align="right">
+												<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect sp-js-change-setTimer" for="sp-id-spEdit-timer-switch">
+													<input type="checkbox" id="sp-id-spEdit-timer-switch" class="mdl-switch__input">
+													<span class="mdl-switch__label"></span>
+												</label>
+											</td>
+										</tr>
+										<tr style="display:none;">
+											<td>
+												選択範囲をページロード後
+												<input id="sp-id-timer-second" type="number" min="1" step="1"value="5" class="sp-js-change-setTimer">
+												秒後に表示する
+											</td>
+										</tr>
+										<tr style="display:none;">
+											<td style="padding-bottom: 50px;">
+												<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sp-id-timer-first-access-only">
+													<input type="checkbox" id="sp-id-timer-first-access-only" class="mdl-checkbox__input sp-js-change-setTimer">
+													<span class="mdl-checkbox__label">初回のみタイマー表示（2回目以降は常に表示）</span>
+												</label>
+											</td>
+										</tr>
+									</table>
+
+									<table class="card-table" id="sp-id-animation-table">
+										<tr>
+											<td class="header">アニメーション</td>
+											<td class="switch-btn" align="right">
+												<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect sp-js-change-setAnimation" for="sp-id-spEdit-animation-switch">
+													<input type="checkbox" id="sp-id-spEdit-animation-switch" class="mdl-switch__input">
+													<span class="mdl-switch__label"></span>
+												</label>
+											</td>
+										</tr>
+										<tr style="display:none;">
+											<td class="label">種類</td>
+											<td>
+												<select id="sp-id-ani-name" class="sp-js-change-setAnimation">
+												    <optgroup label="Attention Seekers">
+												      <option value="sp-ani-bounce">bounce</option>
+												      <option value="sp-ani-flash">flash</option>
+												      <option value="sp-ani-pulse">pulse</option>
+												      <option value="sp-ani-rubberBand">rubberBand</option>
+												      <option value="sp-ani-shake">shake</option>
+												      <option value="sp-ani-swing">swing</option>
+												      <option value="sp-ani-tada">tada</option>
+												      <option value="sp-ani-wobble">wobble</option>
+												      <option value="sp-ani-jello">jello</option>
+												    </optgroup>
+
+												    <optgroup label="Bouncing Entrances">
+												      <option value="sp-ani-bounceIn">bounceIn</option>
+												      <option value="sp-ani-bounceInDown">bounceInDown</option>
+												      <option value="sp-ani-bounceInLeft">bounceInLeft</option>
+												      <option value="sp-ani-bounceInRight">bounceInRight</option>
+												      <option value="sp-ani-bounceInUp">bounceInUp</option>
+												    </optgroup>
+
+												    <optgroup label="Bouncing Exits">
+												      <option value="sp-ani-bounceOut">bounceOut</option>
+												      <option value="sp-ani-bounceOutDown">bounceOutDown</option>
+												      <option value="sp-ani-bounceOutLeft">bounceOutLeft</option>
+												      <option value="sp-ani-bounceOutRight">bounceOutRight</option>
+												      <option value="sp-ani-bounceOutUp">bounceOutUp</option>
+												    </optgroup>
+
+												    <optgroup label="Fading Entrances">
+												      <option value="sp-ani-fadeIn">fadeIn</option>
+												      <option value="sp-ani-fadeInDown">fadeInDown</option>
+												      <option value="sp-ani-fadeInDownBig">fadeInDownBig</option>
+												      <option value="sp-ani-fadeInLeft">fadeInLeft</option>
+												      <option value="sp-ani-fadeInLeftBig">fadeInLeftBig</option>
+												      <option value="sp-ani-fadeInRight">fadeInRight</option>
+												      <option value="sp-ani-fadeInRightBig">fadeInRightBig</option>
+												      <option value="sp-ani-fadeInUp">fadeInUp</option>
+												      <option value="sp-ani-fadeInUpBig">fadeInUpBig</option>
+												    </optgroup>
+
+												    <optgroup label="Fading Exits">
+												      <option value="sp-ani-fadeOut">fadeOut</option>
+												      <option value="sp-ani-fadeOutDown">fadeOutDown</option>
+												      <option value="sp-ani-fadeOutDownBig">fadeOutDownBig</option>
+												      <option value="sp-ani-fadeOutLeft">fadeOutLeft</option>
+												      <option value="sp-ani-fadeOutLeftBig">fadeOutLeftBig</option>
+												      <option value="sp-ani-fadeOutRight">fadeOutRight</option>
+												      <option value="sp-ani-fadeOutRightBig">fadeOutRightBig</option>
+												      <option value="sp-ani-fadeOutUp">fadeOutUp</option>
+												      <option value="sp-ani-fadeOutUpBig">fadeOutUpBig</option>
+												    </optgroup>
+
+												    <optgroup label="Flippers">
+												      <option value="sp-ani-flip">flip</option>
+												      <option value="sp-ani-flipInX">flipInX</option>
+												      <option value="sp-ani-flipInY">flipInY</option>
+												      <option value="sp-ani-flipOutX">flipOutX</option>
+												      <option value="sp-ani-flipOutY">flipOutY</option>
+												    </optgroup>
+
+												    <optgroup label="Lightspeed">
+												      <option value="sp-ani-lightSpeedIn">lightSpeedIn</option>
+												      <option value="sp-ani-lightSpeedOut">lightSpeedOut</option>
+												    </optgroup>
+
+												    <optgroup label="Rotating Entrances">
+												      <option value="sp-ani-rotateIn">rotateIn</option>
+												      <option value="sp-ani-rotateInDownLeft">rotateInDownLeft</option>
+												      <option value="sp-ani-rotateInDownRight">rotateInDownRight</option>
+												      <option value="sp-ani-rotateInUpLeft">rotateInUpLeft</option>
+												      <option value="sp-ani-rotateInUpRight">rotateInUpRight</option>
+												    </optgroup>
+
+												    <optgroup label="Rotating Exits">
+												      <option value="sp-ani-rotateOut">rotateOut</option>
+												      <option value="sp-ani-rotateOutDownLeft">rotateOutDownLeft</option>
+												      <option value="sp-ani-rotateOutDownRight">rotateOutDownRight</option>
+												      <option value="sp-ani-rotateOutUpLeft">rotateOutUpLeft</option>
+												      <option value="sp-ani-rotateOutUpRight">rotateOutUpRight</option>
+												    </optgroup>
+
+												    <optgroup label="Sliding Entrances">
+												      <option value="sp-ani-slideInUp">slideInUp</option>
+												      <option value="sp-ani-slideInDown">slideInDown</option>
+												      <option value="sp-ani-slideInLeft">slideInLeft</option>
+												      <option value="sp-ani-slideInRight">slideInRight</option>
+                                                                    
+												    </optgroup>
+												    <optgroup label="Sliding Exits">
+												      <option value="sp-ani-slideOutUp">slideOutUp</option>
+												      <option value="sp-ani-slideOutDown">slideOutDown</option>
+												      <option value="sp-ani-slideOutLeft">slideOutLeft</option>
+												      <option value="sp-ani-slideOutRight">slideOutRight</option>
+												      
+												    </optgroup>
+												    
+												    <optgroup label="Zoom Entrances">
+												      <option value="sp-ani-zoomIn">zoomIn</option>
+												      <option value="sp-ani-zoomInDown">zoomInDown</option>
+												      <option value="sp-ani-zoomInLeft">zoomInLeft</option>
+												      <option value="sp-ani-zoomInRight">zoomInRight</option>
+												      <option value="sp-ani-zoomInUp">zoomInUp</option>
+												    </optgroup>
+												    
+												    <optgroup label="Zoom Exits">
+												      <option value="sp-ani-zoomOut">zoomOut</option>
+												      <option value="sp-ani-zoomOutDown">zoomOutDown</option>
+												      <option value="sp-ani-zoomOutLeft">zoomOutLeft</option>
+												      <option value="sp-ani-zoomOutRight">zoomOutRight</option>
+												      <option value="sp-ani-zoomOutUp">zoomOutUp</option>
+												    </optgroup>
+
+												    <optgroup label="Specials">
+												      <option value="sp-ani-hinge">hinge</option>
+												      <option value="sp-ani-rollIn">rollIn</option>
+												      <option value="sp-ani-rollOut">rollOut</option>
+												    </optgroup>
+												</select>
+											</td>
+										</tr>
+										<tr style="display:none;">
+											<td class="label">繰り返し間隔</td>
+											<td>
+												<input id="sp-id-ani-interval-second" type="number" step="1" min="1" value="3" class="sp-js-change-setAnimation">
+												秒間隔で実行
+											</td>
+										</tr>
+									</table>
+
+								</div>
+								<!--/タブ内容：ギミック-->
+
+								<!--タブ内容：表-->
+								<div id="sp-id-tab-content-table" class="sp-js-tab-content">
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">行</td>
+										</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="row-add-top" gable="true"><i class="material-icons">add</i></button>
+										</td>
+										<td>現在セルの上に行追加</td>
+									</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="row-add-bottom" gable="true"><i class="material-icons">add</i></button>
+										</td>
+										<td>現在セルの下に行追加</td>
+									</tr>
+									<tr>
+										<td class="icon-btn">
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="row-delete" gable="true"><i class="material-icons">remove</i></button>
+										</td>
+										<td>現在セルの行削除</td>
+									</tr>
+									<table class="card-table">
+										<tr>
+											<td class="header" colspan="2">列</td>
+										</tr>
+										<tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="col-add-left" gable="true"><i class="material-icons">add</i></button>
+											</td>
+											<td>現在セルの左に列追加</td>
+										</tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="col-add-right" gable="true"><i class="material-icons">add</i></button>
+											</td>
+											<td>現在セルの右に行追加</td>
+										</tr>
+										<tr>
+											<td class="icon-btn">
+												<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-table-edit sp-js-click-editTable" data-cmd="col-delete" gable="true"><i class="material-icons">remove</i></button>
+											</td>
+											<td>現在セルの列を削除</td>
+										</tr>
+									</table>
+								</div>
+								<!--/タブ内容：表-->
+							</div>
+							<!--/ .scroll-box-->
+
+					
+						</td>
+					</tr>
+						
+					
+				</table>
+				<!--/ フォーマットBOX-->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="height:30px;border-top:1px solid #000">
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">code</i></button>
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect">CSS</button>
+				<button style="width:90px" class="mdl-button mdl-js-button mdl-js-ripple-effect">JS</button>
+
+　<input type="checkbox" id="checkbox-section" style="width:auto;vertical-align: middle;"> section
+　<input type="checkbox" id="checkbox-col" style="width:auto;vertical-align: middle;"> col
+　<input type="checkbox" id="checkbox-item" style="width:auto;vertical-align: middle;"> item
+
+
+				
+			</td>
+		</tr>
+	<table>
+
+
+	<!-- tooltip -->
+	<div class="mdl-tooltip" for="sp-id-gimmick-timer">
+		現在選択中のアイテムを<br>
+		ページが表示されてから<br>
+		指定秒数後に表示するギミックです。<br>
+		<br>
+		主に「VSLで動画再生してから●秒後に購入ボタンを出す」に使用されています。
+	</div>
+	<div class="mdl-tooltip" for="sp-id-img-src-edit-btn">
+		イメージの挿入・編集
+	</div>
+
+	<div class="mdl-tooltip" for="sp-id-bg-image-url-edit-btn">
+		背景画像の設定・編集
+	</div>
+	<div class="mdl-tooltip" for="sp-id-link-edit-btn">
+		リンクの設定・編集
+	</div>
+	<div class="mdl-tooltip" for="sp-id-replace-item-edit-btn">
+		置換コードの設定・編集
+	</div>
+
+	<div class="mdl-tooltip" for="sp-id-font-size">
+		フォントサイズ
+	</div>
+	<div class="mdl-tooltip" for="sp-id-fore-color">
+		テキストの色
+	</div>
+	<div class="mdl-tooltip" for="sp-id-back-color">
+		塗りつぶし
+	</div>
+
+
+	<!-- dialog : image -->
+<!--
+	<dialog id="sp-id-dialog-name-image" class="mdl-dialog" style="margin:auto;width: 500px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">イメージの挿入・編集</h4>
+		<div class="mdl-dialog__content">
+			画像URL：<input type="text" id="sp-id-dialog-input-image-url" value="">
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+-->
+
+<script>
+function imageLibrarySearch(){
+	
+	
+	var imgType = $('#sp-id-image-type').val();
+	var myImageOnly = $('#sp-id-my-image-only').find('input[type=checkbox]').first().prop('checked');
+	console.log(myImageOnly);
+	var dataUploader = myImageOnly == true ? '[data-uploader="mine"]' : '';
+
+	$('.image-thumbnail').hide();
+
+	if(imgType == 'all'){
+		$('.image-thumbnail'+dataUploader).show();
+	}else{
+		$('.sp-js-image-type-'+imgType+dataUploader).show();
+	}
+}
+
+</script>
+
+	<dialog id="sp-id-dialog-name-image" class="mdl-dialog" style="margin:auto;width: 70%;height: 85%;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;padding: 15px;">イメージの挿入・編集
+
+			<select id="sp-id-image-type" onchange="imageLibrarySearch()" style="width: 170px;float: right;vertical-align: middle;">
+				<option value="all">すべて</option>
+				<option value="guarantee">お試し保証・返金保証</option>
+				<option value="bg">背景画像</option>
+				<option value="card-info">カード情報</option>
+				<option value="company-logo">会社ロゴ</option>
+			</select>
+
+			<label id="sp-id-my-image-only" style="float: right;margin-right: 15px;vertical-align: -webkit-baseline-middle;" onclick="imageLibrarySearch()">
+				<input type="checkbox" style="vertical-align: middle;width:auto;" checked> 自分のアップした画像のみ表示
+			</label>
+
+		</h4>
+
+		
+		<div class="mdl-dialog__content" style="background-color: #f8f8f8;background-image: linear-gradient(45deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025) 100%),linear-gradient(45deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025) 100%);background-size: 20px 20px;background-position: 0 0, 50px 50px;border-color: #F3F3F3;vertical-align: middle;height: calc(100% - 115px);overflow-y: auto;">
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/logo-sp3.png"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="http://nichibou.main.jp/img/member_hp/toukou/images/img1.jpg"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/0ae6609c-logop-h_06o00y06o00y000000.png"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/1s27nw5-quote1.png"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/217aff9d-macbook_0hm09b0hk09a000000.png"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/check_borad.png"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img src="img_ph/7989ac57-toshio-nishi_05d04v04v04v009000.jpg"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/a5bcf928-hoover.jpg"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-bg"><img  src="img_ph/d48b10db-video-icon_00p00p00p00p000000.png"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc"><img  src="img_ph/e8d7ad1d-nirk8-1-mp4_0bn06k0bf06k000000.png"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/images/credit.jpg"></div>
+			<div data-uploader="mine" class="image-thumbnail sp-js-click-setChooseImgSrc "><img  src="http://directbook.s3.amazonaws.com/site/images/mail_image.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img  src="http://directbook.s3.amazonaws.com/site/images/support_mail_L.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img src="http://directbook.s3.amazonaws.com/site/img/1year_warranty.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/30days_trial_60days_warranty.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/30days_warranty.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/30days_return.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/30days_warranty.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/cancel_ok.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/divide_ok.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/firstfree.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/hyakuen.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/keiyaku_cancel.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/present.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/3point/refund.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-guarantee"><img  src="http://directbook.s3.amazonaws.com/site/img/90days_warranty.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/bttm_buynow.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/bttm_cpend.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/App_Store.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy2_small.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/bttn_buy2_small_ov.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_BOM_choice.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_reBOM_choice.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/button_trial.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/cupn_button.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/dl_button.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/dl_pdf.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/button/download.gif"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img src="http://directbook.s3.amazonaws.com/site/img/card_img/card1.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card2.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card3.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-card-info"><img  src="http://directbook.s3.amazonaws.com/site/img/card_img/card4.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/card_img/track.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/card_img/track_sp.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/dp_logo.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/head/dp_tell.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/logo.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc sp-js-image-type-company-logo"><img src="http://directbook.s3.amazonaws.com/site/img/head/logo_big.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/commuter.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_1.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_2.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/kanda/icon_3.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/logo/sq_logo.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/mobile/img/logo.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/0.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/1.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/5.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star30.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star35.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star40.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star45.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/star/star50.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Free_Trial_IMG2970.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_BOM_2950.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDA.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDA_tax.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/Trial_img_KDAexp.png"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice5_flow.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice_bre_flow.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/choice_flow.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/flow_BOM_BKF.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/flow_BOM_SHIN_BRE_2970.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/month_flow.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_SHIN_BRE_2970.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_annual.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_annual29800.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_BOM_choice.jpg"></div>
+			<div class="image-thumbnail sp-js-click-setChooseImgSrc "><img src="http://directbook.s3.amazonaws.com/site/img/warranty/warranty_FDV_continuity.gif"></div>
+
+		</div>
+		<div class="mdl-dialog__actions" style="flex-direction: row;">
+			<button type="button" class="mdl-button sp-js-image-upload">IMAGE UPLOAD</button>
+			<button type="button" id="sp-id-change-target-image-url-btn" class="mdl-button">画像URLを変更する</button>
+			<input type="text" id="sp-id-change-target-image-url" value="" style="width:50%;">
+			<button type="button" class="mdl-button close" style="margin-left:auto;">CANCEL</button>
+		</div>
+	</dialog>
+
+	<!-- dialog : link -->
+	<dialog id="sp-id-dialog-name-link" class="mdl-dialog" style="margin:auto;width: 500px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">リンクの設定・編集</h4>
+		<div class="mdl-dialog__content">
+			リンクURL：<input type="text" id="sp-id-dialog-input-link-url" value="">
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+
+	<!-- dialog : replace-item -->
+	<dialog id="sp-id-dialog-name-replace-item" class="mdl-dialog" style="margin:auto;width: 600px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">置換コードの挿入・編集</h4>
+		<div class="mdl-dialog__content">
+			置換コード：<textarea id="sp-id-dialog-input-replace-code" style="width:100%;height:200px;"></textarea>
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+
+	<!-- dialog : countdown -->
+	<dialog id="sp-id-dialog-name-countdown" class="mdl-dialog" style="margin:auto;width: 70%;height: 85%;max-width: 950px;">
+		<h4 class="mdl-dialog__title" style="white-space:nowrap;">カウントダウンタイマーの挿入・編集</h4>
+		<div class="mdl-dialog__content">
+
+			<div style="display:none;padding-bottom: 10px;">
+				<label style="width:120px;display:inline-block;">置換コード</label>：
+				<textarea id="sp-id-dialog-input-countdown-code" style="width:100%;height:30px;"></textarea>
+			</div>
+
+			<div style="padding-bottom: 10px;">
+				<label style="width:120px;display:inline-block;">デッドライン日時</label>：
+				<input type="date" id="sp-id-dialog-input-deadline-date" value="" style="width:120px">　
+				<input type="time" id="sp-id-dialog-input-deadline-time" value="" style="width:75px">
+			</div>
+
+			<div style="padding-bottom: 10px;">
+				<label style="width:120px;display:inline-block;">デザインタイプ</label>：
+				<select id="sp-id-dialog-input-design-type" style="width:120px;display:inline-block;">
+					<option value="A">タイプA</option>
+					<option value="B">タイプB</option>
+					<option value="C">タイプC</option>
+				</select>
+			</div>
+
+			<div id="sp-id-dialog-iframe-countdown" style="width:100%;height:calc(100% - 225px);border:1px solid #ccc;"></div>
+
+		</div>
+		<div class="mdl-dialog__actions">
+		  <button type="button" class="mdl-button close">CANCEL</button>
+		  <button type="button" class="mdl-button sp-js-click-ok">OK</button>
+		</div>
+	</dialog>
+
+	<!--drag item Tempate-->
+	<template id="sp-js-template">
+
+		<!-- section -->
+		<div id="section" data-drag-type="section">
+			<div class="sp-section sp-drop-here">
+				<div class="container sp-container">
+					<div class="row sp-row">
+						<div class="col-sm-12">
+							<p class="sp-item sp-drop-here" data-item-type="text" contenteditable="true">12カラム</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- box -->
+		<div id="box" data-drag-type="box">
+			<div class="sp-box sp-drop-here" data-item-type="box">
+				<p class="sp-item" data-item-type="text" contenteditable="true">BOX</p>
+			</div>
+		</div>
+
+		<!-- text -->
+		<div id="text" data-drag-type="item">
+			<p class="sp-item sp-drop-here" data-item-type="text" contenteditable="true">テキスト</p>
+		</div>
+
+		<!-- list -->
+		<div id="list" data-drag-type="item">
+			<ul class="sp-item sp-drop-here" data-item-type="list">
+			   <li>なぜ20代が人生の分岐点なのか？30代40代とは全く違う20代で人生に一度しかないこと</li>
+			   <li>必死になって就職活動しても半分が失敗するワケー仕事や会社選びを間違える典型的なパターン</li>
+			   <li>自分の市場価値を高める方法〜自分の才能を知り、それを伸ばすには？</li>
+			   <li>心理学で見る、あなたにとって最悪な仕事と最高の仕事は？</li>
+			   <li>他、ダイレクト出版の会社のぶっちゃけを知ることができる従業員の生の声ー</li>
+			</ul>
+		</div>
+
+		<!-- button -->
+		<div id="button" data-drag-type="item">
+			<a href="test.php" class="sp-item sp-drop-here sp-btn" data-item-type="button" contenteditable="true">ボタン</a>
+		</div>
+		
+		<!-- image -->
+		<div id="image" data-drag-type="item">
+			<img src="http://nichibou.main.jp/img/member_hp/toukou/images/img1.jpg" class="sp-item sp-drop-here img-responsive center-block"  data-item-type="image" style="margin-bottom:30px">
+		</div>
+
+		<!-- video -->
+		<div id="video" data-drag-type="item">
+			<div class="sp-item sp-drop-here embed-responsive embed-responsive-16by9" data-item-type="replace-item" data-contents="video" style="margin-bottom:30px">
+				<template><iframe class="embed-responsive-item" src="http://www.youtube.com/embed/gqryJRAlS0c"></iframe></template>
+			</div>
+		</div>
+
+		<!-- table -->
+		<div id="table" data-drag-type="item">
+			<table class="sp-item table table-hover sp-drop-here" data-item-type="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Username</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>1</th>
+						<td>Mark</td>
+						<td>Otto</td>
+						<td>@mdo</td>
+					</tr>
+					<tr>
+						<th>2</th>
+						<td>Jacob</td>
+						<td>Thornton</td>
+						<td>@fat</td>
+					</tr>
+					<tr>
+						<th>3</th>
+						<td>Larry</td>
+						<td>the Bird</td>
+						<td>@twitter</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- replace-item -->
+		<div id="replace-item" data-drag-type="item">
+			<div class="sp-item sp-drop-here" data-item-type="replace-item" data-contents="" data-title="-- ここがアップロード後に設定した内容に置き換えられます --" style="margin-bottom:30px">
+				<template><script>alert('alert');</script></template>
+			</div>
+		</div>
+
+		<!-- countdown-timer -->
+		<div id="countdown-timer" data-drag-type="item">
+			<div class="sp-item sp-drop-here" data-item-type="replace-item" data-contents="countdown" data-title="-- カウントダウンタイマー：タイプ１ --" style="margin-bottom:30px" data-deadline-date="" data-deadline-time="00:00" data-design-type="">
+				<template>
+				</template>
+			</div>
+		</div>
+
+	</template>
+
+	<template id="sp-id-template-countdown">
+		<div id="A">
+			<!--spCountdownA_{$id}:start-->
+			<div id="{$id}" style="width: 630px;display: block;margin: 0 auto;"></div>
+			<link rel="stylesheet" href="http://s3-ap-northeast-1.amazonaws.com/jp.speditor.common/js/flipclock/flipclock.css">
+			<style>
+				.flip-clock-active, .flip-clock-before{
+					margin:inherit;
+				}
+			</style>
+			<script>
+				window.jQuery || document.write('<script type="text/javascript" src="http://s3-ap-northeast-1.amazonaws.com/jp.speditor.common/js/jquery-1.10.2.min.js"><\/script>');
+			</script>
+			<script>
+				$.fn['FlipClock'] || document.write('<script src="http://s3-ap-northeast-1.amazonaws.com/jp.speditor.common/js/flipclock/flipclock.js"><\/script>');
+			</script>
+			<script type="text/javascript">
+				spCountdownA_{$id}();
+				function spCountdownA_{$id}(){
+				    var clock;
+			        var currentDate = new Date();
+			        var futureDate  = new Date("{$datetime}");
+			        var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+				    // 表示させる
+				    if (futureDate > currentDate) {
+				        clock = $("#{$id}").FlipClock(diff, {
+				            clockFace: "DailyCounter",
+				            countdown: true
+				        });
+				    }else{
+						//$('#{$id}').html('デッドライン超過');
+				    }
+		        }
+			</script>
+			<!--spCountdownA_{$id}:end-->
+		</div>
+		<div id="B">
+			<!--spCountdownB_{$id}:start-->
+			<div id="{$id}"></div>
+			<style>
+				#{$id}{
+					font-size: 40px;
+				    font-weight: bold;
+				    border: 1px solid #ccc;
+				    padding: 30px;
+				    text-align: center;
+				    background-color: rgba(255, 1, 1, 0.76);
+				    /* background-color: #000000; */
+				    color: #fff;
+				    /* color: #666; */
+				    display: block;
+				    margin: 0 auto;
+				    border-radius: 4px;
+				    max-width: 100%;
+				    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 17px 0px, rgba(0, 0, 0, 0.188235) 0px 6px 20px 0px;
+				    text-shadow: 0 1px 0 rgba(5, 5, 5, 1);
+				    text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+				    /* text-shadow: -1px -1px 0 rgba(51, 51, 51, 1), 1px -1px 0 rgba(51, 51, 51, 1), -1px 1px 0 rgba(51, 51, 51, 1), 1px 1px 0 rgba(51, 51, 51, 1); */
+				    /* text-shadow: 0 1px 0 #bbb, 0 2px 0 #b0b0b0, 0 3px 0 #aaa, 0 4px 0 #a0a0a0, 0 5px 0 #888, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15); */
+				    /* text-shadow: 0 5px 10px rgba(0, 0, 0, .5); */
+				    /* text-shadow: 0 0 10px rgba(255, 255, 255, .7); */
+				}
+			</style>
+			<script>
+				window.jQuery || document.write('<script type="text/javascript" src="http://s3-ap-northeast-1.amazonaws.com/jp.speditor.common/js/jquery-1.10.2.min.js"><\/script>');
+			</script>
+			<script>
+				spCountdownB_{$id}();
+				function spCountdownB_{$id}() {
+				    // 終了時刻　※カウントダウンの終わりの設定
+				    // 指定は下記のような形で
+				    // "Jan 1 2015 00:00:00" "2010 Jan 1 00:00:00" "Jan 01,2015 00:00:00" "06/11/2014 00:00:00"
+				    var endDate = new Date("{$datetime}"); // ←ここにデットラインを指定する。
+				    // 現在時刻
+				    var nowDate = new Date();
+				    // 残り時間（ミリ秒）
+				    var sands = endDate - nowDate;
+				    
+				    // Math.floor で小数点以下切り捨て
+				    // 残り時間「日」
+				    var d = Math.floor(sands / (1000 * 60 * 60 * 24));
+				    
+				    // 残り時間「時」
+				    sands -= (d * (1000 * 60 * 60 * 24));
+				    var h = Math.floor(sands / (1000 * 60 * 60));
+				    
+				    // 残り時間「分」
+				    sands -= (h * (1000 * 60 * 60));
+				    var m = Math.floor(sands / (1000 * 60));
+				    
+				    // 残り時間「秒」
+				    sands -= (m * (1000 * 60));
+				    var s = Math.floor(sands / 1000);
+				    
+				    // 残り時間「ミリ秒」
+				    sands -= (s * 1000);
+				    var ms = Math.floor(sands / 10);
+				    
+				    // 表示させる
+				    if (endDate > nowDate) {
+				        $("#{$id}").text(d + ' 日 ' + h + ' 時間 ' + m + ' 分 ' + s + ' 秒 ' + ms);
+				    } else {
+				        $("#{$id}").text('公開済み!!');
+				    }
+				    // 指定ミリ秒ごとにループ
+				    setTimeout(spCountdownB_{$id}, 10);
+				}
+			</script>
+			<!--spCountdownB_{$id}:end-->
+		</div>
+		<div id="C">
+			<!--spCountdownC_{$id}:start-->
+			<div id="{$id}"></div>
+			<style>
+				#{$id}{
+					font-family: serif;
+					font-weight: bold;
+					max-width: 100%;
+					color: #990000;
+					margin: 0 auto;
+					display: block;
+				    border: 2px double #990000;
+				    border-radius: 4px;
+				    padding: 30px;
+				    text-align: center;
+					
+				}
+				/*カウントする数字の大きさ*/
+				.day, .hou, .min, .sec, .mil {
+					font-size: 48px;
+				}
+				.day {
+				}
+				.hou {
+				}
+				.min {
+				}
+				.sec {
+				}
+				.mil {
+				}
+				.moji {/*日とか時間とか秒とかの文字の色と大きさ*/
+					font-size: 36px;
+					color:#000000;
+				}
+			</style>
+			<script>
+				window.jQuery || document.write('<script type="text/javascript" src="http://s3-ap-northeast-1.amazonaws.com/jp.speditor.common/js/jquery-1.10.2.min.js"><\/script>');
+			</script>
+			<script>
+				spCountdownC_{$id}();
+				function spCountdownC_{$id}(){
+				    // 終了時刻　※カウントダウンの終わりの設定
+				    // 指定は下記のような形で
+				    // "Jan 1 2015 00:00:00" "2010 Jan 1 00:00:00" "Jan 01,2015 00:00:00" "06/11/2014 00:00:00"
+				    var endDate = new Date("{$datetime}"); // ←ここにデットラインを指定する。
+				    // 現在時刻
+				    var nowDate = new Date();
+				    // 残り時間（ミリ秒）
+				    var sands = endDate - nowDate;
+				    
+				    // Math.floor で小数点以下切り捨て
+				    // 残り時間「日」
+				    var d = Math.floor(sands / (1000 * 60 * 60 * 24));
+				    
+				    // 残り時間「時」
+				    sands -= (d * (1000 * 60 * 60 * 24));
+				    var h = Math.floor(sands / (1000 * 60 * 60));
+				    
+				    // 残り時間「分」
+				    sands -= (h * (1000 * 60 * 60));
+				    var m = Math.floor(sands / (1000 * 60));
+				    
+				    // 残り時間「秒」
+				    sands -= (m * (1000 * 60));
+				    var s = Math.floor(sands / 1000);
+				    
+				    // 残り時間「ミリ秒」
+				    sands -= (s * 1000);
+				    var ms = Math.floor(sands / 10);
+				    
+				    // 表示させる
+				    if (endDate > nowDate) {
+				        $("#{$id}").html('<span class="day">'+d+'</span><span class="moji">日</span><span class="hou">'+h+'</span><span class="moji">時間</span><span class="min">'+m+'</span><span class="moji">分</span><span class="sec">'+s+'</span><span class="moji">秒</span><span class="mil">'+ms+'</span>');
+				    } else {
+				        $("#{$id}").text('公開済み!!');
+				    }
+				    // 指定ミリ秒ごとにループ
+				    setTimeout(spCountdownC_{$id}, 10);
+				}
+			</script>
+			<!--spCountdownC_{$id}:end-->
+		</div>
+	</template>
+
+
+	<script type="text/javascript" src="js/material.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="js/spEditor/sp2Editor-miko3_sp.js"></script>
+	<script type="text/javascript">
+	$(function(){
+	  $('#htmlBody').sp2Editor({
+            pageId  : '1499',
+	        staffId : '220',
+	        cssFile : '',
+	        scrollTop : '0'
+	    });
+	});
+	</script>
+
+	
+
+</body>
+</html>

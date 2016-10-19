@@ -1,0 +1,125 @@
+<style>
+.thumbnailPanel{
+display:inline-block;
+border: 1px solid #ccc;
+margin: 0 25px 25px 0;
+}
+.thumbnailPanel:hover, #create-new-template:hover{
+outline:3px solid #3AAAEC;
+}
+.thumbnailRadio{
+background-color:#4d4d4d;
+color:#fff;
+padding: 8px 0;
+text-align: center;
+}
+img.thumbnailImg {
+border: 1px solid #4d4d4d;
+}
+
+</style>
+<form name="edit1Form" id="editForm" action="create_page_2.php" method="post" onsubmit="return false">
+    <input type="hidden" name="tokenId" id="tokenId" value="{$form.tokenId|htmlspecialchars:$smarty.const.ENT_QUOTES}">
+    <input type="hidden" name="templateId" id="templateId" value="{$form.templateId}">
+    <input type="hidden" name="copyPageId" id="copyPageId" value="{$smarty.request.copyPageId}">
+
+    <div class="spadminBar">
+        <a class="logo" href="list.php">SP Editor</a>
+        <a href="//s3-ap-northeast-1.amazonaws.com/jp.speditor.common/manual/speditor2_manual_0616.pdf" target="manual" style="margin-left: 20px;">マニュアルを見る</a>
+        <span style="color:red" onclick="$('.sp2-display-none').toggle()">　　　</span>
+        <span style="float:right">
+            <input type="button" value="戻る"  class="btn-action" onclick="location.href='list.php';">
+        </span>
+    </div>
+
+    <div class="titleBar">① {if !isBlankOrNull($smarty.request.copyPageId)}コピー{/if}ページを公開するURLを決定</div>
+    <div class="inputDiv">
+        {if isset($errorMsgList.url)}
+            <div class="alert alert-danger">{$errorMsgList.url}</div>
+        {/if}
+        <div style="font-size: 18px;font-weight: bold;letter-spacing: 1px;">
+            http://www. {html_options name="domainId" id="domainId" options=$domainList selected=$form.domainId}
+            /sp/ <input type="text" name="pageDir" id="pageDir" value="{$form.pageDir}" maxlength="50" style="width: 230px;" placeholder="任意フォルダ名" required="required" pattern="^[0-9A-Za-z_]+$">
+            / <input type="text" name="pageFile" id="pageFile" value="{$form.pageFile}" maxlength="50" style="width: 230px;" placeholder="任意ファイル名" required="required">
+            .php
+
+            {if !isBlankOrNull($smarty.request.copyPageId)}
+                <div style="margin: 50px 5px;">
+                    <input type="button" value="ページID（{$smarty.request.copyPageId}）のデザインで編集開始する" class="btn-ok" onclick="$('#editForm').attr('action','create_page_2.php').removeAttr('onsubmit').submit();">
+                </div>
+            {/if}
+
+        </div>
+    </div>
+
+    {if isBlankOrNull($smarty.request.copyPageId)}
+
+        <div class="titleBar">
+            ② テンプレートを選択
+        </div>
+
+        <div class="inputDiv">
+            {if isset($errorMsgList.templateId)}
+                <div >{$errorMsgList.templateId}</div>
+            {/if}
+
+            <div id="create-new-template"style="vertical-align:top;width:220px;display:inline-block;margin: 0 25px 30px 0;text-align:center;">
+                <input type="button" value="テンプレート新規登録"  class="btn-action" onclick="$('#editForm').attr('action','scraping.php').removeAttr('onsubmit').submit()" style="width: 220px;height: 288px;">
+            </div>
+
+            {foreach from=$templateList key="k" item="v" name="templateList"}
+                <div style="display:inline-block">
+                    {if $v.mte_template_id == $smarty.get.templateId}
+                        <img src="img/new.gif" style="margin-bottom: 3px;"><br>
+                    {/if}
+                    <div class="thumbnailPanel" id="{$v.mte_template_id}">
+                        <div class="thumbnailRadio">
+                        クリックでページ編集開始
+                        </div>
+                        <!--
+                        <div class="thumbnailRadio">
+                            操作性：{'★'|str_repeat:$v.mte_operability}
+                        </div>
+                        -->
+                        <div class="thumbnailImg">
+                            <img title="
+[テンプレート説明]
+{$v.mte_explain}
+
+[その他情報]
+template ID : {$v.mte_template_id}
+import time : {$v.mte_update_datetime}
+import URL : {$v.mte_import_url}
+import staff : {$v.mst_last_name} {$v.mst_first_name}
+java script : {if $v.mte_use_file == 'index_js_on.html'}ON{else}OFF{/if}
+    " src="http://capture.heartrails.com/220x250?{$v.mte_import_url}" alt="{$v.mte_import_url}" width="220" height="250" />
+                        </div>
+                    </div>
+                </div>
+
+                <span class="sp2-display-none" style="border:1px solid grey;padding:5px;margin-right:20px;">
+                    ←
+                    <a href="scraping/{$v.mte_template_id}/index_js_off.html">{$v.mte_template_id}-off</a>
+                    <a href="scraping/{$v.mte_template_id}/index_js_on.html">{$v.mte_template_id}-on</a>
+                </span>
+
+            {foreachelse}
+                <p class="alert alert-danger">テンプレートがありません。新規テンプレートを作成してください。</p>
+            {/foreach}
+
+        </div>
+    {/if}
+
+</form>
+
+<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('.thumbnailPanel').click(function(e){
+        var templateId = e.currentTarget.id;
+        $('#templateId').val(templateId);
+        $('#editForm').attr('action','create_page_2.php').removeAttr('onsubmit').submit();
+    });
+});
+</script>
+
